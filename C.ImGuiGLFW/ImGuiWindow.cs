@@ -50,6 +50,24 @@ public partial class ImGuiController
     }
 
     /// <summary>
+    /// Initializes the ImGuiController with the specified title, resizable flag and modules.
+    /// </summary>
+    /// <param name="title">The window title to use.</param>
+    /// <param name="resizable">Whether the window should be resizable.</param>
+    /// <param name="modules">The modules to initialize with the controller.</param>
+    public static void Initialize(string title, bool resizable, params Module[] modules)
+    {
+        lock (_lock)
+        {
+            if (_instance != null) throw new InvalidOperationException($"{nameof(ImGuiController)} is already initialized.");
+            var settings = WindowSettings.ReadFromFile();
+            settings.Title = !string.IsNullOrEmpty(title) ? title : WindowSettings.DefaultWindowName;
+            settings.Resizable = resizable;
+            _instance = new(settings, modules);
+        }
+    }
+
+    /// <summary>
     /// Initializes the ImGuiController with the specified title, dimensions, and modules.
     /// </summary>
     /// <param name="title">The window title to use.</param>
@@ -65,6 +83,28 @@ public partial class ImGuiController
             settings.Title = !string.IsNullOrEmpty(title) ? title : WindowSettings.DefaultWindowName;
             settings.Width = width;
             settings.Height = height;
+            _instance = new(settings, modules);
+        }
+    }
+
+    /// <summary>
+    /// Initializes the ImGuiController with the specified title, dimensions, resizable flag and modules.
+    /// </summary>
+    /// <param name="title">The window title to use.</param>
+    /// <param name="width">The window width in pixels.</param>
+    /// <param name="height">The window height in pixels.</param>
+    /// <param name="resizable">Whether the window should be resizable.</param>
+    /// <param name="modules">The modules to initialize with the controller.</param>
+    public static void Initialize(string title, int width, int height, bool resizable, params Module[] modules)
+    {
+        lock (_lock)
+        {
+            if (_instance != null) throw new InvalidOperationException($"{nameof(ImGuiController)} is already initialized.");
+            var settings = WindowSettings.ReadFromFile();
+            settings.Title = !string.IsNullOrEmpty(title) ? title : WindowSettings.DefaultWindowName;
+            settings.Width = width;
+            settings.Height = height;
+            settings.Resizable = resizable;
             _instance = new(settings, modules);
         }
     }
@@ -88,6 +128,26 @@ public partial class ImGuiController
     }
 
     /// <summary>
+    /// Initializes the ImGuiController with the specified dimensions, resizable flag and modules.
+    /// </summary>
+    /// <param name="width">The window width in pixels.</param>
+    /// <param name="height">The window height in pixels.</param>
+    /// <param name="resizable">Whether the window should be resizable.</param>
+    /// <param name="modules">The modules to initialize with the controller.</param>
+    public static void Initialize(int width, int height, bool resizable, params Module[] modules)
+    {
+        lock (_lock)
+        {
+            if (_instance != null) throw new InvalidOperationException($"{nameof(ImGuiController)} is already initialized.");
+            var settings = WindowSettings.ReadFromFile();
+            settings.Width = width;
+            settings.Height = height;
+            settings.Resizable = resizable;
+            _instance = new(settings, modules);
+        }
+    }
+
+    /// <summary>
     /// Initializes the ImGuiController with the specified dimensions, position, and modules.
     /// </summary>
     /// <param name="width">The window width in pixels.</param>
@@ -100,6 +160,28 @@ public partial class ImGuiController
         {
             if (_instance != null) throw new InvalidOperationException($"{nameof(ImGuiController)} is already initialized.");
             var settings = WindowSettings.ReadFromFile();
+            settings.Width = width;
+            settings.Height = height;
+            settings.Position = position;
+            _instance = new(settings, modules);
+        }
+    }
+
+    /// <summary>
+    /// Initializes the ImGuiController with the specified title, dimensions, position, and modules.
+    /// </summary>
+    /// <param name="title">The window title to use.</param>
+    /// <param name="width">The window width in pixels.</param>
+    /// <param name="height">The window height in pixels.</param>
+    /// <param name="position">The window position as a Vector2.</param>
+    /// <param name="modules">The modules to initialize with the controller.</param>
+    public static void Initialize(string title, int width, int height, Vector2 position, params Module[] modules)
+    {
+        lock (_lock)
+        {
+            if (_instance != null) throw new InvalidOperationException($"{nameof(ImGuiController)} is already initialized.");
+            var settings = WindowSettings.ReadFromFile();
+            settings.Title = !string.IsNullOrEmpty(title) ? title : WindowSettings.DefaultWindowName;
             settings.Width = width;
             settings.Height = height;
             settings.Position = position;
@@ -130,6 +212,30 @@ public partial class ImGuiController
     }
 
     /// <summary>
+    /// Initializes the ImGuiController with the specified title, dimensions, position, resizable flag, and modules.
+    /// </summary>
+    /// <param name="title">The window title to use.</param>
+    /// <param name="width">The window width in pixels.</param>
+    /// <param name="height">The window height in pixels.</param>
+    /// <param name="position">The window position as a Vector2.</param>
+    /// <param name="resizable">Whether the window should be resizable.</param>
+    /// <param name="modules">The modules to initialize with the controller.</param>
+    public static void Initialize(string title, int width, int height, Vector2 position, bool resizable, params Module[] modules)
+    {
+        lock (_lock)
+        {
+            if (_instance != null) throw new InvalidOperationException($"{nameof(ImGuiController)} is already initialized.");
+            var settings = WindowSettings.ReadFromFile();
+            settings.Title = !string.IsNullOrEmpty(title) ? title : WindowSettings.DefaultWindowName;
+            settings.Width = width;
+            settings.Height = height;
+            settings.Position = position;
+            settings.Resizable = resizable;
+            _instance = new(settings, modules);
+        }
+    }
+
+    /// <summary>
     /// Initializes the ImGuiController with the specified dimensions, position coordinates, and modules.
     /// </summary>
     /// <param name="width">The window width in pixels.</param>
@@ -146,6 +252,54 @@ public partial class ImGuiController
             settings.Width = width;
             settings.Height = height;
             settings.Position = new Vector2(positionX, positionY);
+            _instance = new(settings, modules);
+        }
+    }
+
+    /// <summary>
+    /// Initializes the ImGuiController with the specified title, dimensions, position coordinates, and modules.
+    /// </summary>
+    /// <param name="title">The window title to use.</param>
+    /// <param name="width">The window width in pixels.</param>
+    /// <param name="height">The window height in pixels.</param>
+    /// <param name="positionX">The X coordinate of the window position.</param>
+    /// <param name="positionY">The Y coordinate of the window position.</param>
+    /// <param name="modules">The modules to initialize with the controller.</param>
+    public static void Initialize(string title, int width, int height, int positionX, int positionY, params Module[] modules)
+    {
+        lock (_lock)
+        {
+            if (_instance != null) throw new InvalidOperationException($"{nameof(ImGuiController)} is already initialized.");
+            var settings = WindowSettings.ReadFromFile();
+            settings.Title = !string.IsNullOrEmpty(title) ? title : WindowSettings.DefaultWindowName;
+            settings.Width = width;
+            settings.Height = height;
+            settings.Position = new Vector2(positionX, positionY);
+            _instance = new(settings, modules);
+        }
+    }
+
+    /// <summary>
+    /// Initializes the ImGuiController with the specified title, dimensions, position coordinates, resizable flag, and modules.
+    /// </summary>
+    /// <param name="title">The window title to use.</param>
+    /// <param name="width">The window width in pixels.</param>
+    /// <param name="height">The window height in pixels.</param>
+    /// <param name="positionX">The X coordinate of the window position.</param>
+    /// <param name="positionY">The Y coordinate of the window position.</param>
+    /// <param name="resizable">Whether the window should be resizable.</param>
+    /// <param name="modules">The modules to initialize with the controller.</param>
+    public static void Initialize(string title, int width, int height, int positionX, int positionY, bool resizable, params Module[] modules)
+    {
+        lock (_lock)
+        {
+            if (_instance != null) throw new InvalidOperationException($"{nameof(ImGuiController)} is already initialized.");
+            var settings = WindowSettings.ReadFromFile();
+            settings.Title = !string.IsNullOrEmpty(title) ? title : WindowSettings.DefaultWindowName;
+            settings.Width = width;
+            settings.Height = height;
+            settings.Position = new Vector2(positionX, positionY);
+            settings.Resizable = resizable;
             _instance = new(settings, modules);
         }
     }

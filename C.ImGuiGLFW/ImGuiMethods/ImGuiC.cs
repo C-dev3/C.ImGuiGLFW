@@ -178,4 +178,17 @@ public static partial class ImGuiC
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() + center.Y);
         }
     }
+
+    public static void AlignMenuToRight(string label, Action? drawAction = null, bool enabled = true, float additionalPadding = 0f)
+    {
+        float totalWidth = ImGui.CalcTextSize(label).X + ImGui.GetStyle().FramePadding.X * 3f + additionalPadding;
+        float rightPosition = ImGui.GetWindowWidth() - totalWidth;
+
+        ImGui.SetCursorPosX(rightPosition);
+        if (ImGui.BeginMenu(label, enabled))
+        {
+            drawAction?.Invoke();
+            ImGui.EndMenu();
+        }
+    }
 }

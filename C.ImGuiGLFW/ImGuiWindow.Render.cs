@@ -40,7 +40,6 @@ public partial class ImGuiController
         GLFW.WindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);
         GLFW.WindowHint(GLFW.GLFW_TRANSPARENT_FRAMEBUFFER, GLFW.GLFW_TRUE);
         GLFW.WindowHint(GLFW.GLFW_SAMPLES, 4);
-        GLFW.WindowHint(GLFW.GLFW_DECORATED, GLFW.GLFW_TRUE);
         GLFW.WindowHint(GLFW.GLFW_REFRESH_RATE, GLFW.GLFW_DONT_CARE);
         GLFW.WindowHint(GLFW.GLFW_SRGB_CAPABLE, GLFW.GLFW_TRUE);
 
@@ -116,6 +115,7 @@ public partial class ImGuiController
             GLFW.WindowHint(GLFW.GLFW_POSITION_X, (int)WindowSettings.Position.Value.X);
             GLFW.WindowHint(GLFW.GLFW_POSITION_Y, (int)WindowSettings.Position.Value.Y);
         }
+        GLFW.WindowHint(GLFW.GLFW_DECORATED, WindowSettings.ShowTitleBar ? GLFW.GLFW_TRUE : GLFW.GLFW_FALSE);
     }
 
     private unsafe void SetWindowIcon()

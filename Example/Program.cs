@@ -1,4 +1,5 @@
 ﻿using C.ImGuiGLFW;
+using C.ImGuiGLFW.ImGuiMethods;
 using Example;
 using Hexa.NET.ImGui;
 
@@ -26,5 +27,6 @@ internal class Program
             }
             ImGui.EndMenu();
         }
+        ImGuiC.AlignMenuToRight("RightMenu", () => Console.WriteLine("RightMenu pressed!"));
     }
 }

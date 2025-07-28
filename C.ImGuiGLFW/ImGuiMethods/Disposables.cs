@@ -429,3 +429,45 @@ public sealed class MultiSelectBlock : IDisposable
 
     public void Dispose() => ImGui.EndMultiSelect();
 }
+
+public sealed class MenuBlock : IDisposable
+{
+    private static readonly MenuBlock instance = new();
+    private bool shouldEndMenu;
+    private MenuBlock() { }
+
+    public static MenuBlock Begin(string label)
+    {
+        instance.shouldEndMenu = ImGui.BeginMenu(label);
+        return instance;
+    }
+
+    public static MenuBlock Begin(string label, bool enabled)
+    {
+        instance.shouldEndMenu = ImGui.BeginMenu(label, enabled);
+        return instance;
+    }
+
+    public void Dispose()
+    {
+        if (shouldEndMenu) ImGui.EndMenu();
+    }
+}
+
+public sealed class MenuBarBlock : IDisposable
+{
+    private static readonly MenuBarBlock instance = new();
+    private bool shouldEndMenuBar;
+    private MenuBarBlock() { }
+
+    public static MenuBarBlock Begin(string label)
+    {
+        instance.shouldEndMenuBar = ImGui.BeginMenuBar();
+        return instance;
+    }
+
+    public void Dispose()
+    {
+        if (shouldEndMenuBar) ImGui.EndMenuBar();
+    }
+}

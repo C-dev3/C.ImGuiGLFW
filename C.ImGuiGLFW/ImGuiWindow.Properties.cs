@@ -337,4 +337,9 @@ public partial class ImGuiController
     /// <param name="name">GLStringName</param>
     /// <returns>describing string</returns>
     public static unsafe string GetGLString(GLStringName name) => Utility.PtrToUtf8String(Instance.GL.GetString(name));
+
+    /// <summary>
+    /// Sets the window's close flag to indicate that the window should be closed.
+    /// </summary>
+    public static void SetWindowShouldClose() => GLFW.SetWindowShouldClose(Instance.window, 1);
 }
