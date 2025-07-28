@@ -143,6 +143,3 @@ Additional Information
 ================================================================================
 For the most up-to-date license information, please refer to the original
 source repositories of each component.
-
-This notice was generated on: July 29,2025
-Package version: 1.0.0.5

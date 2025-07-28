@@ -177,5 +177,9 @@ ImGuiController.Initialize("MyApp", Module.Guizmo, Module.Plot);
 ImGuiController.Initialize("MyApp", Module.Guizmo, Module.Nodes, Module.Plot);
 ```
 
+## More Examples
+
+For more detailed examples and advanced usage patterns, please visit the [here](https://github.com/C-dev3/C.ImGuiGLFWExample).
+
 ## Dependencies
-This project depends on several NuGet packages. Run `dotnet list package` to see current versions, or check [THIRD-PARTY-NOTICES](THIRD-PARTY-NOTICES.txt) for license details.
+This project depends on several NuGet packages. Run `dotnet list package` to see current versions, or check [THIRD-PARTY-NOTICES](https://github.com/C-dev3/C.ImGuiGLFWExample/raw/refs/heads/master/THIRD-PARTY-NOTICES.txt) for license details.
