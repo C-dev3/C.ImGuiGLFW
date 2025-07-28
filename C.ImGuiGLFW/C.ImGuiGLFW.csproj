@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>C</Authors>
+    <OutputType>Library</OutputType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>imgui;oepngl;glfw</PackageTags>
+    <Description>C# class library that simplifies the creation of ImGui-rendered windows.</Description>
+    <Copyright>MIT</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="assets\NotoEmoji-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="assets\FontAwesomeFreeSolid.otf" />
+    <EmbeddedResource Include="assets\NotoEmoji-Regular.ttf" />
+    <EmbeddedResource Include="assets\NotoSansJP-Medium.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Link="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+	<None Include="..\THIRD-PARTY-NOTICES.txt" Link="THIRD-PARTY-NOTICES.txt">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+	<None Include="..\LICENSE.md" Link="LICENSE.md">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+  </ItemGroup>
+	
+  <PropertyGroup>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+	<Version>1.0.0.5</Version>
+	<AssemblyVersion>$(Version)</AssemblyVersion>
+	<FileVersion>$(Version)</FileVersion>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Hexa.NET.GLFW" Version="1.0.4" />
+    <PackageReference Include="Hexa.NET.ImGui" Version="2.2.8.4" />
+    <PackageReference Include="Hexa.NET.ImGui.Backends" Version="1.0.17.4" />
+    <PackageReference Include="Hexa.NET.ImGui.Backends.GLFW" Version="1.0.17.4" />
+    <PackageReference Include="Hexa.NET.ImGui.Widgets" Version="1.2.14" />
+    <PackageReference Include="Hexa.NET.ImGui.Widgets.Extras" Version="1.0.6" />
+    <PackageReference Include="Hexa.NET.ImGuizmo" Version="2.2.8.4" />
+    <PackageReference Include="Hexa.NET.ImNodes" Version="2.2.8.4" />
+    <PackageReference Include="Hexa.NET.ImPlot" Version="2.2.8.4" />
+    <PackageReference Include="Hexa.NET.OpenGL.Core" Version="1.1.0" />
+    <PackageReference Include="Hexa.NET.OpenGL4" Version="1.1.0" />
+    <PackageReference Include="Hexa.NET.Utilities" Version="2.2.2" />
+    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.10" />
+  </ItemGroup>
+</Project>
