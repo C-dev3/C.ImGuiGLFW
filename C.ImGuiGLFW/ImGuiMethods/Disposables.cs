@@ -35,14 +35,14 @@ public sealed class StyleVarBlock : IDisposable
 
     public static StyleVarBlock Begin(ImGuiStyleVar idx, float val, bool conditional = true)
     {
-        if (!conditional) return instance;
+        if (!conditional) return null!;
         ImGui.PushStyleVar(idx, val);
         return instance;
     }
 
     public static StyleVarBlock Begin(ImGuiStyleVar idx, Vector2 val, bool conditional = true)
     {
-        if (!conditional) return instance;
+        if (!conditional) return null!;
         ImGui.PushStyleVar(idx, val);
         return instance;
     }
@@ -57,14 +57,14 @@ public sealed class StyleColorBlock : IDisposable
 
     public static StyleColorBlock Begin(ImGuiCol idx, uint val, bool conditional = true)
     {
-        if (!conditional) return instance;
+        if (!conditional) return null!;
         ImGui.PushStyleColor(idx, val);
         return instance;
     }
 
     public static StyleColorBlock Begin(ImGuiCol idx, Vector4 val, bool conditional = true)
     {
-        if (!conditional) return instance;
+        if (!conditional) return null!;
         ImGui.PushStyleColor(idx, val);
         return instance;
     }

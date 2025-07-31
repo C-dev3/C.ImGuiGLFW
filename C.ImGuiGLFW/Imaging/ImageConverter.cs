@@ -3,8 +3,25 @@ using SixLabors.ImageSharp.PixelFormats;
 
 namespace C.ImGuiGLFW.Imaging;
 
+/// <summary>
+/// Provides static methods for converting images and raw pixel data to RGBA format using SixLabors.ImageSharp.
+/// </summary>
+/// <remarks>
+/// This class supports various pixel formats including standard color formats (RGB, BGR), 
+/// alpha variants (RGBA, ARGB, etc.), grayscale formats, floating-point formats, and raw pixel data.
+/// All conversion methods output 8-bit RGBA data suitable for graphics rendering.
+/// </remarks>
 public static class ImageConverter
 {
+    /// <summary>
+    /// Converts an image file to RGBA format.
+    /// </summary>
+    /// <param name="filePath">The path to the image file to convert.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
+    /// <exception cref="ArgumentException">Thrown when the file path is null or empty.</exception>
+    /// <exception cref="FileNotFoundException">Thrown when the specified image file does not exist.</exception>
     public static byte[] ConvertImageToRgba(string filePath, out int width, out int height)
     {
         if (string.IsNullOrEmpty(filePath)) throw new ArgumentException("File path cannot be null or empty");
@@ -12,6 +29,16 @@ public static class ImageConverter
         return ConvertImageToRgba(File.ReadAllBytes(filePath), out width, out height);
     }
 
+    /// <summary>
+    /// Converts an image file to RGBA format using the specified pixel format.
+    /// </summary>
+    /// <param name="filePath">The path to the image file to convert.</param>
+    /// <param name="format">The pixel format to use for conversion.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
+    /// <exception cref="ArgumentException">Thrown when the file path is null or empty.</exception>
+    /// <exception cref="FileNotFoundException">Thrown when the specified image file does not exist.</exception>
     public static byte[] ConvertImageToRgba(string filePath, PixelFormat format, out int width, out int height)
     {
         if (string.IsNullOrEmpty(filePath)) throw new ArgumentException("File path cannot be null or empty");
@@ -19,11 +46,37 @@ public static class ImageConverter
         return ConvertImageToRgba(File.ReadAllBytes(filePath), format, out width, out height);
     }
 
+    /// <summary>
+    /// Converts image data from a byte array to RGBA format using the specified pixel format.
+    /// </summary>
+    /// <param name="imageData">The byte array containing the image data.</param>
+    /// <param name="pixelFormat">The pixel format of the input image data.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     public static byte[] ConvertImageToRgba(byte[] imageData, PixelFormat pixelFormat, out int width, out int height) => ConvertImageToRgba(imageData.AsSpan(), pixelFormat, out width, out height);
 
+    /// <summary>
+    /// Converts image data from a byte array to RGBA format using automatic format detection.
+    /// </summary>
+    /// <param name="imageData">The byte array containing the image data.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     public static byte[] ConvertImageToRgba(byte[] imageData, out int width, out int height) => ConvertImageToRgba(imageData.AsSpan(), out width, out height);
 
-    public static byte[] ConvertImageToRgba(ReadOnlySpan<byte> imageData, PixelFormat pixelFormat, out int width, out int height, int? pixelWidth = null, int? pixelHeight = null) => pixelFormat switch
+    /// <summary>
+    /// Converts image data from a ReadOnlySpan to RGBA format using the specified pixel format.
+    /// </summary>
+    /// <param name="imageData">The ReadOnlySpan containing the image data.</param>
+    /// <param name="pixelFormat">The pixel format of the input image data.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <param name="pixelWidth">Optional width parameter for raw formats (unused in current implementation).</param>
+    /// <param name="pixelHeight">Optional height parameter for raw formats (unused in current implementation).</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
+    /// <exception cref="ArgumentException">Thrown when the specified pixel format is not supported.</exception>
+    public static byte[] ConvertImageToRgba(ReadOnlySpan<byte> imageData, PixelFormat pixelFormat, out int width, out int height) => pixelFormat switch
     {
         PixelFormat.L8 => ConvertToRgba<L8>(imageData, out width, out height),
         PixelFormat.La16 => ConvertToRgba<La16>(imageData, out width, out height),
@@ -56,10 +109,40 @@ public static class ImageConverter
         _ => throw new ArgumentException($"Un pixel format: {pixelFormat}")
     };
 
+    /// <summary>
+    /// Converts raw pixel data to RGBA format using the default RawArgb32 format.
+    /// </summary>
+    /// <param name="rawData">The byte array containing the raw pixel data.</param>
+    /// <param name="pixelWidth">The width of the image in pixels.</param>
+    /// <param name="pixelHeight">The height of the image in pixels.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     public static byte[] ConvertRawImageToRgba(byte[] rawData, int pixelWidth, int pixelHeight, out int width, out int height) => ConvertRawImageToRgba(rawData, PixelFormat.RawArgb32, pixelWidth, pixelHeight, out width, out height);
 
+    /// <summary>
+    /// Converts raw pixel data to RGBA format using the specified raw pixel format.
+    /// </summary>
+    /// <param name="rawData">The byte array containing the raw pixel data.</param>
+    /// <param name="format">The raw pixel format of the input data.</param>
+    /// <param name="pixelWidth">The width of the image in pixels.</param>
+    /// <param name="pixelHeight">The height of the image in pixels.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     public static byte[] ConvertRawImageToRgba(byte[] rawData, PixelFormat format, int pixelWidth, int pixelHeight, out int width, out int height) => ConvertRawImageToRgba(rawData.AsSpan(), format, pixelWidth, pixelHeight, out width, out height);
 
+    /// <summary>
+    /// Converts raw pixel data from a ReadOnlySpan to RGBA format using the specified raw pixel format.
+    /// </summary>
+    /// <param name="imageData">The ReadOnlySpan containing the raw pixel data.</param>
+    /// <param name="pixelFormat">The raw pixel format of the input data.</param>
+    /// <param name="pixelWidth">The width of the image in pixels.</param>
+    /// <param name="pixelHeight">The height of the image in pixels.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
+    /// <exception cref="ArgumentException">Thrown when the specified format is not a raw pixel format.</exception>
     public static byte[] ConvertRawImageToRgba(ReadOnlySpan<byte> imageData, PixelFormat pixelFormat, int pixelWidth, int pixelHeight, out int width, out int height) => pixelFormat switch
     {
         PixelFormat.RawArgb32 => ConvertRawToRgba<Argb32>(imageData, pixelWidth, pixelHeight, out width, out height),
@@ -70,6 +153,13 @@ public static class ImageConverter
         _ => throw new ArgumentException($"Not a raw pixel format: {pixelFormat}")
     };
 
+    /// <summary>
+    /// Converts image data from a ReadOnlySpan to RGBA format using automatic format detection.
+    /// </summary>
+    /// <param name="imageData">The ReadOnlySpan containing the image data.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     public static byte[] ConvertImageToRgba(ReadOnlySpan<byte> imageData, out int width, out int height)
     {
         using var image = Image.Load(imageData);
@@ -100,6 +190,14 @@ public static class ImageConverter
         return rgbaPixels;
     }
 
+    /// <summary>
+    /// Converts image data of a specific pixel type to RGBA format.
+    /// </summary>
+    /// <typeparam name="TPixel">The pixel type that implements IPixel interface.</typeparam>
+    /// <param name="imageData">The ReadOnlySpan containing the image data.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     private static byte[] ConvertToRgba<TPixel>(ReadOnlySpan<byte> imageData, out int width, out int height) where TPixel : unmanaged, IPixel<TPixel>
     {
         using var image = Image.Load<TPixel>(imageData);
@@ -131,6 +229,16 @@ public static class ImageConverter
         return rgbaPixels;
     }
 
+    /// <summary>
+    /// Converts raw pixel data of a specific pixel type to RGBA format.
+    /// </summary>
+    /// <typeparam name="TPixel">The pixel type that implements IPixel interface.</typeparam>
+    /// <param name="rawData">The ReadOnlySpan containing the raw pixel data.</param>
+    /// <param name="pixelWidth">The width of the image in pixels.</param>
+    /// <param name="pixelHeight">The height of the image in pixels.</param>
+    /// <param name="width">When this method returns, contains the width of the converted image.</param>
+    /// <param name="height">When this method returns, contains the height of the converted image.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     public static byte[] ConvertRawToRgba<TPixel>(ReadOnlySpan<byte> rawData, int pixelWidth, int pixelHeight, out int width, out int height) where TPixel : unmanaged, IPixel<TPixel>
     {
         using var image = Image.LoadPixelData<TPixel>(rawData, pixelWidth, pixelHeight);
@@ -160,8 +268,22 @@ public static class ImageConverter
         return rgbaPixels;
     }
 
+    /// <summary>
+    /// Converts A8R8G8B8 (ARGB32) pixel data to RGBA format.
+    /// </summary>
+    /// <param name="argbData">The byte array containing ARGB32 pixel data.</param>
+    /// <param name="width">The width of the image in pixels.</param>
+    /// <param name="height">The height of the image in pixels.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     public static byte[] ConvertA8R8G8B8ToRgba(byte[] argbData, int width, int height) => ConvertA8R8G8B8ToRgba(argbData.AsSpan(), width, height);
 
+    /// <summary>
+    /// Converts A8R8G8B8 (ARGB32) pixel data from a ReadOnlySpan to RGBA format.
+    /// </summary>
+    /// <param name="data">The ReadOnlySpan containing ARGB32 pixel data.</param>
+    /// <param name="width">The width of the image in pixels.</param>
+    /// <param name="height">The height of the image in pixels.</param>
+    /// <returns>A byte array containing the RGBA pixel data.</returns>
     public static byte[] ConvertA8R8G8B8ToRgba(ReadOnlySpan<byte> data, int width, int height)
     {
         using var image = Image.LoadPixelData<Argb32>(data, width, height);
@@ -189,6 +311,17 @@ public static class ImageConverter
         return rgbaPixels;
     }
 
+    /// <summary>
+    /// Converts a pixel format name string to the corresponding PixelFormat enum value.
+    /// </summary>
+    /// <param name="formatName">The name of the pixel format (case-insensitive).</param>
+    /// <returns>The corresponding PixelFormat enum value.</returns>
+    /// <exception cref="ArgumentException">Thrown when the format name is not recognized.</exception>
+    /// <remarks>
+    /// Supported format names include standard formats (RGB24, RGBA32, etc.), 
+    /// alternative names (A8 for Alpha8), and raw formats (RAWARGB32, etc.).
+    /// The comparison is case-insensitive.
+    /// </remarks>
     public static PixelFormat GetPixelFormatFromName(string formatName) => formatName.ToUpperInvariant() switch
     {
         "L8" => PixelFormat.L8,

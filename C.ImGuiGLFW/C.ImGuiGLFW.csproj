@@ -69,9 +69,10 @@
     <PackageReference Include="Hexa.NET.OpenGL.Core" Version="1.1.0" />
     <PackageReference Include="Hexa.NET.OpenGL4" Version="1.1.0" />
     <PackageReference Include="Hexa.NET.Utilities" Version="2.2.2" />
+    <PackageReference Include="MaterialColorUtilities" Version="0.3.0" />
     <PackageReference Include="Serilog" Version="4.3.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.10" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.11" />
   </ItemGroup>
 </Project>

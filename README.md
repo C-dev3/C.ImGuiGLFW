@@ -181,5 +181,16 @@ ImGuiController.Initialize("MyApp", Module.Guizmo, Module.Nodes, Module.Plot);
 
 For more detailed examples and advanced usage patterns, please visit the [here](https://github.com/C-dev3/C.ImGuiGLFWExample).
 
+## Feedback and Contributions
+
+I welcome your feedback and contributions to make C.ImGuiGLFW even better! If you have:
+
+**Feature requests** - Ideas for new functionality or improvements
+**Bug reports** - Issues you've encountered while using the library
+**Method suggestions** - Additional methods or overloads you'd find useful
+
+Please feel free to submit an issue or pull request on the GitHub repository.
+Your contributions help improve the library for everyone who uses it. I appreciate bug reports, feature suggestions, code improvements, and documentation enhancements.
+
 ## Dependencies
 This project depends on several NuGet packages. Run `dotnet list package` to see current versions, or check [THIRD-PARTY-NOTICES](https://github.com/C-dev3/C.ImGuiGLFWExample/raw/refs/heads/master/THIRD-PARTY-NOTICES.txt) for license details.

@@ -342,4 +342,120 @@ public partial class ImGuiController
     /// Sets the window's close flag to indicate that the window should be closed.
     /// </summary>
     public static void SetWindowShouldClose() => GLFW.SetWindowShouldClose(Instance.window, 1);
+
+    /// <summary>
+    /// Reads the color of a single pixel from the current framebuffer at the specified screen coordinates.
+    /// </summary>
+    /// <param name="x">The X coordinate of the pixel to read (in screen space).</param>
+    /// <param name="y">The Y coordinate of the pixel to read (in screen space).</param>
+    /// <returns>A Vector4 representing the RGBA color of the pixel with each component normalized to the range [0, 1].</returns>
+    /// <remarks>
+    /// This method uses OpenGL's glReadPixels to sample a single pixel from the currently bound framebuffer.
+    /// The coordinates are in OpenGL screen space where (0,0) is typically at the bottom-left corner.
+    /// The returned color values are floating-point values in the range [0, 1] for each RGBA component.
+    /// This operation may cause a GPU-CPU synchronization point and should be used sparingly for performance reasons.
+    /// </remarks>
+    public static Vector4 GetPixelColor(int x, int y)
+    {
+        Span<float> pixel = stackalloc float[4];
+        Instance.GL.ReadPixels(x, y, 1, 1, GLPixelFormat.Rgba, GLPixelType.Float, pixel);
+        return new Vector4(pixel[0], pixel[1], pixel[2], pixel[3]);
+    }
+
+    /// <summary>
+    /// Reads the RGB color of a single pixel from the current framebuffer at the specified screen coordinates.
+    /// </summary>
+    /// <param name="x">The X coordinate of the pixel to read (in screen space).</param>
+    /// <param name="y">The Y coordinate of the pixel to read (in screen space).</param>
+    /// <returns>A Vector3 representing the RGB color of the pixel with each component normalized to the range [0, 1].</returns>
+    /// <remarks>
+    /// This method uses OpenGL's glReadPixels to sample a single pixel from the currently bound framebuffer,
+    /// reading only the RGB components and excluding alpha. The coordinates are in OpenGL screen space 
+    /// where (0,0) is typically at the bottom-left corner. The returned color values are floating-point 
+    /// values in the range [0, 1] for each RGB component.
+    /// This operation may cause a GPU-CPU synchronization point and should be used sparingly for performance reasons.
+    /// </remarks>
+    public static Vector3 GetPixelColorRGB(int x, int y)
+    {
+        Span<float> pixel = stackalloc float[3];
+        Instance.GL.ReadPixels(x, y, 1, 1, GLPixelFormat.Rgb, GLPixelType.Float, pixel);
+        return new Vector3(pixel[0], pixel[1], pixel[2]);
+    }
+
+    /// <summary>
+    /// Reads the color of a single pixel from the current framebuffer and returns it as a packed 32-bit unsigned integer.
+    /// </summary>
+    /// <param name="x">The X coordinate of the pixel to read (in screen space).</param>
+    /// <param name="y">The Y coordinate of the pixel to read (in screen space).</param>
+    /// <returns>A packed ABGR uint32 value where alpha is in the most significant byte and red is in the least significant byte.</returns>
+    /// <remarks>
+    /// This method uses OpenGL's glReadPixels to sample a single pixel from the currently bound framebuffer
+    /// and packs the RGBA components into a single 32-bit unsigned integer. The coordinates are in OpenGL 
+    /// screen space where (0,0) is typically at the bottom-left corner.
+    /// The returned format is ABGR: Alpha in bits 31-24, Blue in bits 23-16, Green in bits 15-8, Red in bits 7-0.
+    /// Each color component is represented as a byte value (0-255).
+    /// This operation may cause a GPU-CPU synchronization point and should be used sparingly for performance reasons.
+    /// </remarks>
+    public static uint GetPixelColorUInt32(int x, int y)
+    {
+        Span<byte> pixel = stackalloc byte[4];
+        Instance.GL.ReadPixels(x, y, 1, 1, GLPixelFormat.Rgba, GLPixelType.UnsignedByte, pixel);
+        return (uint)(pixel[3] << 24 | pixel[2] << 16 | pixel[1] << 8 | pixel[0]);
+    }
+
+    /// <summary>
+    /// Reads a rectangular region of pixels from the current framebuffer and returns them as an array of Vector4 colors.
+    /// </summary>
+    /// <param name="x">The X coordinate of the bottom-left corner of the region to read (in screen space).</param>
+    /// <param name="y">The Y coordinate of the bottom-left corner of the region to read (in screen space).</param>
+    /// <param name="width">The width of the region to read in pixels.</param>
+    /// <param name="height">The height of the region to read in pixels.</param>
+    /// <returns>An array of Vector4 RGBA colors with each component normalized to [0, 1]. The array is ordered row-major from bottom-left.</returns>
+    /// <remarks>
+    /// This method uses OpenGL's glReadPixels to sample a rectangular region from the currently bound framebuffer.
+    /// The coordinates are in OpenGL screen space where (0,0) is typically at the bottom-left corner.
+    /// The returned array contains width * height Vector4 elements, ordered in row-major format starting 
+    /// from the bottom-left corner of the specified region. Each Vector4 represents an RGBA color with 
+    /// floating-point components in the range [0, 1].
+    /// This operation may cause a GPU-CPU synchronization point and should be used sparingly for performance reasons.
+    /// Large regions will allocate significant memory and may impact performance.
+    /// </remarks>
+    public static Vector4[] ReadPixelRegion(int x, int y, int width, int height)
+    {
+        var pixels = new Vector4[width * height];
+        Span<float> buffer = stackalloc float[width * height * 4];
+        Instance.GL.ReadPixels(x, y, width, height, GLPixelFormat.Rgba, GLPixelType.Float, buffer);
+
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            int offset = i * 4;
+            pixels[i] = new Vector4(buffer[offset], buffer[offset + 1], buffer[offset + 2], buffer[offset + 3]);
+        }
+
+        return pixels;
+    }
+
+    /// <summary>
+    /// Reads a rectangular region of pixels from the current framebuffer and returns them as raw byte data.
+    /// </summary>
+    /// <param name="x">The X coordinate of the bottom-left corner of the region to read (in screen space).</param>
+    /// <param name="y">The Y coordinate of the bottom-left corner of the region to read (in screen space).</param>
+    /// <param name="width">The width of the region to read in pixels.</param>
+    /// <param name="height">The height of the region to read in pixels.</param>
+    /// <returns>A byte array containing raw RGBA pixel data where each pixel is represented by 4 consecutive bytes (R, G, B, A).</returns>
+    /// <remarks>
+    /// This method uses OpenGL's glReadPixels to sample a rectangular region from the currently bound framebuffer
+    /// and returns the raw byte data without conversion. The coordinates are in OpenGL screen space where (0,0) 
+    /// is typically at the bottom-left corner. The returned array contains width * height * 4 bytes, with each 
+    /// pixel represented by 4 consecutive bytes in RGBA order. Each component is a byte value (0-255).
+    /// The pixel data is ordered row-major from bottom-left. This method provides the most efficient way to 
+    /// read pixel data when raw bytes are needed, avoiding floating-point conversion overhead.
+    /// This operation may cause a GPU-CPU synchronization point and should be used sparingly for performance reasons.
+    /// </remarks>
+    public static byte[] ReadPixelRegionBytes(int x, int y, int width, int height)
+    {
+        byte[] pixels = new byte[width * height * 4];
+        Instance.GL.ReadPixels(x, y, width, height, GLPixelFormat.Rgba, GLPixelType.UnsignedByte, pixels.AsSpan());
+        return pixels;
+    }
 }

@@ -1,4 +1,5 @@
-﻿using C.ImGuiGLFW.Text.FontAwesome;
+﻿using C.ImGuiGLFW.Color;
+using C.ImGuiGLFW.Text.FontAwesome;
 using C.ImGuiGLFW.Text.NotoEmojis;
 using C.ImGuiGLFW.Text.SeIcon;
 using System.Runtime.CompilerServices;
@@ -190,5 +191,21 @@ public static partial class ImGuiC
             drawAction?.Invoke();
             ImGui.EndMenu();
         }
+    }
+
+    public static void Prefix(string prefix = "◇")
+    {
+        var dummySize = new Vector2(ImGui.GetFrameHeight());
+        ImGui.Dummy(dummySize);
+        AddTextCentered(ImGui.GetItemRectMin() + dummySize / 2, prefix, ImGui.GetColorU32(ImGuiCol.Text));
+        ImGui.SameLine();
+    }
+
+    public static void Prefix(bool isLast) => Prefix(isLast ? "└" : "├");
+
+    private static void AddTextCentered(Vector2 pos, string text, uint color)
+    {
+        var textSize = ImGui.CalcTextSize(text);
+        ImGui.GetWindowDrawList().AddText(pos - textSize / 2, color, text);
     }
 }

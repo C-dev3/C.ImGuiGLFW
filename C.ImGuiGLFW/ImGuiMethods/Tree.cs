@@ -1,4 +1,6 @@
-﻿namespace C.ImGuiGLFW.ImGuiMethods;
+﻿using C.ImGuiGLFW.Color;
+
+namespace C.ImGuiGLFW.ImGuiMethods;
 
 public static partial class ImGuiC
 {
