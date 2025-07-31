@@ -132,7 +132,7 @@ public static partial class ImGuiC
         }
 
         var context = ImGui.GetCurrentContext();
-        const float animSpeed = 1f;
+        const float animSpeed = 0.08f;
         float t = v ? 1.0f : 0.0f;
 
         if (context.LastActiveId == itemId)
