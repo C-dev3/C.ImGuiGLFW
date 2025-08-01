@@ -50,9 +50,6 @@ public static partial class ImGuiC
             v ^= true;
         }
 
-        ImGui.SameLine();
-        ImGui.TextUnformatted(label);
-
         float t = v ? 1.0f : 0.0f;
         animSpeed ??= ANIM_SPEED;
         var context = ImGui.GetCurrentContext();
