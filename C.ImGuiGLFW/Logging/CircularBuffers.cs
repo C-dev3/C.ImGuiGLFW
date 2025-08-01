@@ -41,10 +41,7 @@ public class CircularBuffer<T> : IEnumerable<T>
     /// <param name='capacity'>
     /// Buffer capacity. Must be positive.
     /// </param>
-    public CircularBuffer(int capacity)
-        : this(capacity, new T[] { })
-    {
-    }
+    public CircularBuffer(int capacity) : this(capacity, []) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CircularBuffer{T}"/> class.
@@ -293,10 +290,7 @@ public class CircularBuffer<T> : IEnumerable<T>
     /// <remarks>Segments may be empty.</remarks>
     /// </summary>
     /// <returns>An IList with 2 segments corresponding to the buffer content.</returns>
-    public IList<ArraySegment<T>> ToArraySegments()
-    {
-        return new[] { ArrayOne(), ArrayTwo() };
-    }
+    public IList<ArraySegment<T>> ToArraySegments() => [ArrayOne(), ArrayTwo()];
 
     #region IEnumerable<T> implementation
     /// <summary>
@@ -316,10 +310,7 @@ public class CircularBuffer<T> : IEnumerable<T>
     }
     #endregion
     #region IEnumerable implementation
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     #endregion
 
     private void ThrowIfEmpty(string message = "Cannot access an empty buffer.")

@@ -79,6 +79,7 @@ public class DragDropList<T>(IEnumerable<T>? items = null, string dragDropType =
     /// Renders the drag-drop enabled list using ImGui.
     /// </summary>
     /// <param name="itemRenderer">Function to render each item. Should return the display text.</param>
+    /// <param name="listWidth">Width of the listbox (-1 for auto-size)</param>
     /// <param name="listHeight">Height of the list box (0 for auto-size)</param>
     public void Render(Func<T, int, string> itemRenderer, float listWidth = -1, float listHeight = 0f)
     {

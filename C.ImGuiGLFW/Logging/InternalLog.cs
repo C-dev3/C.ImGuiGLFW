@@ -5,24 +5,70 @@ using Serilog.Events;
 
 namespace C.ImGuiGLFW.Logging;
 
+/// <summary>
+/// Provides an internal logging system with message storage, filtering, and ImGui rendering capabilities.
+/// </summary>
+/// <remarks>
+/// The <see cref="InternalLog"/> class is a static logging utility designed to collect log messages of various severity levels in a fixed-size circular buffer.
+/// It supports filtering messages by log level, autoscrolling, and provides a graphical user interface rendering method compatible with ImGui.
+/// This class is intended for internal diagnostic and debugging purposes within an ImGui GLFW environment.
+/// </remarks>
 public class InternalLog
 {
+    /// <summary>
+    /// The circular buffer holding the logged messages, with a capacity of 1000 messages.
+    /// </summary>
     public static readonly CircularBuffer<LogMessage> Messages = new(1000);
 
+    /// <summary>
+    /// Logs a message with verbose level.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Verbose(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Verbose));
 
+    /// <summary>
+    /// Logs a message with debug level.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Debug(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Debug));
 
+    /// <summary>
+    /// Logs a message with information level.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Information(string message) => Messages.PushBack(new LogMessage(message));
 
+    /// <summary>
+    /// Logs a message with warning level.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Warning(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Warning));
 
+    /// <summary>
+    /// Logs a message with error level.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Error(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Error));
 
+    /// <summary>
+    /// Logs a message with fatal level.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Fatal(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Fatal));
 
+    /// <summary>
+    /// Clears all stored log messages.
+    /// </summary>
     public static void Clear() => Messages.Clear();
 
+    /// <summary>
+    /// Provides an ImGui tab descriptor for rendering the internal log window.
+    /// </summary>
+    /// <param name="draw">If true, the tab should be drawn; otherwise null is returned.</param>
+    /// <returns>
+    /// A tuple containing the tab label (or null), the draw action delegate, optional tab color, and a boolean indicating 
+    /// if the tab is closable.
+    /// </returns>
     public static (string?, Action, Vector4?, bool) ImGuiTab(bool draw = true) => (draw ? "Log" : null, PrintImGui, null, false);
 
     private static string Search = string.Empty;
@@ -32,6 +78,9 @@ public class InternalLog
     private const int ButtonMod = -30;
     private const string FilterPopupName = "filter_window";
 
+    /// <summary>
+    /// Renders the ImGui interface for the internal log, including controls for autoscroll, filtering, clearing, and displaying messages.
+    /// </summary>
     public static void PrintImGui()
     {
         ImGui.Checkbox("##Autoscroll", ref Autoscroll);

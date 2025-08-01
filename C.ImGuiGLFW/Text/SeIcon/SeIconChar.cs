@@ -30,6 +30,8 @@ public enum SeIconChar
     /// </summary>
     ImeAlphanumericHalfWidth = 0xE024,
 
+    /// <summary>
+    /// The [한] character indicating that Korean IME is in Hangul input mode.
     /// </summary>
     ImeKoreanHangul = 0xE025,
 

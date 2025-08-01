@@ -17,7 +17,6 @@ public partial class ImGuiController
     private GL GL = null!;
     private readonly WindowSettings WindowSettings = WindowSettings.Default;
 
-    protected bool IsRunning = false;
     private bool isIconified = false;
 
     private readonly Stopwatch _watchUpdate = new();

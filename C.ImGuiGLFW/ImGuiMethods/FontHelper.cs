@@ -2,6 +2,15 @@
 
 namespace C.ImGuiGLFW.ImGuiMethods;
 
+/// <summary>
+/// Provides helper methods to load fonts for ImGui from files, embedded resources, or memory,
+/// supporting various configurations including font size, glyph ranges, and font configuration settings.
+/// </summary>
+/// <remarks>
+/// This class handles loading TrueType fonts (TTF) into ImGui, including support for custom glyph ranges and
+/// font configuration pointers. It abstracts the details of reading font data from disk, embedded resources,
+/// or raw memory, and offers multiple overloads for convenience.
+/// </remarks>
 public static unsafe class FontHelper
 {
     /// <summary>
@@ -50,6 +59,8 @@ public static unsafe class FontHelper
     /// </summary>
     /// <param name="path">The file path to the TTF font file.</param>
     /// <param name="size">The font size in pixels.</param>
+    /// <param name="glyphRanges">Glyph ranged in the font.</param>
+    /// <param name="config">Font configuration settings.</param>
     /// <returns>A pointer to the loaded ImGui font.</returns>
     /// <exception cref="FileNotFoundException">Thrown when the font file is not found.</exception>
     public static ImFontPtr GetFontFromFileTTF(string path, float size, GlyphRanges glyphRanges, ImFontConfig* config) => GetFontFromFileTTF(path, size, glyphRanges.GetRanges(), config);

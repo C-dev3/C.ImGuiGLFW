@@ -54,6 +54,8 @@
 	<Version>1.0.0.7</Version>
 	<AssemblyVersion>$(Version)</AssemblyVersion>
 	<FileVersion>$(Version)</FileVersion>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<Deterministic>false</Deterministic>
   </PropertyGroup>
 	
   <ItemGroup>

@@ -1,6 +1,13 @@
 ﻿namespace C.ImGuiGLFW.ImGuiMethods;
 public static partial class ImGuiC
 {
+    /// <summary>
+    /// Displays a slider control for an unsigned integer value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax.
+    /// The slider uses ImGui.SliderInt internally by casting the uint to int.
+    /// </remarks>
     public static bool SliderUInt(string label, ref uint v, int vMax, int vMin, string format, ImGuiSliderFlags flags)
     {
         var temp = (int)v;
@@ -10,6 +17,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for an unsigned integer value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax.
+    /// The slider uses ImGui.SliderInt internally by casting the uint to int.
+    /// </remarks>
     public static bool SliderUInt(string label, ref uint v, int vMax, int vMin, string format)
     {
         var temp = (int)v;
@@ -19,6 +33,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for an unsigned integer value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax.
+    /// The slider uses ImGui.SliderInt internally by casting the uint to int.
+    /// </remarks>
     public static bool SliderUInt(string label, ref uint v, int vMax, int vMin = 0)
     {
         var temp = (int)v;
@@ -28,6 +49,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for an unsigned short value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax (maximum 65535).
+    /// The slider uses ImGui.SliderInt internally by casting the ushort to int.
+    /// </remarks>
     public static bool SliderUShort(string label, ref ushort v, int vMax, int vMin, string format, ImGuiSliderFlags flags)
     {
         var temp = (int)v;
@@ -38,6 +66,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for an unsigned short value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax (maximum 65535).
+    /// The slider uses ImGui.SliderInt internally by casting the ushort to int.
+    /// </remarks>
     public static bool SliderUShort(string label, ref ushort v, int vMax, int vMin, string format)
     {
         var temp = (int)v;
@@ -48,6 +83,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for an unsigned short value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax (maximum 65535).
+    /// The slider uses ImGui.SliderInt internally by casting the ushort to int.
+    /// </remarks>
     public static bool SliderUShort(string label, ref ushort v, int vMax, int vMin = 0)
     {
         var temp = (int)v;
@@ -57,6 +99,14 @@ public static partial class ImGuiC
         if (ret) v = (ushort)temp;
         return ret;
     }
+
+    /// <summary>
+    /// Displays a slider control for a short value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum -32768) and vMax (maximum 32767).
+    /// The slider uses ImGui.SliderInt internally by casting the short to int.
+    /// </remarks>
     public static bool SliderShort(string label, ref short v, int vMax, int vMin, string format, ImGuiSliderFlags flags)
     {
         var temp = (int)v;
@@ -67,6 +117,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for a short value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum -32768) and vMax (maximum 32767).
+    /// The slider uses ImGui.SliderInt internally by casting the short to int.
+    /// </remarks>
     public static bool SliderShort(string label, ref short v, int vMax, int vMin, string format)
     {
         var temp = (int)v;
@@ -77,6 +134,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for a short value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum -32768) and vMax (maximum 32767).
+    /// The slider uses ImGui.SliderInt internally by casting the short to int.
+    /// </remarks>
     public static bool SliderShort(string label, ref short v, int vMax, int vMin = -32768)
     {
         var temp = (int)v;
@@ -87,6 +151,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for a byte value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax (maximum 255).
+    /// The slider uses ImGui.SliderInt internally by casting the byte to int.
+    /// </remarks>
     public static bool SliderByte(string label, ref byte v, int vMax, int vMin, string format, ImGuiSliderFlags flags)
     {
         var temp = (int)v;
@@ -97,6 +168,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for a byte value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax (maximum 255).
+    /// The slider uses ImGui.SliderInt internally by casting the byte to int.
+    /// </remarks>
     public static bool SliderByte(string label, ref byte v, int vMax, int vMin, string format)
     {
         var temp = (int)v;
@@ -107,6 +185,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for a byte value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum 0) and vMax (maximum 255).
+    /// The slider uses ImGui.SliderInt internally by casting the byte to int.
+    /// </remarks>
     public static bool SliderByte(string label, ref byte v, int vMax, int vMin = 0)
     {
         var temp = (int)v;
@@ -117,6 +202,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for a signed byte value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum -128) and vMax (maximum 127).
+    /// The slider uses ImGui.SliderInt internally by casting the sbyte to int.
+    /// </remarks>
     public static bool SliderSByte(string label, ref sbyte v, int vMax, int vMin, string format, ImGuiSliderFlags flags)
     {
         var temp = (int)v;
@@ -127,6 +219,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for a signed byte value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum -128) and vMax (maximum 127).
+    /// The slider uses ImGui.SliderInt internally by casting the sbyte to int.
+    /// </remarks>
     public static bool SliderSByte(string label, ref sbyte v, int vMax, int vMin, string format)
     {
         var temp = (int)v;
@@ -137,6 +236,13 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a slider control for a signed byte value.
+    /// </summary>
+    /// <remarks>
+    /// The value is clamped between vMin (minimum -128) and vMax (maximum 127).
+    /// The slider uses ImGui.SliderInt internally by casting the sbyte to int.
+    /// </remarks>
     public static bool SliderSByte(string label, ref sbyte v, int vMax, int vMin = -128)
     {
         var temp = (int)v;

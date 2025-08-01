@@ -1,7 +1,17 @@
 ﻿namespace C.ImGuiGLFW.Text;
 
+/// <summary>
+/// Provides predefined glyph ranges for fonts.
+/// </summary>
+/// <remarks>
+/// This class holds static predefined arrays of glyph code ranges used to specify subsets of characters for font loading, such as Japanese character ranges.
+/// The ranges are typically used with ImGui or similar libraries to limit font glyphs to specific Unicode blocks for performance and memory optimization.
+/// </remarks>
 public static class FontGlyph
 {
+    /// <summary>
+    /// Glyph ranges for Japanese characters.
+    /// </summary>
     public static readonly uint[] GlyphRangesJapanese = [
         0x0020, 0x007E, 0x00A2, 0x00A3, 0x00A7, 0x00A8, 0x00AC, 0x00AC, 0x00B0, 0x00B1, 0x00B4, 0x00B4, 0x00B6, 0x00B6, 0x00D7, 0x00D7,
         0x00F7, 0x00F7, 0x00FF, 0x00FF, 0x0391, 0x03A1, 0x03A3, 0x03A9, 0x03B1, 0x03C1, 0x03C3, 0x03C9, 0x0401, 0x0401, 0x0410, 0x044F,

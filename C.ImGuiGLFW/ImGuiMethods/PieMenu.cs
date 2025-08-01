@@ -106,6 +106,17 @@ public static partial class ImGuiC
         s_context.CurrentIndex--;
     }
 
+    /// <summary>
+    /// Begins a pie menu popup that opens when triggered by the specified mouse button.
+    /// </summary>
+    /// <param name="name">The unique identifier name for the popup.</param>
+    /// <param name="mouseButton">The mouse button that triggers the popup. Defaults to right mouse button.</param>
+    /// <returns>True if the popup is open and ready to accept menu items, false otherwise.</returns>
+    /// <remarks>
+    /// This method only works when ViewportEnable is false.
+    /// Must be paired with <see cref="EndPiePopup"/> when the return value is true.
+    /// The popup will be centered at the mouse position when first opened.
+    /// </remarks>
     public static bool BeginPiePopup(string name, ImGuiMouseButton mouseButton = ImGuiMouseButton.Right)
     {
         if (IsPopupOpen(name))
@@ -144,6 +155,15 @@ public static partial class ImGuiC
         return false;
     }
 
+    /// <summary>
+    /// Ends the pie menu popup and handles rendering of all pie menu items and submenus.
+    /// </summary>
+    /// <remarks>
+    /// This method only works when ViewportEnable is false.
+    /// Must be called after <see cref="BeginPiePopup"/> returns true.
+    /// Handles mouse interaction, rendering, and automatic popup closing when appropriate.
+    /// The popup will automatically close when the mouse is released outside of any menu item.
+    /// </remarks>
     public static void EndPiePopup()
     {
         EndPieMenuEx();
@@ -350,6 +370,18 @@ public static partial class ImGuiC
                                  ImGui.GetColorU32(ImGuiCol.Text));
     }
 
+    /// <summary>
+    /// Begins a submenu within a pie menu structure.
+    /// </summary>
+    /// <param name="name">The display name for the submenu item.</param>
+    /// <param name="enabled">Whether the submenu is enabled and can be interacted with. Defaults to true.</param>
+    /// <returns>True if the submenu should be rendered (when hovered), false otherwise.</returns>
+    /// <remarks>
+    /// This method only works when ViewportEnable is false.
+    /// Must be called within a pie menu context (between BeginPiePopup/EndPiePopup or within another BeginPieMenu/EndPieMenu).
+    /// Must be paired with <see cref="EndPieMenu"/> when the return value is true.
+    /// The submenu will only open when the user hovers over this menu item.
+    /// </remarks>
     public static bool BeginPieMenu(string name, bool enabled = true)
     {
         if (s_context.CurrentIndex < 0 || s_context.CurrentIndex >= MaxPieMenuStack)
@@ -396,6 +428,14 @@ public static partial class ImGuiC
         return false;
     }
 
+    /// <summary>
+    /// Ends the current pie submenu.
+    /// </summary>
+    /// <remarks>
+    /// This method only works when ViewportEnable is false.
+    /// Must be called after <see cref="BeginPieMenu"/> returns true.
+    /// Properly closes the submenu context and returns to the parent menu level.
+    /// </remarks>
     public static void EndPieMenu()
     {
         if (s_context.CurrentIndex < 0)
@@ -404,6 +444,18 @@ public static partial class ImGuiC
         s_context.CurrentIndex--;
     }
 
+    /// <summary>
+    /// Adds a selectable item to the current pie menu.
+    /// </summary>
+    /// <param name="name">The display name for the menu item.</param>
+    /// <param name="enabled">Whether the menu item is enabled and can be selected. Defaults to true.</param>
+    /// <returns>True if the menu item was clicked/selected, false otherwise.</returns>
+    /// <remarks>
+    /// This method only works when ViewportEnable is false.
+    /// Must be called within a pie menu context (between BeginPiePopup/EndPiePopup or within BeginPieMenu/EndPieMenu).
+    /// When this method returns true, the pie menu will automatically close.
+    /// Disabled items will be visually distinct and cannot be selected.
+    /// </remarks>
     public static bool PieMenuItem(string name, bool enabled = true)
     {
         if (s_context.CurrentIndex < 0 || s_context.CurrentIndex >= MaxPieMenuStack)

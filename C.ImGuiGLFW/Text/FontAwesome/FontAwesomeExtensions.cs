@@ -23,45 +23,20 @@ public static class FontAwesomeExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string ToIconString(this FontAwesomeIcon icon) => string.Empty + (char)icon;
 
+    /// <summary>
+    /// Gets the Unicode glyph range for the <see cref="FontAwesomeIcon"/> enum values.
+    /// </summary>
+    /// <remarks>
+    /// This array contains three elements:
+    /// - The minimum <see cref="FontAwesomeIcon"/> value greater than zero.
+    /// - The maximum <see cref="FontAwesomeIcon"/> value.
+    /// - A terminating zero value.
+    /// This range is useful for font glyph loading or filtering operations.
+    /// </remarks>
     public static readonly uint[] GlyphRange =
     [
         (uint)Enum.GetValues<FontAwesomeIcon>().Where(x => x > 0).Min(),
         (uint)Enum.GetValues<FontAwesomeIcon>().Where(x => x > 0).Max(),
         0
     ];
-
-    public static uint[] GetGlyphRange()
-    {
-        var definedIcons = Enum.GetValues<FontAwesomeIcon>()
-            .Where(x => x > 0)
-            .Select(x => (uint)x)
-            .ToHashSet()
-            .OrderBy(x => x)
-            .ToList();
-
-        var ranges = new List<uint>();
-        uint start = definedIcons[0];
-        uint end = definedIcons[0];
-
-        for (int i = 1; i < definedIcons.Count; i++)
-        {
-            if (definedIcons[i] == end + 1)
-            {
-                end = definedIcons[i];
-            }
-            else
-            {
-                ranges.Add(start);
-                ranges.Add(end);
-                start = definedIcons[i];
-                end = definedIcons[i];
-            }
-        }
-
-        ranges.Add(start);
-        ranges.Add(end);
-        ranges.Add(0);
-
-        return [.. ranges];
-    }
 }

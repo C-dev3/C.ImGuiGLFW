@@ -72,8 +72,6 @@ public static class ImageConverter
     /// <param name="pixelFormat">The pixel format of the input image data.</param>
     /// <param name="width">When this method returns, contains the width of the converted image.</param>
     /// <param name="height">When this method returns, contains the height of the converted image.</param>
-    /// <param name="pixelWidth">Optional width parameter for raw formats (unused in current implementation).</param>
-    /// <param name="pixelHeight">Optional height parameter for raw formats (unused in current implementation).</param>
     /// <returns>A byte array containing the RGBA pixel data.</returns>
     /// <exception cref="ArgumentException">Thrown when the specified pixel format is not supported.</exception>
     public static byte[] ConvertImageToRgba(ReadOnlySpan<byte> imageData, PixelFormat pixelFormat, out int width, out int height) => pixelFormat switch

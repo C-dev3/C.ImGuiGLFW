@@ -1,5 +1,9 @@
 ﻿namespace C.ImGuiGLFW.Common;
 
+/// <summary>
+/// Represents a GPU texture that can be rendered using ImGui.
+/// Supports flexible drawing options, automatic scaling, and resource management.
+/// </summary>
 public class Texture : IDisposable
 {
     private double _lastUsed;
@@ -735,13 +739,17 @@ public class Texture : IDisposable
         }
     }
 
+    /// <summary>
+    /// Disposes the texture and releases resources.
+    /// </summary>
     ~Texture() => Dispose(false);
 }
 
 /// <summary>
-/// Provides data for the OnDrawError event, containing exception information when texture drawing fails.
+/// Provides data for the <see cref="Texture.OnDrawError"/> event.
+/// Contains details about the exception that occurred during drawing.
 /// </summary>
-/// <param name="exception">The exception that occurred during texture drawing.</param>
+/// <param name="exception">The exception that was thrown during drawing.</param>
 public class TextureDrawErrorEventArgs(Exception exception) : EventArgs
 {
     /// <summary>

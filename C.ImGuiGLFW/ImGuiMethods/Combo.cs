@@ -2,6 +2,12 @@
 
 public static partial class ImGuiC
 {
+    /// <summary>
+    /// Stores the current search filter text for enum combo selectors by label.
+    /// </summary>
+    /// <remarks>
+    /// Used internally to persist filter text per combo label to support filtering in large enum lists.
+    /// </remarks>
     public static readonly Dictionary<string, Box<string>> EnumComboSearch = [];
 
     /// <summary>
@@ -56,6 +62,12 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Stores the current search filter text for general combo selectors by label.
+    /// </summary>
+    /// <remarks>
+    /// Used internally to persist filter text per combo label to support filtering in large collections.
+    /// </remarks>
     public static readonly Dictionary<string, Box<string>> ComboSearch = [];
 
     /// <summary>

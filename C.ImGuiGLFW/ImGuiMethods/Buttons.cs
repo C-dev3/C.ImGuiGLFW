@@ -8,12 +8,56 @@ public static partial class ImGuiC
 {
     private const string DefaultIconId = "CButton";
 
+    /// <summary>
+    /// Renders an icon-only button using a FontAwesome icon.
+    /// </summary>
+    /// <param name="icon">The FontAwesome icon to display.</param>
+    /// <param name="id">Optional ID to uniquely identify the button.</param>
+    /// <param name="size">Optional button size.</param>
+    /// <param name="enabled">Whether the button is enabled or disabled.</param>
+    /// <returns>True if the button is clicked.</returns>
+    /// <remarks>
+    /// This method creates an ImGui button with an icon and no text.
+    /// </remarks>
     public static bool IconButton(FontAwesomeIcon icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => IconButton(icon.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders an icon-only button using a SeIcon character.
+    /// </summary>
+    /// <param name="icon">The SeIcon character to display.</param>
+    /// <param name="id">Optional ID to uniquely identify the button.</param>
+    /// <param name="size">Optional button size.</param>
+    /// <param name="enabled">Whether the button is enabled or disabled.</param>
+    /// <returns>True if the button is clicked.</returns>
+    /// <remarks>
+    /// Use this to show SeIcon symbols as clickable buttons in the UI.
+    /// </remarks>
     public static bool IconButton(SeIconChar icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => IconButton(icon.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders an icon-only button using a NotoEmoji character.
+    /// </summary>
+    /// <param name="icon">The NotoEmoji character to display.</param>
+    /// <param name="id">Optional ID to uniquely identify the button.</param>
+    /// <param name="size">Optional button size.</param>
+    /// <param name="enabled">Whether the button is enabled or disabled.</param>
+    /// <returns>True if the button is clicked.</returns>
+    /// <remarks>
+    /// Useful for using emoji characters as ImGui buttons.
+    /// </remarks>
     public static bool IconButton(NotoEmoji icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => IconButton(icon.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders an icon-only button using the given string as the icon glyph.
+    /// </summary>
+    /// <param name="icon">The icon string to render (e.g., from FontAwesome or emoji).</param>
+    /// <param name="id">Optional ID to uniquely identify the button.</param>
+    /// <param name="size">Optional size of the button.</param>
+    /// <param name="enabled">Whether the button is enabled.</param>
+    /// <returns>True if the button is clicked and enabled.</returns>
+    /// <remarks>
+    /// This method creates a standard ImGui button that displays only an icon string, with styling and clickability.
+    /// </remarks>
     public static bool IconButton(string icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true)
     {
         ImGui.BeginDisabled(!enabled);
@@ -22,12 +66,56 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Renders a transparent icon button using a FontAwesome icon.
+    /// </summary>
+    /// <param name="icon">The FontAwesome icon to display.</param>
+    /// <param name="id">Optional unique ID.</param>
+    /// <param name="size">Optional button size.</param>
+    /// <param name="enabled">Whether the button is interactable.</param>
+    /// <returns>True if clicked.</returns>
+    /// <remarks>
+    /// A transparent version of the icon button, useful for custom styling.
+    /// </remarks>
     public static bool TransparentIconButton(FontAwesomeIcon icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => TransparentIconButton(icon.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders a transparent icon button using a SeIcon character.
+    /// </summary>
+    /// <param name="icon">The SeIcon character to display.</param>
+    /// <param name="id">Optional unique ID.</param>
+    /// <param name="size">Optional button size.</param>
+    /// <param name="enabled">Whether the button is interactable.</param>
+    /// <returns>True if clicked.</returns>
+    /// <remarks>
+    /// Displays the icon with transparent button background.
+    /// </remarks>
     public static bool TransparentIconButton(SeIconChar icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => TransparentIconButton(icon.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders a transparent icon button using a NotoEmoji character.
+    /// </summary>
+    /// <param name="emoji">The NotoEmoji character to display.</param>
+    /// <param name="id">Optional unique ID.</param>
+    /// <param name="size">Optional button size.</param>
+    /// <param name="enabled">Whether the button is interactable.</param>
+    /// <returns>True if clicked.</returns>
+    /// <remarks>
+    /// Renders an emoji button without background fill.
+    /// </remarks>
     public static bool TransparentIconButton(NotoEmoji emoji, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => TransparentIconButton(emoji.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders a transparent icon button using the given icon string.
+    /// </summary>
+    /// <param name="icon">The icon string to display.</param>
+    /// <param name="id">Optional ID to uniquely identify the button.</param>
+    /// <param name="size">Optional size of the button.</param>
+    /// <param name="enabled">Whether the button is interactable.</param>
+    /// <returns>True if the button is clicked and enabled.</returns>
+    /// <remarks>
+    /// This version of the icon button overrides the background color with transparency or custom color settings.
+    /// </remarks>
     public static bool TransparentIconButton(string icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true)
     {
         ImGui.BeginDisabled(!enabled);
@@ -38,12 +126,57 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Renders a minimalist icon button using a FontAwesome icon with no background.
+    /// </summary>
+    /// <param name="icon">The icon to display.</param>
+    /// <param name="id">Optional unique ID.</param>
+    /// <param name="size">Optional size.</param>
+    /// <param name="enabled">Whether the button is enabled.</param>
+    /// <returns>True if clicked.</returns>
+    /// <remarks>
+    /// Draws only the icon as a button with no background styling.
+    /// </remarks>
     public static bool IconButtonTransparent(FontAwesomeIcon icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => IconButtonTransparent(icon.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders a minimalist icon button using a SeIcon character with no background.
+    /// </summary>
+    /// <param name="icon">The icon to display.</param>
+    /// <param name="id">Optional unique ID.</param>
+    /// <param name="size">Optional size.</param>
+    /// <param name="enabled">Whether the button is enabled.</param>
+    /// <returns>True if clicked.</returns>
+    /// <remarks>
+    /// Use for subtle icon interactions without visible borders.
+    /// </remarks>
     public static bool IconButtonTransparent(SeIconChar icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => IconButtonTransparent(icon.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders a minimalist icon button using a NotoEmoji character with no background.
+    /// </summary>
+    /// <param name="emoji">The icon to display.</param>
+    /// <param name="id">Optional unique ID.</param>
+    /// <param name="size">Optional size.</param>
+    /// <param name="enabled">Whether the button is enabled.</param>
+    /// <returns>True if clicked.</returns>
+    /// <remarks>
+    /// An emoji-style transparent button with click behavior.
+    /// </remarks>
     public static bool IconButtonTransparent(NotoEmoji emoji, string id = DefaultIconId, Vector2 size = default, bool enabled = true) => IconButtonTransparent(emoji.ToIconString(), id, size, enabled);
 
+    /// <summary>
+    /// Renders a minimal, invisible icon button that only draws the icon string directly.
+    /// </summary>
+    /// <param name="icon">The icon string to display.</param>
+    /// <param name="id">Optional ID to uniquely identify the button.</param>
+    /// <param name="size">Optional size of the button. If unset, it uses text line height.</param>
+    /// <param name="enabled">Whether the button is interactable.</param>
+    /// <returns>True if the invisible button is clicked.</returns>
+    /// <remarks>
+    /// This function uses ImGui's InvisibleButton and directly draws the icon text with no frame or background.
+    /// Ideal for subtle icon-only actions.
+    /// </remarks>
     public static bool IconButtonTransparent(string icon, string id = DefaultIconId, Vector2 size = default, bool enabled = true)
     {
         ImGui.BeginDisabled(!enabled);
@@ -68,6 +201,14 @@ public static partial class ImGuiC
 
     private static int StyleColors = 0;
 
+    /// <summary>
+    /// Applies a custom color to the button and its interactive states.
+    /// </summary>
+    /// <param name="color">The color to apply to button styles.</param>
+    /// <remarks>
+    /// Pushes three ImGui style colors (Button, Hovered, Active).
+    /// Must be followed by <c>UncolorButton</c> to restore previous styles.
+    /// </remarks>
     public static void ColorButton(uint color)
     {
         ImGui.PushStyleColor(ImGuiCol.Button, color);
@@ -76,6 +217,13 @@ public static partial class ImGuiC
         StyleColors += 3;
     }
 
+    /// <summary>
+    /// Applies a custom color to the button and its interactive states.
+    /// </summary>
+    /// <param name="color">The color as a Vector4 (RGBA float format).</param>
+    /// <remarks>
+    /// Converts the float color to U32 and applies it to the button appearance.
+    /// </remarks>
     public static void ColorButton(Vector4 color)
     {
         var col = ImGui.ColorConvertFloat4ToU32(color);
@@ -85,6 +233,12 @@ public static partial class ImGuiC
         StyleColors += 3;
     }
 
+    /// <summary>
+    /// Pops all button style colors previously pushed by <c>ColorButton</c>.
+    /// </summary>
+    /// <remarks>
+    /// Resets the button, hovered, and active colors to previous values.
+    /// </remarks>
     public static void UncolorButton()
     {
         if (StyleColors == 0) return;

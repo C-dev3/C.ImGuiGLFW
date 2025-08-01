@@ -2,6 +2,10 @@
 
 namespace C.ImGuiGLFW.Common;
 
+/// <summary>
+/// Represents a base class for an ImGui window with lifecycle management, layout control, and rendering support.
+/// Derived classes must implement the <see cref="Draw"/> method to render window content.
+/// </summary>
 public abstract class Window
 {
     private bool internalLastIsOpen = false;
@@ -62,7 +66,7 @@ public abstract class Window
     public bool ShowCloseButton { get; set; } = true;
 
     /// <summary>
-    /// Gets or sets the priority of this window for rendering or processing order.
+    /// Determines the priority of the window, which may influence rendering or update order when multiple windows are processed.
     /// </summary>
     public int Priority = 0;
 
@@ -72,7 +76,7 @@ public abstract class Window
     public readonly string Name;
 
     /// <summary>
-    /// Gets or sets the unique identifier for this window instance.
+    /// Gets or sets the unique identifier used to distinguish this window instance in ImGui.
     /// </summary>
     public int Id;
 
@@ -87,6 +91,10 @@ public abstract class Window
     /// </summary>
     protected Window() => Name = GetType().Name;
 
+    /// <summary>
+    /// Performs internal window rendering logic, including lifecycle callbacks and error handling.
+    /// This method is called by the framework to manage the window's visibility, layout, and content.
+    /// </summary>
     public void InternalDraw()
     {
         if (!IsOpen)
@@ -208,17 +216,18 @@ public abstract class Window
     public virtual bool DrawConditions() => true;
 
     /// <summary>
-    /// Opens the window by setting IsOpen to true.
+    /// Shows the window by setting <see cref="IsOpen"/> to true.
     /// </summary>
     public void Show() => IsOpen = true;
 
     /// <summary>
-    /// Closes the window by setting IsOpen to false.
+    /// Closes the window by setting <see cref="IsOpen"/> to false.
     /// </summary>
     public void Close() => IsOpen = false;
 
     /// <summary>
-    /// Toggles the window's open/closed state.
+    /// Toggles the open state of the window.
+    /// If the window is currently open, it will be closed; if closed, it will be opened.
     /// </summary>
     public void Toggle() => IsOpen ^= true;
 }

@@ -59,6 +59,8 @@ public partial class ImGuiController
     /// Creates an OpenGL texture from encoded image data (PNG, JPEG, etc.) by converting it to RGBA format.
     /// </summary>
     /// <param name="imageData">The encoded image data (PNG, JPEG, etc.)</param>
+    /// <param name="width">The width of the texture</param>
+    /// <param name="height">The height of the texture</param>
     /// <returns></returns>
     public static nint CreateTextureFromImageData(byte[] imageData, out int width, out int height)
     {
@@ -89,6 +91,8 @@ public partial class ImGuiController
     /// <param name="imageData">The raw image byte data</param>
     /// <param name="pixelWidth">The width of the image in pixels</param>
     /// <param name="pixelHeight">The height of the image in pixels</param>
+    /// <param name="width">The width of the texture</param>
+    /// <param name="height">The height of the texture</param>
     /// <returns></returns>
     public static nint CreateTextureFromRawImageData(byte[] imageData, int pixelWidth, int pixelHeight, out int width, out int height)
     {
@@ -121,6 +125,8 @@ public partial class ImGuiController
     /// <param name="format">The pixel format of the raw image data</param>
     /// <param name="pixelWidth">The width of the image in pixels</param>
     /// <param name="pixelHeight">The height of the image in pixels</param>
+    /// <param name="width">The width of the texture</param>
+    /// <param name="height">The height of the texture</param>
     /// <returns></returns>
     public static nint CreateTextureFromRawImageData(byte[] imageData, PixelFormat format, int pixelWidth, int pixelHeight, out int width, out int height)
     {
@@ -145,6 +151,8 @@ public partial class ImGuiController
     /// Creates an OpenGL texture by loading an image file from the specified file path.
     /// </summary>
     /// <param name="filePath">The file path to the image file</param>
+    /// <param name="width">The width of the texture</param>
+    /// <param name="height">The height of the texture</param>
     /// <returns></returns>
     public static nint CreateTextureFromFile(string filePath, out int width, out int height)
     {
@@ -172,6 +180,8 @@ public partial class ImGuiController
     /// </summary>
     /// <param name="assembly">The assembly containing the embedded resource</param>
     /// <param name="path">The path to the embedded resource</param>
+    /// <param name="width">The width of the texture</param>
+    /// <param name="height">The height of the texture</param>
     /// <returns></returns>
     /// <exception cref="FileNotFoundException"></exception>
     public static nint CreateTextureFromEmbeddedResource(Assembly assembly, string path, out int width, out int height)
@@ -309,7 +319,6 @@ public partial class ImGuiController
     /// Gets a registered texture by name or creates a new one with specified size vector and optional image data.
     /// </summary>
     /// <param name="name">The name of the texture</param>
-    /// <param name="size">The size of the texture as a Vector2</param>
     /// <param name="imageData">Image data to create the texture from</param>
     /// <returns></returns>
     public static Texture GetTexture(string name, byte[]? imageData = null)
@@ -487,8 +496,6 @@ public partial class ImGuiController
     /// Gets a registered texture by name or creates a new one by loading from a file with specified dimensions.
     /// </summary>
     /// <param name="name">The name of the texture</param>
-    /// <param name="width">The width of the texture</param>
-    /// <param name="height">The height of the texture</param>
     /// <param name="filePath">The file path to the image file</param>
     /// <returns></returns>
     public static Texture GetTextureFromFile(string name, string filePath)
@@ -565,8 +572,6 @@ public partial class ImGuiController
     /// Gets a registered texture by name or creates a new one from an embedded resource with specified dimensions.
     /// </summary>
     /// <param name="name">The name of the texture</param>
-    /// <param name="width">The width of the texture</param>
-    /// <param name="height">The height of the texture</param>
     /// <param name="assembly">The assembly containing the embedded resource</param>
     /// <param name="path">The path to the embedded resource</param>
     /// <returns></returns>

@@ -1,10 +1,28 @@
 ﻿namespace C.ImGuiGLFW.ImGuiMethods;
 
+/// <summary>
+/// A helper class for managing and rendering various types of modal dialogs using ImGui.
+/// </summary>
+/// <remarks>
+/// Supports simple informational modals, confirmation dialogs, text and numeric input modals,
+/// as well as fully custom modals with user-defined content rendering.
+/// Modals are queued and displayed one at a time in the order they are added.
+/// Call <see cref="RenderModals"/> during the GUI render loop to process and show the modals.
+/// </remarks>
 public static class ModalHelper
 {
     private static readonly Queue<ModalData> _modalQueue = new();
     private static ModalData? _currentModal = null;
 
+    /// <summary>
+    /// Displays a simple modal dialog with a title, message, and an OK button.
+    /// </summary>
+    /// <param name="title">The title of the modal window.</param>
+    /// <param name="message">The message to display inside the modal.</param>
+    /// <param name="onOk">An optional action to invoke when the OK button is pressed.</param>
+    /// <remarks>
+    /// This modal is used for informational purposes and only provides an OK button to dismiss it.
+    /// </remarks>
     public static void ShowModal(string title, string message, Action? onOk = null)
     {
         _modalQueue.Enqueue(new ModalData
@@ -16,6 +34,16 @@ public static class ModalHelper
         });
     }
 
+    /// <summary>
+    /// Displays a confirmation modal dialog with OK and Cancel buttons.
+    /// </summary>
+    /// <param name="title">The title of the modal window.</param>
+    /// <param name="message">The message to display inside the modal.</param>
+    /// <param name="onConfirm">An optional action to invoke when the OK button is pressed.</param>
+    /// <param name="onCancel">An optional action to invoke when the Cancel button is pressed.</param>
+    /// <remarks>
+    /// This modal is useful for confirming user decisions with explicit confirmation or cancellation.
+    /// </remarks>
     public static void ShowConfirmation(string title, string message, Action? onConfirm = null, Action? onCancel = null)
     {
         _modalQueue.Enqueue(new ModalData
@@ -28,6 +56,17 @@ public static class ModalHelper
         });
     }
 
+    /// <summary>
+    /// Displays an input modal dialog that allows the user to enter text.
+    /// </summary>
+    /// <param name="title">The title of the modal window.</param>
+    /// <param name="message">The message to display inside the modal.</param>
+    /// <param name="defaultValue">The initial text shown in the input field.</param>
+    /// <param name="onInput">An optional action to invoke with the entered text when the user confirms.</param>
+    /// <param name="maxLength">The maximum allowed length of the input string.</param>
+    /// <remarks>
+    /// This modal allows for text input and returns the entered value when confirmed.
+    /// </remarks>
     public static void ShowInputModal(string title, string message, string defaultValue = "", Action<string>? onInput = null, int maxLength = 100)
     {
         _modalQueue.Enqueue(new ModalData
@@ -41,6 +80,16 @@ public static class ModalHelper
         });
     }
 
+    /// <summary>
+    /// Displays an input modal dialog that allows the user to enter an integer number.
+    /// </summary>
+    /// <param name="title">The title of the modal window.</param>
+    /// <param name="message">The message to display inside the modal.</param>
+    /// <param name="defaultValue">The initial integer value shown in the input field.</param>
+    /// <param name="onInputNum">An optional action to invoke with the entered integer when the user confirms.</param>
+    /// <remarks>
+    /// This modal is intended for numerical input and returns the entered number when confirmed.
+    /// </remarks>
     public static void ShowInputNumberModal(string title, string message, int defaultValue = 0, Action<int>? onInputNum = null)
     {
         _modalQueue.Enqueue(new ModalData
@@ -53,6 +102,16 @@ public static class ModalHelper
         });
     }
 
+    /// <summary>
+    /// Displays a custom modal dialog with user-defined content rendering.
+    /// </summary>
+    /// <param name="title">The title of the modal window.</param>
+    /// <param name="renderContent">A delegate to render the modal's custom content. The boolean parameter indicates if the modal is open.</param>
+    /// <param name="width">Optional width of the modal window. If zero or less, auto-resize is enabled.</param>
+    /// <param name="height">Optional height of the modal window. If zero or less, auto-resize is enabled.</param>
+    /// <remarks>
+    /// This modal allows for fully custom content rendering using ImGui calls.
+    /// </remarks>
     public static void ShowCustomModal(string title, Action<bool> renderContent, float width = 0, float height = 0)
     {
         _modalQueue.Enqueue(new ModalData
@@ -65,6 +124,12 @@ public static class ModalHelper
         });
     }
 
+    /// <summary>
+    /// Renders the queued modals in sequence. Only one modal is displayed at a time.
+    /// </summary>
+    /// <remarks>
+    /// This method should be called during the GUI rendering loop to display modals.
+    /// </remarks>
     public static void RenderModals()
     {
         if (_currentModal == null && _modalQueue.Count > 0)

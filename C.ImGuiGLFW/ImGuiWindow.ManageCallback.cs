@@ -5,34 +5,33 @@ namespace C.ImGuiGLFW;
 
 public partial class ImGuiController
 {
-#pragma warning disable CS8600
     private readonly Dictionary<string, Delegate> _callbacks = [];
     private unsafe readonly List<CallbackInfo> _windowCallbacks =
     [
-        new("char", typeof(GLFWcharfun), (w, cb) => { GLFW.SetCharCallback(w, (GLFWcharfun)cb); }),
-        new("charmods", typeof(GLFWcharmodsfun), (w, cb) => { GLFW.SetCharModsCallback(w, (GLFWcharmodsfun)cb); }),
-        new("cursorenter", typeof(GLFWcursorenterfun), (w, cb) => { GLFW.SetCursorEnterCallback(w,(GLFWcursorenterfun) cb); }),
-        new("cursorpos", typeof(GLFWcursorposfun), (w, cb) => { GLFW.SetCursorPosCallback(w,(GLFWcursorposfun) cb); }),
-        new("drop", typeof(GLFWdropfun), (w, cb) => { GLFW.SetDropCallback(w,(GLFWdropfun) cb); }),
-        new("framebuffersize", typeof(GLFWframebuffersizefun), (w, cb) => { GLFW.SetFramebufferSizeCallback(w,(GLFWframebuffersizefun) cb); }),
-        new("key", typeof(GLFWkeyfun), (w, cb) => { GLFW.SetKeyCallback(w,(GLFWkeyfun) cb); }),
-        new("mousebutton", typeof(GLFWmousebuttonfun), (w, cb) => { GLFW.SetMouseButtonCallback(w,(GLFWmousebuttonfun) cb); }),
-        new("scroll", typeof(GLFWscrollfun), (w, cb) => { GLFW.SetScrollCallback(w,(GLFWscrollfun) cb); }),
-        new("windowclose", typeof(GLFWwindowclosefun), (w, cb) => { GLFW.SetWindowCloseCallback(w,(GLFWwindowclosefun) cb); }),
-        new("windowcontentscale", typeof(GLFWwindowcontentscalefun), (w, cb) => { GLFW.SetWindowContentScaleCallback(w,(GLFWwindowcontentscalefun) cb); }),
-        new("windowfocus", typeof(GLFWwindowfocusfun), (w, cb) => { GLFW.SetWindowFocusCallback(w,(GLFWwindowfocusfun) cb); }),
-        new("windowiconify", typeof(GLFWwindowiconifyfun), (w, cb) => { GLFW.SetWindowIconifyCallback(w,(GLFWwindowiconifyfun) cb); }),
-        new("windowmaximize", typeof(GLFWwindowmaximizefun), (w, cb) => { GLFW.SetWindowMaximizeCallback(w,(GLFWwindowmaximizefun) cb); }),
-        new("windowpos", typeof(GLFWwindowposfun), (w, cb) => { GLFW.SetWindowPosCallback(w,(GLFWwindowposfun) cb); }),
-        new("windowrefresh", typeof(GLFWwindowrefreshfun), (w, cb) => { GLFW.SetWindowRefreshCallback(w,(GLFWwindowrefreshfun) cb); }),
-        new("windowsize", typeof(GLFWwindowsizefun), (w, cb) => { GLFW.SetWindowSizeCallback(w,(GLFWwindowsizefun) cb); }),
+        new("char", typeof(GLFWcharfun), (w, cb) => { GLFW.SetCharCallback(w, (GLFWcharfun)cb!); }),
+        new("charmods", typeof(GLFWcharmodsfun), (w, cb) => { GLFW.SetCharModsCallback(w, (GLFWcharmodsfun)cb!); }),
+        new("cursorenter", typeof(GLFWcursorenterfun), (w, cb) => { GLFW.SetCursorEnterCallback(w,(GLFWcursorenterfun) cb!); }),
+        new("cursorpos", typeof(GLFWcursorposfun), (w, cb) => { GLFW.SetCursorPosCallback(w,(GLFWcursorposfun) cb!); }),
+        new("drop", typeof(GLFWdropfun), (w, cb) => { GLFW.SetDropCallback(w,(GLFWdropfun) cb!); }),
+        new("framebuffersize", typeof(GLFWframebuffersizefun), (w, cb) => { GLFW.SetFramebufferSizeCallback(w,(GLFWframebuffersizefun) cb!); }),
+        new("key", typeof(GLFWkeyfun), (w, cb) => { GLFW.SetKeyCallback(w,(GLFWkeyfun) cb!); }),
+        new("mousebutton", typeof(GLFWmousebuttonfun), (w, cb) => { GLFW.SetMouseButtonCallback(w,(GLFWmousebuttonfun) cb!); }),
+        new("scroll", typeof(GLFWscrollfun), (w, cb) => { GLFW.SetScrollCallback(w,(GLFWscrollfun) cb!); }),
+        new("windowclose", typeof(GLFWwindowclosefun), (w, cb) => { GLFW.SetWindowCloseCallback(w,(GLFWwindowclosefun) cb!); }),
+        new("windowcontentscale", typeof(GLFWwindowcontentscalefun), (w, cb) => { GLFW.SetWindowContentScaleCallback(w,(GLFWwindowcontentscalefun) cb!); }),
+        new("windowfocus", typeof(GLFWwindowfocusfun), (w, cb) => { GLFW.SetWindowFocusCallback(w,(GLFWwindowfocusfun) cb!); }),
+        new("windowiconify", typeof(GLFWwindowiconifyfun), (w, cb) => { GLFW.SetWindowIconifyCallback(w,(GLFWwindowiconifyfun) cb!); }),
+        new("windowmaximize", typeof(GLFWwindowmaximizefun), (w, cb) => { GLFW.SetWindowMaximizeCallback(w,(GLFWwindowmaximizefun) cb!); }),
+        new("windowpos", typeof(GLFWwindowposfun), (w, cb) => { GLFW.SetWindowPosCallback(w,(GLFWwindowposfun) cb!); }),
+        new("windowrefresh", typeof(GLFWwindowrefreshfun), (w, cb) => { GLFW.SetWindowRefreshCallback(w,(GLFWwindowrefreshfun) cb!); }),
+        new("windowsize", typeof(GLFWwindowsizefun), (w, cb) => { GLFW.SetWindowSizeCallback(w,(GLFWwindowsizefun) cb!); }),
     ];
 
     private unsafe readonly List<GlobalCallbackInfo> _globalCallbacks =
     [
-        new("error", typeof(GLFWerrorfun), cb => GLFW.SetErrorCallback((GLFWerrorfun)cb)),
-        new("joystick", typeof(GLFWjoystickfun), cb => GLFW.SetJoystickCallback((GLFWjoystickfun)cb)),
-        new("monitor", typeof(GLFWmonitorfun), cb => GLFW.SetMonitorCallback((GLFWmonitorfun)cb))
+        new("error", typeof(GLFWerrorfun), cb => GLFW.SetErrorCallback((GLFWerrorfun)cb!)),
+        new("joystick", typeof(GLFWjoystickfun), cb => GLFW.SetJoystickCallback((GLFWjoystickfun)cb!)),
+        new("monitor", typeof(GLFWmonitorfun), cb => GLFW.SetMonitorCallback((GLFWmonitorfun)cb!))
     ];
 
     private readonly Dictionary<string, Func<Delegate>> _callbackMethods = [];

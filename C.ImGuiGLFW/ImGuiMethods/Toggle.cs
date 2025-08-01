@@ -4,10 +4,11 @@ namespace C.ImGuiGLFW.ImGuiMethods;
 
 public static partial class ImGuiC
 {
-    public static readonly Vector4 OFF_COLOR_NORMAL = new(0.85f, 0.85f, 0.85f, 1.0f);
-    public static readonly Vector4 OFF_COLOR_HOVERED = new(0.78f, 0.78f, 0.78f, 1.0f);
-    public static readonly Vector4 ON_COLOR_NORMAL = new(0.56f, 0.83f, 0.26f, 1.0f);
-    public static readonly Vector4 ON_COLOR_HOVERED = new(0.64f, 0.83f, 0.34f, 1.0f);
+    private static readonly Vector4 OFF_COLOR_NORMAL = new(0.85f, 0.85f, 0.85f, 1.0f);
+    private static readonly Vector4 OFF_COLOR_HOVERED = new(0.78f, 0.78f, 0.78f, 1.0f);
+    private static readonly Vector4 ON_COLOR_NORMAL = new(0.56f, 0.83f, 0.26f, 1.0f);
+    private static readonly Vector4 ON_COLOR_HOVERED = new(0.64f, 0.83f, 0.34f, 1.0f);
+    private const float ANIM_SPEED = 0.08f;
 
     /// <summary>
     /// Creates a customizable toggle button with smooth animation and circular slider.
@@ -20,6 +21,7 @@ public static partial class ImGuiC
     /// <param name="activeHoverColor">Background color when hovering over active button. If null, uses slightly darker green.</param>
     /// <param name="inactiveHoverColor">Background color when hovering over inactive button. If null, uses slightly darker gray.</param>
     /// <param name="sliderColor">Color of the circular slider indicator. If null, uses white.</param>
+    /// <param name="animSpeed">Speed of the slider animation speed. If null, uses 0.08f</param>
     /// <returns>True if the button state was changed, false otherwise.</returns>
     public static bool ToggleButton(string label, ref bool v,
         float scale = 1.0f,
@@ -27,7 +29,8 @@ public static partial class ImGuiC
         Vector4? inactiveColor = null,
         Vector4? activeHoverColor = null,
         Vector4? inactiveHoverColor = null,
-        Vector4? sliderColor = null)
+        Vector4? sliderColor = null,
+        float? animSpeed = null)
     {
         bool changed = false;
         var p = ImGui.GetCursorScreenPos();
@@ -51,12 +54,12 @@ public static partial class ImGuiC
         ImGui.TextUnformatted(label);
 
         float t = v ? 1.0f : 0.0f;
-        const float animSpeed = 0.08f;
+        animSpeed ??= ANIM_SPEED;
         var context = ImGui.GetCurrentContext();
 
         if (context.LastActiveId == itemId)
         {
-            float t_anim = ImGuiP.ImSaturate(context.LastActiveIdTimer / animSpeed);
+            float t_anim = ImGuiP.ImSaturate(context.LastActiveIdTimer / animSpeed.Value);
             t = v ? t_anim : (1.0f - t_anim);
         }
 
@@ -102,6 +105,7 @@ public static partial class ImGuiC
     /// <param name="activeHoverColor">Color when hovering over active button. If null, uses default ImGui button active color.</param>
     /// <param name="inactiveHoverColor">Color when hovering over inactive button. If null, uses slightly darker gray.</param>
     /// <param name="sliderColor">Color of the sliding indicator. If null, uses white.</param>
+    /// <param name="animSpeed">Speed of the slider animation speed. If null, uses 0.08f</param>
     /// <returns>True if the button state was changed, false otherwise.</returns>
     public static bool ToggleButtonSquare(string label, ref bool v,
         float scale = 1.0f,
@@ -109,7 +113,8 @@ public static partial class ImGuiC
         Vector4? inactiveColor = null,
         Vector4? activeHoverColor = null,
         Vector4? inactiveHoverColor = null,
-        Vector4? sliderColor = null)
+        Vector4? sliderColor = null,
+        float? animSpeed = null)
     {
         bool changed = false;
         var colors = ImGui.GetStyle().Colors;
@@ -132,12 +137,12 @@ public static partial class ImGuiC
         }
 
         var context = ImGui.GetCurrentContext();
-        const float animSpeed = 0.08f;
+        animSpeed ??= ANIM_SPEED;
         float t = v ? 1.0f : 0.0f;
 
         if (context.LastActiveId == itemId)
         {
-            float t_anim = ImGuiP.ImSaturate(context.LastActiveIdTimer / animSpeed);
+            float t_anim = ImGuiP.ImSaturate(context.LastActiveIdTimer / animSpeed.Value);
             t = v ? t_anim : (1.0f - t_anim);
         }
 

@@ -85,7 +85,7 @@ internal class ImGuiManager
                     config.MergeMode = true;
                 })
                 .AddFontFromEmbeddedResource(assembly, $"{assemblyName}NotoSansJP-Medium.ttf", 16.0f, FontGlyph.GlyphRangesJapanese)
-                .AddFontFromEmbeddedResource(assembly, $"{assemblyName}FontAwesomeFreeSolid.otf", 14.0f, FontAwesomeExtensions.GetGlyphRange())
+                .AddFontFromEmbeddedResource(assembly, $"{assemblyName}FontAwesomeFreeSolid.otf", 14.0f, FontAwesomeExtensions.GlyphRange)
                 .AddFontFromEmbeddedResource(assembly, $"{assemblyName}NotoEmoji-Regular.ttf", 18.0f, NotoEmojiExtentions.GlyphRange)
                 .AddDefaultFont()
                 .Build();

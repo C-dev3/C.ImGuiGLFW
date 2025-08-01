@@ -11,7 +11,6 @@ public static partial class ImGuiC
     /// <param name="id">Table ID</param>
     /// <param name="data">Data list</param>
     /// <param name="columns">Column names</param>
-    /// <param name="currentPage">Current page</param>
     /// <param name="itemsPerPage">Items per page</param>
     /// <param name="flags">Table flags</param>
     /// <param name="size">Table size</param>

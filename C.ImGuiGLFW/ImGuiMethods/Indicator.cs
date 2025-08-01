@@ -4,6 +4,19 @@ public static partial class ImGuiC
 {
     private const float ProgressBarRatio = 0.7f;
 
+    /// <summary>
+    /// Displays a buffering-style progress bar with animated dots and returns true when clicked.
+    /// </summary>
+    /// <param name="label">Unique label ID.</param>
+    /// <param name="value">Progress value from 0.0 to 1.0.</param>
+    /// <param name="sizeArg">Total size of the progress bar.</param>
+    /// <param name="bgCol">Optional background color (defaults to Button color).</param>
+    /// <param name="fgCol">Optional foreground (progress) color (defaults to ButtonHovered color).</param>
+    /// <returns>True if the invisible button is clicked.</returns>
+    /// <remarks>
+    /// Displays a progress bar with a fixed-width region for animated circles indicating activity.
+    /// Use this for tasks with visible buffering state.
+    /// </remarks>
     public static bool BufferingBar(string label, float value, Vector2 sizeArg, uint? bgCol = null, uint? fgCol = null)
     {
         var style = ImGui.GetStyle();
@@ -25,6 +38,19 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a rounded buffering-style progress bar with animated dots and returns true when clicked.
+    /// </summary>
+    /// <param name="label">Unique label ID.</param>
+    /// <param name="value">Progress value from 0.0 to 1.0.</param>
+    /// <param name="sizeArg">Total size of the progress bar.</param>
+    /// <param name="bgCol">Optional background color.</param>
+    /// <param name="fgCol">Optional foreground (progress) color.</param>
+    /// <param name="rounding">Corner rounding radius.</param>
+    /// <returns>True if the invisible button is clicked.</returns>
+    /// <remarks>
+    /// Similar to <c>BufferingBar</c> but with rounded corners. Rounding is adjusted dynamically when progress is small.
+    /// </remarks>
     public static bool BufferingBarRounded(string label, float value, Vector2 sizeArg, uint? bgCol = null, uint? fgCol = null, float rounding = 4.0f)
     {
         var style = ImGui.GetStyle();
@@ -50,6 +76,18 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a linear progress bar and returns true when clicked.
+    /// </summary>
+    /// <param name="label">Unique label ID.</param>
+    /// <param name="value">Progress value from 0.0 to 1.0.</param>
+    /// <param name="size">Size of the progress bar.</param>
+    /// <param name="bgCol">Optional background color.</param>
+    /// <param name="fgCol">Optional foreground (progress) color.</param>
+    /// <returns>True if the invisible button is clicked.</returns>
+    /// <remarks>
+    /// Basic determinate progress bar without animation or rounded edges.
+    /// </remarks>
     public static bool ProgressBar(string label, float value, Vector2 size, uint? bgCol = null, uint? fgCol = null)
     {
         bool ret = ImGui.InvisibleButton(label, size);
@@ -65,6 +103,19 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a rounded linear progress bar and returns true when clicked.
+    /// </summary>
+    /// <param name="label">Unique label ID.</param>
+    /// <param name="value">Progress value from 0.0 to 1.0.</param>
+    /// <param name="size">Size of the progress bar.</param>
+    /// <param name="bgCol">Optional background color.</param>
+    /// <param name="fgCol">Optional foreground (progress) color.</param>
+    /// <param name="rounding">Corner rounding radius.</param>
+    /// <returns>True if the invisible button is clicked.</returns>
+    /// <remarks>
+    /// Visually enhanced version of <c>ProgressBar</c> with smooth rounded corners.
+    /// </remarks>
     public static bool ProgressBarRounded(string label, float value, Vector2 size, uint? bgCol = null, uint? fgCol = null, float rounding = 4.0f)
     {
         bool ret = ImGui.InvisibleButton(label, size);
@@ -110,6 +161,17 @@ public static partial class ImGuiC
         }
     }
 
+    /// <summary>
+    /// Displays a rotating spinner animation and returns true when clicked.
+    /// </summary>
+    /// <param name="label">Unique label ID.</param>
+    /// <param name="radius">Spinner radius.</param>
+    /// <param name="thickness">Optional line thickness.</param>
+    /// <param name="color">Optional color.</param>
+    /// <returns>True if the invisible button is clicked.</returns>
+    /// <remarks>
+    /// Useful for indicating indeterminate background operations.
+    /// </remarks>
     public static bool Spinner(string label, float radius, float? thickness = null, uint? color = null)
     {
         var style = ImGui.GetStyle();
@@ -139,6 +201,18 @@ public static partial class ImGuiC
         return ret;
     }
 
+    /// <summary>
+    /// Displays a loading indicator composed of animated circles and returns true when clicked.
+    /// </summary>
+    /// <param name="indicatorRadius">Overall radius of the circular loading indicator.</param>
+    /// <param name="mainColor">Color of the most prominent circle.</param>
+    /// <param name="backdropColor">Color of the background circles.</param>
+    /// <param name="circleCount">Total number of animated circles.</param>
+    /// <param name="speed">Animation speed multiplier.</param>
+    /// <returns>True if the item is clicked.</returns>
+    /// <remarks>
+    /// This indicator provides a dynamic animation effect suitable for async or loading states.
+    /// </remarks>
     public static bool LoadingCircle(float indicatorRadius, Vector4? mainColor = null, Vector4? backdropColor = null, int circleCount = 12, float speed = 5f)
     {
         var drawList = ImGui.GetWindowDrawList();
@@ -185,6 +259,16 @@ public static partial class ImGuiC
         return ImGui.IsItemClicked();
     }
 
+    /// <summary>
+    /// Draws a simple, centered linear progress bar.
+    /// </summary>
+    /// <param name="progress">Progress value from 0.0 to 1.0.</param>
+    /// <param name="size">Optional size (defaults to 200x4).</param>
+    /// <param name="bgCol">Optional background color.</param>
+    /// <param name="fgCol">Optional foreground (progress) color.</param>
+    /// <remarks>
+    /// Use this method to display a minimal and stylized horizontal progress bar.
+    /// </remarks>
     public static void LinearProgressBar(float progress, Vector2 size = default, uint? bgCol = null, uint? fgCol = null)
     {
         if (size == default) size = new Vector2(200, 4);
@@ -204,6 +288,16 @@ public static partial class ImGuiC
         ImGui.Dummy(size);
     }
 
+    /// <summary>
+    /// Draws a circular progress indicator with optional determinate or indeterminate mode.
+    /// </summary>
+    /// <param name="progress">Progress value (0.0 to 1.0). Pass -1 for indeterminate mode.</param>
+    /// <param name="radius">Radius of the circular progress indicator.</param>
+    /// <param name="bgCol">Optional background circle color.</param>
+    /// <param name="fgCol">Optional foreground (progress arc) color.</param>
+    /// <remarks>
+    /// Provides a visual representation of progress in a circular form.
+    /// </remarks>
     public static void CircularProgress(float progress = -1f, float radius = 20f, uint? bgCol = null, uint? fgCol = null)
     {
         var pos = ImGui.GetCursorScreenPos();

@@ -1,6 +1,5 @@
 ﻿using Hexa.NET.GLFW;
 using Serilog;
-using System.Runtime.InteropServices;
 
 namespace C.ImGuiGLFW;
 
@@ -66,7 +65,7 @@ public partial class ImGuiController
             for (int i = 0; i < pathCount; i++)
             {
                 byte* pathPtr = paths[i];
-                filePaths.Add(Marshal.PtrToStringUTF8((nint)pathPtr) ?? string.Empty);
+                filePaths.Add(HexaGen.Runtime.Utils.DecodeStringUTF8(pathPtr));
             }
             _onDropCallback?.Invoke(pathCount, filePaths);
         }
@@ -81,8 +80,7 @@ public partial class ImGuiController
     {
         try
         {
-            string errorMessage = Marshal.PtrToStringAnsi((IntPtr)description) ?? "Unknown error";
-            _onGLFWErrorCallback?.Invoke(errorCode, errorMessage);
+            _onGLFWErrorCallback?.Invoke(errorCode, HexaGen.Runtime.Utils.DecodeStringUTF8(description));
         }
         catch (Exception ex)
         {

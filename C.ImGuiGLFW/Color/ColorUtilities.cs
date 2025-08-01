@@ -1,5 +1,24 @@
 ﻿namespace C.ImGuiGLFW.Color;
 
+/// <summary>
+/// Provides utility methods for color format conversions and color palette access in ImGui applications.
+/// </summary>
+/// <remarks>
+/// This static class offers a comprehensive set of extension methods for converting between different color formats
+/// commonly used in graphics programming and ImGui applications. It supports conversions between:
+/// 
+/// - 32-bit unsigned integer colors and Vector4 RGBA values
+/// - 24-bit RGB values to Vector4 with configurable alpha
+/// - ARGB and RGBA packed integer formats
+/// - Access to predefined color palettes from EzColor and UIColor classes
+/// 
+/// All Vector4 color representations use normalized floating-point values in the range [0.0, 1.0] for each
+/// RGBA component, following ImGui's standard color format. The class leverages ImGui's built-in color
+/// conversion functions where available for optimal performance and consistency.
+/// 
+/// The utility methods are implemented as extension methods, allowing for fluent and intuitive usage
+/// patterns when working with color data in ImGui-based applications.
+/// </remarks>
 public static class ColorUtilities
 {
     /// <summary>

@@ -4,6 +4,38 @@ using Serilog;
 
 namespace C.ImGuiGLFW;
 
+/// <summary>
+/// Provides a singleton controller for managing ImGui applications with GLFW window management.
+/// </summary>
+/// <remarks>
+/// The ImGuiController class implements a singleton pattern to manage the lifecycle of ImGui applications.
+/// It provides comprehensive window management through GLFW integration and supports modular architecture
+/// through the Module system.
+/// 
+/// Key features:
+/// - Singleton pattern ensures only one controller instance exists
+/// - Multiple initialization overloads for flexible window configuration
+/// - Automatic window settings persistence to file
+/// - Integrated logging with Serilog
+/// - Module-based architecture for extensibility
+/// - Complete lifecycle management from initialization to cleanup
+/// 
+/// The controller handles:
+/// - GLFW window creation and management
+/// - ImGui context initialization and rendering
+/// - OpenGL rendering context setup
+/// - Frame rate control and timing
+/// - Window event handling (resize, position changes)
+/// - Resource cleanup and disposal
+/// 
+/// Usage pattern:
+/// 1. Call one of the Initialize() methods to create and configure the controller
+/// 2. Call Run() to start the main application loop
+/// 3. The controller automatically handles cleanup on termination
+/// 
+/// Thread safety: The Initialize() method is thread-safe using a lock mechanism.
+/// However, once initialized, the controller should be used from the main thread only.
+/// </remarks>
 public partial class ImGuiController
 {
     const string LoadingText = "Loading";
@@ -17,6 +49,16 @@ public partial class ImGuiController
 
     private static ImGuiController Instance => _instance ?? throw new InvalidOperationException($"{nameof(ImGuiController)} is not initialized. Call Initialize() first.");
 
+    /// <summary>
+    /// Gets a value indicating whether the ImGuiController is currently running.
+    /// </summary>
+    /// <remarks>
+    /// This field is set to true when the Run() method is called and the main application loop begins.
+    /// It remains true throughout the execution of the main loop and is set back to false when
+    /// the application terminates or the main loop exits. This field can be used by derived classes
+    /// to check the running state of the controller.
+    /// </remarks>
+    protected bool IsRunning = false;
     private bool ready;
 
     /// <summary>
@@ -357,6 +399,23 @@ public partial class ImGuiController
     /// <summary>
     /// Starts the main application loop and runs the ImGuiController until termination.
     /// </summary>
+    /// <remarks>
+    /// This method will block the calling thread until the application is terminated.
+    /// It handles the complete lifecycle of the ImGui application including initialization,
+    /// main loop execution, and cleanup. If the controller is already running, this method
+    /// returns immediately without taking any action.
+    /// 
+    /// The method performs the following operations:
+    /// - Initializes GLFW for window management
+    /// - Sets up ImGui context and configuration
+    /// - Initializes OpenGL rendering context
+    /// - Runs the main render loop
+    /// - Handles cleanup and disposal of resources
+    /// 
+    /// Any exceptions during startup will be logged and re-thrown after cleanup.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">Thrown when the ImGuiController has not been initialized.</exception>
+    /// <exception cref="Exception">Thrown when initialization or main loop execution fails.</exception>
     public static void Run()
     {
         if (Instance.IsRunning) return;
