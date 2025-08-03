@@ -327,24 +327,28 @@ public static partial class ImGuiC
         float angleStepInner = (innerAngMax - innerAngMin) / segments;
         float angleStepOuter = (outerAngMax - outerAngMin) / segments;
 
-        for (int seg = 0; seg < segments; seg++)
+        drawList.PrimReserve(segments * 6, (segments + 1) * 2);
+        var whitePixel = ImGui.GetDrawListSharedData().TexUvWhitePixel;
+
+        for (int seg = 0; seg <= segments; seg++)
         {
-            float cosInner1 = MathF.Cos(innerAngMin + angleStepInner * seg);
-            float sinInner1 = MathF.Sin(innerAngMin + angleStepInner * seg);
-            float cosOuter1 = MathF.Cos(outerAngMin + angleStepOuter * seg);
-            float sinOuter1 = MathF.Sin(outerAngMin + angleStepOuter * seg);
+            float cosInner = MathF.Cos(innerAngMin + angleStepInner * seg);
+            float sinInner = MathF.Sin(innerAngMin + angleStepInner * seg);
+            float cosOuter = MathF.Cos(outerAngMin + angleStepOuter * seg);
+            float sinOuter = MathF.Sin(outerAngMin + angleStepOuter * seg);
 
-            float cosInner2 = MathF.Cos(innerAngMin + angleStepInner * (seg + 1));
-            float sinInner2 = MathF.Sin(innerAngMin + angleStepInner * (seg + 1));
-            float cosOuter2 = MathF.Cos(outerAngMin + angleStepOuter * (seg + 1));
-            float sinOuter2 = MathF.Sin(outerAngMin + angleStepOuter * (seg + 1));
+            if (seg < segments)
+            {
+                drawList.PrimWriteIdx((ushort)(drawList.VtxCurrentIdx + 0));
+                drawList.PrimWriteIdx((ushort)(drawList.VtxCurrentIdx + 2));
+                drawList.PrimWriteIdx((ushort)(drawList.VtxCurrentIdx + 1));
+                drawList.PrimWriteIdx((ushort)(drawList.VtxCurrentIdx + 3));
+                drawList.PrimWriteIdx((ushort)(drawList.VtxCurrentIdx + 2));
+                drawList.PrimWriteIdx((ushort)(drawList.VtxCurrentIdx + 1));
+            }
 
-            var p1 = new Vector2(center.X + cosInner1 * innerRadius, center.Y + sinInner1 * innerRadius);
-            var p2 = new Vector2(center.X + cosOuter1 * outerRadius, center.Y + sinOuter1 * outerRadius);
-            var p3 = new Vector2(center.X + cosInner2 * innerRadius, center.Y + sinInner2 * innerRadius);
-            var p4 = new Vector2(center.X + cosOuter2 * outerRadius, center.Y + sinOuter2 * outerRadius);
-
-            drawList.AddQuadFilled(p1, p2, p4, p3, color);
+            drawList.PrimWriteVtx(new Vector2(center.X + cosInner * innerRadius, center.Y + sinInner * innerRadius), whitePixel, color);
+            drawList.PrimWriteVtx(new Vector2(center.X + cosOuter * outerRadius, center.Y + sinOuter * outerRadius), whitePixel, color);
         }
     }
 

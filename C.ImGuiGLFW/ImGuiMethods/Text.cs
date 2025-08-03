@@ -312,4 +312,336 @@ public static partial class ImGuiC
         SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
         SetClipboardTextIfClicked(text);
     }
+
+    /// <summary>
+    /// Displays underlined text with a specified text color and underline color.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <param name="textColor">The color of the text.</param>
+    /// <param name="underLineColor">The color of the underline. Default is white (0xFFFFFFFF).</param>
+    /// <remarks>
+    /// This method temporarily changes the text color style, renders underlined text, then restores the original text color.
+    /// The underline is drawn using ImGui's draw list functionality.
+    /// </remarks>
+    public static void TextUnderlined(string text, Vector4 textColor, uint underLineColor = 0xFFFFFFFFu)
+    {
+        ImGui.PushStyleColor(ImGuiCol.Text, textColor);
+        TextUnderlined(text, underLineColor);
+        ImGui.PopStyleColor();
+    }
+
+    /// <summary>
+    /// Displays underlined text that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="text">The text to display and copy.</param>
+    /// <param name="underLineColor">The color of the underline. Default is white (0xFFFFFFFF).</param>
+    /// <remarks>
+    /// This method combines underlined text display with clipboard functionality. 
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// </remarks>
+    public static void TextUnderlinedCopy(string text, uint underLineColor = 0xFFFFFFFFu)
+    {
+        TextUnderlined(text, underLineColor);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays underlined text with custom text color that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="text">The text to display and copy.</param>
+    /// <param name="textColor">The color of the text.</param>
+    /// <param name="underLineColor">The color of the underline. Default is white (0xFFFFFFFF).</param>
+    /// <remarks>
+    /// This method combines colored underlined text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// </remarks>
+    public static void TextUnderlinedCopy(string text, Vector4 textColor, uint underLineColor = 0xFFFFFFFFu)
+    {
+        TextUnderlined(text, textColor, underLineColor);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays text with an underline drawn below it.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <param name="underLineColor">The color of the underline. Default is white (0xFFFFFFFF).</param>
+    /// <remarks>
+    /// This method calculates the text size and draws a line below the text using ImGui's draw list.
+    /// The underline spans the full width of the text and is positioned directly below the text baseline.
+    /// </remarks>
+    public static void TextUnderlined(string text, uint underLineColor = 0xFFFFFFFFu)
+    {
+        var size = ImGui.CalcTextSize(text);
+        var cursorPos = ImGui.GetCursorScreenPos();
+        cursorPos.Y += size.Y;
+        var drawList = ImGui.GetWindowDrawList();
+        drawList.PathLineTo(cursorPos);
+        cursorPos.X += size.X;
+        drawList.PathLineTo(cursorPos);
+        drawList.PathStroke(underLineColor);
+        Text(text);
+    }
+
+    /// <summary>
+    /// Displays unformatted underlined text with a specified text color and underline color.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <param name="textColor">The color of the text.</param>
+    /// <param name="underLineColor">The color of the underline. Default is white (0xFFFFFFFF).</param>
+    /// <remarks>
+    /// This method uses unformatted text rendering for better performance with large text blocks.
+    /// It temporarily changes the text color style, renders underlined text, then restores the original text color.
+    /// </remarks>
+    public static void TextUnformattedUnderlined(string text, Vector4 textColor, uint underLineColor = 0xFFFFFFFFu)
+    {
+        ImGui.PushStyleColor(ImGuiCol.Text, textColor);
+        TextUnformattedUnderlined(text, underLineColor);
+        ImGui.PopStyleColor();
+    }
+
+    /// <summary>
+    /// Displays unformatted underlined text that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="text">The text to display and copy.</param>
+    /// <param name="underLineColor">The color of the underline. Default is white (0xFFFFFFFF).</param>
+    /// <remarks>
+    /// This method combines unformatted underlined text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// Unformatted text rendering provides better performance for large text blocks.
+    /// </remarks>
+    public static void TextUnformattedUnderlinedCopy(string text, uint underLineColor = 0xFFFFFFFFu)
+    {
+        TextUnformattedUnderlined(text, underLineColor);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays unformatted underlined text with custom text color that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="text">The text to display and copy.</param>
+    /// <param name="textColor">The color of the text.</param>
+    /// <param name="underLineColor">The color of the underline. Default is white (0xFFFFFFFF).</param>
+    /// <remarks>
+    /// This method combines colored unformatted underlined text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// Unformatted text rendering provides better performance for large text blocks.
+    /// </remarks>
+    public static void TextUnformattedUnderlinedCopy(string text, Vector4 textColor, uint underLineColor = 0xFFFFFFFFu)
+    {
+        TextUnformattedUnderlined(text, textColor, underLineColor);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays unformatted text with an underline drawn below it.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <param name="underLineColor">The color of the underline. Default is white (0xFFFFFFFF).</param>
+    /// <remarks>
+    /// This method uses unformatted text rendering for better performance with large text blocks.
+    /// The underline is drawn using ImGui's draw list functionality and spans the full width of the text.
+    /// </remarks>
+    public static void TextUnformattedUnderlined(string text, uint underLineColor = 0xFFFFFFFFu)
+    {
+        var size = ImGui.CalcTextSize(text);
+        var cursorPos = ImGui.GetCursorScreenPos();
+        cursorPos.Y += size.Y;
+        var drawList = ImGui.GetWindowDrawList();
+        drawList.PathLineTo(cursorPos);
+        cursorPos.X += size.X;
+        drawList.PathLineTo(cursorPos);
+        drawList.PathStroke(underLineColor);
+        TextUnformatted(text);
+    }
+
+    /// <summary>
+    /// Displays horizontally centered text with a specified color.
+    /// </summary>
+    /// <param name="color">The color of the text.</param>
+    /// <param name="text">The text to display.</param>
+    /// <remarks>
+    /// This method temporarily changes the text color style, renders horizontally centered text, then restores the original text color.
+    /// The text is centered within the available content region width.
+    /// </remarks>
+    public static void TextCenteredH(Vector4 color, string text)
+    {
+        ImGui.PushStyleColor(ImGuiCol.Text, color);
+        TextCenteredH(text);
+        ImGui.PopStyleColor();
+    }
+
+    /// <summary>
+    /// Displays horizontally centered text that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="text">The text to display and copy.</param>
+    /// <remarks>
+    /// This method combines horizontally centered text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// </remarks>
+    public static void TextCenteredHCopy(string text)
+    {
+        TextCenteredH(text);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays horizontally centered text with custom color that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="color">The color of the text.</param>
+    /// <param name="text">The text to display and copy.</param>
+    /// <remarks>
+    /// This method combines colored horizontally centered text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// </remarks>
+    public static void TextCenteredHCopy(Vector4 color, string text)
+    {
+        TextCenteredH(color, text);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays text centered horizontally within the available content region.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <remarks>
+    /// This method calculates the text width and positions the cursor to center the text horizontally.
+    /// The centering is based on the available content region width minus the text width, divided by two.
+    /// </remarks>
+    public static void TextCenteredH(string text)
+    {
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X / 2 - ImGui.CalcTextSize(text).X / 2);
+        Text(text);
+    }
+
+    /// <summary>
+    /// Displays vertically centered text with a specified color.
+    /// </summary>
+    /// <param name="color">The color of the text.</param>
+    /// <param name="text">The text to display.</param>
+    /// <remarks>
+    /// This method temporarily changes the text color style, renders vertically centered text, then restores the original text color.
+    /// The text is centered within the available content region height.
+    /// </remarks>
+    public static void TextCenteredV(Vector4 color, string text)
+    {
+        ImGui.PushStyleColor(ImGuiCol.Text, color);
+        TextCenteredV(text);
+        ImGui.PopStyleColor();
+    }
+
+    /// <summary>
+    /// Displays vertically centered text that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="text">The text to display and copy.</param>
+    /// <remarks>
+    /// This method combines vertically centered text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// </remarks>
+    public static void TextCenteredVCopy(string text)
+    {
+        TextCenteredV(text);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays vertically centered text with custom color that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="color">The color of the text.</param>
+    /// <param name="text">The text to display and copy.</param>
+    /// <remarks>
+    /// This method combines colored vertically centered text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// </remarks>
+    public static void TextCenteredVCopy(Vector4 color, string text)
+    {
+        TextCenteredV(color, text);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays text centered vertically within the available content region.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <remarks>
+    /// This method calculates the text height and positions the cursor to center the text vertically.
+    /// The centering is based on the available content region height minus the text height, divided by two.
+    /// </remarks>
+    public static void TextCenteredV(string text)
+    {
+        ImGui.SetCursorPosY(ImGui.GetCursorPosY() + ImGui.GetContentRegionAvail().Y / 2 - ImGui.CalcTextSize(text).Y / 2);
+        Text(text);
+    }
+
+    /// <summary>
+    /// Displays text centered both horizontally and vertically with a specified color.
+    /// </summary>
+    /// <param name="color">The color of the text.</param>
+    /// <param name="text">The text to display.</param>
+    /// <remarks>
+    /// This method temporarily changes the text color style, renders centered text, then restores the original text color.
+    /// The text is centered within both the available content region width and height.
+    /// </remarks>
+    public static void TextCentered(Vector4 color, string text)
+    {
+        ImGui.PushStyleColor(ImGuiCol.Text, color);
+        TextCentered(text);
+        ImGui.PopStyleColor();
+    }
+
+    /// <summary>
+    /// Displays centered text that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="text">The text to display and copy.</param>
+    /// <remarks>
+    /// This method combines centered text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// </remarks>
+    public static void TextCenteredCopy(string text)
+    {
+        TextCentered(text);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays centered text with custom color that can be copied to clipboard when clicked.
+    /// </summary>
+    /// <param name="color">The color of the text.</param>
+    /// <param name="text">The text to display and copy.</param>
+    /// <remarks>
+    /// This method combines colored centered text display with clipboard functionality.
+    /// The mouse cursor changes to a hand when hovering over the text, and clicking copies the text to clipboard.
+    /// </remarks>
+    public static void TextCenteredCopy(Vector4 color, string text)
+    {
+        TextCentered(color, text);
+        SetMouseCursorIfHovered(ImGuiMouseCursor.Hand);
+        SetClipboardTextIfClicked(text);
+    }
+
+    /// <summary>
+    /// Displays text centered both horizontally and vertically within the available content region.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <remarks>
+    /// This method calculates the text size and available content region, then positions the cursor to center the text in both dimensions.
+    /// The centering calculation uses half the text size subtracted from half the available region size.
+    /// </remarks>
+    public static void TextCentered(string text)
+    {
+        var currentPos = ImGui.GetCursorPos();
+        var size = ImGui.CalcTextSize(text) / 2f;
+        var region = ImGui.GetContentRegionAvail() / 2f;
+        ImGui.SetCursorPos(currentPos + region - size);
+        ImGui.Text(text);
+    }
 }
