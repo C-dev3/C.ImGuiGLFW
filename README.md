@@ -1,14 +1,37 @@
+[![NuGet Version](https://img.shields.io/nuget/v/C.ImGuiGLFW)](https://www.nuget.org/packages/C.ImGuiGLFW/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/C.ImGuiGLFW)](https://www.nuget.org/packages/C.ImGuiGLFW/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A modern C# wrapper library that simplifies creating ImGui applications with OpenGL rendering and GLFW window management.
+
 # About
 
 C.ImGuiGLFW is a C# class library that simplifies the creation of ImGui-rendered windows. It uses OpenGL 4.6 core for rendering, GLFW for window management system, and Hexa.NET.ImGui for ImGui integration.
 
-# Usage
+## Requirements
 
-Get C.ImGuiGLFW from NuGet using a console command:
+- .NET 9.0 or higher
+- Windows (tested), macOS and Linux (untested)
+- OpenGL 4.6 compatible graphics driver
+
+## Installation
+
+Get C.ImGuiGLFW from NuGet using one of the following methods:
+
+##### .NET CLI (Recommended)
 ```
 dotnet add package C.ImGuiGLFW
 ```
-Or simply find it via NuGet package manager GUI.
+Use this command in terminal/command prompt. Works on Windows, macOS, and Linux.
+
+##### Package Manager Console
+```
+Install-Package C.ImGuiGLFW
+```
+Use this command in Visual Studio's Package Manager Console (Windows only).
+
+##### NuGet Package Manager GUI
+Alternatively, you can install via the graphical interface in Visual Studio or your preferred IDE by searching for "C.ImGuiGLFW".
 
 ## Basic Setup
 
@@ -189,8 +212,40 @@ I welcome your feedback and contributions to make C.ImGuiGLFW even better! If yo
 **Bug reports** - Issues you've encountered while using the library
 **Method suggestions** - Additional methods or overloads you'd find useful
 
-Please feel free to submit an issue or pull request on the GitHub repository.
+Please feel free to submit an [issue](https://github.com/C-dev3/C.ImGuiGLFWExample/issues) or [pull request](https://github.com/C-dev3/C.ImGuiGLFWExample/pulls) on the [GitHub repository](https://github.com/C-dev3/C.ImGuiGLFWExample).
+
 Your contributions help improve the library for everyone who uses it. I appreciate bug reports, feature suggestions, code improvements, and documentation enhancements.
 
 ## Dependencies
 This project depends on several NuGet packages. Run `dotnet list package` to see current versions, or check [THIRD-PARTY-NOTICES](https://github.com/C-dev3/C.ImGuiGLFWExample/raw/refs/heads/master/THIRD-PARTY-NOTICES.txt) for license details.
+
+## Acknowledgments
+
+This project builds upon the excellent work of many open source contributors:
+
+### Core Technologies
+- [Dear ImGui](https://github.com/ocornut/imgui) by Omar Cornut - The amazing immediate mode GUI library that makes this all possible
+- [GLFW](https://www.glfw.org/) - Multi-platform library for OpenGL, Vulkan, window and input
+- [OpenGL](https://www.opengl.org/) - The cross-platform graphics API
+
+### .NET Bindings & Utilities
+- [Hexa.NET Libraries](https://github.com/HexaEngine) by Juna Meinhold - Comprehensive .NET bindings for ImGui, GLFW, OpenGL and related libraries
+  - Hexa.NET.ImGui - C# bindings for Dear ImGui
+  - Hexa.NET.GLFW - C# bindings for GLFW
+  - Hexa.NET.OpenGL - C# bindings for OpenGL
+  - Hexa.NET.ImGuizmo - C# bindings for ImGuizmo
+  - Hexa.NET.ImNodes - C# bindings for ImNodes  
+  - Hexa.NET.ImPlot - C# bindings for ImPlot
+
+### Additional Libraries
+- [ImGuizmo](https://github.com/CedricGuillemet/ImGuizmo) by Cédric Guillemet - 3D gizmo for scene editing
+- [ImNodes](https://github.com/Nelarius/imnodes) by Nelarius - Node editor for Dear ImGui
+- [ImPlot](https://github.com/epezent/implot) by Evan Pezent - Advanced plotting library for ImGui
+- [Serilog](https://serilog.net/) - Flexible logging library for .NET
+- [SixLabors.ImageSharp](https://github.com/SixLabors/ImageSharp) - Cross-platform image processing library
+
+### Microsoft Technologies
+- [.NET](https://dotnet.microsoft.com/) - The platform this library runs on
+- [Microsoft.CodeAnalysis](https://github.com/dotnet/roslyn) - The .NET Compiler Platform ("Roslyn")
+
+Special thanks to all the maintainers and contributors of these projects for making modern cross-platform GUI development in C# possible.
