@@ -103,7 +103,7 @@ public static class GenericExtensions
     /// <param name="defaultValue">The default value to return if <paramref name="obj"/> is null.</param>
     /// <returns>The result of <paramref name="func"/> if <paramref name="obj"/> is not null; otherwise, <paramref name="defaultValue"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static TResult IfNotNull<T, TResult>(this T obj, Func<T, TResult> func, TResult defaultValue = default)
+    public static TResult IfNotNull<T, TResult>(this T? obj, Func<T, TResult> func, TResult defaultValue = default!)
         => obj != null ? func(obj) : defaultValue;
 
     /// <summary>
@@ -187,7 +187,7 @@ public static class GenericExtensions
     /// <returns>The <paramref name="obj"/> if it satisfies the <paramref name="predicate"/>; otherwise, <paramref name="defaultValue"/>.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="predicate"/> is null.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T IfSatisfies<T>(this T obj, Func<T, bool> predicate, T defaultValue = default)
+    public static T IfSatisfies<T>(this T obj, Func<T, bool> predicate, T defaultValue = default!)
     {
         if (predicate == null) throw new ArgumentNullException(nameof(predicate));
         return predicate(obj) ? obj : defaultValue;
@@ -200,7 +200,7 @@ public static class GenericExtensions
     /// <param name="obj">The object to cast.</param>
     /// <returns>The <paramref name="obj"/> cast to <typeparamref name="TResult"/> if the cast is successful; otherwise, the default value of <typeparamref name="TResult"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static TResult As<TResult>(this object obj) where TResult : class => obj as TResult;
+    public static TResult? As<TResult>(this object? obj) where TResult : class => obj as TResult;
 
     /// <summary>
     /// Attempts to cast the current object to the specified type and returns whether the cast was successful.
