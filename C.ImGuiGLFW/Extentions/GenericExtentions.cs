@@ -2,7 +2,6 @@
 
 namespace C.ImGuiGLFW.Extentions;
 
-
 /// <summary>
 /// Provides useful extension methods for common operations.
 /// </summary>
