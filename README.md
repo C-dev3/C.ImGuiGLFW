@@ -113,6 +113,66 @@ ImGuiController.OnMainMenuBarRender += MainMenuBar;
 ImGuiController.OnChar += OnCharInput;
 ```
 
+## Custom Font Loading
+
+If you want to load custom fonts with priority over the built-in fonts, use the FontBuilder before initializing the ImGuiController:
+
+```csharp
+// Add fonts from TTF files
+ImGuiController.FontBuilder.AddFontFromFileTTF("path/to/font.ttf", 16.0f);
+ImGuiController.FontBuilder.AddFontFromFileTTF("path/to/font.ttf", 16.0f, glyphRanges);
+
+// Add fonts from embedded resources
+ImGuiController.FontBuilder.AddFontFromEmbeddedResource(assembly, "Fonts.MyFont.ttf", 16.0f);
+ImGuiController.FontBuilder.AddFontFromEmbeddedResource(assembly, "Fonts.MyFont.ttf", 16.0f, glyphRanges);
+
+// Add fonts from memory
+ImGuiController.FontBuilder.AddFontFromMemoryTTF(fontData, 16.0f, glyphRanges);
+```
+
+### Available Font Loading Methods
+
+The FontBuilder provides several methods to load custom fonts:
+
+**From File System:**
+- `AddFontFromFileTTF(string filePath, float fontSize)` - Load TTF font from disk
+- `AddFontFromFileTTF(string filePath, float fontSize, ReadOnlySpan<uint> glyphRanges)` - Load TTF font with custom glyph ranges
+
+**From Embedded Resources:**
+- `AddFontFromEmbeddedResource(Assembly assembly, string path, float size)` - Load font from assembly resource
+- `AddFontFromEmbeddedResource(Assembly assembly, string path, float size, ReadOnlySpan<uint> glyphRanges)` - Load with custom glyph ranges
+
+**From Memory:**
+- `AddFontFromMemoryTTF(ReadOnlySpan<byte> fontData, float size, ReadOnlySpan<uint> glyphRanges)` - Load font directly from memory
+
+**Note:** Specifying custom glyph ranges can reduce memory usage by loading only the required characters.
+
+### Controlling Built-in Font Loading
+
+If you don't want to load the built-in fonts, you can disable them by setting the following properties to `false` (default is `true`):
+
+```csharp
+// Disable specific built-in fonts
+ImGuiController.FontBuilder.AddNotoSansFont = false;
+ImGuiController.FontBuilder.AddFontAwesomeFont = false;
+ImGuiController.FontBuilder.AddEmojiFont = false;
+ImGuiController.FontBuilder.AddDefaultFont = false; // ImGui's default font
+```
+
+**Note:** Built-in fonts are automatically added after all custom fonts have been loaded, but only if their respective properties are set to `true`.
+
+### Font Loading Order
+
+1. Custom fonts added via:
+   - `AddFontFromFileTTF()`
+   - `AddFontFromEmbeddedResource()`
+   - `AddFontFromMemoryTTF()`
+2. Built-in fonts (if enabled):
+   - Noto Sans Font
+   - Font Awesome Font
+   - Emoji Font
+   - ImGui Default Font
+
 ## Adding Windows
 
 Create and add your custom ImGui windows:
