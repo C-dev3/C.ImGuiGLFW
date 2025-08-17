@@ -70,7 +70,7 @@
     <PackageReference Include="Hexa.NET.ImPlot" Version="2.2.8.4" />
     <PackageReference Include="Hexa.NET.OpenGL.Core" Version="1.1.0" />
     <PackageReference Include="Hexa.NET.OpenGL4" Version="1.1.0" />
-    <PackageReference Include="Hexa.NET.Utilities" Version="2.2.2" />
+    <PackageReference Include="Hexa.NET.Utilities" Version="2.2.3" />
     <PackageReference Include="MaterialColorUtilities" Version="0.3.0" />
     <PackageReference Include="Serilog" Version="4.3.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
