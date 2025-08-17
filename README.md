@@ -115,9 +115,14 @@ ImGuiController.OnChar += OnCharInput;
 
 ## Custom Font Loading
 
-If you want to load custom fonts with priority over the built-in fonts, use the FontBuilder before initializing the ImGuiController:
+**Important:** All custom font loading must be completed before calling `ImGuiController.Run()`. Font additions are not accepted after the application starts running.
+
+If you want to load custom fonts with priority over the built-in fonts, use the FontBuilder before calling `ImGuiController.Run()`:
 
 ```csharp
+// Initialize first (optional - can be done before or after font setup)
+ImGuiController.Initialize("MyApplication");
+
 // Add fonts from TTF files
 ImGuiController.FontBuilder.AddFontFromFileTTF("path/to/font.ttf", 16.0f);
 ImGuiController.FontBuilder.AddFontFromFileTTF("path/to/font.ttf", 16.0f, glyphRanges);
@@ -128,6 +133,9 @@ ImGuiController.FontBuilder.AddFontFromEmbeddedResource(assembly, "Fonts.MyFont.
 
 // Add fonts from memory
 ImGuiController.FontBuilder.AddFontFromMemoryTTF(fontData, 16.0f, glyphRanges);
+
+// Run - no more default font additions possible after this point
+ImGuiController.Run();
 ```
 
 ### Available Font Loading Methods
