@@ -98,6 +98,21 @@ public static partial class ImGuiC
     }
 
     /// <summary>
+    /// Displays a tooltip with the specified text if the last item is being hovered.
+    /// </summary>
+    /// <param name="text">The text to display in the tooltip.</param>
+    /// <param name="flags">The ImGuiHoveredFlags that specify the conditions for when the item is considered hovered.</param>
+    /// <remarks>
+    /// This is a convenience method that automatically handles the hover detection and
+    /// calls SetTooltip() when appropriate. The tooltip will be word-wrapped automatically.
+    /// </remarks>
+    public static void Tooltip(string text, ImGuiHoveredFlags flags)
+    {
+        if (ImGui.IsItemHovered(flags))
+            SetTooltip(text);
+    }
+
+    /// <summary>
     /// Displays a tooltip with the specified text immediately.
     /// </summary>
     /// <param name="text">The text to display in the tooltip.</param>

@@ -1,5 +1,4 @@
-﻿using C.ImGuiGLFW;
-using C.ImGuiGLFW.Common;
+﻿using C.ImGuiGLFW.Common;
 using C.ImGuiGLFW.ImGuiMethods;
 using Hexa.NET.ImGui;
 using System.Numerics;

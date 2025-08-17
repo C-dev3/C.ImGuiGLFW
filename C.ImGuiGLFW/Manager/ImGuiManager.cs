@@ -27,10 +27,6 @@ internal class ImGuiManager
     private ImNodesContextPtr? nodesContextPtr = null;
     private bool GuizmoInstalled = false;
 
-#pragma warning disable CS0618
-    private ImGuiFontBuilder? fontBuilder = null;
-#pragma warning restore CS0618
-
     private readonly Data.Module[] Modules;
     private readonly WindowSettings windowSettings;
 
@@ -70,34 +66,7 @@ internal class ImGuiManager
     private unsafe void SetupFonts()
     {
         Log.Information("Starting setup font");
-        var assembly = Assembly.GetCallingAssembly();
-        var assemblyName = assembly.GetName().Name + ".assets.";
-
-        fontBuilder = new();
-
-        try
-        {
-            fontBuilder
-                .AddFontFromEmbeddedResource(assembly, $"{assemblyName}NotoSansJP-Medium.ttf", 16.0f, iOPtr.Fonts.GetGlyphRangesDefault())
-                .SetOption(config =>
-                {
-                    config.FontLoaderFlags |= (uint)ImGuiFreeTypeLoaderFlags.LoadColor;
-                    config.MergeMode = true;
-                })
-                .AddFontFromEmbeddedResource(assembly, $"{assemblyName}NotoSansJP-Medium.ttf", 16.0f, FontGlyph.GlyphRangesJapanese)
-                .AddFontFromEmbeddedResource(assembly, $"{assemblyName}FontAwesomeFreeSolid.otf", 14.0f, FontAwesomeExtensions.GlyphRange)
-                .AddFontFromEmbeddedResource(assembly, $"{assemblyName}NotoEmoji-Regular.ttf", 18.0f, NotoEmojiExtentions.GlyphRange)
-                .AddDefaultFont()
-                .Build();
-            Log.Information("Setup font completed successfully");
-        }
-        catch (Exception ex)
-        {
-            fontBuilder
-                .AddDefaultFont()
-                .Build();
-            Log.Error(ex, "Failed to configure fonts");
-        }
+        ImGuiController.FontBuilder.SetupFonts();
     }
 
     private unsafe void ConfigureImGuiSettings()
@@ -250,11 +219,8 @@ internal class ImGuiManager
 
     internal void Shutdown()
     {
-        if (fontBuilder != null)
-        {
-            Log.Debug("Disposing font builder");
-            fontBuilder.Dispose();
-        }
+        Log.Debug("Disposing font builder");
+        ImGuiController.FontBuilder.Dispose();
 
         Log.Debug("Shutting down ImGui OpenGL3 implementation");
         ImGuiImplOpenGL3.Shutdown();

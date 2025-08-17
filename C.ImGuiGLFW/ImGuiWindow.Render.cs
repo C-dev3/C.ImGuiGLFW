@@ -24,9 +24,18 @@ public partial class ImGuiController
     private double frameTimeThreshold;
     private double lastCallbackTime = 0.0d;
 
+    private Vector4 lastBackgroundColor;
+
     private ImGuiManager imGuiManager = null!;
 
-    private Vector4 lastBackgroundColor;
+    /// <summary>
+    /// Gets the FontBuilder instance used for configuring and building fonts for the ImGui application.
+    /// </summary>
+    /// <value>A FontBuilder instance that provides methods and properties for font configuration.</value>
+    /// <remarks>
+    /// This property provides access to the internal FontBuilder instance, allowing external code to configure font settings such as enabling/disabling specific font types and adding custom fonts. The FontBuilder instance is created internally and cannot be instantiated directly by external code. Use this property to customize font loading behavior before the font setup process is executed.
+    /// </remarks>
+    public static readonly FontBuilder FontBuilder = FontBuilder.Create();
     private readonly Module[] Modules = [];
 
     private void InitializeGLFW()
