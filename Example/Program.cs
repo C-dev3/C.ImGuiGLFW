@@ -1,4 +1,5 @@
 ﻿using C.ImGuiGLFW;
+using C.ImGuiGLFW.Data;
 using C.ImGuiGLFW.ImGuiMethods;
 using Example;
 using Hexa.NET.ImGui;
@@ -8,10 +9,11 @@ internal class Program
     private static readonly DemoWindow demoWindow = new("DemoTitle");
     private static void Main()
     {
-        ImGuiController.Initialize($"TESTWINDOW", C.ImGuiGLFW.Data.Module.Nodes, C.ImGuiGLFW.Data.Module.Plot);
+        ImGuiController.Initialize($"TESTWINDOW", 1280, 720, false, Module.Nodes, Module.Plot);
         ImGuiController.OnMainMenuBarRender += MainMenuBar;
         ImGuiController.OnChar += OnCharInput;
-        ImGuiController.AddWindow(demoWindow);
+        //ImGuiController.AddWindow(demoWindow);
+        ImGuiController.AddWindow(new WebViewDemo());
         ImGuiController.Run();
     }
 

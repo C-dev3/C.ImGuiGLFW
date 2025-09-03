@@ -277,6 +277,84 @@ public partial class ImGuiController
     }
 
     /// <summary>
+    /// Gets the index of the monitor associated with the current window instance.
+    /// </summary>
+    /// <value>
+    /// The zero-based index of the monitor where the window is currently displayed.
+    /// </value>
+    /// <remarks>
+    /// The monitor index is typically determined when the window is created or moved between displays.
+    /// This value can be used with other display-related functions to query monitor properties.
+    /// </remarks>
+    public static int MonitorIndex => Instance.monitorIndex;
+
+    /// <summary>
+    /// Gets the OpenGL context interface for the current instance.
+    /// </summary>
+    /// <returns>An OpenGL interface object for making OpenGL calls.</returns>
+    /// <remarks>
+    /// This method provides access to the OpenGL API through the current context.
+    /// The returned GL object should be used for all OpenGL rendering operations.
+    /// Ensure the context is current before using the returned GL interface.
+    /// </remarks>
+    public static GL GetGL() => Instance.GL;
+
+    /// <summary>
+    /// Gets the bindings context for the current window instance.
+    /// </summary>
+    /// <returns>The <see cref="BindingsContext"/> associated with the current window.</returns>
+    /// <remarks>
+    /// The bindings context provides low-level OpenGL context management functionality.
+    /// This can be used for advanced context operations and integration with other graphics libraries.
+    /// </remarks>
+    public static BindingsContext GetBindingsContext() => Instance.bindingsContext;
+
+    /// <summary>
+    /// Gets the monitor that the current window is displayed on.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="GLFWmonitorPtr"/> representing the monitor, or null if the window is in windowed mode.
+    /// </returns>
+    /// <remarks>
+    /// This method returns the monitor for fullscreen windows, or null for windowed mode.
+    /// The returned monitor pointer can be used with GLFW monitor-related functions to query display properties.
+    /// </remarks>
+    public static GLFWmonitorPtr GetWindowMonitor() => GLFW.GetWindowMonitor(Instance.window);
+
+    /// <summary>
+    /// Gets the current position of the cursor relative to the content area of the window.
+    /// </summary>
+    /// <returns>
+    /// A tuple containing the cursor's x and y coordinates in pixels, relative to the top-left corner of the window's content area.
+    /// </returns>
+    /// <remarks>
+    /// The coordinates are relative to the window's client area, not the screen.
+    /// Coordinates can be negative if the cursor is outside the window bounds.
+    /// The precision of the coordinates depends on the platform and input device.
+    /// </remarks>
+    public static (double xpos, double ypos) GetCursorPos()
+    {
+        double xpos = 0, ypos = 0;
+        GLFW.GetCursorPos(Instance.window, ref xpos, ref ypos);
+        return (xpos, ypos);
+    }
+
+    /// <summary>
+    /// Gets the current state of the specified keyboard key.
+    /// </summary>
+    /// <param name="key">The keyboard key to query, typically using GLFW key constants.</param>
+    /// <returns>
+    /// The current state of the key: GLFW_PRESS if pressed, GLFW_RELEASE if released, 
+    /// or GLFW_REPEAT if the key is being held down and generating repeat events.
+    /// </returns>
+    /// <remarks>
+    /// This method polls the current state of a keyboard key rather than using event-based input.
+    /// Key codes should use GLFW's predefined constants (e.g., GLFW_KEY_A, GLFW_KEY_SPACE).
+    /// The method returns the immediate state, which is useful for continuous input handling like movement controls.
+    /// </remarks>
+    public static int GetKey(int key) => GLFW.GetKey(Instance.window, key);
+
+    /// <summary>
     /// This function brings the specified window to front and sets input focus.
     /// The window should already be visible and not iconified.
     /// </summary>

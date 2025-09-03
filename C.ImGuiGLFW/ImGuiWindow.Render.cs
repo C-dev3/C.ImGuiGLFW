@@ -15,6 +15,7 @@ public partial class ImGuiController
 
     private GLFWwindowPtr window;
     private GL GL = null!;
+    private BindingsContext bindingsContext = null!;
     private readonly WindowSettings WindowSettings = WindowSettings.Default;
 
     private bool isIconified = false;
@@ -27,6 +28,19 @@ public partial class ImGuiController
     private Vector4 lastBackgroundColor;
 
     private ImGuiManager imGuiManager = null!;
+
+    /// <summary>
+    /// Occurs when the application is about to exit.
+    /// </summary>
+    /// <remarks>
+    /// This event is raised during the application shutdown process, allowing subscribers
+    /// to perform cleanup operations or save state before the application terminates.
+    /// Handlers should execute quickly to avoid delaying the shutdown process.
+    /// This is a static event, so it persists across all instances and should be
+    /// unsubscribed properly to avoid memory leaks.
+    /// </remarks>
+    public static event Action? Exiting;
+    private int monitorIndex = -1;
 
     /// <summary>
     /// Gets the FontBuilder instance used for configuring and building fonts for the ImGui application.
@@ -96,7 +110,10 @@ public partial class ImGuiController
         SetWindowIcon();
 
         GLFW.MakeContextCurrent(window);
-        GL = new(new BindingsContext(window));
+        bindingsContext = new BindingsContext(window);
+        GL = new(bindingsContext);
+
+        monitorIndex = GetCurrentWindowIndex();
 
         Log.Information("GLFW initialization completed successfully");
     }
@@ -399,6 +416,8 @@ public partial class ImGuiController
 
             Log.Debug("Executing cleanup callback");
             CleanUpCallback();
+
+            Exiting?.Invoke();
 
             imGuiManager.Shutdown();
 

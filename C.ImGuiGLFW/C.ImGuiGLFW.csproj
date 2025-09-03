@@ -12,6 +12,7 @@
     <PackageTags>imgui;oepngl;glfw</PackageTags>
     <Description>C# class library that simplifies the creation of ImGui-rendered windows.</Description>
     <Copyright>MIT</Copyright>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -19,7 +20,17 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     <DebugType>none</DebugType>
   </PropertyGroup>
@@ -59,6 +70,8 @@
   </PropertyGroup>
 	
   <ItemGroup>
+    <PackageReference Include="CefSharp.Common.NETCore" Version="137.0.100" />
+    <PackageReference Include="CefSharp.OffScreen.NETCore" Version="137.0.100" />
     <PackageReference Include="Hexa.NET.GLFW" Version="1.0.4" />
     <PackageReference Include="Hexa.NET.ImGui" Version="2.2.8.5" />
     <PackageReference Include="Hexa.NET.ImGui.Backends" Version="1.0.17.4" />

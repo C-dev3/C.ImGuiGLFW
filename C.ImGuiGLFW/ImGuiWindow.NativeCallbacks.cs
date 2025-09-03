@@ -1,4 +1,5 @@
-﻿using Hexa.NET.GLFW;
+﻿using C.ImGuiGLFW.Data;
+using Hexa.NET.GLFW;
 using Serilog;
 
 namespace C.ImGuiGLFW;
@@ -22,7 +23,7 @@ public partial class ImGuiController
     {
         try
         {
-            _onCharModsCallback?.Invoke(codepoint, mods);
+            _onCharModsCallback?.Invoke(codepoint, (GlfwMod)mods);
         }
         catch (Exception ex)
         {
@@ -120,7 +121,7 @@ public partial class ImGuiController
     {
         try
         {
-            _onKeyCallback?.Invoke(key, scancode, action, mods);
+            _onKeyCallback?.Invoke((GlfwKey)key, scancode, (InputState)action, (GlfwMod)mods);
         }
         catch (Exception ex)
         {
@@ -146,7 +147,7 @@ public partial class ImGuiController
     {
         try
         {
-            _onMouseButtonCallback?.Invoke(button, action, mods);
+            _onMouseButtonCallback?.Invoke((GlfwMouse)button, (InputState)action, (GlfwMod)mods);
         }
         catch (Exception ex)
         {
@@ -255,6 +256,7 @@ public partial class ImGuiController
     {
         try
         {
+            monitorIndex = GetCurrentWindowIndex();
             _onResizeCallback?.Invoke(new ResizeEventArgs(width, height));
             GL.Viewport(0, 0, (int)ClientSize.X, (int)ClientSize.Y);
             RenderFrameFromCallback();
@@ -270,6 +272,7 @@ public partial class ImGuiController
     {
         try
         {
+            monitorIndex = GetCurrentWindowIndex();
             _onSetPosCallback?.Invoke(new SetPosEventArgs(xpos, ypos));
             RenderFrameFromCallback();
         }

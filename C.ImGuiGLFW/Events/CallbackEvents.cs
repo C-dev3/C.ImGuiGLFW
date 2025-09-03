@@ -1,4 +1,7 @@
-﻿namespace C.ImGuiGLFW.Events;
+﻿using C.ImGuiGLFW.Data;
+using Hexa.NET.GLFW;
+
+namespace C.ImGuiGLFW.Events;
 
 
 #region Frame delegates
@@ -34,7 +37,7 @@ public delegate void OnCharCallback(uint codepoint);
 /// </summary>
 /// <param name="codepoint">The Unicode codepoint of the character input.</param>
 /// <param name="mods">Modifier keys bitfield (e.g., Shift, Ctrl).</param>
-public delegate void OnCharModsCallback(uint codepoint, int mods);
+public delegate void OnCharModsCallback(uint codepoint, GlfwMod mods);
 
 /// <summary>
 /// Delegate invoked when the cursor enters or leaves the window.
@@ -61,17 +64,17 @@ public delegate void OnDropCallback(int pathCount, List<string> filePaths);
 /// </summary>
 /// <param name="key">The keyboard key code.</param>
 /// <param name="scancode">The platform-specific scancode.</param>
-/// <param name="action">The action (press, release, repeat).</param>
+/// <param name="state">The action state(press, release, repeat).</param>
 /// <param name="mods">Modifier keys bitfield.</param>
-public delegate void OnKeyCallback(int key, int scancode, int action, int mods);
+public delegate void OnKeyCallback(GlfwKey key, int scancode, InputState state, GlfwMod mods);
 
 /// <summary>
 /// Delegate invoked on mouse button events.
 /// </summary>
 /// <param name="button">Mouse button identifier.</param>
-/// <param name="action">The action (press, release).</param>
+/// <param name="state">The action state(press, release).</param>
 /// <param name="mods">Modifier keys bitfield.</param>
-public delegate void OnMouseButtonCallback(int button, int action, int mods);
+public delegate void OnMouseButtonCallback(GlfwMouse button, InputState state, GlfwMod mods);
 
 /// <summary>
 /// Delegate invoked when the mouse wheel is scrolled.

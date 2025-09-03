@@ -1,14 +1,10 @@
 ﻿using C.ImGuiGLFW.Data;
-using C.ImGuiGLFW.Text;
-using C.ImGuiGLFW.Text.FontAwesome;
-using C.ImGuiGLFW.Text.NotoEmojis;
 using Hexa.NET.ImGui.Backends.GLFW;
 using Hexa.NET.ImGuizmo;
 using Hexa.NET.ImNodes;
 using Hexa.NET.ImPlot;
 using Serilog;
 using System.Diagnostics;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using GLFWwindowPtr = Hexa.NET.GLFW.GLFWwindowPtr;
 

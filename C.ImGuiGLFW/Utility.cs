@@ -56,4 +56,22 @@ public static class Utility
             return false;
         }
     }
+
+    /// <summary>
+    /// Calculates the intersection area between two rectangles
+    /// </summary>
+    internal static int CalculateIntersectionArea(
+        int x1, int y1, int w1, int h1,
+        int x2, int y2, int w2, int h2)
+    {
+        int left = Math.Max(x1, x2);
+        int top = Math.Max(y1, y2);
+        int right = Math.Min(x1 + w1, x2 + w2);
+        int bottom = Math.Min(y1 + h1, y2 + h2);
+
+        if (right <= left || bottom <= top)
+            return 0;
+
+        return (right - left) * (bottom - top);
+    }
 }
