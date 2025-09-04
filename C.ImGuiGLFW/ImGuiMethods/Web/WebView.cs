@@ -400,6 +400,13 @@ public partial class WebView : IRenderWebBrowser, IDisposable
             Modifiers = flags,
         };
 
+        if(key == GlfwKey.F12
+            && mods == 0
+            && state == InputState.Pressed)
+        {
+            host!.ShowDevTools();
+        }
+
         host!.SendKeyEvent(keyEvent);
     }
 

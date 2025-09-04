@@ -8,6 +8,8 @@ internal class WebViewDemo : Window
 {
     private WebView view = null!;
 
+    public WebViewDemo() => Flags = ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar;
+
     public override void OnLoad()
     {
         view = new("https://google.com")

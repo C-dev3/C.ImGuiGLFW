@@ -305,6 +305,11 @@ This project builds upon the excellent work of many open source contributors:
   - Hexa.NET.ImNodes - C# bindings for ImNodes  
   - Hexa.NET.ImPlot - C# bindings for ImPlot
 
+### Web Browser Integration
+- [CefSharp](https://github.com/cefsharp/CefSharp) - .NET bindings for the Chromium Embedded Framework (CEF)
+  - Enables embedding modern web browser functionality within .NET applications
+  - Provides headless browser capabilities for web content rendering
+
 ### Additional Libraries
 - [ImGuizmo](https://github.com/CedricGuillemet/ImGuizmo) by Cédric Guillemet - 3D gizmo for scene editing
 - [ImNodes](https://github.com/Nelarius/imnodes) by Nelarius - Node editor for Dear ImGui

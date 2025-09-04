@@ -355,6 +355,66 @@ public partial class ImGuiController
     public static int GetKey(int key) => GLFW.GetKey(Instance.window, key);
 
     /// <summary>
+    /// This function returns the contents of the system clipboard, if it contains or is convertible to a UTF-8 encoded string.
+    /// If the clipboard is empty or if its contents cannot be converted, `NULL` is returned and a error is generated.
+    /// </summary>
+    public static string GetClipboardString() => GLFW.GetClipboardStringS(Instance.window);
+
+    /// <summary>
+    /// Retrieves the Win32 window handle (HWND) for the current GLFW window.
+    /// </summary>
+    /// <returns>
+    /// A native integer pointer representing the Win32 window handle (HWND).
+    /// Returns <see cref="nint.Zero"/> if the window is not available or if running on a non-Windows platform.
+    /// </returns>
+    /// <remarks>
+    /// This method is Windows-specific and provides access to the underlying Win32 window handle,
+    /// which can be used for advanced Windows API operations, such as:
+    /// <list type="bullet">
+    /// <item>Integrating with Windows-specific UI frameworks</item>
+    /// <item>Implementing custom window decorations</item>
+    /// <item>Accessing Windows messaging system</item>
+    /// <item>Interoperating with other Windows applications</item>
+    /// </list>
+    /// <para>
+    /// On non-Windows platforms (macOS, Linux), this method may return <see cref="nint.Zero"/>
+    /// or throw a platform-specific exception.
+    /// </para>
+    /// </remarks>
+    /// <exception cref="PlatformNotSupportedException">
+    /// Thrown when called on non-Windows platforms where Win32 handles are not available.
+    /// </exception>
+    public static nint GetWin32Window() => GLFW.GetWin32Window(Instance.window);
+
+    /// <summary>
+    /// Gets the GLFW window pointer for the current application window.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="GLFWwindowPtr"/> representing the native GLFW window handle.
+    /// </returns>
+    /// <remarks>
+    /// This method provides direct access to the underlying GLFW window pointer,
+    /// which can be used for advanced GLFW operations such as:
+    /// <list type="bullet">
+    /// <item>Setting custom window callbacks</item>
+    /// <item>Accessing low-level GLFW window properties</item>
+    /// <item>Implementing custom input handling</item>
+    /// <item>Integrating with other GLFW-based libraries</item>
+    /// <item>Performing platform-specific window operations</item>
+    /// </list>
+    /// <para>
+    /// The returned pointer is valid only while the ImGuiController instance is active.
+    /// Using this pointer after the controller has been disposed may result in undefined behavior.
+    /// </para>
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown if the ImGuiController has not been initialized or if the window has been destroyed.
+    /// </exception>
+    /// <seealso cref="GLFWwindowPtr"/>
+    /// <seealso cref="GetWin32Window()"/>
+    public static GLFWwindowPtr GetWwindowPtr() => Instance.window;
+
+    /// <summary>
     /// This function brings the specified window to front and sets input focus.
     /// The window should already be visible and not iconified.
     /// </summary>
