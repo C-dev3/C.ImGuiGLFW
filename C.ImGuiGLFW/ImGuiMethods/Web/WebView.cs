@@ -393,7 +393,7 @@ public partial class WebView : IRenderWebBrowser, IDisposable
 
         KeyEvent keyEvent = new()
         {
-            Type = state == InputState.Pressed ? KeyEventType.KeyDown : KeyEventType.KeyUp,
+            Type = state == InputState.Released ? KeyEventType.KeyUp : KeyEventType.KeyDown,
             NativeKeyCode = scancode,
             WindowsKeyCode = (int)CefHelper.MapKeyCodeToVirtualKey(key),
             IsSystemKey = false,
