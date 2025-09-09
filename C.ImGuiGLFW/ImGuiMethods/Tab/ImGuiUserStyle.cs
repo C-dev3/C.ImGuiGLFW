@@ -44,4 +44,18 @@ public class ImGuiUserStyle
         Colors[(int)ImGuiUserCol.TabBorderShadow] = tabNormalColor * darkMultiplier;
         Colors[(int)ImGuiUserCol.TabHover] = tabNormalColor * lightMultiplier;
     }
+
+    /// <summary>
+    /// Sets a custom color for the specified color index.
+    /// </summary>
+    /// <param name="colorIndex">The color index to set.</param>
+    /// <param name="color">The color value as Vector4 (RGBA components in range 0.0-1.0).</param>
+    public void SetColor(ImGuiUserCol colorIndex, Vector4 color) => Colors[(int)colorIndex] = color;
+
+    /// <summary>
+    /// Gets the color value for the specified color index.
+    /// </summary>
+    /// <param name="colorIndex">The color index to retrieve.</param>
+    /// <returns>The color value as Vector4.</returns>
+    public Vector4 GetColor(ImGuiUserCol colorIndex) => Colors[(int)colorIndex];
 }

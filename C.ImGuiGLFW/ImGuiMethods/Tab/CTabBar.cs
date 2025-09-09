@@ -34,6 +34,32 @@ public static class CTabBar
     }
 
     /// <summary>
+    /// Sets a custom color for tab bar elements.
+    /// </summary>
+    /// <param name="colorIndex">The color element to customize.</param>
+    /// <param name="color">The color value as Vector4 (RGBA components in range 0.0-1.0).</param>
+    public static void SetColor(ImGuiUserCol colorIndex, Vector4 color) => _userStyle.SetColor(colorIndex, color);
+
+    /// <summary>
+    /// Gets the current color value for the specified color element.
+    /// </summary>
+    /// <param name="colorIndex">The color element to retrieve.</param>
+    /// <returns>The current color value as Vector4.</returns>
+    public static Vector4 GetColor(ImGuiUserCol colorIndex) => _userStyle.GetColor(colorIndex);
+
+    /// <summary>
+    /// Resets all colors to their default values.
+    /// </summary>
+    public static void ResetColorsToDefault()
+    {
+        var defaultStyle = new ImGuiUserStyle();
+        for (int i = 0; i < (int)ImGuiUserCol.Count; i++)
+        {
+            _userStyle.Colors[i] = defaultStyle.Colors[i];
+        }
+    }
+
+    /// <summary>
     /// Begins a new tab bar or activates an existing one with the specified identifier.
     /// </summary>
     /// <param name="label">The unique identifier for the tab bar, optionally including a display title.</param>
@@ -67,7 +93,7 @@ public static class CTabBar
     /// </summary>
     /// <param name="label">The unique identifier for the tab bar, optionally including a display title.</param>
     /// <param name="size">Optional custom size for the tab bar. Uses automatic sizing if default Vector2 is provided.</param>
-    /// <param name="tabs">An array of tuples containing tab titles and their corresponding content rendering functions.</param>
+    /// <param name="tabs">An array of tuples containing tab titles and their corresponding content rendering functions. Tabs with null or empty titles will be skipped.</param>
     /// <remarks>
     /// This overload provides a convenient way to create a complete tab bar with all tabs and content
     /// in a single method call. It automatically handles the BeginTabBar, AddTab, and EndTabBar sequence,
@@ -130,7 +156,7 @@ public static class CTabBar
     /// by EndTabBar and should not typically be called directly. The background provides visual
     /// consistency and proper clipping for the tab content area.
     /// </remarks>
-    public static void DrawTabsBackground()
+    private static void DrawTabsBackground()
     {
         var bar = _tabStack.GetCurrentTabBar();
         if (bar.HasBeenInitialized && bar.TabCount > 0)

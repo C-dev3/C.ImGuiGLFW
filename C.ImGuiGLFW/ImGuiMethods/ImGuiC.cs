@@ -3,6 +3,7 @@ using C.ImGuiGLFW.Text.FontAwesome;
 using C.ImGuiGLFW.Text.NotoEmojis;
 using C.ImGuiGLFW.Text.SeIcon;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace C.ImGuiGLFW.ImGuiMethods;
 
@@ -392,9 +393,75 @@ public static partial class ImGuiC
     /// </remarks>
     public static void Prefix(bool isLast) => Prefix(isLast ? "└" : "├");
 
-    private static void AddTextCentered(Vector2 pos, string text, uint color)
+    /// <summary>
+    /// Adds centered text to the current window's draw list at the specified position.
+    /// </summary>
+    /// <param name="pos">The center position where the text should be drawn.</param>
+    /// <param name="text">The text string to be rendered.</param>
+    /// <param name="color">The color of the text.</param>
+    /// <remarks>
+    /// This method automatically calculates the text size and adjusts the drawing position so that
+    /// the text appears centered around the specified position. The text is drawn using the current
+    /// window's draw list, so this method should be called within a window context (between ImGui.Begin/End).
+    /// The color parameter expects a packed 32-bit value where alpha is in the most significant byte.
+    /// </remarks>
+    public static void AddTextCentered(Vector2 pos, string text, uint color)
     {
         var textSize = ImGui.CalcTextSize(text);
         ImGui.GetWindowDrawList().AddText(pos - textSize / 2, color, text);
     }
+
+    /// <summary>
+    /// Gets the color value of a style color as a Vector4.
+    /// </summary>
+    /// <param name="col">The ImGui color identifier to retrieve.</param>
+    /// <returns>A Vector4 representing the RGBA color values (0.0f to 1.0f range).</returns>
+    /// <remarks>
+    /// This method is marked as unsafe because it uses pointer operations to marshal data from unmanaged memory.
+    /// The returned Vector4 contains normalized color values where each component (R, G, B, A) is in the range 0.0f to 1.0f.
+    /// </remarks>
+    public unsafe static Vector4 GetStyleColorVec4(ImGuiCol col) => Marshal.PtrToStructure<Vector4>((nint)ImGui.GetStyleColorVec4(col));
+
+    /// <summary>
+    /// Gets the center position of the main viewport.
+    /// </summary>
+    /// <returns>A Vector2 representing the center coordinates of the main viewport in screen space.</returns>
+    /// <remarks>
+    /// This is equivalent to calling ImGui.GetCenter() with the main viewport as the parameter.
+    /// Useful for centering windows or positioning UI elements relative to the entire application window.
+    /// </remarks>
+    public static Vector2 GetCenter() => ImGui.GetCenter(ImGui.GetMainViewport());
+
+    /// <summary>
+    /// Gets the center position of the main viewport's work area.
+    /// </summary>
+    /// <returns>A Vector2 representing the center coordinates of the main viewport's work area in screen space.</returns>
+    /// <remarks>
+    /// The work area excludes areas occupied by menu bars, status bars, and other OS-level decorations.
+    /// This is equivalent to calling ImGui.GetWorkCenter() with the main viewport as the parameter.
+    /// Use this when you want to center content within the usable area of the viewport.
+    /// </remarks>
+    public static Vector2 GetWorkCenter() => ImGui.GetWorkCenter(ImGui.GetMainViewport());
+
+    /// <summary>
+    /// Gets the background draw list for the main viewport.
+    /// </summary>
+    /// <returns>An ImDrawListPtr that allows drawing behind all ImGui windows on the main viewport.</returns>
+    /// <remarks>
+    /// The background draw list renders behind all ImGui content. Use this for drawing backgrounds,
+    /// grid lines, or other elements that should appear beneath all windows and widgets.
+    /// This is equivalent to calling ImGui.GetBackgroundDrawList() with the main viewport as the parameter.
+    /// </remarks>
+    public static ImDrawListPtr GetBackgroundDrawList() => ImGui.GetBackgroundDrawList(ImGui.GetMainViewport());
+
+    /// <summary>
+    /// Gets the foreground draw list for the main viewport.
+    /// </summary>
+    /// <returns>An ImDrawListPtr that allows drawing over all ImGui windows on the main viewport.</returns>
+    /// <remarks>
+    /// The foreground draw list renders in front of all ImGui content. Use this for drawing overlays,
+    /// tooltips, debug information, or other elements that should appear above all windows and widgets.
+    /// This is equivalent to calling ImGui.GetForegroundDrawList() with the main viewport as the parameter.
+    /// </remarks>
+    public static ImDrawListPtr GetForegroundDrawList() => ImGui.GetForegroundDrawList(ImGui.GetMainViewport());
 }
