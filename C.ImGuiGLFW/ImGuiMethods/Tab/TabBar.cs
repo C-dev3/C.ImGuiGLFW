@@ -8,7 +8,7 @@
 /// hover effects, and proper rendering with ImGui. It handles tab selection, drawing, and user interaction.
 /// The tab bar supports both automatic width calculation and custom sizing.
 /// </remarks>
-public class TabBar(string label, Vector2 tabBarSize)
+internal class TabBar(string label, Vector2 tabBarSize)
 {
     private static readonly uint BGColor = ImGui.ColorConvertFloat4ToU32(new Vector4(1.0f, 1.0f, 1.0f, 0.15f));
     private static readonly uint BorderColor = ImGui.ColorConvertFloat4ToU32(new Vector4(1.0f, 1.0f, 1.0f, 0.35f));

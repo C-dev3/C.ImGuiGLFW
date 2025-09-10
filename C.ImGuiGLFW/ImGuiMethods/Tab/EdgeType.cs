@@ -8,7 +8,7 @@
 /// Multiple edges can be combined using the bitwise OR operator.
 /// </remarks>
 [Flags]
-public enum EdgeType : byte
+internal enum EdgeType : byte
 {
     /// <summary>
     /// Specifies no edges.

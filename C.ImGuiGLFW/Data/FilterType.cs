@@ -13,32 +13,32 @@ public enum FilterType : long
     /// <summary>
     /// Indicates highly detailed diagnostic messages intended for internal development use.
     /// </summary>
-    Verbose = 0b1,
+    Verbose = 1L << 0,
 
     /// <summary>
     /// Indicates debug-level messages used during development for tracing application behavior.
     /// </summary>
-    Debug = 0b10,
+    Debug = 1L << 1,
 
     /// <summary>
     /// Indicates informational messages that highlight the progress of the application.
     /// </summary>
-    Info = 0b100,
+    Info = 1L << 2,
 
     /// <summary>
     /// Indicates potentially harmful situations that do not necessarily cause errors.
     /// </summary>
-    Warning = 0b1000,
+    Warning = 1L << 3,
 
     /// <summary>
     /// Indicates error events that might still allow the application to continue running.
     /// </summary>
-    Error = 0b10000,
+    Error = 1L << 4,
 
     /// <summary>
     /// Indicates very severe error events that will presumably lead the application to abort.
     /// </summary>
-    Fatal = 0b100000,
+    Fatal = 1L << 5,
 
     /// <summary>
     /// The default filter, combining <see cref="Info"/>, <see cref="Warning"/>, <see cref="Error"/>, and <see cref="Fatal"/> levels.
@@ -56,5 +56,5 @@ public enum FilterType : long
     /// Because its value is the bitwise complement of zero (~0), it ensures all defined and future flags are matched.
     /// Use with caution in production environments, as it may result in very large or sensitive output.
     /// </remarks>
-    Develop = ~0
+    Develop = ~0L
 }

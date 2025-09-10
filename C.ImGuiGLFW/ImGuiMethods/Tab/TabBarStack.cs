@@ -8,7 +8,7 @@
 /// It handles tab bar creation, lookup, and maintains the currently active tab bar context.
 /// This is particularly useful when dealing with nested or multiple tab bar scenarios.
 /// </remarks>
-public class TabBarStack
+internal class TabBarStack
 {
     /// <summary>
     /// Gets the collection of tab bars managed by this stack.

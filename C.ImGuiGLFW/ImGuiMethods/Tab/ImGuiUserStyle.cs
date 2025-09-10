@@ -7,7 +7,7 @@
 /// This class provides a centralized way to manage custom colors for tab bars and other UI elements.
 /// It initializes with default color values that provide a cohesive visual theme.
 /// </remarks>
-public class ImGuiUserStyle
+internal class ImGuiUserStyle
 {
     /// <summary>
     /// Gets the array of colors indexed by ImGuiUserCol enumeration values.
