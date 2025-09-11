@@ -835,21 +835,6 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     public void LoadHtml(string html, string url, Encoding encoding, bool oneTimeUse = false) => browser.LoadHtml(html, url, encoding, oneTimeUse);
 
     /// <summary>
-    /// Loads content from the specified URL into the browser.
-    /// </summary>
-    /// <param name="url">The URL to load.</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void LoadUrl(string url) => browser.LoadUrl(url);
-
-    /// <summary>
-    /// Asynchronously loads content from the specified URL into the browser.
-    /// </summary>
-    /// <param name="url">The URL to load.</param>
-    /// <returns>A task that represents the asynchronous load operation. The task result contains the response information.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Task<LoadUrlAsyncResponse> LoadUrlAsync(string url) => browser.LoadUrlAsync(url);
-
-    /// <summary>
     /// Loads content from the specified URL using POST method with provided data.
     /// </summary>
     /// <param name="url">The URL to send the POST request to.</param>
