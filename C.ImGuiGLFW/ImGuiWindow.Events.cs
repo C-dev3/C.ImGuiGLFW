@@ -236,7 +236,7 @@ public partial class ImGuiController
         remove => _onResizeCallback -= value;
     }
 
-    private void ClearAllEventHandlers()
+    private static void ClearAllEventHandlers()
     {
         // Frame events
         _updateFrameCallback = null;

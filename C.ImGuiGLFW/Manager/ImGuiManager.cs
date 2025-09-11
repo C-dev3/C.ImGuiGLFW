@@ -3,6 +3,7 @@ using Hexa.NET.ImGui.Backends.GLFW;
 using Hexa.NET.ImGuizmo;
 using Hexa.NET.ImNodes;
 using Hexa.NET.ImPlot;
+using Hexa.NET.ImPlot3D;
 using Serilog;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -21,9 +22,10 @@ internal class ImGuiManager
 
     private ImPlotContextPtr? plotContextPtr = null;
     private ImNodesContextPtr? nodesContextPtr = null;
+    private ImPlot3DContextPtr? plot3DContextPtr = null;
     private bool GuizmoInstalled = false;
 
-    private readonly Data.Module[] Modules;
+    private readonly Module[] Modules;
     private readonly WindowSettings windowSettings;
 
     internal ImGuiIOPtr iOPtr = null;
@@ -36,7 +38,7 @@ internal class ImGuiManager
         || navEnableGamepadChanged
         || dockingEnableChanged;
 
-    internal ImGuiManager(GL gl, Data.Module[] modules, WindowSettings settings)
+    internal ImGuiManager(GL gl, Module[] modules, WindowSettings settings)
     {
         GL = gl;
         Modules = modules;
@@ -59,7 +61,7 @@ internal class ImGuiManager
         Log.Information("ImGui initialization completed successfully");
     }
 
-    private unsafe void SetupFonts()
+    private static unsafe void SetupFonts()
     {
         Log.Information("Starting setup font");
         ImGuiController.FontBuilder.SetupFonts();
@@ -127,9 +129,11 @@ internal class ImGuiManager
             Log.Information("Install modules not specified. Skipping");
             return;
         }
+
         int count = 0;
         Log.Information("Starting Install Modules Initialization");
-        if (Modules.Any(x => x is Data.Module.All or Data.Module.Guizmo))
+
+        if (Modules.Any(x => x is Module.All or Module.Guizmo))
         {
             ImGuizmo.SetImGuiContext(guiContext);
             GuizmoInstalled = true;
@@ -137,7 +141,17 @@ internal class ImGuiManager
             count++;
         }
 
-        if (Modules.Any(x => x is Data.Module.All or Data.Module.Plot))
+        if (Modules.Any(x => x is Module.All or Module.Nodes))
+        {
+            ImNodes.SetImGuiContext(guiContext);
+            nodesContextPtr = ImNodes.CreateContext();
+            ImNodes.SetCurrentContext(nodesContextPtr.Value);
+            ImNodes.StyleColorsDark(ImNodes.GetStyle());
+            Log.Debug("ImNodes module installed successfully");
+            count++;
+        }
+
+        if (Modules.Any(x => x is Module.All or Module.Plot))
         {
             ImPlot.SetImGuiContext(guiContext);
             plotContextPtr = ImPlot.CreateContext();
@@ -147,13 +161,13 @@ internal class ImGuiManager
             count++;
         }
 
-        if (Modules.Any(x => x is Data.Module.All or Data.Module.Nodes))
+        if(Modules.Any(x => x is Module.All or Module.Plot3D))
         {
-            ImNodes.SetImGuiContext(guiContext);
-            nodesContextPtr = ImNodes.CreateContext();
-            ImNodes.SetCurrentContext(nodesContextPtr.Value);
-            ImNodes.StyleColorsDark(ImNodes.GetStyle());
-            Log.Debug("ImNodes module installed successfully");
+            ImPlot3D.SetImGuiContext(guiContext);
+            plot3DContextPtr = ImPlot3D.CreateContext();
+            ImPlot3D.SetCurrentContext(plot3DContextPtr.Value);
+            ImPlot3D.StyleColorsDark(ImPlot3D.GetStyle());
+            Log.Debug("ImPlot3D module installed successfully");
             count++;
         }
 
@@ -195,21 +209,31 @@ internal class ImGuiManager
     {
         if (Modules.Length == 0) return;
         Log.Information("Starting module cleanup process");
+
         if (GuizmoInstalled)
         {
             ImGuizmo.SetImGuiContext(null);
             GuizmoInstalled = false;
         }
+
         if (plotContextPtr.HasValue)
         {
             ImPlot.SetImGuiContext(null);
             ImPlot.DestroyContext(plotContextPtr.Value);
         }
+
         if (nodesContextPtr.HasValue)
         {
             ImNodes.SetImGuiContext(null);
             ImNodes.DestroyContext(nodesContextPtr.Value);
         }
+
+        if (plot3DContextPtr.HasValue)
+        {
+            ImPlot3D.SetImGuiContext(null);
+            ImPlot3D.DestroyContext(plot3DContextPtr.Value);
+        }
+
         Log.Information("Module cleanup process completed successfully");
     }
 
@@ -247,12 +271,14 @@ internal class ImGuiManager
             else iOPtr.ConfigFlags &= ~ImGuiConfigFlags.NavEnableKeyboard;
             navEnableKeyboardChanged = false;
         }
+
         if (navEnableGamepadChanged)
         {
             if (windowSettings.NavEnableGamepad) iOPtr.ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;
             else iOPtr.ConfigFlags &= ~ImGuiConfigFlags.NavEnableGamepad;
             navEnableGamepadChanged = false;
         }
+
         if (dockingEnableChanged)
         {
             if (windowSettings.DockingEnable) iOPtr.ConfigFlags |= ImGuiConfigFlags.DockingEnable;

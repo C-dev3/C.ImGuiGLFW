@@ -444,6 +444,18 @@ public static partial class ImGuiC
     public static Vector2 GetWorkCenter() => ImGui.GetWorkCenter(ImGui.GetMainViewport());
 
     /// <summary>
+    /// Gets the work area size of the main viewport, excluding areas covered by OS decorations such as menu bars, taskbars, and docks.
+    /// </summary>
+    /// <returns>A <see cref="Vector2"/> representing the width and height of the available work area in pixels.</returns>
+    public static Vector2 GetWorkSize() => ImGui.GetMainViewport().WorkSize;
+
+    /// <summary>
+    /// Gets the work area position of the main viewport, representing the top-left corner of the usable area excluding OS decorations.
+    /// </summary>
+    /// <returns>A <see cref="Vector2"/> representing the X and Y coordinates of the work area's top-left corner in screen space.</returns>
+    public static Vector2 GetWorkPos() => ImGui.GetMainViewport().WorkPos;
+
+    /// <summary>
     /// Gets the background draw list for the main viewport.
     /// </summary>
     /// <returns>An ImDrawListPtr that allows drawing behind all ImGui windows on the main viewport.</returns>

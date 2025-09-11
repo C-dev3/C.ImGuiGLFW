@@ -27,4 +27,9 @@ public enum Module
     /// Represents the Plot module, used for rendering plots or graphs.
     /// </summary>
     Plot,
+
+    /// <summary>
+    /// Represents the Plot3D module, used for rendering plots3d or graphs.
+    /// </summary>
+    Plot3D,
 }

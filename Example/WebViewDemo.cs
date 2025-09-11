@@ -8,13 +8,11 @@ internal class WebViewDemo : Window
 {
     private WebView view = null!;
 
-    public WebViewDemo() => Flags = ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar;
-
     public override void OnLoad()
     {
         view = new("https://google.com")
         {
-            Size = new(1280, 720)
+            AutoResizeToContentRegion = true
         };
     }
 
@@ -27,5 +25,8 @@ internal class WebViewDemo : Window
 
     public override void OnDispose() => view.Dispose();
 
-    protected override void Draw() => view.Draw("WebBrowser"u8);
+    protected override void Draw()
+    {
+        view.Draw("WebBrowser", true);
+    }
 }

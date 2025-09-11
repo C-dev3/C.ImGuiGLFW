@@ -1,4 +1,5 @@
 ﻿using C.ImGuiGLFW.Data;
+using C.ImGuiGLFW.Extentions;
 using CefSharp;
 using CefSharp.Handler;
 using CefSharp.Internals;
@@ -44,6 +45,9 @@ public partial class WebView : IRenderWebBrowser, IDisposable
 
     private bool disposedValue;
 
+    private string currentUrl = string.Empty;
+    private Point2 lastAutoResizeSize = Point2.Zero;
+
     /// <summary>
     /// Initializes a new instance of the WebView class with default settings.
     /// </summary>
@@ -85,6 +89,8 @@ public partial class WebView : IRenderWebBrowser, IDisposable
             DisplayHandler = new DisplayHandler(),
             AudioHandler = new AudioHandler(),
         };
+
+        CurrentUrl = address ?? string.Empty;
 
         OnCreateBrowser(browser);
 
@@ -198,6 +204,21 @@ public partial class WebView : IRenderWebBrowser, IDisposable
             host?.Invalidate(PaintElementType.View);
         }
     }
+
+    /// <summary>
+    /// Gets or sets the current URL displayed in the URL bar.
+    /// </summary>
+    /// <value>The current URL as a string. Defaults to an empty string if not set.</value>
+    public string CurrentUrl
+    {
+        get => currentUrl ?? string.Empty;
+        set => currentUrl = value ?? string.Empty;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool AutoResizeToContentRegion { get; set; } = false;
 
     /// <summary>
     /// Called when the browser has completed initialization and is ready for use.
@@ -333,7 +354,8 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     private void HandleMouseButton(GlfwMouse button, InputState state, GlfwMod mods)
     {
         var pos = GetMousePos();
-        MouseEvent mouseEvent = new(pos.X, pos.Y, CefEventFlags.None);
+        GetCefModifiers(mods);
+        MouseEvent mouseEvent = new(pos.X, pos.Y, eventFlags);
         MouseButtonType type = button switch
         {
             GlfwMouse.ButtonLeft => MouseButtonType.Left,
@@ -341,6 +363,20 @@ public partial class WebView : IRenderWebBrowser, IDisposable
             GlfwMouse.ButtonMiddle => MouseButtonType.Middle,
             _ => 0
         };
+
+        if (state == InputState.Pressed)
+        {
+            switch (button)
+            {
+                case GlfwMouse.Button4:
+                    if (CanGoBack) browser.GetBrowser().GoBack();
+                    return;
+                case GlfwMouse.Button5:
+                    if (CanGoForward) browser.GetBrowser().GoForward();
+                    return;
+                default: break;
+            }
+        }
 
         bool isUp = state == InputState.Released;
         if (isUp)
@@ -400,7 +436,7 @@ public partial class WebView : IRenderWebBrowser, IDisposable
             Modifiers = flags,
         };
 
-        if(key == GlfwKey.F12
+        if (key == GlfwKey.F12
             && mods == 0
             && state == InputState.Pressed)
         {
@@ -478,9 +514,18 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private unsafe Point2 GetMousePos()
     {
-        (double xpos, double ypos) = ImGuiController.GetCursorPos();
-        Point2 point = new((int)(xpos - position.X), (int)(ypos - position.Y));
-        return point;
+        if (ImGuiC.ConfigFlags.HasFlag(ImGuiConfigFlags.ViewportsEnable))
+        {
+            var mousePos = ImGui.GetMousePos();
+            Point2 point = new((int)(mousePos.X - position.X), (int)(mousePos.Y - position.Y));
+            return point;
+        }
+        else
+        {
+            (double xpos, double ypos) = ImGuiController.GetCursorPos();
+            Point2 point = new((int)(xpos - position.X), (int)(ypos - position.Y));
+            return point;
+        }
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -527,6 +572,7 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     /// Renders the web browser within an ImGui context using the specified string identifier.
     /// </summary>
     /// <param name="strId">The string identifier for ImGui item identification.</param>
+    /// <param name="showUrlBar">Displays a URL input bar above the browser content</param>
     /// <remarks>
     /// This method handles the complete rendering pipeline for the web browser within ImGui.
     /// It processes smooth scrolling, updates position tracking, manages hover and focus states,
@@ -534,7 +580,7 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     /// with ImGui's item system for proper input handling and provides visual feedback
     /// for user interactions. This is the primary method for displaying the browser in an ImGui interface.
     /// </remarks>
-    public unsafe void Draw(string strId)
+    public unsafe void Draw(string strId, bool showUrlBar = false)
     {
         byte* pStr0 = null;
         int strSize0 = 0;
@@ -553,7 +599,7 @@ public partial class WebView : IRenderWebBrowser, IDisposable
             HexaGen.Runtime.Utils.EncodeStringUTF8(strId, pStr0, strSize0);
         }
 
-        Draw(pStr0);
+        Draw(pStr0, showUrlBar);
 
         if (strSize0 > HexaGen.Runtime.Utils.MaxStackallocSize)
         {
@@ -562,35 +608,19 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     }
 
     /// <summary>
-    /// Renders the web browser within an ImGui context using the specified byte span identifier.
-    /// </summary>
-    /// <param name="strId">The UTF-8 encoded string identifier as a byte span.</param>
-    /// <remarks>
-    /// This overload provides efficient rendering for scenarios where the identifier is already
-    /// available as UTF-8 encoded bytes, avoiding string conversion overhead. It delegates to
-    /// the pointer-based Draw method for actual rendering operations while ensuring proper
-    /// memory management of the byte data.
-    /// </remarks>
-    public unsafe void Draw(ReadOnlySpan<byte> strId)
-    {
-        fixed (byte* pStrId = strId)
-        {
-            Draw(pStrId);
-        }
-    }
-
-    /// <summary>
     /// Renders the web browser within an ImGui context using the specified byte pointer identifier.
     /// </summary>
     /// <param name="strId">Pointer to a null-terminated UTF-8 string identifier.</param>
+    /// <param name="showUrlBar">If <see langword="true"/>, displays a URL input bar above the browser content; otherwise, only the browser content is rendered.</param>
     /// <remarks>
     /// This unsafe method performs the core rendering logic for the web browser within ImGui.
     /// It handles smooth scrolling updates, position change detection, bounding box calculation,
     /// hover and focus state management, input event ownership, and delegates actual content
-    /// rendering to the render handler. This method should be called once per frame when
-    /// the browser should be visible in the ImGui interface.
+    /// rendering to the render handler. When <paramref name="showUrlBar"/> is enabled, a URL input
+    /// field is rendered above the browser content, allowing users to navigate to different URLs.
+    /// This method should be called once per frame when the browser should be visible in the ImGui interface.
     /// </remarks>
-    public unsafe void Draw(byte* strId)
+    public unsafe void Draw(byte* strId, bool showUrlBar = false)
     {
         var window = ImGuiP.GetCurrentWindow();
         if (window.SkipItems)
@@ -600,35 +630,65 @@ public partial class WebView : IRenderWebBrowser, IDisposable
 
         uint id = ImGui.GetID(strId);
 
+        // URL bar rendering
+        Vector2 urlBarSize = Vector2.Zero;
+        if (showUrlBar)
+        {
+            DrawUrlBar(id);
+            urlBarSize = new Vector2(0, ImGui.GetTextLineHeightWithSpacing() + ImGui.GetStyle().FramePadding.Y * 2);
+        }
+
         UpdateScroll(ref wheelDeltaAccumulatorX);
         UpdateScroll(ref wheelDeltaAccumulatorY);
 
         Point2 newPos = (Point2)ImGui.GetCursorScreenPos();
-
         if (newPos != position)
         {
             host?.NotifyMoveOrResizeStarted();
         }
-
         position = newPos;
-        ImRect bb = new(position, position + size);
-        ImGuiP.ItemSize(bb);
 
-        if (!ImGuiP.ItemAdd(bb, id, ref bb, 0))
+        Vector2 effectiveSize = AutoResizeToContentRegion ? ImGui.GetContentRegionAvail() : size;
+        if (AutoResizeToContentRegion)
+        {
+            Point2 contentSize = (Point2)(effectiveSize - urlBarSize);
+
+            if (contentSize != lastAutoResizeSize && contentSize.X > 0 && contentSize.Y > 0)
+            {
+                renderHandler.SetSize(contentSize.X, contentSize.Y);
+                host?.WasResized();
+                host?.Invalidate(PaintElementType.View);
+                lastAutoResizeSize = contentSize;
+            }
+        }
+        else
+        {
+            if (lastAutoResizeSize != Point2.Zero)
+            {
+                Point2 originalContentSize = (Point2)((Vector2)size - urlBarSize);
+                if (originalContentSize.X > 0 && originalContentSize.Y > 0)
+                {
+                    renderHandler.SetSize(originalContentSize.X, originalContentSize.Y);
+                    host?.WasResized();
+                    host?.Invalidate(PaintElementType.View);
+                }
+                lastAutoResizeSize = originalContentSize;
+            }
+        }
+
+        // Adjust browser content size to account for URL bar
+        Vector2 adjustedSize = AutoResizeToContentRegion ? effectiveSize : effectiveSize - urlBarSize;
+        ImRect bb = new(position, position + adjustedSize);
+        ImGuiP.ItemSize(bb);
+        if (!ImGuiP.ItemAdd(bb, id, ref bb, ImGuiItemFlags.None))
         {
             return;
         }
-
         bool hovered = ImGuiP.ItemHoverable(bb, id, ImGuiItemFlags.None);
-
         bool focused = ImGui.IsItemFocused();
-
         bool clicked = hovered && ImGui.IsMouseClicked(ImGuiMouseButton.Left);
-
         var viewport = ImGui.GetWindowViewport();
-
         windowId = (uint)viewport.PlatformHandle;
-
         if (isHovered != hovered)
         {
             if (hovered)
@@ -640,17 +700,14 @@ public partial class WebView : IRenderWebBrowser, IDisposable
                 OnLeave();
             }
         }
-
         if (clicked && !hasFocus)
         {
             OnFocusGained();
         }
-
         if (!focused && hasFocus)
         {
             OnFocusLost();
         }
-
         if (hovered)
         {
             ImGui.SetItemKeyOwner(ImGuiKey.MouseWheelY);
@@ -661,10 +718,90 @@ public partial class WebView : IRenderWebBrowser, IDisposable
             ImGui.SetItemKeyOwner(ImGuiKey.LeftArrow);
             ImGui.SetItemKeyOwner(ImGuiKey.RightArrow);
         }
-
         var draw = ImGui.GetWindowDrawList();
-
         renderHandler.Draw(draw, bb, hovered);
+    }
+
+    /// <summary>
+    /// Renders the URL input bar for the web browser.
+    /// </summary>
+    /// <param name="parentId">The parent ID used for generating unique IDs for URL bar components.</param>
+    private void DrawUrlBar(uint parentId)
+    {
+        ImGui.PushID((int)parentId);
+
+        // Back button
+        ImGui.BeginDisabled(!CanGoBack);
+        if (ImGui.Button("←"))
+        {
+            browser.GetBrowser().GoBack();
+        }
+        ImGui.EndDisabled();
+        ImGui.SameLine();
+
+        // Forward button
+        ImGui.BeginDisabled(!CanGoForward);
+        if (ImGui.Button("→"))
+        {
+            browser.GetBrowser().GoForward();
+        }
+        ImGui.EndDisabled();
+        ImGui.SameLine();
+
+        // Refresh button
+        if (ImGui.Button("🔄"))
+        {
+            browser.GetBrowser().Reload();
+        }
+        ImGui.SameLine();
+
+        // URL input field
+        ImGui.SetNextItemWidth(-1); // Use remaining width
+        if (ImGui.InputText("##url", ref currentUrl, 2048, ImGuiInputTextFlags.EnterReturnsTrue))
+        {
+            if (!string.IsNullOrWhiteSpace(currentUrl))
+            {
+                NavigateToUrl(currentUrl);
+            }
+        }
+
+        ImGui.PopID();
+    }
+
+    /// <summary>
+    /// Navigates the browser to the specified URL.
+    /// </summary>
+    /// <param name="url">The URL to navigate to.</param>
+    /// <remarks>
+    /// This method updates the current URL and instructs the browser to load the new page.
+    /// If the URL is null or whitespace, no navigation occurs.
+    /// </remarks>
+    private void NavigateToUrl(string url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+            return;
+
+        currentUrl = url;
+        browser.GetMainFrame()?.LoadUrl(currentUrl);
+    }
+
+    /// <summary>
+    /// Renders the web browser within an ImGui context using the specified byte span identifier.
+    /// </summary>
+    /// <param name="strId">The UTF-8 encoded string identifier as a byte span.</param>
+    /// <param name="showUrlBar">Displays a URL input bar above the browser content</param>
+    /// <remarks>
+    /// This overload provides efficient rendering for scenarios where the identifier is already
+    /// available as UTF-8 encoded bytes, avoiding string conversion overhead. It delegates to
+    /// the pointer-based Draw method for actual rendering operations while ensuring proper
+    /// memory management of the byte data.
+    /// </remarks>
+    public unsafe void Draw(ReadOnlySpan<byte> strId, bool showUrlBar = false)
+    {
+        fixed (byte* pStrId = strId)
+        {
+            Draw(pStrId, showUrlBar);
+        }
     }
 
     /// <summary>

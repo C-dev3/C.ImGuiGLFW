@@ -9,7 +9,7 @@ internal class Program
     private static readonly DemoWindow demoWindow = new("DemoTitle");
     private static void Main()
     {
-        ImGuiController.Initialize($"TESTWINDOW", 1280, 720, false, Module.Nodes, Module.Plot);
+        ImGuiController.Initialize($"TESTWINDOW", 1280, 720, true, Module.Nodes, Module.Plot);
         ImGuiController.OnMainMenuBarRender += MainMenuBar;
         ImGuiController.OnChar += OnCharInput;
         //ImGuiController.AddWindow(demoWindow);
@@ -25,7 +25,7 @@ internal class Program
         {
             if (ImGui.MenuItem("Window Toggle"))
             {
-                demoWindow.Toggle();
+                //demoWindow.Toggle();
             }
             ImGui.EndMenu();
         }
