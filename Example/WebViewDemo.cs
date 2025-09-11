@@ -25,8 +25,5 @@ internal class WebViewDemo : Window
 
     public override void OnDispose() => view.Dispose();
 
-    protected override void Draw()
-    {
-        view.Draw("WebBrowser", true);
-    }
+    protected override void Draw() => view.Draw("WebBrowser", true);
 }

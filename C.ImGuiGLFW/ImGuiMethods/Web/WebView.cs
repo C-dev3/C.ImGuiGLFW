@@ -8,6 +8,7 @@ using CefSharp.Web;
 using Hexa.NET.GLFW;
 using Hexa.NET.Mathematics;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace C.ImGuiGLFW.ImGuiMethods.Web;
 
@@ -569,6 +570,25 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     }
 
     /// <summary>
+    /// Renders the web browser within an ImGui context using the specified byte span identifier.
+    /// </summary>
+    /// <param name="strId">The UTF-8 encoded string identifier as a byte span.</param>
+    /// <param name="showUrlBar">Displays a URL input bar above the browser content</param>
+    /// <remarks>
+    /// This overload provides efficient rendering for scenarios where the identifier is already
+    /// available as UTF-8 encoded bytes, avoiding string conversion overhead. It delegates to
+    /// the pointer-based Draw method for actual rendering operations while ensuring proper
+    /// memory management of the byte data.
+    /// </remarks>
+    public unsafe void Draw(ReadOnlySpan<byte> strId, bool showUrlBar = false)
+    {
+        fixed (byte* pStrId = strId)
+        {
+            Draw(pStrId, showUrlBar);
+        }
+    }
+
+    /// <summary>
     /// Renders the web browser within an ImGui context using the specified string identifier.
     /// </summary>
     /// <param name="strId">The string identifier for ImGui item identification.</param>
@@ -748,6 +768,8 @@ public partial class WebView : IRenderWebBrowser, IDisposable
         ImGui.EndDisabled();
         ImGui.SameLine();
 
+        ImGui.BeginDisabled(IsLoading);
+
         // Refresh button
         if (ImGui.Button("🔄"))
         {
@@ -764,6 +786,8 @@ public partial class WebView : IRenderWebBrowser, IDisposable
                 NavigateToUrl(currentUrl);
             }
         }
+
+        ImGui.EndDisabled();
 
         ImGui.PopID();
     }
@@ -786,23 +810,54 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     }
 
     /// <summary>
-    /// Renders the web browser within an ImGui context using the specified byte span identifier.
+    /// Loads HTML content into the browser.
     /// </summary>
-    /// <param name="strId">The UTF-8 encoded string identifier as a byte span.</param>
-    /// <param name="showUrlBar">Displays a URL input bar above the browser content</param>
-    /// <remarks>
-    /// This overload provides efficient rendering for scenarios where the identifier is already
-    /// available as UTF-8 encoded bytes, avoiding string conversion overhead. It delegates to
-    /// the pointer-based Draw method for actual rendering operations while ensuring proper
-    /// memory management of the byte data.
-    /// </remarks>
-    public unsafe void Draw(ReadOnlySpan<byte> strId, bool showUrlBar = false)
-    {
-        fixed (byte* pStrId = strId)
-        {
-            Draw(pStrId, showUrlBar);
-        }
-    }
+    /// <param name="html">The HTML content to load.</param>
+    /// <param name="base64Encode">If true, the HTML content will be base64 encoded before loading. Default is false.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void LoadHtml(string html, bool base64Encode = false) => browser.LoadHtml(html, base64Encode);
+
+    /// <summary>
+    /// Loads HTML content into the browser with a specified URL.
+    /// </summary>
+    /// <param name="html">The HTML content to load.</param>
+    /// <param name="url">The URL to associate with the HTML content.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void LoadHtml(string html, string url) => browser.LoadHtml(html, url);
+
+    /// <summary>
+    /// Loads HTML content into the browser with a specified URL, encoding, and usage options.
+    /// </summary>
+    /// <param name="html">The HTML content to load.</param>
+    /// <param name="url">The URL to associate with the HTML content.</param>
+    /// <param name="encoding">The character encoding to use for the HTML content.</param>
+    /// <param name="oneTimeUse">If true, indicates that this content is for one-time use only. Default is false.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void LoadHtml(string html, string url, Encoding encoding, bool oneTimeUse = false) => browser.LoadHtml(html, url, encoding, oneTimeUse);
+
+    /// <summary>
+    /// Loads content from the specified URL into the browser.
+    /// </summary>
+    /// <param name="url">The URL to load.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void LoadUrl(string url) => browser.LoadUrl(url);
+
+    /// <summary>
+    /// Asynchronously loads content from the specified URL into the browser.
+    /// </summary>
+    /// <param name="url">The URL to load.</param>
+    /// <returns>A task that represents the asynchronous load operation. The task result contains the response information.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Task<LoadUrlAsyncResponse> LoadUrlAsync(string url) => browser.LoadUrlAsync(url);
+
+    /// <summary>
+    /// Loads content from the specified URL using POST method with provided data.
+    /// </summary>
+    /// <param name="url">The URL to send the POST request to.</param>
+    /// <param name="postDataBytes">The POST data as a byte array.</param>
+    /// <param name="contentType">The content type of the POST data. If null, a default content type will be used.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void LoadUrlWithPostData(string url, byte[] postDataBytes, string? contentType = null) => browser.LoadUrlWithPostData(url, postDataBytes, contentType);
 
     /// <summary>
     /// Performs cleanup of browser resources and event handlers.
