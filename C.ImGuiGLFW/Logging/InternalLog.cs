@@ -1,6 +1,7 @@
 ﻿using C.ImGuiGLFW.Color;
 using C.ImGuiGLFW.Data;
 using C.ImGuiGLFW.ImGuiMethods;
+using C.ImGuiGLFW.ImGuiMethods.Tab;
 using Serilog.Events;
 
 namespace C.ImGuiGLFW.Logging;
@@ -70,6 +71,18 @@ public class InternalLog
     /// if the tab is closable.
     /// </returns>
     public static (string?, Action, Vector4?, bool) ImGuiTab(bool draw = true) => (draw ? "Log" : null, PrintImGui, null, false);
+
+    /// <summary>
+    /// Creates a console tab configuration for use with CTabBar.
+    /// </summary>
+    /// <param name="draw">If true, creates a tab with the title "Log" and its rendering action. If false, returns null for the tab title to skip this tab. Default is true.</param>
+    /// <returns>A tuple containing the tab title (or null if draw is false) and the PrintImGui action for rendering the console content when the tab is active.</returns>
+    /// <remarks>
+    /// This helper method is designed to work with <see cref="CTabBar.BeginTabBar(string, Vector2, ValueTuple{string, Action}[])"/>
+    /// to easily add a console/log tab to a tab bar. When draw is false, the returned null title will cause
+    /// the tab to be skipped during tab bar creation.
+    /// </remarks>
+    public static (string?, Action) CTab(bool draw = true) => (draw ? "Log" : null, PrintImGui);
 
     private static string Search = string.Empty;
     private static bool Autoscroll = true;
