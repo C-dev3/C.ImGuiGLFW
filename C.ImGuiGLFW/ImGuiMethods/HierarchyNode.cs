@@ -442,7 +442,7 @@ public class HierarchyViewer
         ImGui.InputTextWithHint("##search", "Search...", ref searchText, 256);
         ImGui.Separator();
 
-        ImGui.Columns(2, "HierarchyColumns", true);
+        ImGui.Columns(2, "HierarchyColumns", false);
         ImGui.SetColumnWidth(0, ImGui.GetWindowWidth() - ButtonMod);
         ImGui.Text("Name");
         ImGui.NextColumn();
