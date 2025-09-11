@@ -476,4 +476,50 @@ public static partial class ImGuiC
     /// This is equivalent to calling ImGui.GetForegroundDrawList() with the main viewport as the parameter.
     /// </remarks>
     public static ImDrawListPtr GetForegroundDrawList() => ImGui.GetForegroundDrawList(ImGui.GetMainViewport());
+
+    /// <summary>
+    /// Gets the available content region width with optional percentage scaling and modification.
+    /// </summary>
+    /// <param name="percent">The percentage of available width to use (default is 1.0 for 100%).</param>
+    /// <param name="mod">A constant value to add to the calculated width (default is 0).</param>
+    /// <returns>The calculated width as a float value.</returns>
+    /// <remarks>
+    /// This method calculates the available content region width by multiplying it by the specified percentage
+    /// and adding the modification value. Useful for creating responsive layouts or reserving space for other UI elements.
+    /// </remarks>
+    public static float GetContentRegionWidthAvail(float percent = 1.0f, float mod = 0) => ImGui.GetContentRegionAvail().X * percent + mod;
+
+    /// <summary>
+    /// Gets the available content region width with an optional modification value.
+    /// </summary>
+    /// <param name="mod">A constant value to add to the available width (default is 0).</param>
+    /// <returns>The available width plus the modification value as a float.</returns>
+    /// <remarks>
+    /// This method returns the full available content region width with an optional constant adjustment.
+    /// Commonly used to reserve or add space for buttons, padding, or other UI elements.
+    /// </remarks>
+    public static float GetContentRegionWidthAvail(float mod = 0) => ImGui.GetContentRegionAvail().X + mod;
+
+    /// <summary>
+    /// Gets the available content region height with optional percentage scaling and modification.
+    /// </summary>
+    /// <param name="percent">The percentage of available height to use (default is 1.0 for 100%).</param>
+    /// <param name="mod">A constant value to add to the calculated height (default is 0).</param>
+    /// <returns>The calculated height as a float value.</returns>
+    /// <remarks>
+    /// This method calculates the available content region height by multiplying it by the specified percentage
+    /// and adding the modification value. Useful for creating responsive layouts or reserving space for other UI elements.
+    /// </remarks>
+    public static float GetContentRegionHeightAvail(float percent = 1.0f, float mod = 0) => ImGui.GetContentRegionAvail().Y * percent + mod;
+
+    /// <summary>
+    /// Gets the available content region height with an optional modification value.
+    /// </summary>
+    /// <param name="mod">A constant value to add to the available height (default is 0).</param>
+    /// <returns>The available height plus the modification value as a float.</returns>
+    /// <remarks>
+    /// This method returns the full available content region height with an optional constant adjustment.
+    /// Commonly used to reserve or add space for buttons, padding, or other UI elements.
+    /// </remarks>
+    public static float GetContentRegionHeightAvail(float mod = 0) => ImGui.GetContentRegionAvail().Y + mod;
 }

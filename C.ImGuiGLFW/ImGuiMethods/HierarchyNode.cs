@@ -397,20 +397,21 @@ public class HierarchyViewer
     /// <summary>
     /// Renders the hierarchy viewer content without a window wrapper.
     /// </summary>
+    /// <param name="maxHeight">The maximum height of the hierarchy viewer content area. If null, uses available content region.</param>
     /// <remarks>
     /// This method renders only the hierarchy content (search box, node tree, context menus) without
     /// creating an ImGui window. This is useful when embedding the hierarchy viewer within existing
     /// windows or UI layouts. The content includes all interactive features such as drag-and-drop,
     /// selection, and context menus.
     /// </remarks>
-    public void Render()
+    public void Render(float? maxHeight = null)
     {
         if (nodeIdMapNeedsRebuild)
         {
             RebuildNodeIdMap(rootNodes);
             nodeIdMapNeedsRebuild = false;
         }
-        RenderContent(rootNodes);
+        RenderContent(rootNodes, maxHeight);
     }
 
     private void RebuildNodeIdMap(List<HierarchyNode> nodes)
@@ -433,14 +434,15 @@ public class HierarchyViewer
     private const float ButtonMod = 60;
     private int dropTargetIdCounter = 0;
 
-    private void RenderContent(List<HierarchyNode> rootNodes)
+    private void RenderContent(List<HierarchyNode> rootNodes, float? maxHeight = null)
     {
         dropTargetIdCounter = 0;
 
         ImGui.SetNextItemWidth(-1);
         ImGui.InputTextWithHint("##search", "Search...", ref searchText, 256);
         ImGui.Separator();
-        ImGui.Columns(2, "HierarchyColumns", false);
+
+        ImGui.Columns(2, "HierarchyColumns", true);
         ImGui.SetColumnWidth(0, ImGui.GetWindowWidth() - ButtonMod);
         ImGui.Text("Name");
         ImGui.NextColumn();
@@ -448,10 +450,12 @@ public class HierarchyViewer
         ImGui.Separator();
         ImGui.Columns(1);
 
-        if (UseChildWindow)
+        if (UseChildWindow || maxHeight.HasValue)
         {
-            var childSize = ImGui.GetContentRegionAvail();
-            if (ImGui.BeginChild("HierarchyContent", childSize))
+            var childSize = maxHeight.HasValue
+                ? new Vector2(-1, maxHeight.Value)
+                : ImGui.GetContentRegionAvail();
+            if (ImGui.BeginChild("HierarchyContent", childSize, ImGuiChildFlags.Borders))
             {
                 ImGui.Columns(2, "HierarchyColumnsChild", false);
                 ImGui.SetColumnWidth(0, ImGui.GetWindowWidth() - ButtonMod);
@@ -897,7 +901,7 @@ public class HierarchyViewer
     /// <remarks>
     /// This property controls the visibility of the hierarchy window when using windowed rendering mode.
     /// When set to <c>false</c>, the <see cref="RenderWindow"/> method will not display the window.
-    /// This property has no effect when using the <see cref="Render()"/> method without windowing.
+    /// This property has no effect when using the <see cref="Render(float?)"/> method without windowing.
     /// </remarks>
     public bool IsWindowOpen
     {
