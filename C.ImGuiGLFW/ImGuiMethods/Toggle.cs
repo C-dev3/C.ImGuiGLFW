@@ -183,21 +183,21 @@ public static partial class ImGuiC
     /// </summary>
     /// <param name="label">The text label to display next to the radio button.</param>
     /// <param name="v">A reference to the boolean value that will be toggled when the radio button is clicked.</param>
-    /// <param name="activeColor">The color to use when the toggle is in the active (true) state. If null, defaults to magenta (16711935u).</param>
-    /// <param name="disableColor">The color to use when the toggle is in the inactive (false) state. If null, defaults to dark gray (4278190335u).</param>
+    /// <param name="activeColor">The color to use when the toggle is in the active (true) state. If null, defaults to green (0xFF00FF00u).</param>
+    /// <param name="disableColor">The color to use when the toggle is in the inactive (false) state. If null, defaults to red (0xFF0000FFu).</param>
     /// <returns>True if the toggle state was changed during this frame, false otherwise.</returns>
     /// <remarks>
     /// This method creates a radio button that visually represents a toggle state using different colors.
     /// The radio button always appears selected but changes color based on the boolean value.
     /// The color values are expected to be in packed ARGB uint format.
     /// The method temporarily overrides the ImGui frame background colors for the duration of the radio button.
-    /// Default colors: Active = 16711935u (magenta), Inactive = 4278190335u (dark gray).
+    /// Default colors: Active = 0xFF00FF00u (green), Inactive = 0xFF0000FFu (red).
     /// </remarks>
     public static bool ToggleRadio(string label, ref bool v, uint? activeColor = null, uint? disableColor = null)
     {
         bool changed = false;
-        activeColor ??= 16711935u;
-        disableColor ??= 4278190335u;
+        activeColor ??= 0xFF00FF00u;
+        disableColor ??= 0xFF0000FFu;
         var color = v ? activeColor.Value : disableColor.Value;
         ImGui.PushStyleColor(ImGuiCol.FrameBg, color);
         ImGui.PushStyleColor(ImGuiCol.FrameBgActive, color);
@@ -227,7 +227,7 @@ public static partial class ImGuiC
     /// Default colors: Active = EzColor.GreenBright, Inactive = EzColor.RedBright.
     /// This overload provides more convenient color specification using Vector4 values instead of packed uint values.
     /// </remarks>
-    public static bool ToggleRadio(string label, ref bool v, Vector4? activeColor = null, Vector4? disableColor = null)
+    public static bool ToggleRadioV4(string label, ref bool v, Vector4? activeColor = null, Vector4? disableColor = null)
     {
         activeColor ??= EzColor.GreenBright;
         disableColor ??= EzColor.RedBright;
