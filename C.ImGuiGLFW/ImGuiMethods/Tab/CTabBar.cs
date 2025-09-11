@@ -118,6 +118,29 @@ public static class CTabBar
     }
 
     /// <summary>
+    /// Creates a tab configuration with the specified title and content action for use with CTabBar.
+    /// </summary>
+    /// <param name="title">The display title for the tab.</param>
+    /// <param name="action">The action to execute when rendering the tab's content.</param>
+    /// <param name="draw">If true, includes this tab in the tab bar. If false, returns null for the title to skip this tab. Default is true.</param>
+    /// <returns>A tuple containing the tab title (or null if draw is false) and the content rendering action.</returns>
+    /// <remarks>
+    /// This helper method is designed to work with <see cref="CTabBar.BeginTabBar(string, Vector2, ValueTuple{string, Action}[])"/>
+    /// to easily create tab configurations. When draw is false, the returned null title will cause
+    /// the tab to be skipped during tab bar creation, allowing for conditional tab inclusion.
+    /// </remarks>
+    /// <example>
+    /// <code>
+    /// CTabBar.BeginTabBar("MyTabBar", default,
+    ///     CTabBar.Tab("Settings", DrawSettings),
+    ///     CTabBar.Tab("Debug", DrawDebug, debugMode),
+    ///     CTabBar.Tab("Help", DrawHelp)
+    /// );
+    /// </code>
+    /// </example>
+    public static (string?, Action) Tab(string title, Action action, bool draw = true) => (draw ? title : null, action);
+
+    /// <summary>
     /// Adds a tab with the specified title to the current tab bar.
     /// </summary>
     /// <param name="title">The display title for the tab.</param>
