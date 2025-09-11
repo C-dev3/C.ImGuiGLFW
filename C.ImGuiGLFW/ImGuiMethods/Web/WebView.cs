@@ -1,5 +1,4 @@
 ﻿using C.ImGuiGLFW.Data;
-using C.ImGuiGLFW.Extentions;
 using CefSharp;
 using CefSharp.Handler;
 using CefSharp.Internals;
