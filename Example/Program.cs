@@ -12,8 +12,8 @@ internal class Program
         ImGuiController.Initialize($"TESTWINDOW", 1280, 720, true, Module.Nodes, Module.Plot);
         ImGuiController.OnMainMenuBarRender += MainMenuBar;
         ImGuiController.OnChar += OnCharInput;
-        //ImGuiController.AddWindow(demoWindow);
-        ImGuiController.AddWindow(new WebViewDemo());
+        ImGuiController.AddWindow(demoWindow);
+        //ImGuiController.AddWindow(new WebViewDemo());
         ImGuiController.Run();
     }
 
