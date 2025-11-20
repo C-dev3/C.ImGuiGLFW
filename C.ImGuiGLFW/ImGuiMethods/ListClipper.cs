@@ -151,7 +151,7 @@ public class ListClipper : IEnumerable<(int, int)>, IDisposable
         this.columns = columns;
         rows = this.twoDimensional ? itemsCount : (int)MathF.Ceiling((float)itemsCount / this.columns);
         itemRemainder = !this.twoDimensional ? itemsCount % this.columns : 0;
-        clipper.Begin(itemsCount, itemsHeight);
+        clipper.Begin(rows, itemsHeight);
     }
 
     /// <summary>
