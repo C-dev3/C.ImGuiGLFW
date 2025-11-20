@@ -165,4 +165,13 @@ public delegate void OnJoystickCallback(int jid, int eventid);
 /// <param name="evnt">The monitor event code.</param>
 public delegate void OnMonitorCallback(int evnt);
 
+/// <summary>
+/// Represents a callback method that is invoked when the initialization process is completed.
+/// </summary>
+/// <remarks>
+/// This delegate is called after all initialization steps (GLFW, ImGui, OpenGL) have finished successfully,
+/// and before the main loop starts running.
+/// </remarks>
+public delegate void InitializeCompletedCallback();
+
 #endregion

@@ -442,6 +442,7 @@ public partial class ImGuiController
             InitializeImGui();
             InitializeOpenGL();
 
+            _initializeCompletedCallback?.Invoke();
             Log.Information("Initialization completed successfully");
 
             RunMainLoop();

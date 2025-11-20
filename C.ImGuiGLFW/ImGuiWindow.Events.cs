@@ -1,10 +1,26 @@
 ﻿using C.ImGuiGLFW.Events;
+using System.Runtime.CompilerServices;
 
 namespace C.ImGuiGLFW;
 
 public partial class ImGuiController
 {
 #pragma warning disable IDE1006
+    private static event InitializeCompletedCallback? _initializeCompletedCallback;
+    /// <summary>
+    /// Occurs when the initialization process is completed.
+    /// </summary>
+    /// <remarks>
+    /// This event is raised after all initialization steps (GLFW, ImGui, OpenGL) have finished successfully,
+    /// and before the main loop starts running. Subscribers can use this event to perform additional setup
+    /// or configuration that depends on the completed initialization.
+    /// </remarks>
+    public static event InitializeCompletedCallback OnInitializeCompleted
+    {
+        add => _initializeCompletedCallback += value;
+        remove => _initializeCompletedCallback -= value;
+    }
+
     private static event UpdateFrameCallback? _updateFrameCallback;
     /// <summary>
     /// Triggered during the update phase of the frame loop. Receives FrameEventArgs containing frame timing information.
@@ -238,6 +254,9 @@ public partial class ImGuiController
 
     private static void ClearAllEventHandlers()
     {
+        // InitializeCompleted event
+        _initializeCompletedCallback = null;
+
         // Frame events
         _updateFrameCallback = null;
         _renderFrameCallback = null;
