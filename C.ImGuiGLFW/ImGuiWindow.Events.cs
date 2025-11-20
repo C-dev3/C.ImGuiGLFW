@@ -1,5 +1,4 @@
 ﻿using C.ImGuiGLFW.Events;
-using System.Runtime.CompilerServices;
 
 namespace C.ImGuiGLFW;
 
