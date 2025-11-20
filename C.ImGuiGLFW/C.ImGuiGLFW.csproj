@@ -26,12 +26,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ImGuiMethods\MemoryEditor\**" />
-    <EmbeddedResource Remove="ImGuiMethods\MemoryEditor\**" />
-    <None Remove="ImGuiMethods\MemoryEditor\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="assets\NotoEmoji-Regular.ttf" />
   </ItemGroup>
 
