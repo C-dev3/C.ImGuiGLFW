@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="C.ImGuiGLFW/C.ImGuiGLFW.csproj" />
+  <Project Path="Example/Example.csproj" />
+</Solution>
