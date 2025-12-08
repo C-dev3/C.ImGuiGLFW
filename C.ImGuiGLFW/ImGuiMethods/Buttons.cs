@@ -2,7 +2,6 @@
 using C.ImGuiGLFW.Text.NotoEmojis;
 using C.ImGuiGLFW.Text.SeIcon;
 using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.Arm;
 
 namespace C.ImGuiGLFW.ImGuiMethods;
 
