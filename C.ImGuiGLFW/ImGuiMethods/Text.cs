@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using C.ImGuiGLFW.Text.FontAwesome;
+using System.Runtime.CompilerServices;
 
 namespace C.ImGuiGLFW.ImGuiMethods;
 
@@ -643,5 +644,69 @@ public static partial class ImGuiC
         var region = ImGui.GetContentRegionAvail() / 2f;
         ImGui.SetCursorPos(currentPos + region - size);
         ImGui.Text(text);
+    }
+
+    /// <summary>
+    /// Renders a FontAwesome icon using the default text color.
+    /// </summary>
+    /// <param name="icon">The FontAwesome icon to render.</param>
+    public static void Icon(FontAwesomeIcon icon) => IconWithText(ImGui.GetStyle().Colors[(int)ImGuiCol.Text], icon);
+
+    /// <summary>
+    /// Renders a FontAwesome icon with a specified color.
+    /// </summary>
+    /// <param name="col">The color to render the icon with.</param>
+    /// <param name="icon">The FontAwesome icon to render.</param>
+    public static void Icon(Vector4 col, FontAwesomeIcon icon) => IconWithText(col, icon);
+
+    /// <summary>
+    /// Renders a FontAwesome icon followed by text, both using the default text color.
+    /// </summary>
+    /// <param name="icon">The FontAwesome icon to render.</param>
+    /// <param name="text">The text to display after the icon.</param>
+    public static void IconWithText(FontAwesomeIcon icon, string text) => IconWithText(ImGui.GetStyle().Colors[(int)ImGuiCol.Text], icon, text);
+
+    /// <summary>
+    /// Renders a FontAwesome icon followed by text with a specified color.
+    /// </summary>
+    /// <param name="col">The color to render the icon and text with.</param>
+    /// <param name="icon">The FontAwesome icon to render.</param>
+    /// <param name="text">The text to display after the icon.</param>
+    public static void IconWithText(Vector4 col, FontAwesomeIcon icon, string text) => IconWithText(col, icon, text, null);
+
+    /// <summary>
+    /// Renders a FontAwesome icon with a tooltip using the default text color.
+    /// </summary>
+    /// <param name="icon">The FontAwesome icon to render.</param>
+    /// <param name="tooltip">The tooltip text to display when hovering over the icon.</param>
+    public static void IconWithTooltip(FontAwesomeIcon icon, string tooltip) => IconWithText(ImGui.GetStyle().Colors[(int)ImGuiCol.Text], icon, null, tooltip);
+
+    /// <summary>
+    /// Renders a FontAwesome icon with an optional tooltip using a specified color.
+    /// </summary>
+    /// <param name="col">The color to render the icon with.</param>
+    /// <param name="icon">The FontAwesome icon to render.</param>
+    /// <param name="tooltip">Optional tooltip text to display when hovering over the icon.</param>
+    public static void IconWithTooltip(Vector4 col, FontAwesomeIcon icon, string? tooltip = null) => IconWithText(col, icon, null, tooltip);
+
+    /// <summary>
+    /// Renders a FontAwesome icon with optional text and tooltip using a specified color.
+    /// This is the base implementation method that all other icon methods delegate to.
+    /// </summary>
+    /// <param name="col">The color to render the icon and text with.</param>
+    /// <param name="icon">The FontAwesome icon to render.</param>
+    /// <param name="text">Optional text to display after the icon on the same line.</param>
+    /// <param name="tooltip">Optional tooltip text to display when hovering over the icon.</param>
+    public static void IconWithText(Vector4 col, FontAwesomeIcon icon, string? text = null, string? tooltip = null)
+    {
+        ImGui.PushStyleColor(ImGuiCol.Text, col);
+        ImGui.TextUnformatted(icon.ToIconString());
+        ImGui.SameLine();
+        if (text != null)
+            ImGui.TextUnformatted(text);
+        ImGui.PopStyleColor();
+
+        if (tooltip != null)
+            Tooltip(tooltip);
     }
 }

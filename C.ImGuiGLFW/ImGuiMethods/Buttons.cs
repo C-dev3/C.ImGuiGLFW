@@ -2,8 +2,10 @@
 using C.ImGuiGLFW.Text.NotoEmojis;
 using C.ImGuiGLFW.Text.SeIcon;
 using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.Arm;
 
 namespace C.ImGuiGLFW.ImGuiMethods;
+
 public static partial class ImGuiC
 {
     private const string DefaultIconId = "CButton";
@@ -521,5 +523,326 @@ public static partial class ImGuiC
         Vector2 iconSize = ImGui.CalcTextSize(icon.ToIconString());
         var textSize = ImGui.CalcTextSize(text);
         return iconSize.X + textSize.X + (ImGui.GetStyle().FramePadding.X * 2) + 3f;
+    }
+
+    /// <summary>
+    /// Dictionary to store the expanded/collapsed state of collapsible headers.
+    /// Key is the header label, value indicates whether the header is expanded.
+    /// </summary>
+    private static readonly Dictionary<string, bool> CollapsibleHeaderStates = [];
+
+    /// <summary>
+    /// Renders a custom collapsible header with an optional icon and customizable text color.
+    /// </summary>
+    /// <param name="label">The text label displayed in the header.</param>
+    /// <param name="icon">Optional FontAwesome icon to display before the label.</param>
+    /// <param name="textColor">Optional custom color for the text. If not specified, uses default text color when expanded or disabled text color when collapsed.</param>
+    /// <returns>True if the header is expanded, false if collapsed.</returns>
+    /// <remarks>
+    /// The header state is persisted across calls using the CollapsibleHeaderStates dictionary.
+    /// The header displays a caret icon on the right side that changes based on expansion state.
+    /// Header has a fixed height of 30 pixels and responds to mouse hover and click interactions.
+    /// </remarks>
+    public static bool CollapsibleHeader(string label, FontAwesomeIcon? icon = null, uint? textColor = null)
+    {
+        var headerColor = ImGui.GetColorU32(ImGuiCol.Header);
+
+        string stateId = label;
+        if (!CollapsibleHeaderStates.ContainsKey(stateId))
+            CollapsibleHeaderStates[stateId] = false;
+
+        bool isExpanded = CollapsibleHeaderStates[stateId];
+
+        if (!textColor.HasValue)
+            textColor = isExpanded ? ImGui.GetColorU32(ImGuiCol.Text) : ImGui.GetColorU32(ImGuiCol.TextDisabled);
+
+        var drawList = ImGui.GetWindowDrawList();
+        var cursorPos = ImGui.GetCursorScreenPos();
+
+        float width = ImGui.GetContentRegionAvail().X;
+        const float height = 30;
+        bool isHovered = ImGui.IsMouseHoveringRect(cursorPos, new Vector2(cursorPos.X + width, cursorPos.Y + height));
+        bool isClicked = isHovered && ImGui.IsMouseClicked(ImGuiMouseButton.Left);
+
+        if (isClicked)
+        {
+            CollapsibleHeaderStates[stateId] = !CollapsibleHeaderStates[stateId];
+            isExpanded = CollapsibleHeaderStates[stateId];
+        }
+
+        if (isHovered)
+            headerColor = ImGui.GetColorU32(ImGuiCol.HeaderHovered);
+
+        drawList.AddRectFilled(cursorPos, new Vector2(cursorPos.X + width, cursorPos.Y + height), headerColor, 5.0f);
+
+        float textHeight = ImGui.CalcTextSize(label).Y;
+        float verticalPadding = (height - textHeight) / 2;
+
+        ImGui.SetCursorPosY(ImGui.GetCursorPosY() + verticalPadding);
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + 8);
+
+        if (icon.HasValue)
+        {
+            ImGui.PushStyleColor(ImGuiCol.Text, textColor.Value);
+            Icon(icon.Value);
+            ImGui.PopStyleColor();
+            ImGui.SameLine();
+        }
+        else
+        {
+            ImGui.SameLine();
+        }
+
+        ImGui.PushStyleColor(ImGuiCol.Text, textColor.Value);
+        ImGui.Text(label);
+        ImGui.PopStyleColor();
+
+        float iconSize = ImGui.CalcTextSize(FontAwesomeIcon.CaretDown.ToIconString()).X;
+        const float rightPadding = 10;
+
+        float iconXPos = cursorPos.X + width - iconSize - rightPadding;
+        float iconYPos = cursorPos.Y + verticalPadding;
+
+        ImGui.SetCursorScreenPos(new Vector2(iconXPos, iconYPos));
+        ImGui.PushStyleColor(ImGuiCol.Text, textColor.Value);
+        Icon(isExpanded ? FontAwesomeIcon.CaretSquareDown : FontAwesomeIcon.CaretSquareRight);
+        ImGui.PopStyleColor();
+
+        ImGui.SetCursorScreenPos(new Vector2(cursorPos.X, cursorPos.Y + height));
+        ImGui.Spacing();
+
+        return isExpanded;
+    }
+
+    private static readonly Dictionary<string, string> SeletionTabs = [];
+
+    /// <summary>
+    /// Renders a selectable menu item with a FontAwesome icon and maintains selection state within a group.
+    /// </summary>
+    /// <param name="icon">The FontAwesome icon to display before the label.</param>
+    /// <param name="label">The text label to display for this item.</param>
+    /// <param name="id">A unique identifier for this selectable item within its group.</param>
+    /// <param name="group">The selection group name. Items in the same group share selection state. Default is "defaultGroup".</param>
+    /// <param name="offset">The horizontal offset in pixels from the left edge. Default is 16.</param>
+    /// <returns>True if this item is currently selected; otherwise, false.</returns>
+    /// <remarks>
+    /// When selected, the item displays with an active header color and a colored vertical bar on the left edge.
+    /// The icon and label are positioned with appropriate spacing within the selectable area.
+    /// </remarks>
+    public static bool SelectableItem(FontAwesomeIcon icon, string label, string id, string group = "defaultGroup", int offset = 16)
+    {
+        if (!settingsTabs.ContainsKey(group)) SeletionTabs[group] = string.Empty;
+
+        bool isSelected = SeletionTabs[group] == id;
+
+        if (isSelected)
+        {
+            ImGui.PushStyleColor(ImGuiCol.Header, ImGui.GetColorU32(ImGuiCol.HeaderActive));
+        }
+
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + offset);
+
+        float width = ImGui.GetContentRegionAvail().X;
+
+        if(ImGui.Selectable($"##{id}", isSelected, ImGuiSelectableFlags.None, new Vector2(width, 25)))
+        {
+            SeletionTabs[group] = id;
+        }
+
+        if (isSelected)
+        {
+            ImGui.PopStyleColor();
+
+            var drawList = ImGui.GetWindowDrawList();
+            var rectMin = ImGui.GetItemRectMin();
+            var rectMax = ImGui.GetItemRectMax();
+
+            drawList.AddRectFilled(
+                rectMin,
+                new Vector2(rectMin.X + 3, rectMax.Y),
+                ImGui.GetColorU32(new Vector4(0.4f, 0.7f, 1.0f, 1.0f)));
+        }
+
+        float itemY = ImGui.GetItemRectMin().Y;
+
+        ImGui.SetCursorScreenPos(new Vector2(ImGui.GetItemRectMin().X + 8, itemY + 4));
+
+        Icon(icon);
+        ImGui.SameLine();
+        ImGui.Text(label);
+
+        ImGui.Dummy(new Vector2(0, 2));
+
+        return isSelected;
+    }
+
+    /// <summary>
+    /// Renders a selectable menu item with a texture image and maintains selection state within a group.
+    /// </summary>
+    /// <param name="texture">The texture image to display before the label. Can be null if no image should be shown.</param>
+    /// <param name="label">The text label to display for this item.</param>
+    /// <param name="id">A unique identifier for this selectable item within its group.</param>
+    /// <param name="group">The selection group name. Items in the same group share selection state. Default is "defaultGroup".</param>
+    /// <param name="offset">The horizontal offset in pixels from the left edge. Default is 16.</param>
+    /// <returns>True if this item is currently selected; otherwise, false.</returns>
+    /// <remarks>
+    /// When selected, the item displays with an active header color.
+    /// If a texture is provided, it is drawn at 25x25 pixels with vertical centering.
+    /// The texture and label are positioned with appropriate spacing within the selectable area.
+    /// </remarks>
+    public static bool SelectableItem(Texture? texture, string label, string id, string group = "defaultGroup", int offset = 16)
+    {
+        if (!settingsTabs.ContainsKey(group)) SeletionTabs[group] = string.Empty;
+
+        bool isSelected = SeletionTabs[group] == id;
+
+        if (isSelected)
+        {
+            ImGui.PushStyleColor(ImGuiCol.Header, ImGui.GetColorU32(ImGuiCol.HeaderActive));
+        }
+
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + offset);
+
+        float width = ImGui.GetContentRegionAvail().X;
+
+        if(ImGui.Selectable($"##{id}", isSelected, ImGuiSelectableFlags.None, new Vector2(width, 25)))
+        {
+            SeletionTabs[group] = id;
+        }
+
+        if (isSelected)
+        {
+            ImGui.PopStyleColor();
+        }
+
+        float itemY = ImGui.GetItemRectMin().Y;
+
+        ImGui.SetCursorScreenPos(new Vector2(ImGui.GetItemRectMin().X + 8, itemY + 2));
+
+        if (texture != null)
+        {
+            Vector2 imageSize = new(25);
+            float imageYOffset = (25 - imageSize.Y) / 2;
+            ImGui.SetCursorScreenPos(new Vector2(ImGui.GetCursorScreenPos().X, ImGui.GetCursorScreenPos().Y + imageYOffset));
+            texture.Draw(imageSize, maxSize: 25f);
+        }
+
+        ImGui.SameLine();
+        ImGui.Text(label);
+
+        ImGui.Dummy(new Vector2(0, 2));
+
+        return isSelected;
+    }
+
+    /// <summary>
+    /// Dictionary tracking the expanded/collapsed state of settings tabs by their category ID.
+    /// </summary>
+    private static readonly Dictionary<string, bool> settingsTabs = [];
+    private static readonly Dictionary<string, string> categoryTabGroups = [];
+
+    /// <summary>
+    /// Creates a clickable category tab button with optional icon, managing exclusive selection state.
+    /// Only one tab can be expanded at a time - clicking a tab collapses all others.
+    /// </summary>
+    /// <param name="label">The text label to display on the button.</param>
+    /// <param name="categoryId">Unique identifier for this category tab, used to track its expanded state.</param>
+    /// <param name="group">The tab group name. Items in the same group share tab state. Default is "defaultGroup".</param>
+    /// <param name="icon">Optional FontAwesome icon to display before the label.</param>
+    /// <param name="texture"></param>
+    /// <param name="spacing">Horizontal spacing in pixels to add after the button. Default is 5.</param>
+    /// <returns>True if this tab is currently expanded/selected, false otherwise.</returns>
+    public static bool CategoryTabButton(string label, string categoryId, string group = "defaultGroup", FontAwesomeIcon? icon = null, Texture? texture = null, float spacing = 5)
+    {
+        var headerColor = ImGui.GetColorU32(ImGuiCol.Button);
+
+        const float horizontalPadding = 8;
+        const float verticalPadding = 4;
+        const float iconTextSpacing = 4;
+
+        var drawList = ImGui.GetWindowDrawList();
+        var cursorPos = ImGui.GetCursorScreenPos();
+
+        var textSize = ImGui.CalcTextSize(label);
+
+        float iconWidth = 0;
+        if (icon.HasValue)
+        {
+            iconWidth = textSize.Y + iconTextSpacing;
+        }
+
+        float contentWidth = horizontalPadding * 2 + iconWidth + textSize.X;
+        float contentHeight = verticalPadding * 2 + textSize.Y;
+
+        if (!categoryTabGroups.ContainsKey(group))
+            categoryTabGroups[group] = string.Empty;
+
+        if (!settingsTabs.ContainsKey(categoryId))
+            settingsTabs[categoryId] = false;
+
+        bool isExpanded = categoryTabGroups[group] == categoryId && settingsTabs[categoryId];
+        bool isHovered = ImGui.IsMouseHoveringRect(cursorPos, new Vector2(cursorPos.X + contentWidth, cursorPos.Y + contentHeight))
+                      && ImGui.IsWindowHovered(ImGuiHoveredFlags.AllowWhenBlockedByPopup | ImGuiHoveredFlags.ChildWindows);
+        bool isClicked = isHovered && ImGui.IsMouseClicked(ImGuiMouseButton.Left);
+
+        if (isClicked)
+        {
+            if (categoryTabGroups[group] != string.Empty)
+            {
+                var previousId = categoryTabGroups[group];
+                if (settingsTabs.ContainsKey(previousId))
+                    settingsTabs[previousId] = false;
+            }
+
+            categoryTabGroups[group] = categoryId;
+            settingsTabs[categoryId] = true;
+            isExpanded = true;
+        }
+
+        if (isExpanded)
+            headerColor = ImGui.GetColorU32(ImGuiCol.TabSelected);
+        if (isHovered)
+            headerColor = ImGui.GetColorU32(ImGuiCol.TabHovered);
+
+        drawList.AddRectFilled(cursorPos, new Vector2(cursorPos.X + contentWidth, cursorPos.Y + contentHeight), headerColor, 5.0f);
+
+        if (texture != null)
+        {
+            ImGui.SetCursorScreenPos(new Vector2(cursorPos.X + horizontalPadding, cursorPos.Y + verticalPadding));
+            texture.Draw(new Vector2(textSize.Y * 1.2f, textSize.Y * 1.2f), maxSize: textSize.Y * 1.2f);
+
+            ImGui.SetCursorScreenPos(new Vector2(cursorPos.X + horizontalPadding + textSize.Y * 1.2f + iconTextSpacing, cursorPos.Y + verticalPadding));
+            ImGui.TextUnformatted(label);
+        }
+        else if (icon.HasValue)
+        {
+            ImGui.SetCursorScreenPos(new Vector2(cursorPos.X + horizontalPadding, cursorPos.Y + verticalPadding));
+            ImGui.TextUnformatted(icon.Value.ToIconString());
+
+            ImGui.SetCursorScreenPos(new Vector2(cursorPos.X + horizontalPadding + textSize.Y + iconTextSpacing, cursorPos.Y + verticalPadding));
+            ImGui.TextUnformatted(label);
+        }
+        else
+        {
+            ImGui.SetCursorScreenPos(new Vector2(cursorPos.X + horizontalPadding, cursorPos.Y + verticalPadding));
+            ImGui.TextUnformatted(label);
+        }
+
+        ImGui.SetCursorScreenPos(cursorPos);
+        ImGui.InvisibleButton($"##{categoryId}_btn", new Vector2(contentWidth, contentHeight));
+
+        ImGui.SameLine(0, spacing);
+
+        return isExpanded;
+    }
+
+    /// <summary>
+    /// Ends the category tab button row by adding a new line and separator.
+    /// Should be called after rendering all tab buttons in a group.
+    /// </summary>
+    public static void EndCategoryTabButton()
+    {
+        ImGui.NewLine();
+        ImGui.Separator();
     }
 }
