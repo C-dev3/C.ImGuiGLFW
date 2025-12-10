@@ -500,4 +500,24 @@ public static partial class ImGuiC
     /// and adding the modification value. Useful for creating responsive layouts or reserving space for other UI elements.
     /// </remarks>
     public static float GetContentRegionHeightAvail(float percent = 1.0f, float mod = 0) => ImGui.GetContentRegionAvail().Y * percent + mod;
+
+    /// <summary>
+    /// Takes a screenshot of the current viewport and saves it to the specified file path.
+    /// </summary>
+    /// <param name="filePath">The file path where the screenshot will be saved.</param>
+    /// <param name="x">The X coordinate of the top-left corner of the capture region. Default is 0.</param>
+    /// <param name="y">The Y coordinate of the top-left corner of the capture region. Default is 0.</param>
+    /// <param name="width">The width of the capture region. If null, captures to the right edge of the viewport.</param>
+    /// <param name="height">The height of the capture region. If null, captures to the bottom edge of the viewport.</param>
+    public static void TakeViewportScreenshot(string filePath, int x = 0, int y = 0, int? width = null, int? height = null) => ImGuiController.RequestViewportScreenshot(filePath, x, y, width, height);
+
+    /// <summary>
+    /// Takes a screenshot of the main viewport and saves it to the specified file path.
+    /// </summary>
+    /// <param name="filePath">The file path where the screenshot will be saved.</param>
+    /// <param name="x">The X coordinate of the top-left corner of the capture region. Default is 0.</param>
+    /// <param name="y">The Y coordinate of the top-left corner of the capture region. Default is 0.</param>
+    /// <param name="width">The width of the capture region. If null, captures to the right edge of the main viewport.</param>
+    /// <param name="height">The height of the capture region. If null, captures to the bottom edge of the main viewport.</param>
+    public static void TakeMainViewportScreenshot(string filePath, int x = 0, int y = 0, int? width = null, int? height = null) => ImGuiController.RequestMainViewportScreenshot(filePath, x, y, width, height);
 }

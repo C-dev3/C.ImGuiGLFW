@@ -5,6 +5,8 @@ using Hexa.NET.ImNodes;
 using Hexa.NET.ImPlot;
 using Hexa.NET.ImPlot3D;
 using Serilog;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using GLFWwindowPtr = Hexa.NET.GLFW.GLFWwindowPtr;
@@ -29,6 +31,8 @@ internal class ImGuiManager
     private readonly WindowSettings windowSettings;
 
     internal ImGuiIOPtr iOPtr = null;
+
+    internal static readonly Queue<CaptureRequest> _pendingCapture = [];
 
     internal bool navEnableKeyboardChanged = false;
     internal bool navEnableGamepadChanged = false;
@@ -161,7 +165,7 @@ internal class ImGuiManager
             count++;
         }
 
-        if(Modules.Any(x => x is Module.All or Module.Plot3D))
+        if (Modules.Any(x => x is Module.All or Module.Plot3D))
         {
             ImPlot3D.SetImGuiContext(guiContext);
             plot3DContextPtr = ImPlot3D.CreateContext();
@@ -203,6 +207,8 @@ internal class ImGuiManager
         }
 
         GL.SwapBuffers();
+
+        ProcessPendingCapture();
     }
 
     private void CleanupModules()
@@ -285,5 +291,54 @@ internal class ImGuiManager
             else iOPtr.ConfigFlags &= ~ImGuiConfigFlags.DockingEnable;
             dockingEnableChanged = false;
         }
+    }
+
+    private void ProcessPendingCapture()
+    {
+        if (_pendingCapture.Count == 0) return;
+
+        const int maxXapturesPerFrame = 10;
+        int processedCount = 0;
+
+        while (_pendingCapture.Count > 0 && processedCount < maxXapturesPerFrame)
+        {
+            var capture = _pendingCapture.Dequeue();
+            processedCount++;
+
+            try
+            {
+                ImGuiViewportPtr targetViewport = Utility.FindViewport(capture.ViewportID);
+                if (targetViewport.IsNull)
+                {
+#if DEBUG
+                    Log.Error($"Viewport {capture.ViewportID} not found, skipping capture.");
+#endif
+                    continue;
+                }
+
+                bool contextSwitched = false;
+                if (capture.ViewportID != ImGui.GetMainViewport().ID)
+                {
+                    contextSwitched = Utility.SetViewportContext(targetViewport);
+                }
+
+                byte[] pixels = Utility.CaptureFramebuffer(capture.X, capture.Y, capture.Width, capture.Height, targetViewport);
+
+                using var image = Image.LoadPixelData<Rgba32>(pixels, capture.Width, capture.Height);
+                image.Save(capture.filePath);
+
+                if (contextSwitched) GL.MakeCurrent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Screenshot failed for {capture.filePath}: {ex.Message}");
+            }
+        }
+
+#if DEBUG
+        if (_pendingCapture.Count > 0)
+            Log.Verbose($"Remaining captures: {_pendingCapture.Count} (will process next frame)");
+#endif
+
     }
 }

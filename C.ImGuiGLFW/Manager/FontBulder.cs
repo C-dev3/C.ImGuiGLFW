@@ -151,7 +151,7 @@ public unsafe class FontBuilder
 
     private FontBuilder() { }
 
-    internal static FontBuilder Create() => new FontBuilder();
+    internal static FontBuilder Create() => new();
 
     /// <summary>
     /// Gets or sets a value indicating whether to add the Noto Sans Japanese font.
@@ -299,11 +299,10 @@ public unsafe class FontBuilder
     /// </summary>
     /// <param name="fontData">A read-only span containing the TTF font data.</param>
     /// <param name="size">The size of the font in pixels.</param>
-    /// <param name="glyphRanges">A read-only span containing the Unicode ranges of glyphs to include.</param>
     /// <remarks>
     /// This method allows loading fonts directly from memory without requiring file system access.
     /// </remarks>
-    public void AddFontFromMemoryTTF(ReadOnlySpan<byte> fontData, float size, ReadOnlySpan<uint> glyphRanges) => fontConfigs.Add(new FontConfig(FontType.Memory, fontData.ToArray(), size));
+    public void AddFontFromMemoryTTF(ReadOnlySpan<byte> fontData, float size) => fontConfigs.Add(new FontConfig(FontType.Memory, fontData.ToArray(), size));
 
     /// <summary>
     /// Adds a font from a TTF file on disk.

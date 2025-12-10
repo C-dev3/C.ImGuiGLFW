@@ -537,6 +537,7 @@ public partial class ImGuiController
     public static uint GetPixelColorUInt32(int x, int y)
     {
         Span<byte> pixel = stackalloc byte[4];
+        Instance.GL.PixelStorei(GLPixelStoreParameter.PackAlignment, 1);
         Instance.GL.ReadPixels(x, y, 1, 1, GLPixelFormat.Rgba, GLPixelType.UnsignedByte, pixel);
         return (uint)(pixel[3] << 24 | pixel[2] << 16 | pixel[1] << 8 | pixel[0]);
     }
@@ -593,6 +594,7 @@ public partial class ImGuiController
     public static byte[] ReadPixelRegionBytes(int x, int y, int width, int height)
     {
         byte[] pixels = new byte[width * height * 4];
+        Instance.GL.PixelStorei(GLPixelStoreParameter.PackAlignment, 1);
         Instance.GL.ReadPixels(x, y, width, height, GLPixelFormat.Rgba, GLPixelType.UnsignedByte, pixels.AsSpan());
         return pixels;
     }

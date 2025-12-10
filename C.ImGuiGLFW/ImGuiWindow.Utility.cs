@@ -1,4 +1,5 @@
-﻿using Hexa.NET.GLFW;
+﻿using C.ImGuiGLFW.Manager;
+using Hexa.NET.GLFW;
 using Serilog;
 
 namespace C.ImGuiGLFW;
@@ -50,5 +51,55 @@ public partial class ImGuiController
             Log.Error(ex, "Failed to get monitor index");
             return -1;
         }
+    }
+
+    internal static void RequestViewportScreenshot(string filePath, int x = 0, int y = 0, int? width = null, int? height = null)
+    {
+        if (string.IsNullOrWhiteSpace(filePath)) throw new ArgumentException("File must be not null");
+
+        ImGuiViewportPtr viewport = ImGui.GetWindowViewport();
+
+        int viewportWidth = (int)viewport.Size.X;
+        int viewportHeight = (int)viewport.Size.Y;
+
+        int captureWidth = width ?? viewportWidth;
+        int captureHeight = height ?? viewportHeight;
+
+        Utility.ValidateRegion(x, y, captureWidth, captureHeight, viewportWidth, viewportHeight, "Viewport");
+
+        ImGuiManager._pendingCapture.Enqueue(new CaptureRequest()
+        {
+            filePath = filePath,
+            ViewportID = viewport.ID,
+            X = x,
+            Y = y,
+            Width = captureWidth,
+            Height = captureHeight,
+        });
+    }
+
+    internal static void RequestMainViewportScreenshot(string filePath, int x = 0, int y = 0, int? width = null, int? height = null)
+    {
+        if (string.IsNullOrWhiteSpace(filePath)) throw new ArgumentException("File must be not null");
+
+        ImGuiViewportPtr viewport = ImGui.GetMainViewport();
+
+        int viewportWidth = (int)viewport.Size.X;
+        int viewportHeight = (int)viewport.Size.Y;
+
+        int captureWidth = width ?? viewportWidth;
+        int captureHeight = height ?? viewportHeight;
+
+        Utility.ValidateRegion(x, y, captureWidth, captureHeight, viewportWidth, viewportHeight, "MainViewport");
+
+        ImGuiManager._pendingCapture.Enqueue(new CaptureRequest()
+        {
+            filePath = filePath,
+            ViewportID = viewport.ID,
+            X = x,
+            Y = y,
+            Width = captureWidth,
+            Height = captureHeight,
+        });
     }
 }

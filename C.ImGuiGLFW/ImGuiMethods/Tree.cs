@@ -35,9 +35,9 @@ public static partial class ImGuiC
     {
         ImGui.PushID("CollapsingHeaderHelperTable");
         ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, Vector2.Zero);
-        if (ImGui.BeginTable($"{name}", 1, ImGuiTableFlags.Borders | ImGuiTableFlags.NoSavedSettings))
+        if (ImGui.BeginTable(name, 1, ImGuiTableFlags.Borders | ImGuiTableFlags.NoSavedSettings))
         {
-            ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch);
+            ImGui.TableSetupColumn(string.Empty, ImGuiTableColumnFlags.WidthStretch);
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
             var ret = TreeNode(name, ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.Selected | extraFlags);

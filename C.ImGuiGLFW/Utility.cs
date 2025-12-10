@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Hexa.NET.GLFW;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace C.ImGuiGLFW;
 
@@ -73,5 +75,91 @@ public static class Utility
             return 0;
 
         return (right - left) * (bottom - top);
+    }
+
+    internal static void FlipVerticallyBytes(byte[] pixels, int width, int height)
+    {
+        const int comp = 4; // RGBA
+        int stride = width * comp;
+        byte[] lineTmp = new byte[stride];
+
+        int lineA = 0;
+        int lineB = stride * (height - 1);
+
+        while (lineA < lineB)
+        {
+            Array.Copy(pixels, lineA, lineTmp, 0, stride);
+            Array.Copy(pixels, lineB, pixels, lineA, stride);
+            Array.Copy(lineTmp, 0, pixels, lineB, stride);
+
+            lineA += stride;
+            lineB -= stride;
+        }
+    }
+
+    internal static unsafe bool SetViewportContext(ImGuiViewportPtr viewport)
+    {
+        if ((IntPtr)viewport.PlatformHandle != IntPtr.Zero)
+        {
+            GLFW.MakeContextCurrent((GLFWwindowPtr)viewport.PlatformHandle);
+            return true;
+        }
+        return false;
+    }
+
+    internal static unsafe byte[] CaptureFramebuffer(int x, int y, int width, int height, ImGuiViewportPtr viewport)
+    {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            Thread.Sleep(1);
+        }
+
+        int viewportHeight = (int)viewport.Size.Y;
+        int y2 = viewportHeight - (y + height);
+
+        byte[] pixels = ImGuiController.ReadPixelRegionBytes(x, y2, width, height);
+
+        FlipVerticallyBytes(pixels, width, height);
+        return pixels;
+    }
+
+    internal static ImGuiViewportPtr FindViewport(uint viewportID)
+    {
+        unsafe
+        {
+            ImGuiPlatformIOPtr platformIO = ImGui.GetPlatformIO();
+
+            for (int i = 0; i < platformIO.Viewports.Size; i++)
+            {
+                if (viewportID == platformIO.Viewports[i].ID)
+                    return platformIO.Viewports[i];
+            }
+        }
+
+        return default;
+    }
+
+    internal static void ValidateRegion(int x, int y, int width, int height, int maxWidth, int maxHeight, string regionName)
+    {
+        if (x < 0)
+            throw new ArgumentOutOfRangeException(nameof(x), $"X coordinate must be 0 or greater: {x}");
+        if (y < 0)
+            throw new ArgumentOutOfRangeException(nameof(y), $"Y coordinate must be 0 or greater: {y}");
+        if (width <= 0)
+            throw new ArgumentOutOfRangeException(nameof(width), $"Width must be 1 or greater: {width}");
+        if (height <= 0)
+            throw new ArgumentOutOfRangeException(nameof(height), $"Height must be 1 or greater: {height}");
+        if (x >= maxWidth)
+            throw new ArgumentOutOfRangeException(nameof(x),
+                $"X coordinate is outside the {regionName} bounds: x={x}, {regionName} width={maxWidth}");
+        if (y >= maxHeight)
+            throw new ArgumentOutOfRangeException(nameof(y),
+                $"Y coordinate is outside the {regionName} bounds: y={y}, {regionName} height={maxHeight}");
+        if (x + width > maxWidth)
+            throw new ArgumentOutOfRangeException(nameof(width),
+                $"Crop region exceeds {regionName} width: x={x}, width={width}, {regionName} width={maxWidth}");
+        if (y + height > maxHeight)
+            throw new ArgumentOutOfRangeException(nameof(height),
+                $"Crop region exceeds {regionName} height: y={y}, height={height}, {regionName} height={maxHeight}");
     }
 }
