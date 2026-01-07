@@ -41,6 +41,11 @@ public abstract class Window
     public bool? Collapsed { get; set; } = null;
 
     /// <summary>
+    /// Gets or sets a value indicating whether the window is maximized.
+    /// </summary>
+    public bool? IsMaximized { get; set; }
+
+    /// <summary>
     /// Gets or sets the condition under which the window collapsed state should be applied.
     /// </summary>
     public ImGuiCond CollapsedCondition { get; set; } = ImGuiCond.None;
@@ -127,7 +132,7 @@ public abstract class Window
 
                 try
                 {
-                    if (ViewportID.HasValue) ImGui.SetNextWindowViewport(ViewportID.Value);
+                    ApplyPreConditions();
 
                     PreDraw();
                 }
@@ -174,6 +179,19 @@ public abstract class Window
         if (WindowSize.HasValue) ImGui.SetNextWindowSize(WindowSize.Value, SizeCondition);
         if (Collapsed.HasValue) ImGui.SetNextWindowCollapsed(Collapsed.Value, CollapsedCondition);
         if (WindowSizeConstraints.HasValue) ImGui.SetNextWindowSizeConstraints(WindowSizeConstraints.Value.MinSize, WindowSizeConstraints.Value.MaxSize);
+    }
+
+    private void ApplyPreConditions()
+    {
+        if (ViewportID.HasValue) ImGui.SetNextWindowViewport(ViewportID.Value);
+        if (IsMaximized.HasValue && IsMaximized.Value) SetWindowMaximize();
+    }
+
+    private void SetWindowMaximize()
+    {
+        var mainViewport = ImGui.GetMainViewport();
+        WindowSize = mainViewport.WorkSize;
+        Position = mainViewport.WorkPos;
     }
 
     /// <summary>
