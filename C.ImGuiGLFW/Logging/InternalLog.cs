@@ -176,14 +176,11 @@ public class InternalLog
     private static readonly Vector4 WarningColor = new(1f, 0.709f, 0f, 1f);
     private static readonly Vector4 DebugColor = new(0.7f, 0.7f, 0.7f, 1f);
 
-    private static Vector4 GetTextColor(LogEventLevel level)
+    private static Vector4 GetTextColor(LogEventLevel level) => level switch
     {
-        return level switch
-        {
-            LogEventLevel.Error => ErrorColor,
-            LogEventLevel.Warning => WarningColor,
-            LogEventLevel.Debug or LogEventLevel.Verbose => DebugColor,
-            _ => EzColor.White,
-        };
-    }
+        LogEventLevel.Error => ErrorColor,
+        LogEventLevel.Warning => WarningColor,
+        LogEventLevel.Debug or LogEventLevel.Verbose => DebugColor,
+        _ => EzColor.White,
+    };
 }

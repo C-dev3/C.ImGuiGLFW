@@ -125,7 +125,7 @@ public static class CTabBar
     /// <param name="draw">If true, includes this tab in the tab bar. If false, returns null for the title to skip this tab. Default is true.</param>
     /// <returns>A tuple containing the tab title (or null if draw is false) and the content rendering action.</returns>
     /// <remarks>
-    /// This helper method is designed to work with <see cref="CTabBar.BeginTabBar(string, Vector2, ValueTuple{string, Action}[])"/>
+    /// This helper method is designed to work with <see cref="BeginTabBar(string, Vector2, ValueTuple{string, Action}[])"/>
     /// to easily create tab configurations. When draw is false, the returned null title will cause
     /// the tab to be skipped during tab bar creation, allowing for conditional tab inclusion.
     /// </remarks>

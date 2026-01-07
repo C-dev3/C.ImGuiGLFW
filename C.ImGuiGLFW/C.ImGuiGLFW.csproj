@@ -62,7 +62,7 @@
   <ItemGroup>
     <PackageReference Include="CefSharp.Common.NETCore" Version="137.0.100" />
     <PackageReference Include="CefSharp.OffScreen.NETCore" Version="137.0.100" />
-    <PackageReference Include="Hexa.NET.GLFW" Version="1.0.4" />
+    <PackageReference Include="Hexa.NET.GLFW" Version="1.0.5" />
     <PackageReference Include="Hexa.NET.ImGui" Version="2.2.10-prerelease" />
     <PackageReference Include="Hexa.NET.ImGui.Backends" Version="1.0.19-prerelease" />
     <PackageReference Include="Hexa.NET.ImGui.Backends.GLFW" Version="1.0.19-prerelease" />
@@ -74,7 +74,7 @@
     <PackageReference Include="Hexa.NET.ImPlot3D" Version="2.2.10-prerelease" />
     <PackageReference Include="Hexa.NET.OpenGL.Core" Version="1.1.0" />
     <PackageReference Include="Hexa.NET.OpenGL4" Version="1.1.0" />
-    <PackageReference Include="Hexa.NET.Utilities" Version="2.2.5" />
+    <PackageReference Include="Hexa.NET.Utilities" Version="2.2.8" />
     <PackageReference Include="MaterialColorUtilities" Version="0.3.0" />
     <PackageReference Include="Serilog" Version="4.3.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />

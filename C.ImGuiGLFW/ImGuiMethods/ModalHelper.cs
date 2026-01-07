@@ -23,16 +23,13 @@ public static class ModalHelper
     /// <remarks>
     /// This modal is used for informational purposes and only provides an OK button to dismiss it.
     /// </remarks>
-    public static void ShowModal(string title, string message, Action? onOk = null)
+    public static void ShowModal(string title, string message, Action? onOk = null) => _modalQueue.Enqueue(new ModalData
     {
-        _modalQueue.Enqueue(new ModalData
-        {
-            Title = title,
-            Message = message,
-            OnConfirm = onOk,
-            Type = ModalType.Simple
-        });
-    }
+        Title = title,
+        Message = message,
+        OnConfirm = onOk,
+        Type = ModalType.Simple
+    });
 
     /// <summary>
     /// Displays a confirmation modal dialog with OK and Cancel buttons.
@@ -44,17 +41,14 @@ public static class ModalHelper
     /// <remarks>
     /// This modal is useful for confirming user decisions with explicit confirmation or cancellation.
     /// </remarks>
-    public static void ShowConfirmation(string title, string message, Action? onConfirm = null, Action? onCancel = null)
+    public static void ShowConfirmation(string title, string message, Action? onConfirm = null, Action? onCancel = null) => _modalQueue.Enqueue(new ModalData
     {
-        _modalQueue.Enqueue(new ModalData
-        {
-            Title = title,
-            Message = message,
-            OnConfirm = onConfirm,
-            OnCancel = onCancel,
-            Type = ModalType.Confirmation
-        });
-    }
+        Title = title,
+        Message = message,
+        OnConfirm = onConfirm,
+        OnCancel = onCancel,
+        Type = ModalType.Confirmation
+    });
 
     /// <summary>
     /// Displays an input modal dialog that allows the user to enter text.
@@ -67,18 +61,15 @@ public static class ModalHelper
     /// <remarks>
     /// This modal allows for text input and returns the entered value when confirmed.
     /// </remarks>
-    public static void ShowInputModal(string title, string message, string defaultValue = "", Action<string>? onInput = null, int maxLength = 100)
+    public static void ShowInputModal(string title, string message, string defaultValue = "", Action<string>? onInput = null, int maxLength = 100) => _modalQueue.Enqueue(new ModalData
     {
-        _modalQueue.Enqueue(new ModalData
-        {
-            Title = title,
-            Message = message,
-            InputValue = defaultValue,
-            OnInput = onInput,
-            MaxLength = maxLength,
-            Type = ModalType.Input
-        });
-    }
+        Title = title,
+        Message = message,
+        InputValue = defaultValue,
+        OnInput = onInput,
+        MaxLength = maxLength,
+        Type = ModalType.Input
+    });
 
     /// <summary>
     /// Displays an input modal dialog that allows the user to enter an integer number.
@@ -90,17 +81,14 @@ public static class ModalHelper
     /// <remarks>
     /// This modal is intended for numerical input and returns the entered number when confirmed.
     /// </remarks>
-    public static void ShowInputNumberModal(string title, string message, int defaultValue = 0, Action<int>? onInputNum = null)
+    public static void ShowInputNumberModal(string title, string message, int defaultValue = 0, Action<int>? onInputNum = null) => _modalQueue.Enqueue(new ModalData
     {
-        _modalQueue.Enqueue(new ModalData
-        {
-            Title = title,
-            Message = message,
-            InputNumber = defaultValue,
-            OnInputNum = onInputNum,
-            Type = ModalType.InputNum
-        });
-    }
+        Title = title,
+        Message = message,
+        InputNumber = defaultValue,
+        OnInputNum = onInputNum,
+        Type = ModalType.InputNum
+    });
 
     /// <summary>
     /// Displays a custom modal dialog with user-defined content rendering.
@@ -112,17 +100,14 @@ public static class ModalHelper
     /// <remarks>
     /// This modal allows for fully custom content rendering using ImGui calls.
     /// </remarks>
-    public static void ShowCustomModal(string title, Action<bool> renderContent, float width = 0, float height = 0)
+    public static void ShowCustomModal(string title, Action<bool> renderContent, float width = 0, float height = 0) => _modalQueue.Enqueue(new ModalData
     {
-        _modalQueue.Enqueue(new ModalData
-        {
-            Title = title,
-            RenderContent = renderContent,
-            Width = width,
-            Height = height,
-            Type = ModalType.Custom
-        });
-    }
+        Title = title,
+        RenderContent = renderContent,
+        Width = width,
+        Height = height,
+        Type = ModalType.Custom
+    });
 
     /// <summary>
     /// Renders the queued modals in sequence. Only one modal is displayed at a time.

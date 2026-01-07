@@ -329,4 +329,84 @@ public static partial class ImGuiC
 
         ImGui.Dummy(new Vector2(radius * 2, radius * 2));
     }
+
+    /// <summary>
+    /// Renders a customizable progress bar with gradient colors and optional overcap display.
+    /// </summary>
+    /// <param name="label">The text label displayed above the progress bar.</param>
+    /// <param name="fraction">The progress value. Values 0-1 show normal progress. Values above 1 display overcap color overlay.</param>
+    /// <param name="size">The size of the progress bar. If default, uses available content region width with 10px height.</param>
+    /// <param name="bgColor">The background color in ABGR format. Default is dark gray (0xFF262626).</param>
+    /// <param name="color1">The starting gradient color in ABGR format. Default is blue (0xFFFF9933).</param>
+    /// <param name="color2">The ending gradient color in ABGR format. Default is green (0xFFCCFF99).</param>
+    /// <param name="overcapColor">The color used for progress beyond 100% in ABGR format. Default is gold (0xFF00D6FF).</param>
+    /// <remarks>
+    /// The progress bar uses a horizontal gradient from color1 to color2 for the filled portion.
+    /// When fraction exceeds 1.0, the bar fills completely with the gradient, then overlays
+    /// the overcap portion (from 0% to the excess amount) with the overcapColor.
+    /// All color values use ABGR (Alpha-Blue-Green-Red) format as required by ImGui.
+    /// </remarks>
+    public static void GradientProgressBar(string label, float fraction, Vector2 size = default, uint bgColor = 0xFF262626, uint color1 = 0xFFFF9933, uint color2 = 0xFFCCFF99, uint overcapColor = 0xFF00D6FF)
+    {
+        if (size == default)
+        {
+            size = new Vector2(GetContentRegionWidthAvail(), 10f);
+        }
+
+        ImGui.Text(label);
+
+        var pos = ImGui.GetCursorScreenPos();
+        var drawList = ImGui.GetWindowDrawList();
+
+        var barStart = pos;
+        var barEnd = new Vector2(pos.X + size.X, pos.Y + size.Y);
+
+        drawList.AddRectFilled(barStart, barEnd, bgColor);
+
+        if (fraction <= 1)
+        {
+            float fr = Math.Clamp(fraction, 0, 1);
+            float filledWidth = size.X * fr;
+
+            if (filledWidth > 0f)
+            {
+                var filledEnd = new Vector2(pos.X + filledWidth, pos.Y + size.Y);
+
+                drawList.AddRectFilledMultiColor(
+                    barStart,
+                    filledEnd,
+                    color1,
+                    color2,
+                    color2,
+                    color1);
+            }
+        }
+        else // overcapped
+        {
+            var filledEnd = new Vector2(pos.X + size.X, pos.Y + size.Y);
+
+            drawList.AddRectFilledMultiColor(
+                    barStart,
+                    filledEnd,
+                    color1,
+                    color2,
+                    color2,
+                    color1);
+
+            float overcapFraction = Math.Clamp(fraction - 1, 0, 1);
+            float overcapWidth = size.X * overcapFraction;
+
+            if(overcapWidth > 0)
+            {
+                var overcapEnd = new Vector2(pos.X + overcapWidth, pos.Y + size.Y);
+                drawList.AddRectFilled(
+                    barStart,
+                    overcapEnd,
+                    overcapColor
+                );
+            }
+        }
+
+        ImGui.Dummy(new Vector2(size.X, size.Y + 5));
+    }
 }

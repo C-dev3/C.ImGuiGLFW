@@ -127,13 +127,10 @@ public struct WindowSizeConstraints
     /// <remarks>
     /// This is useful to enforce valid dimensions during resizing or layout calculations.
     /// </remarks>
-    public readonly Vector2 ClampSize(Vector2 size)
-    {
-        return new Vector2(
+    public readonly Vector2 ClampSize(Vector2 size) => new(
             Math.Max(_minSize.X, Math.Min(_maxSize.X, size.X)),
             Math.Max(_minSize.Y, Math.Min(_maxSize.Y, size.Y))
         );
-    }
 
     /// <summary>
     /// Determines whether a given size lies within the defined minimum and maximum constraints.
@@ -143,11 +140,8 @@ public struct WindowSizeConstraints
     /// <remarks>
     /// This does not modify the input but checks whether it is valid within the current constraint range.
     /// </remarks>
-    public readonly bool IsValidSize(Vector2 size)
-    {
-        return size.X >= _minSize.X && size.X <= _maxSize.X &&
+    public readonly bool IsValidSize(Vector2 size) => size.X >= _minSize.X && size.X <= _maxSize.X &&
                size.Y >= _minSize.Y && size.Y <= _maxSize.Y;
-    }
 
     /// <summary>
     /// Gets a value indicating whether the current <see cref="MinSize"/> and <see cref="MaxSize"/> form a valid range.

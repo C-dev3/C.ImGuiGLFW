@@ -18,7 +18,7 @@ namespace C.ImGuiGLFW.ImGuiMethods.Web;
 public unsafe class OpenGLRenderHandler() : RenderHandlerBase
 {
     private readonly GL GL = ImGuiController.GetGL();
-    private readonly BindingsContext context = ImGuiController.GetBindingsContext();
+    //private readonly BindingsContext context = ImGuiController.GetBindingsContext();
     private uint textureId;
     private int width;
     private int height;
@@ -140,7 +140,7 @@ public unsafe class OpenGLRenderHandler() : RenderHandlerBase
     /// drag operations by implementing the necessary drag handling logic and returning true
     /// when drag operations should be allowed.
     /// </remarks>
-    public override bool StartDragging(IDragData dragData, DragOperationsMask mask, int x, int y) { return false; }
+    public override bool StartDragging(IDragData dragData, DragOperationsMask mask, int x, int y) => false;
 
     /// <summary>
     /// Updates the cursor appearance during drag operations.

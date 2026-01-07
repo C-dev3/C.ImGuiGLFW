@@ -8,13 +8,10 @@ internal class WebViewDemo : Window
 {
     private WebView view = null!;
 
-    public override void OnLoad()
+    public override void OnLoad() => view = new("https://google.com")
     {
-        view = new("https://google.com")
-        {
-            AutoResizeToContentRegion = true
-        };
-    }
+        AutoResizeToContentRegion = true
+    };
 
     public override void PreDraw()
     {

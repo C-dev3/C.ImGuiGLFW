@@ -73,7 +73,7 @@ public static partial class ImGuiC
             float arrowSpacing = frameHeight - 2.0f * arrowSize;
 
             ImGui.BeginGroup();
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(style.ItemSpacing.X, arrowSpacing));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(style.ItemSpacing.X, arrowSpacing));
 
             ImGui.BeginDisabled(isReadOnly);
 

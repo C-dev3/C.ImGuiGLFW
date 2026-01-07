@@ -62,10 +62,7 @@ public class CircularBuffer<T> : IEnumerable<T>
             throw new ArgumentException(
                 "Circular buffer cannot have negative or zero capacity.", nameof(capacity));
         }
-        if (items == null)
-        {
-            throw new ArgumentNullException(nameof(items));
-        }
+        ArgumentNullException.ThrowIfNull(items);
         if (items.Length > capacity)
         {
             throw new ArgumentException(
@@ -357,10 +354,7 @@ public class CircularBuffer<T> : IEnumerable<T>
     /// <param name='index'>
     /// External index.
     /// </param>
-    private int InternalIndex(int index)
-    {
-        return _start + (index < Capacity - _start ? index : index - Capacity);
-    }
+    private int InternalIndex(int index) => _start + (index < Capacity - _start ? index : index - Capacity);
 
     // doing ArrayOne and ArrayTwo methods returning ArraySegment<T> as seen here: 
     // http://www.boost.org/doc/libs/1_37_0/libs/circular_buffer/doc/circular_buffer.html#classboost_1_1circular__buffer_1957cccdcb0c4ef7d80a34a990065818d
@@ -375,7 +369,7 @@ public class CircularBuffer<T> : IEnumerable<T>
     {
         if (IsEmpty)
         {
-            return new ArraySegment<T>(new T[0]);
+            return new ArraySegment<T>([]);
         }
         else if (_start < _end)
         {
@@ -391,7 +385,7 @@ public class CircularBuffer<T> : IEnumerable<T>
     {
         if (IsEmpty)
         {
-            return new ArraySegment<T>(new T[0]);
+            return new ArraySegment<T>([]);
         }
         else if (_start < _end)
         {

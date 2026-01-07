@@ -1,3 +1,5 @@
+using System;
+
 namespace C.ImGuiGLFW.Text.FontAwesome;
 
 /// <summary>
@@ -20,14 +22,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "address-book" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["address book", "contact", "directory", "index", "little black book", "rolodex"])]
+    [FontAwesomeSearchTerms(["address book", "contact", "directory", "employee", "index", "little black book", "portfolio", "rolodex", "uer", "username"])]
     [FontAwesomeCategories(["Business", "Communication", "Users + People"])]
     AddressBook = 0xF2B9,
 
     /// <summary>
     /// The Font Awesome "address-card" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["address card", "about", "contact", "id", "identification", "postcard", "profile", "registration"])]
+    [FontAwesomeSearchTerms(["address card", "about", "contact", "employee", "id", "identification", "portfolio", "postcard", "profile", "registration", "uer", "username"])]
     [FontAwesomeCategories(["Accessibility", "Alphabet", "Business", "Communication", "Users + People"])]
     AddressCard = 0xF2BB,
 
@@ -44,6 +46,13 @@ public enum FontAwesomeIcon
     [FontAwesomeSearchTerms(["spray can sparkles", "car", "clean", "deodorize", "fresh", "pine", "scent"])]
     [FontAwesomeCategories(["Automotive"])]
     AirFreshener = 0xF5D0,
+
+    /// <summary>
+    /// The Font Awesome "alarm-clock" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["alarm clock", "alarm", "alarm clock", "clock", "date", "late", "pending", "reminder", "sleep", "snooze", "timer", "timestamp", "watch"])]
+    [FontAwesomeCategories(["Alert", "Time", "Travel + Hotel"])]
+    AlarmClock = 0xF34E,
 
     /// <summary>
     /// The Font Awesome "align-center" icon unicode character.
@@ -104,28 +113,28 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "anchor-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["anchor circle check", "marina", "not affected", "ok", "okay", "port"])]
+    [FontAwesomeSearchTerms(["anchor circle check", "enable", "marina", "not affected", "ok", "okay", "port", "validate", "working"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics", "Maritime"])]
     AnchorCircleCheck = 0xE4AA,
 
     /// <summary>
     /// The Font Awesome "anchor-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["anchor circle exclamation", "affected", "marina", "port"])]
+    [FontAwesomeSearchTerms(["anchor circle exclamation", "affected", "failed", "marina", "port"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics", "Maritime"])]
     AnchorCircleExclamation = 0xE4AB,
 
     /// <summary>
     /// The Font Awesome "anchor-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["anchor circle xmark", "destroy", "marina", "port"])]
+    [FontAwesomeSearchTerms(["anchor circle xmark", "destroy", "marina", "port", "uncheck"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics", "Maritime"])]
     AnchorCircleXmark = 0xE4AC,
 
     /// <summary>
     /// The Font Awesome "anchor-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["anchor lock", "closed", "lockdown", "marina", "port", "quarantine"])]
+    [FontAwesomeSearchTerms(["anchor lock", "closed", "lockdown", "marina", "padlock", "port", "privacy", "quarantine"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics", "Maritime"])]
     AnchorLock = 0xE4AD,
 
@@ -160,7 +169,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "angle-down" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["angle down", "down arrowhead", "arrow", "caret", "download", "expand"])]
+    [FontAwesomeSearchTerms(["angle down", "down arrowhead", "arrow", "caret", "download", "expand", "insert"])]
     [FontAwesomeCategories(["Arrows"])]
     AngleDown = 0xF107,
 
@@ -181,7 +190,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "angle-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["angle up", "up arrowhead", "arrow", "caret", "collapse", "upload"])]
+    [FontAwesomeSearchTerms(["angle up", "up arrowhead", "arrow", "caret", "collapse", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows"])]
     AngleUp = 0xF106,
 
@@ -244,7 +253,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "circle-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle up", "arrow-circle-o-up"])]
+    [FontAwesomeSearchTerms(["circle up", "arrow-circle-o-up", "upgrade"])]
     [FontAwesomeCategories(["Arrows"])]
     ArrowAltCircleUp = 0xF35B,
 
@@ -272,7 +281,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "circle-arrow-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle arrow up", "upload"])]
+    [FontAwesomeSearchTerms(["circle arrow up", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows"])]
     ArrowCircleUp = 0xF0AA,
 
@@ -300,7 +309,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrow-down-up-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow down up lock", "border", "closed", "crossing", "lockdown", "quarantine", "transfer"])]
+    [FontAwesomeSearchTerms(["arrow down up lock", "border", "closed", "crossing", "lockdown", "padlock", "privacy", "quarantine", "transfer"])]
     [FontAwesomeCategories(["Arrows", "Humanitarian"])]
     ArrowDownUpLock = 0xE4B0,
 
@@ -328,7 +337,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrow-right-arrow-left" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow right arrow left", "rightwards arrow over leftwards arrow", "arrow", "arrows", "reciprocate", "return", "swap", "transfer"])]
+    [FontAwesomeSearchTerms(["arrow right arrow left", "arrow", "arrows", "reciprocate", "return", "swap", "transfer"])]
     [FontAwesomeCategories(["Arrows"])]
     ArrowRightArrowLeft = 0xF0EC,
 
@@ -349,14 +358,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrow-right-to-bracket" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow right to bracket", "arrow", "enter", "join", "log in", "login", "sign in", "sign up", "sign-in", "signin", "signup"])]
+    [FontAwesomeSearchTerms(["arrow right to bracket", "arrow", "enter", "insert", "join", "log in", "login", "sign in", "sign up", "sign-in", "signin", "signup"])]
     [FontAwesomeCategories(["Arrows"])]
     ArrowRightToBracket = 0xF090,
 
     /// <summary>
     /// The Font Awesome "arrow-right-to-city" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow right to city", "building", "city", "exodus", "rural", "urban"])]
+    [FontAwesomeSearchTerms(["arrow right to city", "building", "city", "exodus", "insert", "rural", "urban"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     ArrowRightToCity = 0xE4B3,
 
@@ -384,14 +393,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrows-down-to-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrows down to line", "scale down", "sink"])]
+    [FontAwesomeSearchTerms(["arrows down to line", "insert", "scale down", "sink"])]
     [FontAwesomeCategories(["Arrows", "Humanitarian"])]
     ArrowsDownToLine = 0xE4B8,
 
     /// <summary>
     /// The Font Awesome "arrows-down-to-people" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrows down to people", "affected", "focus", "targeted"])]
+    [FontAwesomeSearchTerms(["arrows down to people", "affected", "focus", "insert", "targeted", "together", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     ArrowsDownToPeople = 0xE4B9,
 
@@ -426,14 +435,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrows-to-circle" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrows to circle", "center", "concentrate", "coordinate", "coordination", "focal point", "focus"])]
+    [FontAwesomeSearchTerms(["arrows to circle", "center", "concentrate", "coordinate", "coordination", "focal point", "focus", "insert"])]
     [FontAwesomeCategories(["Arrows", "Humanitarian"])]
     ArrowsToCircle = 0xE4BD,
 
     /// <summary>
     /// The Font Awesome "arrows-to-dot" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrows to dot", "assembly point", "center", "condense", "focus", "minimize"])]
+    [FontAwesomeSearchTerms(["arrows to dot", "assembly point", "center", "condense", "focus", "insert", "minimize"])]
     [FontAwesomeCategories(["Arrows", "Business", "Humanitarian", "Marketing"])]
     ArrowsToDot = 0xE4BE,
 
@@ -454,7 +463,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrows-turn-to-dots" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrows turn to dots", "destination", "nexus"])]
+    [FontAwesomeSearchTerms(["arrows turn to dots", "destination", "insert", "nexus"])]
     [FontAwesomeCategories(["Arrows", "Humanitarian"])]
     ArrowsTurnToDots = 0xE4C1,
 
@@ -475,7 +484,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrows-up-to-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrows up to line", "rise", "scale up"])]
+    [FontAwesomeSearchTerms(["arrows up to line", "rise", "scale up", "upgrade"])]
     [FontAwesomeCategories(["Arrows", "Humanitarian"])]
     ArrowsUpToLine = 0xE4C2,
 
@@ -510,28 +519,28 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrow-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow up", "upwards arrow", "forward", "upload"])]
+    [FontAwesomeSearchTerms(["arrow up", "upwards arrow", "forward", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows"])]
     ArrowUp = 0xF062,
 
     /// <summary>
     /// The Font Awesome "arrow-up-from-bracket" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow up from bracket", "share", "transfer", "upload"])]
+    [FontAwesomeSearchTerms(["arrow up from bracket", "share", "transfer", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows"])]
     ArrowUpFromBracket = 0xE09A,
 
     /// <summary>
     /// The Font Awesome "arrow-up-from-ground-water" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow up from ground water", "groundwater", "spring", "water supply", "water table"])]
+    [FontAwesomeSearchTerms(["arrow up from ground water", "groundwater", "spring", "upgrade", "water supply", "water table"])]
     [FontAwesomeCategories(["Construction", "Energy", "Humanitarian"])]
     ArrowUpFromGroundWater = 0xE4B5,
 
     /// <summary>
     /// The Font Awesome "arrow-up-from-water-pump" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow up from water pump", "flood", "groundwater", "pump", "submersible", "sump pump"])]
+    [FontAwesomeSearchTerms(["arrow up from water pump", "flood", "groundwater", "pump", "submersible", "sump pump", "upgrade"])]
     [FontAwesomeCategories(["Household", "Humanitarian"])]
     ArrowUpFromWaterPump = 0xE4B6,
 
@@ -545,14 +554,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrow-up-right-dots" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow up right dots", "growth", "increase", "population"])]
+    [FontAwesomeSearchTerms(["arrow up right dots", "growth", "increase", "population", "upgrade"])]
     [FontAwesomeCategories(["Arrows", "Humanitarian"])]
     ArrowUpRightDots = 0xE4B7,
 
     /// <summary>
     /// The Font Awesome "arrow-up-right-from-square" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow up right from square", "new", "open", "send", "share"])]
+    [FontAwesomeSearchTerms(["arrow up right from square", "new", "open", "send", "share", "upgrade"])]
     [FontAwesomeCategories(["Arrows", "Humanitarian"])]
     ArrowUpRightFromSquare = 0xF08E,
 
@@ -567,7 +576,7 @@ public enum FontAwesomeIcon
     /// The Font Awesome "asterisk" icon unicode character.
     /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0x2A.
     /// </summary>
-    [FontAwesomeSearchTerms(["asterisk", "asterisk", "heavy asterisk", "annotation", "details", "reference", "star"])]
+    [FontAwesomeSearchTerms(["asterisk", "asterisk", "heavy asterisk", "annotation", "details", "reference", "required", "star"])]
     [FontAwesomeCategories(["Punctuation + Symbols", "Spinners"])]
     Asterisk = 0xF069,
 
@@ -582,14 +591,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "book-atlas" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["book atlas", "book", "directions", "geography", "globe", "library", "map", "research", "travel", "wayfinding"])]
+    [FontAwesomeSearchTerms(["book atlas", "book", "directions", "geography", "globe", "knowledge", "library", "map", "research", "travel", "wayfinding"])]
     [FontAwesomeCategories(["Maps", "Travel + Hotel"])]
     Atlas = 0xF558,
 
     /// <summary>
     /// The Font Awesome "atom" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["atheism", "atheist", "atom", "atom symbol", "chemistry", "electron", "ion", "isotope", "neutron", "nuclear", "proton", "science"])]
+    [FontAwesomeSearchTerms(["atheism", "atheist", "atom", "atom symbol", "chemistry", "electron", "ion", "isotope", "knowledge", "neutron", "nuclear", "proton", "science"])]
     [FontAwesomeCategories(["Education", "Energy", "Religion", "Science", "Science Fiction", "Spinners"])]
     Atom = 0xF5D2,
 
@@ -610,14 +619,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "award" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["award", "honor", "praise", "prize", "recognition", "ribbon", "trophy"])]
+    [FontAwesomeSearchTerms(["award", "guarantee", "honor", "praise", "prize", "recognition", "ribbon", "trophy", "warranty"])]
     [FontAwesomeCategories(["Education", "Political"])]
     Award = 0xF559,
 
     /// <summary>
     /// The Font Awesome "baby" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["baby", "users-people"])]
+    [FontAwesomeSearchTerms(["baby", "uer", "users-people"])]
     [FontAwesomeCategories(["Childhood", "Humanitarian", "Users + People"])]
     Baby = 0xF77C,
 
@@ -659,7 +668,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "bacterium" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bacterium", "antibiotic", "antibody", "covid-19", "health", "organism", "sick"])]
+    [FontAwesomeSearchTerms(["bacterium", "antibiotic", "antibody", "covid-19", "germ", "health", "organism", "sick"])]
     [FontAwesomeCategories(["Humanitarian", "Medical + Health"])]
     Bacterium = 0xE05A,
 
@@ -701,14 +710,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "ban" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["abort", "ban", "block", "cancel", "delete", "entry", "forbidden", "hide", "no", "not", "prohibit", "prohibited", "remove", "stop", "trash"])]
+    [FontAwesomeSearchTerms(["404", "abort", "ban", "block", "cancel", "circle", "delete", "deny", "disabled", "entry", "failed", "forbidden", "hide", "no", "not", "not found", "prohibit", "prohibited", "remove", "slash", "stop", "trash"])]
     [FontAwesomeCategories(["Humanitarian", "Security"])]
     Ban = 0xF05E,
 
     /// <summary>
     /// The Font Awesome "bandage" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["adhesive bandage", "bandage", "boo boo", "first aid", "ouch"])]
+    [FontAwesomeSearchTerms(["adhesive bandage", "bandage", "boo boo", "first aid", "modify", "ouch"])]
     [FontAwesomeCategories(["Editing", "Medical + Health"])]
     BandAid = 0xF462,
 
@@ -806,7 +815,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "bed" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bed", "hospital", "hotel", "lodging", "mattress", "patient", "person in bed", "rest", "sleep", "travel"])]
+    [FontAwesomeSearchTerms(["bed", "hospital", "hotel", "lodging", "mattress", "patient", "person in bed", "rest", "sleep", "travel", "uer"])]
     [FontAwesomeCategories(["Household", "Humanitarian", "Maps", "Travel + Hotel", "Users + People"])]
     Bed = 0xF236,
 
@@ -820,7 +829,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "bell" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["alarm", "alert", "bel", "bell", "chime", "notification", "reminder"])]
+    [FontAwesomeSearchTerms(["alarm", "alert", "bel", "bell", "chime", "notification", "reminder", "request"])]
     [FontAwesomeCategories(["Alert", "Education", "Household", "Maps", "Shopping", "Social", "Time"])]
     Bell = 0xF0F3,
 
@@ -855,14 +864,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-biking" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person biking", "bicycle", "bike", "biking", "cyclist", "pedal", "person biking", "summer", "wheel"])]
+    [FontAwesomeSearchTerms(["person biking", "bicycle", "bike", "biking", "cyclist", "pedal", "person biking", "summer", "uer", "wheel"])]
     [FontAwesomeCategories(["Childhood", "Sports + Fitness", "Users + People"])]
     Biking = 0xF84A,
 
     /// <summary>
     /// The Font Awesome "binoculars" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["binoculars", "glasses", "magnify", "scenic", "spyglass", "view"])]
+    [FontAwesomeSearchTerms(["binoculars", "glasses", "inspection", "magnifier", "magnify", "scenic", "spyglass", "view"])]
     [FontAwesomeCategories(["Astronomy", "Camping", "Maps", "Nature"])]
     Binoculars = 0xF1E5,
 
@@ -904,7 +913,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-walking-with-cane" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person walking with cane", "blind", "cane"])]
+    [FontAwesomeSearchTerms(["person walking with cane", "blind", "cane", "follow", "uer"])]
     [FontAwesomeCategories(["Accessibility", "Maps", "Users + People"])]
     Blind = 0xF29D,
 
@@ -960,14 +969,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "book" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["book", "cover", "decorated", "diary", "documentation", "journal", "library", "notebook", "notebook with decorative cover", "read", "research"])]
+    [FontAwesomeSearchTerms(["book", "cover", "decorated", "diary", "documentation", "journal", "knowledge", "library", "notebook", "notebook with decorative cover", "read", "research", "scholar"])]
     [FontAwesomeCategories(["Business", "Maps", "Writing"])]
     Book = 0xF02D,
 
     /// <summary>
     /// The Font Awesome "book-bookmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["book bookmark", "library", "research"])]
+    [FontAwesomeSearchTerms(["book bookmark", "knowledge", "library", "research"])]
     [FontAwesomeCategories(["Humanitarian", "Writing"])]
     BookBookmark = 0xE0BB,
 
@@ -995,7 +1004,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "book-open" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["book open", "book", "book", "flyer", "library", "notebook", "open", "open book", "pamphlet", "reading", "research"])]
+    [FontAwesomeSearchTerms(["book open", "book", "book", "flyer", "knowledge", "library", "notebook", "open", "open book", "pamphlet", "reading", "research"])]
     [FontAwesomeCategories(["Education"])]
     BookOpen = 0xF518,
 
@@ -1121,7 +1130,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "brain" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["brain", "cerebellum", "gray matter", "intellect", "intelligent", "medulla oblongata", "mind", "noodle", "wit"])]
+    [FontAwesomeSearchTerms(["brain", "cerebellum", "gray matter", "intellect", "intelligent", "knowledge", "medulla oblongata", "mind", "noodle", "scholar", "wit"])]
     [FontAwesomeCategories(["Medical + Health", "Science"])]
     Brain = 0xF5DC,
 
@@ -1149,28 +1158,28 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "bridge-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bridge circle check", "bridge", "not affected", "ok", "okay", "road"])]
+    [FontAwesomeSearchTerms(["bridge circle check", "bridge", "enable", "not affected", "ok", "okay", "road", "validate", "working"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics"])]
     BridgeCircleCheck = 0xE4C9,
 
     /// <summary>
     /// The Font Awesome "bridge-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bridge circle exclamation", "affected", "bridge", "road"])]
+    [FontAwesomeSearchTerms(["bridge circle exclamation", "affected", "bridge", "failed", "road"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics"])]
     BridgeCircleExclamation = 0xE4CA,
 
     /// <summary>
     /// The Font Awesome "bridge-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bridge circle xmark", "bridge", "destroy", "road"])]
+    [FontAwesomeSearchTerms(["bridge circle xmark", "bridge", "destroy", "road", "uncheck"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics"])]
     BridgeCircleXmark = 0xE4CB,
 
     /// <summary>
     /// The Font Awesome "bridge-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bridge lock", "bridge", "closed", "lockdown", "quarantine", "road"])]
+    [FontAwesomeSearchTerms(["bridge lock", "bridge", "closed", "lockdown", "padlock", "privacy", "quarantine", "road"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics"])]
     BridgeLock = 0xE4CC,
 
@@ -1184,7 +1193,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "briefcase" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bag", "briefcas", "briefcase", "business", "luggage", "office", "work"])]
+    [FontAwesomeSearchTerms(["bag", "briefcas", "briefcase", "business", "luggage", "offer", "office", "portfolio", "work"])]
     [FontAwesomeCategories(["Business", "Maps", "Travel + Hotel"])]
     Briefcase = 0xF0B1,
 
@@ -1198,7 +1207,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "tower-broadcast" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["tower broadcast", "airwaves", "antenna", "communication", "emergency", "radio", "reception", "waves"])]
+    [FontAwesomeSearchTerms(["tower broadcast", "airwaves", "antenna", "communication", "emergency", "radio", "reception", "signal", "waves"])]
     [FontAwesomeCategories(["Connectivity", "Energy", "Film + Video", "Humanitarian"])]
     BroadcastTower = 0xF519,
 
@@ -1212,7 +1221,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "brush" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["brush", "art", "bristles", "color", "handle", "paint"])]
+    [FontAwesomeSearchTerms(["brush", "art", "bristles", "color", "handle", "maintenance", "modify", "paint"])]
     [FontAwesomeCategories(["Construction", "Design", "Editing"])]
     Brush = 0xF55D,
 
@@ -1240,7 +1249,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "bug-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bug slash", "beetle", "fix", "glitch", "insect", "optimize", "repair", "report", "warning"])]
+    [FontAwesomeSearchTerms(["bug slash", "beetle", "disabled", "fix", "glitch", "insect", "optimize", "repair", "report", "warning"])]
     [FontAwesomeCategories(["Coding", "Security"])]
     BugSlash = 0xE490,
 
@@ -1261,42 +1270,42 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "building-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["building circle check", "building", "city", "not affected", "office", "ok", "okay"])]
+    [FontAwesomeSearchTerms(["building circle check", "building", "city", "enable", "not affected", "office", "ok", "okay", "validate", "working"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     BuildingCircleCheck = 0xE4D2,
 
     /// <summary>
     /// The Font Awesome "building-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["building circle exclamation", "affected", "building", "city", "office"])]
+    [FontAwesomeSearchTerms(["building circle exclamation", "affected", "building", "city", "failed", "office"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     BuildingCircleExclamation = 0xE4D3,
 
     /// <summary>
     /// The Font Awesome "building-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["building circle xmark", "building", "city", "destroy", "office"])]
+    [FontAwesomeSearchTerms(["building circle xmark", "building", "city", "destroy", "office", "uncheck"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     BuildingCircleXmark = 0xE4D4,
 
     /// <summary>
     /// The Font Awesome "building-flag" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["building flag", " city", "building", "diplomat", "embassy", "flag", "headquarters", "united nations"])]
+    [FontAwesomeSearchTerms(["building flag", "building", "city", "diplomat", "embassy", "flag", "headquarters", "united nations"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian", "Political"])]
     BuildingFlag = 0xE4D5,
 
     /// <summary>
     /// The Font Awesome "building-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["building lock", "building", "city", "closed", "lock", "lockdown", "quarantine", "secure"])]
+    [FontAwesomeSearchTerms(["building lock", "building", "city", "closed", "lock", "lockdown", "padlock", "privacy", "quarantine", "secure"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian", "Security"])]
     BuildingLock = 0xE4D6,
 
     /// <summary>
     /// The Font Awesome "building-ngo" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["building ngo", " city", "building", "non governmental organization", "office"])]
+    [FontAwesomeSearchTerms(["building ngo", "building", "city", "non governmental organization", "office"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     BuildingNgo = 0xE4D7,
 
@@ -1317,7 +1326,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "building-user" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["building user", "apartment", "building", "city"])]
+    [FontAwesomeSearchTerms(["building user", "apartment", "building", "city", "employee", "uer"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     BuildingUser = 0xE4DA,
 
@@ -1331,7 +1340,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "bullhorn" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bullhorn", "bullhorn", "announcement", "broadcast", "loud", "louder", "loudspeaker", "megaphone", "public address", "share"])]
+    [FontAwesomeSearchTerms(["bullhorn", "bullhorn", "announcement", "broadcast", "loud", "louder", "loudspeaker", "megaphone", "public address", "request", "share"])]
     [FontAwesomeCategories(["Business", "Communication", "Marketing", "Political", "Shopping"])]
     Bullhorn = 0xF0A1,
 
@@ -1373,9 +1382,16 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "business-time" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["business time", "alarm", "briefcase", "business socks", "clock", "flight of the conchords", "reminder", "wednesday"])]
+    [FontAwesomeSearchTerms(["business time", "alarm", "briefcase", "business socks", "clock", "flight of the conchords", "portfolio", "reminder", "wednesday"])]
     [FontAwesomeCategories(["Business"])]
     BusinessTime = 0xF64A,
+
+    /// <summary>
+    /// The Font Awesome "bus-side" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["bus side", "bus", "public transportation", "transportation", "travel", "vehicle"])]
+    [FontAwesomeCategories(["Automotive", "Humanitarian", "Logistics", "Transportation", "Travel + Hotel"])]
+    BusSide = 0xE81D,
 
     /// <summary>
     /// The Font Awesome "calculator" icon unicode character.
@@ -1401,7 +1417,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "calendar-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["calendar check", "accept", "agree", "appointment", "confirm", "correct", "date", "day", "done", "event", "month", "ok", "schedule", "select", "success", "tick", "time", "todo", "when", "year"])]
+    [FontAwesomeSearchTerms(["calendar check", "accept", "agree", "appointment", "confirm", "correct", "date", "day", "done", "enable", "event", "month", "ok", "schedule", "select", "success", "tick", "time", "todo", "validate", "warranty", "when", "working", "year"])]
     [FontAwesomeCategories(["Time"])]
     CalendarCheck = 0xF274,
 
@@ -1429,7 +1445,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "calendar-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["calendar xmark", "archive", "calendar", "date", "day", "delete", "event", "month", "remove", "schedule", "time", "when", "x", "year"])]
+    [FontAwesomeSearchTerms(["calendar xmark", "archive", "calendar", "date", "day", "delete", "event", "month", "remove", "schedule", "time", "uncheck", "when", "x", "year"])]
     [FontAwesomeCategories(["Time"])]
     CalendarTimes = 0xF273,
 
@@ -1443,21 +1459,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "camera" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["camera", "image", "lens", "photo", "picture", "record", "shutter", "video"])]
+    [FontAwesomeSearchTerms(["camera", "image", "img", "lens", "photo", "picture", "record", "shutter", "video"])]
     [FontAwesomeCategories(["Devices + Hardware", "Photos + Images", "Shopping", "Social"])]
     Camera = 0xF030,
 
     /// <summary>
     /// The Font Awesome "camera-retro" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["camera retro", "camera", "image", "lens", "photo", "picture", "record", "shutter", "video"])]
+    [FontAwesomeSearchTerms(["camera retro", "camera", "image", "img", "lens", "photo", "picture", "record", "shutter", "video"])]
     [FontAwesomeCategories(["Devices + Hardware", "Photos + Images", "Shopping"])]
     CameraRetro = 0xF083,
 
     /// <summary>
     /// The Font Awesome "camera-rotate" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["camera rotate", "flip", "front-facing", "photo", "selfie"])]
+    [FontAwesomeSearchTerms(["camera rotate", "flip", "front-facing", "img", "photo", "selfie"])]
     [FontAwesomeCategories(["Photos + Images"])]
     CameraRotate = 0xE0D8,
 
@@ -1548,7 +1564,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "square-caret-down" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square caret down", "arrow", "caret-square-o-down", "dropdown", "expand", "menu", "more", "triangle"])]
+    [FontAwesomeSearchTerms(["square caret down", "arrow", "caret-square-o-down", "dropdown", "expand", "insert", "menu", "more", "triangle"])]
     [FontAwesomeCategories(["Arrows"])]
     CaretSquareDown = 0xF150,
 
@@ -1569,14 +1585,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "square-caret-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square caret up", "arrow", "caret-square-o-up", "collapse", "triangle", "upload"])]
+    [FontAwesomeSearchTerms(["square caret up", "arrow", "caret-square-o-up", "collapse", "triangle", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows"])]
     CaretSquareUp = 0xF151,
 
     /// <summary>
     /// The Font Awesome "caret-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["caret up", "arrow", "collapse", "triangle"])]
+    [FontAwesomeSearchTerms(["caret up", "arrow", "collapse", "triangle", "upgrade"])]
     [FontAwesomeCategories(["Arrows"])]
     CaretUp = 0xF0D8,
 
@@ -1604,7 +1620,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "cart-arrow-down" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["cart arrow down", "download", "save", "shopping"])]
+    [FontAwesomeSearchTerms(["cart arrow down", "download", "insert", "save", "shopping"])]
     [FontAwesomeCategories(["Shopping"])]
     CartArrowDown = 0xF218,
 
@@ -1653,7 +1669,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "certificate" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["certificate", "badge", "star", "verified"])]
+    [FontAwesomeSearchTerms(["certificate", "badge", "guarantee", "star", "verified"])]
     [FontAwesomeCategories(["Business", "Shapes", "Shopping", "Spinners"])]
     Certificate = 0xF0A3,
 
@@ -1674,91 +1690,98 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "chalkboard-user" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chalkboard user", "blackboard", "instructor", "learning", "professor", "school", "whiteboard", "writing"])]
+    [FontAwesomeSearchTerms(["chalkboard user", "blackboard", "instructor", "learning", "professor", "school", "uer", "whiteboard", "writing"])]
     [FontAwesomeCategories(["Education", "Users + People"])]
     ChalkboardTeacher = 0xF51C,
 
     /// <summary>
     /// The Font Awesome "charging-station" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["charging station", "electric", "ev", "tesla", "vehicle"])]
+    [FontAwesomeSearchTerms(["charging station", "car charger", "charge", "charging", "electric", "ev", "tesla", "vehicle"])]
     [FontAwesomeCategories(["Automotive", "Energy"])]
     ChargingStation = 0xF5E7,
 
     /// <summary>
     /// The Font Awesome "chart-area" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chart area", "analytics", "area", "chart", "graph"])]
+    [FontAwesomeSearchTerms(["chart area", "analytics", "area", "chart", "graph", "performance", "revenue", "statistics"])]
     [FontAwesomeCategories(["Charts + Diagrams"])]
     ChartArea = 0xF1FE,
 
     /// <summary>
     /// The Font Awesome "chart-bar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chart bar", "analytics", "bar", "chart", "graph"])]
+    [FontAwesomeSearchTerms(["chart bar", "analytics", "bar", "chart", "graph", "performance", "statistics"])]
     [FontAwesomeCategories(["Charts + Diagrams"])]
     ChartBar = 0xF080,
 
     /// <summary>
     /// The Font Awesome "chart-column" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chart column", "bar", "bar chart", "chart", "graph", "track", "trend"])]
+    [FontAwesomeSearchTerms(["chart column", "bar", "bar chart", "chart", "graph", "performance", "revenue", "statistics", "track", "trend"])]
     [FontAwesomeCategories(["Charts + Diagrams"])]
     ChartColumn = 0xE0E3,
 
     /// <summary>
+    /// The Font Awesome "chart-diagram" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["chart diagram", "algorithm", "analytics", "flow", "graph"])]
+    [FontAwesomeCategories(["Charts + Diagrams", "Coding"])]
+    ChartDiagram = 0xE695,
+
+    /// <summary>
     /// The Font Awesome "chart-gantt" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chart gantt", "chart", "graph", "track", "trend"])]
+    [FontAwesomeSearchTerms(["chart gantt", "chart", "graph", "performance", "statistics", "track", "trend"])]
     [FontAwesomeCategories(["Charts + Diagrams"])]
     ChartGantt = 0xE0E4,
 
     /// <summary>
     /// The Font Awesome "chart-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chart line", "activity", "analytics", "chart", "dashboard", "gain", "graph", "increase", "line"])]
+    [FontAwesomeSearchTerms(["chart line", "activity", "analytics", "chart", "dashboard", "gain", "graph", "increase", "line", "performance", "revenue", "statistics"])]
     [FontAwesomeCategories(["Business", "Charts + Diagrams", "Money"])]
     ChartLine = 0xF201,
 
     /// <summary>
     /// The Font Awesome "chart-pie" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chart pie", "analytics", "chart", "diagram", "graph", "pie"])]
+    [FontAwesomeSearchTerms(["chart pie", "analytics", "chart", "diagram", "graph", "performance", "pie", "revenue", "statistics"])]
     [FontAwesomeCategories(["Business", "Charts + Diagrams", "Money"])]
     ChartPie = 0xF200,
 
     /// <summary>
     /// The Font Awesome "chart-simple" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chart simple", "analytics", "bar", "chart", "column", "graph", "row", "trend"])]
+    [FontAwesomeSearchTerms(["chart simple", "analytics", "bar", "chart", "column", "graph", "performance", "revenue", "row", "statistics", "trend"])]
     [FontAwesomeCategories(["Business", "Charts + Diagrams", "Editing", "Logistics", "Marketing"])]
     ChartSimple = 0xE473,
 
     /// <summary>
     /// The Font Awesome "check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["check mark", "accept", "agree", "check", "check mark", "checkmark", "confirm", "correct", "done", "mark", "notice", "notification", "notify", "ok", "select", "success", "tick", "todo", "yes", "✓"])]
+    [FontAwesomeSearchTerms(["check mark", "accept", "agree", "check", "check mark", "checkmark", "confirm", "correct", "coupon", "done", "enable", "mark", "notice", "notification", "notify", "ok", "select", "success", "tick", "todo", "true", "validate", "working", "yes", "✓"])]
     [FontAwesomeCategories(["Editing", "Punctuation + Symbols", "Text Formatting"])]
     Check = 0xF00C,
 
     /// <summary>
     /// The Font Awesome "circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle check", "accept", "affected", "agree", "clear", "confirm", "correct", "done", "ok", "select", "success", "tick", "todo", "yes"])]
+    [FontAwesomeSearchTerms(["circle check", "accept", "affected", "agree", "clear", "confirm", "correct", "coupon", "done", "enable", "ok", "select", "success", "tick", "todo", "validate", "working", "yes"])]
     [FontAwesomeCategories(["Editing", "Text Formatting", "Toggle"])]
     CheckCircle = 0xF058,
 
     /// <summary>
     /// The Font Awesome "check-double" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["check double", "accept", "agree", "checkmark", "confirm", "correct", "done", "notice", "notification", "notify", "ok", "select", "success", "tick", "todo"])]
+    [FontAwesomeSearchTerms(["check double", "accept", "agree", "checkmark", "confirm", "correct", "coupon", "done", "enable", "notice", "notification", "notify", "ok", "select", "select all", "success", "tick", "todo", "validate", "working"])]
     [FontAwesomeCategories(["Editing", "Political", "Punctuation + Symbols", "Text Formatting"])]
     CheckDouble = 0xF560,
 
     /// <summary>
     /// The Font Awesome "square-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square check", "accept", "agree", "box", "button", "check", "check box with check", "check mark button", "checkmark", "confirm", "correct", "done", "mark", "ok", "select", "success", "tick", "todo", "yes", "✓"])]
+    [FontAwesomeSearchTerms(["square check", "accept", "agree", "box", "button", "check", "check box with check", "check mark button", "checkmark", "confirm", "correct", "coupon", "done", "enable", "mark", "ok", "select", "success", "tick", "todo", "validate", "working", "yes", "✓"])]
     [FontAwesomeCategories(["Editing", "Text Formatting"])]
     CheckSquare = 0xF14A,
 
@@ -1849,14 +1872,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "circle-chevron-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle chevron up", "arrow", "collapse", "upload"])]
+    [FontAwesomeSearchTerms(["circle chevron up", "arrow", "collapse", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows"])]
     ChevronCircleUp = 0xF139,
 
     /// <summary>
     /// The Font Awesome "chevron-down" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chevron down", "arrow", "download", "expand"])]
+    [FontAwesomeSearchTerms(["chevron down", "arrow", "download", "expand", "insert"])]
     [FontAwesomeCategories(["Arrows"])]
     ChevronDown = 0xF078,
 
@@ -1877,14 +1900,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "chevron-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["chevron up", "arrow", "collapse", "upload"])]
+    [FontAwesomeSearchTerms(["chevron up", "arrow", "collapse", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows"])]
     ChevronUp = 0xF077,
 
     /// <summary>
     /// The Font Awesome "child" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["child", "boy", "girl", "kid", "toddler", "young", "youth"])]
+    [FontAwesomeSearchTerms(["child", "boy", "girl", "kid", "toddler", "uer", "young", "youth"])]
     [FontAwesomeCategories(["Childhood", "Users + People"])]
     Child = 0xF1AE,
 
@@ -1898,21 +1921,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "child-dress" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["child dress", "boy", "girl", "kid", "toddler", "young", "youth"])]
+    [FontAwesomeSearchTerms(["child dress", "boy", "girl", "kid", "toddler", "uer", "young", "youth"])]
     [FontAwesomeCategories(["Childhood", "Users + People"])]
     ChildDress = 0xE59C,
 
     /// <summary>
     /// The Font Awesome "child-reaching" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["child reaching", "boy", "girl", "kid", "toddler", "young", "youth"])]
+    [FontAwesomeSearchTerms(["child reaching", "boy", "girl", "kid", "toddler", "uer", "young", "youth"])]
     [FontAwesomeCategories(["Childhood", "Users + People"])]
     ChildReaching = 0xE59D,
 
     /// <summary>
     /// The Font Awesome "children" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["children", "boy", "child", "girl", "kid", "kids", "young", "youth"])]
+    [FontAwesomeSearchTerms(["children", "boy", "child", "girl", "kid", "kids", "together", "uer", "young", "youth"])]
     [FontAwesomeCategories(["Childhood", "Humanitarian", "Users + People"])]
     Children = 0xE4E1,
 
@@ -1968,49 +1991,49 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "clipboard" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["clipboar", "clipboard", "copy", "notes", "paste", "record"])]
+    [FontAwesomeSearchTerms(["clipboard", "copy", "notepad", "notes", "paste", "record"])]
     [FontAwesomeCategories(["Business"])]
     Clipboard = 0xF328,
 
     /// <summary>
     /// The Font Awesome "clipboard-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["clipboard check", "accept", "agree", "confirm", "done", "ok", "select", "success", "tick", "todo", "yes"])]
-    [FontAwesomeCategories(["Logistics", "Science"])]
+    [FontAwesomeSearchTerms(["clipboard check", "accept", "agree", "confirm", "coupon", "done", "enable", "ok", "select", "success", "tick", "todo", "validate", "working", "yes"])]
+    [FontAwesomeCategories(["Business", "Logistics", "Science"])]
     ClipboardCheck = 0xF46C,
 
     /// <summary>
     /// The Font Awesome "clipboard-list" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["clipboard list", "checklist", "completed", "done", "finished", "intinerary", "ol", "schedule", "tick", "todo", "ul"])]
+    [FontAwesomeSearchTerms(["clipboard list", "cheatsheet", "checklist", "completed", "done", "finished", "intinerary", "ol", "schedule", "summary", "survey", "tick", "todo", "ul", "wishlist"])]
     [FontAwesomeCategories(["Logistics"])]
     ClipboardList = 0xF46D,
 
     /// <summary>
     /// The Font Awesome "clipboard-question" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["clipboard question", "assistance", "interview", "query", "question"])]
+    [FontAwesomeSearchTerms(["clipboard question", "assistance", "faq", "interview", "query", "question"])]
     [FontAwesomeCategories(["Business", "Humanitarian", "Logistics"])]
     ClipboardQuestion = 0xE4E3,
 
     /// <summary>
     /// The Font Awesome "clipboard-user" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["clipboard user", "attendance", "record", "roster", "staff"])]
-    [FontAwesomeCategories(["Humanitarian", "Medical + Health", "Users + People"])]
+    [FontAwesomeSearchTerms(["clipboard user", "attendance", "employee", "record", "roster", "staff", "uer"])]
+    [FontAwesomeCategories(["Humanitarian", "Logistics", "Medical + Health", "Users + People"])]
     ClipboardUser = 0xF7F3,
 
     /// <summary>
     /// The Font Awesome "clock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["00", "4", "4:00", "clock", "date", "four", "four o’clock", "hour", "late", "minute", "o'clock", "o’clock", "schedule", "ticking", "time", "timer", "timestamp", "watch"])]
+    [FontAwesomeSearchTerms(["00", "4", "4:00", "clock", "date", "four", "four o’clock", "hour", "late", "minute", "o'clock", "o’clock", "pending", "schedule", "ticking", "time", "timer", "timestamp", "watch"])]
     [FontAwesomeCategories(["Time"])]
     Clock = 0xF017,
 
     /// <summary>
     /// The Font Awesome "clone" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["clone", "arrange", "copy", "duplicate", "paste"])]
+    [FontAwesomeSearchTerms(["clone", "add", "arrange", "copy", "duplicate", "new", "paste"])]
     [FontAwesomeCategories(["Design", "Files", "Photos + Images"])]
     Clone = 0xF24D,
 
@@ -2103,7 +2126,7 @@ public enum FontAwesomeIcon
     /// The Font Awesome "cloud-arrow-up" icon unicode character.
     /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0xF0EE.
     /// </summary>
-    [FontAwesomeSearchTerms(["cloud arrow up", "import", "save", "upload"])]
+    [FontAwesomeSearchTerms(["cloud arrow up", "import", "save", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows", "Connectivity"])]
     CloudUploadAlt = 0xF382,
 
@@ -2124,14 +2147,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "code" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["brackets", "code", "development", "html"])]
+    [FontAwesomeSearchTerms(["brackets", "code", "development", "html", "mysql", "sql"])]
     [FontAwesomeCategories(["Coding"])]
     Code = 0xF121,
 
     /// <summary>
     /// The Font Awesome "code-branch" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["code branch", "branch", "git", "github", "rebase", "svn", "vcs", "version"])]
+    [FontAwesomeSearchTerms(["code branch", "branch", "git", "github", "mysql", "rebase", "sql", "svn", "vcs", "version"])]
     [FontAwesomeCategories(["Coding"])]
     CodeBranch = 0xF126,
 
@@ -2180,21 +2203,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "gear" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["cog", "cogwheel", "gear", "mechanical", "settings", "sprocket", "tool", "wheel"])]
+    [FontAwesomeSearchTerms(["cog", "cogwheel", "configuration", "gear", "mechanical", "modify", "settings", "sprocket", "tool", "wheel"])]
     [FontAwesomeCategories(["Coding", "Editing", "Spinners"])]
     Cog = 0xF013,
 
     /// <summary>
     /// The Font Awesome "gears" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["gears", "mechanical", "settings", "sprocket", "wheel"])]
+    [FontAwesomeSearchTerms(["configuration", "gears", "mechanical", "modify", "settings", "sprocket", "wheel"])]
     [FontAwesomeCategories(["Coding", "Logistics"])]
     Cogs = 0xF085,
 
     /// <summary>
     /// The Font Awesome "coins" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["coins", "currency", "dime", "financial", "gold", "money", "penny"])]
+    [FontAwesomeSearchTerms(["coins", "currency", "dime", "financial", "gold", "money", "penny", "premium"])]
     [FontAwesomeCategories(["Money"])]
     Coins = 0xF51E,
 
@@ -2208,63 +2231,70 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "table-columns" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["table columns", "browser", "dashboard", "organize", "panes", "split"])]
+    [FontAwesomeSearchTerms(["table columns", "browser", "category", "dashboard", "organize", "panes", "split"])]
     [FontAwesomeCategories(["Business", "Text Formatting"])]
     Columns = 0xF0DB,
 
     /// <summary>
     /// The Font Awesome "comment" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["comment", "right speech bubble", "bubble", "chat", "commenting", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting"])]
+    [FontAwesomeSearchTerms(["comment", "right speech bubble", "answer", "bubble", "chat", "commenting", "conversation", "conversation", "discussion", "feedback", "message", "note", "notification", "sms", "speech", "talk", "talking", "texting"])]
     [FontAwesomeCategories(["Communication", "Shapes", "Social"])]
     Comment = 0xF075,
 
     /// <summary>
     /// The Font Awesome "message" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bubble", "chat", "commenting", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting"])]
+    [FontAwesomeSearchTerms(["answer", "bubble", "chat", "commenting", "conversation", "conversation", "discussion", "feedback", "message", "note", "notification", "sms", "speech", "talk", "talking", "texting"])]
     [FontAwesomeCategories(["Communication", "Social"])]
     CommentAlt = 0xF27A,
 
     /// <summary>
     /// The Font Awesome "comment-dollar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["comment dollar", "bubble", "chat", "commenting", "conversation", "feedback", "message", "money", "note", "notification", "pay", "sms", "speech", "spend", "texting", "transfer"])]
+    [FontAwesomeSearchTerms(["comment dollar", "answer", "bubble", "chat", "commenting", "conversation", "feedback", "message", "money", "note", "notification", "pay", "salary", "sms", "speech", "spend", "texting", "transfer"])]
     [FontAwesomeCategories(["Marketing", "Money"])]
     CommentDollar = 0xF651,
 
     /// <summary>
     /// The Font Awesome "comment-dots" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["comment dots", "balloon", "bubble", "chat", "comic", "commenting", "conversation", "dialog", "feedback", "message", "more", "note", "notification", "reply", "sms", "speech", "speech balloon", "texting"])]
+    [FontAwesomeSearchTerms(["comment dots", "answer", "balloon", "bubble", "chat", "comic", "commenting", "conversation", "dialog", "feedback", "message", "more", "note", "notification", "reply", "request", "sms", "speech", "speech balloon", "texting"])]
     [FontAwesomeCategories(["Communication"])]
     CommentDots = 0xF4AD,
 
     /// <summary>
     /// The Font Awesome "comment-medical" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["comment medical", "advice", "bubble", "chat", "commenting", "conversation", "diagnose", "feedback", "message", "note", "notification", "prescription", "sms", "speech", "texting"])]
+    [FontAwesomeSearchTerms(["comment medical", "advice", "answer", "bubble", "chat", "commenting", "conversation", "diagnose", "feedback", "message", "note", "notification", "prescription", "sms", "speech", "texting"])]
     [FontAwesomeCategories(["Communication", "Medical + Health"])]
     CommentMedical = 0xF7F5,
 
     /// <summary>
+    /// The Font Awesome "comment-nodes" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["comment nodes", "ai", "artificial intelligence", "cluster", "language", "model", "network", "neuronal"])]
+    [FontAwesomeCategories(["Coding", "Communication"])]
+    CommentNodes = 0xE696,
+
+    /// <summary>
     /// The Font Awesome "comments" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["comments", "two speech bubbles", "bubble", "chat", "commenting", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting"])]
+    [FontAwesomeSearchTerms(["comments", "two speech bubbles", "answer", "bubble", "chat", "commenting", "conversation", "conversation", "discussion", "feedback", "message", "note", "notification", "sms", "speech", "talk", "talking", "texting"])]
     [FontAwesomeCategories(["Communication"])]
     Comments = 0xF086,
 
     /// <summary>
     /// The Font Awesome "comments-dollar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["comments dollar", "bubble", "chat", "commenting", "conversation", "feedback", "message", "money", "note", "notification", "pay", "sms", "speech", "spend", "texting", "transfer"])]
+    [FontAwesomeSearchTerms(["comments dollar", "answer", "bubble", "chat", "commenting", "conversation", "feedback", "message", "money", "note", "notification", "pay", "salary", "sms", "speech", "spend", "texting", "transfer"])]
     [FontAwesomeCategories(["Marketing", "Money"])]
     CommentsDollar = 0xF653,
 
     /// <summary>
     /// The Font Awesome "comment-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["comment slash", "bubble", "cancel", "chat", "commenting", "conversation", "feedback", "message", "mute", "note", "notification", "quiet", "sms", "speech", "texting"])]
+    [FontAwesomeSearchTerms(["comment slash", "answer", "bubble", "cancel", "chat", "commenting", "conversation", "disabled", "feedback", "message", "mute", "note", "notification", "quiet", "sms", "speech", "texting"])]
     [FontAwesomeCategories(["Communication"])]
     CommentSlash = 0xF4B3,
 
@@ -2292,7 +2322,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "down-left-and-up-right-to-center" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["down left and up right to center", "collapse", "fullscreen", "minimize", "move", "resize", "shrink", "smaller"])]
+    [FontAwesomeSearchTerms(["down left and up right to center", "collapse", "fullscreen", "minimize", "move", "resize", "scale", "shrink", "size", "smaller"])]
     [FontAwesomeCategories(["Arrows", "Media Playback"])]
     CompressAlt = 0xF422,
 
@@ -2313,7 +2343,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "bell-concierge" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bell concierge", "attention", "bell", "bellhop", "bellhop bell", "hotel", "receptionist", "service", "support"])]
+    [FontAwesomeSearchTerms(["bell concierge", "attention", "bell", "bellhop", "bellhop bell", "hotel", "receptionist", "request", "service", "support"])]
     [FontAwesomeCategories(["Travel + Hotel"])]
     ConciergeBell = 0xF562,
 
@@ -2369,14 +2399,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "crop" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["crop", "design", "frame", "mask", "resize", "shrink"])]
+    [FontAwesomeSearchTerms(["crop", "design", "frame", "mask", "modify", "resize", "shrink"])]
     [FontAwesomeCategories(["Design", "Editing"])]
     Crop = 0xF125,
 
     /// <summary>
     /// The Font Awesome "crop-simple" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["crop simple", "design", "frame", "mask", "resize", "shrink"])]
+    [FontAwesomeSearchTerms(["crop simple", "design", "frame", "mask", "modify", "resize", "shrink"])]
     [FontAwesomeCategories(["Design", "Editing"])]
     CropAlt = 0xF565,
 
@@ -2404,7 +2434,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "crown" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["award", "clothing", "crown", "favorite", "king", "queen", "royal", "tiara"])]
+    [FontAwesomeSearchTerms(["award", "clothing", "crown", "favorite", "king", "queen", "royal", "tiara", "vip"])]
     [FontAwesomeCategories(["Shapes"])]
     Crown = 0xF521,
 
@@ -2446,14 +2476,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "scissors" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["black safety scissors", "white scissors", "clip", "cutting", "scissors", "snip", "tool"])]
+    [FontAwesomeSearchTerms(["black safety scissors", "white scissors", "clip", "cutting", "equipment", "modify", "scissors", "snip", "tool"])]
     [FontAwesomeCategories(["Business", "Design", "Editing", "Files"])]
     Cut = 0xF0C4,
 
     /// <summary>
     /// The Font Awesome "database" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["database", "computer", "development", "directory", "memory", "storage"])]
+    [FontAwesomeSearchTerms(["database", "computer", "development", "directory", "memory", "mysql", "sql", "storage"])]
     [FontAwesomeCategories(["Devices + Hardware"])]
     Database = 0xF1C0,
 
@@ -2461,7 +2491,7 @@ public enum FontAwesomeIcon
     /// The Font Awesome "ear-deaf" icon unicode character.
     /// </summary>
     [FontAwesomeSearchTerms(["ear deaf", "ear", "hearing", "sign language"])]
-    [FontAwesomeCategories(["Accessibility"])]
+    [FontAwesomeCategories(["Accessibility", "Communication"])]
     Deaf = 0xF2A4,
 
     /// <summary>
@@ -2489,7 +2519,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-dots-from-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person dots from line", "allergy", "diagnosis"])]
+    [FontAwesomeSearchTerms(["person dots from line", "allergy", "diagnosis", "uer"])]
     [FontAwesomeCategories(["Medical + Health", "Users + People"])]
     Diagnoses = 0xF470,
 
@@ -2517,7 +2547,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "diamond" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["diamond", "card", "cards", "diamond suit", "game", "gem", "gemstone", "poker", "suit"])]
+    [FontAwesomeSearchTerms(["diamond", "ace", "card", "cards", "diamond suit", "game", "gem", "gemstone", "poker", "suit"])]
     [FontAwesomeCategories(["Gaming", "Shapes"])]
     Diamond = 0xF219,
 
@@ -2644,7 +2674,7 @@ public enum FontAwesomeIcon
     /// The Font Awesome "dollar-sign" icon unicode character.
     /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0x24.
     /// </summary>
-    [FontAwesomeSearchTerms(["dollar sign", "dollar sign", "currency", "dollar", "heavy dollar sign", "money"])]
+    [FontAwesomeSearchTerms(["dollar sign", "dollar sign", "coupon", "currency", "dollar", "heavy dollar sign", "investment", "money", "premium", "revenue", "salary"])]
     [FontAwesomeCategories(["Charity", "Maps", "Money"])]
     DollarSign = 0xF155,
 
@@ -2665,7 +2695,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "circle-dollar-to-slot" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle dollar to slot", "contribute", "generosity", "gift", "give"])]
+    [FontAwesomeSearchTerms(["circle dollar to slot", "contribute", "generosity", "gift", "give", "premium"])]
     [FontAwesomeCategories(["Charity", "Money", "Political"])]
     Donate = 0xF4B9,
 
@@ -2679,7 +2709,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "door-closed" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["door closed", "doo", "door", "enter", "exit", "locked"])]
+    [FontAwesomeSearchTerms(["door closed", "doo", "door", "enter", "exit", "locked", "privacy"])]
     [FontAwesomeCategories(["Household", "Security", "Travel + Hotel"])]
     DoorClosed = 0xF52A,
 
@@ -2707,7 +2737,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "download" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["download", "export", "hard drive", "save", "transfer"])]
+    [FontAwesomeSearchTerms(["download", "export", "hard drive", "insert", "save", "transfer"])]
     [FontAwesomeCategories(["Arrows", "Devices + Hardware"])]
     Download = 0xF019,
 
@@ -2756,7 +2786,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "dumbbell" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["dumbbell", "exercise", "gym", "strength", "weight", "weight-lifting"])]
+    [FontAwesomeSearchTerms(["dumbbell", "exercise", "gym", "strength", "weight", "weight-lifting", "workout"])]
     [FontAwesomeCategories(["Sports + Fitness", "Travel + Hotel"])]
     Dumbbell = 0xF44B,
 
@@ -2791,7 +2821,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "pen-to-square" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["pen to square", "edit", "pen", "pencil", "update", "write"])]
+    [FontAwesomeSearchTerms(["pen to square", "edit", "modify", "pen", "pencil", "update", "write"])]
     [FontAwesomeCategories(["Business", "Design", "Editing", "Writing"])]
     Edit = 0xF044,
 
@@ -2812,56 +2842,56 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "elevator" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["accessibility", "elevator", "hoist", "lift", "users-people"])]
+    [FontAwesomeSearchTerms(["accessibility", "elevator", "hoist", "lift", "uer", "users-people"])]
     [FontAwesomeCategories(["Travel + Hotel", "Users + People"])]
     Elevator = 0xE16D,
 
     /// <summary>
     /// The Font Awesome "ellipsis" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["ellipsis", "dots", "drag", "kebab", "list", "menu", "nav", "navigation", "ol", "pacman", "reorder", "settings", "ul"])]
+    [FontAwesomeSearchTerms(["ellipsis", "dots", "drag", "kebab", "list", "menu", "nav", "navigation", "ol", "pacman", "reorder", "settings", "three dots", "ul"])]
     [FontAwesomeCategories(["Editing"])]
     EllipsisH = 0xF141,
 
     /// <summary>
     /// The Font Awesome "ellipsis-vertical" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["ellipsis vertical", "dots", "drag", "kebab", "list", "menu", "nav", "navigation", "ol", "reorder", "settings", "ul"])]
+    [FontAwesomeSearchTerms(["ellipsis vertical", "bullet", "dots", "drag", "kebab", "list", "menu", "nav", "navigation", "ol", "reorder", "settings", "three dots", "ul"])]
     [FontAwesomeCategories(["Editing"])]
     EllipsisV = 0xF142,
 
     /// <summary>
     /// The Font Awesome "envelope" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["back of envelope", "e-mail", "email", "envelope", "letter", "mail", "message", "notification", "support"])]
+    [FontAwesomeSearchTerms(["back of envelope", "e-mail", "email", "envelope", "letter", "mail", "message", "newsletter", "notification", "offer", "support"])]
     [FontAwesomeCategories(["Business", "Communication", "Humanitarian", "Social", "Writing"])]
     Envelope = 0xF0E0,
 
     /// <summary>
     /// The Font Awesome "envelope-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["envelope circle check", "check", "email", "envelope", "mail", "not affected", "ok", "okay", "read", "sent"])]
+    [FontAwesomeSearchTerms(["envelope circle check", "check", "email", "enable", "envelope", "mail", "not affected", "ok", "okay", "read", "sent", "validate", "working"])]
     [FontAwesomeCategories(["Business", "Communication", "Humanitarian"])]
     EnvelopeCircleCheck = 0xE4E8,
 
     /// <summary>
     /// The Font Awesome "envelope-open" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["envelope open", "e-mail", "email", "letter", "mail", "message", "notification", "support"])]
+    [FontAwesomeSearchTerms(["envelope open", "e-mail", "email", "letter", "mail", "message", "newsletter", "notification", "offer", "support"])]
     [FontAwesomeCategories(["Business", "Communication", "Writing"])]
     EnvelopeOpen = 0xF2B6,
 
     /// <summary>
     /// The Font Awesome "envelope-open-text" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["envelope open text", "e-mail", "email", "letter", "mail", "message", "notification", "support"])]
+    [FontAwesomeSearchTerms(["envelope open text", "e-mail", "email", "letter", "mail", "message", "newsletter", "notification", "offer", "support"])]
     [FontAwesomeCategories(["Marketing"])]
     EnvelopeOpenText = 0xF658,
 
     /// <summary>
     /// The Font Awesome "square-envelope" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square envelope", "e-mail", "email", "letter", "mail", "message", "notification", "support"])]
+    [FontAwesomeSearchTerms(["square envelope", "e-mail", "email", "letter", "mail", "message", "notification", "offer", "support"])]
     [FontAwesomeCategories(["Business", "Communication"])]
     EnvelopeSquare = 0xF199,
 
@@ -2905,42 +2935,42 @@ public enum FontAwesomeIcon
     /// The Font Awesome "exclamation" icon unicode character.
     /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0x21.
     /// </summary>
-    [FontAwesomeSearchTerms(["!", "exclamation mark", "alert", "danger", "error", "exclamation", "important", "mark", "notice", "notification", "notify", "outlined", "problem", "punctuation", "red exclamation mark", "warning", "white exclamation mark"])]
+    [FontAwesomeSearchTerms(["!", "exclamation mark", "alert", "attention", "danger", "error", "exclamation", "failed", "important", "mark", "notice", "notification", "notify", "outlined", "problem", "punctuation", "red exclamation mark", "required", "warning", "white exclamation mark"])]
     [FontAwesomeCategories(["Alert", "Punctuation + Symbols"])]
     Exclamation = 0xF12A,
 
     /// <summary>
     /// The Font Awesome "circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle exclamation", "affect", "alert", "damage", "danger", "error", "important", "notice", "notification", "notify", "problem", "warning"])]
+    [FontAwesomeSearchTerms(["circle exclamation", "affect", "alert", "attention", "damage", "danger", "error", "failed", "important", "notice", "notification", "notify", "problem", "required", "warning"])]
     [FontAwesomeCategories(["Alert", "Punctuation + Symbols"])]
     ExclamationCircle = 0xF06A,
 
     /// <summary>
     /// The Font Awesome "triangle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["triangle exclamation", "alert", "danger", "error", "important", "notice", "notification", "notify", "problem", "warnin", "warning"])]
+    [FontAwesomeSearchTerms(["triangle exclamation", "alert", "attention", "danger", "error", "failed", "important", "notice", "notification", "notify", "problem", "required", "warnin", "warning"])]
     [FontAwesomeCategories(["Alert"])]
     ExclamationTriangle = 0xF071,
 
     /// <summary>
     /// The Font Awesome "expand" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["expand", "bigger", "crop", "enlarge", "focus", "fullscreen", "resize", "viewfinder"])]
+    [FontAwesomeSearchTerms(["arrows", "bigger", "enlarge", "expand", "fullscreen", "maximize", "resize", "resize", "scale", "size", "viewfinder"])]
     [FontAwesomeCategories(["Media Playback"])]
     Expand = 0xF065,
 
     /// <summary>
     /// The Font Awesome "up-right-and-down-left-from-center" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["up right and down left from center", "arrows", "bigger", "enlarge", "fullscreen", "resize"])]
+    [FontAwesomeSearchTerms(["up right and down left from center", "arrows", "bigger", "enlarge", "expand", "fullscreen", "maximize", "resize", "resize", "scale", "size"])]
     [FontAwesomeCategories(["Arrows", "Media Playback"])]
     ExpandAlt = 0xF424,
 
     /// <summary>
     /// The Font Awesome "maximize" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["maximize", "bigger", "enlarge", "fullscreen", "move", "resize"])]
+    [FontAwesomeSearchTerms(["arrows", "bigger", "enlarge", "expand", "fullscreen", "maximize", "resize", "resize", "scale", "size"])]
     [FontAwesomeCategories(["Arrows", "Media Playback"])]
     ExpandArrowsAlt = 0xF31E,
 
@@ -2954,7 +2984,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "up-right-from-square" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["up right from square", "external-link", "new", "open", "share"])]
+    [FontAwesomeSearchTerms(["up right from square", "external-link", "new", "open", "share", "upgrade"])]
     [FontAwesomeCategories(["Arrows"])]
     ExternalLinkAlt = 0xF35D,
 
@@ -2982,7 +3012,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "eye-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["eye slash", "blind", "hide", "show", "toggle", "unseen", "views", "visible", "visiblity"])]
+    [FontAwesomeSearchTerms(["eye slash", "blind", "disabled", "hide", "show", "toggle", "unseen", "views", "visible", "visiblity"])]
     [FontAwesomeCategories(["Design", "Editing", "Maps", "Photos + Images", "Security"])]
     EyeSlash = 0xF070,
 
@@ -2996,14 +3026,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "backward-fast" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["backward fast", "arrow", "beginning", "first", "last track button", "previous", "previous scene", "previous track", "rewind", "start", "triangle"])]
+    [FontAwesomeSearchTerms(["backward fast", "arrow", "beginning", "first", "last track button", "previous", "previous scene", "previous track", "quick", "rewind", "start", "triangle"])]
     [FontAwesomeCategories(["Media Playback"])]
     FastBackward = 0xF049,
 
     /// <summary>
     /// The Font Awesome "forward-fast" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["forward fast", "arrow", "end", "last", "next", "next scene", "next track", "next track button", "triangle"])]
+    [FontAwesomeSearchTerms(["forward fast", "arrow", "end", "last", "next", "next scene", "next track", "next track button", "quick", "triangle"])]
     [FontAwesomeCategories(["Media Playback"])]
     FastForward = 0xF050,
 
@@ -3045,7 +3075,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-dress" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person dress", "man", "skirt", "woman"])]
+    [FontAwesomeSearchTerms(["person dress", "man", "skirt", "uer", "woman"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     Female = 0xF182,
 
@@ -3066,7 +3096,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "file" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file", "empty document", "document", "new", "page", "page facing up", "pdf", "resume"])]
+    [FontAwesomeSearchTerms(["file", "empty document", "cv", "document", "new", "page", "page facing up", "pdf", "resume"])]
     [FontAwesomeCategories(["Business", "Coding", "Files", "Humanitarian", "Shapes", "Writing"])]
     File = 0xF15B,
 
@@ -3094,14 +3124,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "file-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file circle check", "document", "file", "not affected", "ok", "okay", "paper"])]
+    [FontAwesomeSearchTerms(["file circle check", "document", "enable", "file", "not affected", "ok", "okay", "paper", "validate", "working"])]
     [FontAwesomeCategories(["Files", "Humanitarian"])]
     FileCircleCheck = 0xE5A0,
 
     /// <summary>
     /// The Font Awesome "file-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file circle exclamation", "document", "file", "paper"])]
+    [FontAwesomeSearchTerms(["file circle exclamation", "document", "failed", "file", "paper"])]
     [FontAwesomeCategories(["Files", "Humanitarian"])]
     FileCircleExclamation = 0xE4EB,
 
@@ -3129,21 +3159,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "file-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file circle xmark", "document", "file", "paper"])]
+    [FontAwesomeSearchTerms(["file circle xmark", "document", "file", "paper", "uncheck"])]
     [FontAwesomeCategories(["Files", "Humanitarian"])]
     FileCircleXmark = 0xE5A1,
 
     /// <summary>
     /// The Font Awesome "file-code" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file code", "css", "development", "document", "html"])]
+    [FontAwesomeSearchTerms(["file code", "css", "development", "document", "html", "mysql", "sql"])]
     [FontAwesomeCategories(["Coding", "Files"])]
     FileCode = 0xF1C9,
 
     /// <summary>
     /// The Font Awesome "file-contract" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file contract", "agreement", "binding", "document", "legal", "signature"])]
+    [FontAwesomeSearchTerms(["file contract", "agreement", "binding", "document", "legal", "signature", "username"])]
     [FontAwesomeCategories(["Security"])]
     FileContract = 0xF56C,
 
@@ -3157,7 +3187,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "file-arrow-down" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file arrow down", "document", "export", "save"])]
+    [FontAwesomeSearchTerms(["file arrow down", "archive", "document", "export", "insert", "save"])]
     [FontAwesomeCategories(["Files"])]
     FileDownload = 0xF56D,
 
@@ -3176,16 +3206,30 @@ public enum FontAwesomeIcon
     FileExport = 0xF56E,
 
     /// <summary>
+    /// The Font Awesome "file-fragment" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["file fragment", "block", "data", "partial", "piece"])]
+    [FontAwesomeCategories(["Files"])]
+    FileFragment = 0xE697,
+
+    /// <summary>
+    /// The Font Awesome "file-half-dashed" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["file half dashed", "data", "fragment", "partial", "piece"])]
+    [FontAwesomeCategories(["Files"])]
+    FileHalfDashed = 0xE698,
+
+    /// <summary>
     /// The Font Awesome "file-image" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file image", "document with picture", "document", "image", "jpg", "photo", "png"])]
+    [FontAwesomeSearchTerms(["file image", "document with picture", "document", "image", "img", "jpg", "photo", "png"])]
     [FontAwesomeCategories(["Files", "Photos + Images"])]
     FileImage = 0xF1C5,
 
     /// <summary>
     /// The Font Awesome "file-import" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file import", "copy", "document", "send", "upload"])]
+    [FontAwesomeSearchTerms(["file import", "copy", "document", "insert", "send", "upload"])]
     [FontAwesomeCategories(["Files"])]
     FileImport = 0xF56F,
 
@@ -3199,7 +3243,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "file-invoice-dollar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file invoice dollar", "$", "account", "bill", "charge", "document", "dollar-sign", "money", "payment", "receipt", "usd"])]
+    [FontAwesomeSearchTerms(["file invoice dollar", "$", "account", "bill", "charge", "document", "dollar-sign", "money", "payment", "receipt", "revenue", "salary", "usd"])]
     [FontAwesomeCategories(["Money"])]
     FileInvoiceDollar = 0xF571,
 
@@ -3227,7 +3271,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "file-pen" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file pen", "edit", "memo", "pen", "pencil", "update", "write"])]
+    [FontAwesomeSearchTerms(["file pen", "edit", "memo", "modify", "pen", "pencil", "update", "write"])]
     [FontAwesomeCategories(["Files", "Humanitarian"])]
     FilePen = 0xF31C,
 
@@ -3255,14 +3299,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "file-signature" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file signature", "john hancock", "contract", "document", "name"])]
+    [FontAwesomeSearchTerms(["file signature", "john hancock", "contract", "document", "name", "username"])]
     [FontAwesomeCategories(["Security"])]
     FileSignature = 0xF573,
 
     /// <summary>
     /// The Font Awesome "file-arrow-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["file arrow up", "document", "import", "page", "save"])]
+    [FontAwesomeSearchTerms(["file arrow up", "document", "import", "page", "save", "upgrade"])]
     [FontAwesomeCategories(["Files"])]
     FileUpload = 0xF574,
 
@@ -3311,14 +3355,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "filter-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["filter circle xmark", "cancel", "funnel", "options", "remove", "separate", "sort"])]
+    [FontAwesomeSearchTerms(["filter circle xmark", "cancel", "funnel", "options", "remove", "separate", "sort", "uncheck"])]
     [FontAwesomeCategories(["Text Formatting"])]
     FilterCircleXmark = 0xE17B,
 
     /// <summary>
     /// The Font Awesome "fingerprint" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["fingerprint", "human", "id", "identification", "lock", "smudge", "touch", "unique", "unlock"])]
+    [FontAwesomeSearchTerms(["fingerprint", "human", "id", "identification", "lock", "privacy", "smudge", "touch", "unique", "unlock"])]
     [FontAwesomeCategories(["Accessibility", "Security"])]
     Fingerprint = 0xF577,
 
@@ -3402,14 +3446,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "flask" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["flask", "beaker", "chemicals", "experiment", "experimental", "labs", "liquid", "potion", "science", "vial"])]
+    [FontAwesomeSearchTerms(["flask", "beaker", "chemicals", "experiment", "experimental", "knowledge", "labs", "liquid", "potion", "science", "vial"])]
     [FontAwesomeCategories(["Food + Beverage", "Maps", "Medical + Health", "Science"])]
     Flask = 0xF0C3,
 
     /// <summary>
     /// The Font Awesome "flask-vial" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["flask vial", " beaker", " chemicals", " experiment", " experimental", " labs", " liquid", " science", " vial", "ampule", "chemistry", "lab", "laboratory", "potion", "test", "test tube"])]
+    [FontAwesomeSearchTerms(["flask vial", "ampule", "beaker", "chemicals", "chemistry", "experiment", "experimental", "lab", "laboratory", "labs", "liquid", "potion", "science", "test", "test tube", "vial"])]
     [FontAwesomeCategories(["Humanitarian", "Medical + Health", "Science"])]
     FlaskVial = 0xE4F3,
 
@@ -3530,7 +3574,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "face-frown" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["face frown", "disapprove", "emoticon", "face", "frown", "frowning face", "rating", "sad"])]
+    [FontAwesomeSearchTerms(["face frown", "disapprove", "emoticon", "face", "frown", "frowning face", "rating", "sad", "uer"])]
     [FontAwesomeCategories(["Communication", "Emoji", "Users + People"])]
     Frown = 0xF119,
 
@@ -3544,7 +3588,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "filter-circle-dollar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["filter circle dollar", "filter", "money", "options", "separate", "sort"])]
+    [FontAwesomeSearchTerms(["filter circle dollar", "filter", "money", "options", "premium", "separate", "sort"])]
     [FontAwesomeCategories(["Marketing"])]
     FunnelDollar = 0xF662,
 
@@ -3558,7 +3602,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "gamepad" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["gamepad", "arcade", "controller", "d-pad", "joystick", "video", "video game"])]
+    [FontAwesomeSearchTerms(["gamepad", "arcade", "controller", "d-pad", "joystick", "playstore", "video", "video game"])]
     [FontAwesomeCategories(["Childhood", "Devices + Hardware", "Gaming", "Maps"])]
     Gamepad = 0xF11B,
 
@@ -3586,7 +3630,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "gauge-simple-high" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["gauge simple high", "dashboard", "fast", "odometer", "speed", "speedometer"])]
+    [FontAwesomeSearchTerms(["gauge simple high", "dashboard", "fast", "odometer", "quick", "speed", "speedometer"])]
     [FontAwesomeCategories(["Automotive"])]
     GaugeSimpleHigh = 0xF62A,
 
@@ -3684,7 +3728,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "globe" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["all", "coordinates", "country", "earth", "global", "globe", "globe with meridians", "gps", "internet", "language", "localize", "location", "map", "meridians", "network", "online", "place", "planet", "translate", "travel", "world"])]
+    [FontAwesomeSearchTerms(["all", "coordinates", "country", "earth", "global", "globe", "globe with meridians", "gps", "internet", "language", "localize", "location", "map", "meridians", "network", "online", "place", "planet", "translate", "travel", "world", "www"])]
     [FontAwesomeCategories(["Astronomy", "Business", "Charity", "Connectivity", "Maps"])]
     Globe = 0xF0AC,
 
@@ -3811,7 +3855,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "face-grin-stars" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["face grin stars", "emoticon", "eyes", "face", "grinning", "star", "star-struck", "starry-eyed"])]
+    [FontAwesomeSearchTerms(["face grin stars", "emoticon", "eyes", "face", "grinning", "quality", "star", "star-struck", "starry-eyed", "vip"])]
     [FontAwesomeCategories(["Emoji"])]
     GrinStars = 0xF587,
 
@@ -3853,7 +3897,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "grip" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["grip", "affordance", "drag", "drop", "grab", "handle"])]
+    [FontAwesomeSearchTerms(["grip", "affordance", "app", "collection", "dashboard", "drag", "drop", "grab", "grid", "handle", "launcher", "square"])]
     [FontAwesomeCategories(["Editing"])]
     GripHorizontal = 0xF58D,
 
@@ -3916,7 +3960,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hammer" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["admin", "fix", "hammer", "recovery", "repair", "settings", "tool"])]
+    [FontAwesomeSearchTerms(["admin", "configuration", "equipment", "fix", "hammer", "maintenance", "modify", "recovery", "repair", "settings", "tool"])]
     [FontAwesomeCategories(["Construction", "Humanitarian"])]
     Hammer = 0xF6E3,
 
@@ -3944,8 +3988,8 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hand-holding-droplet" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hand holding droplet", "carry", "covid-19", "drought", "grow", "lift", "sanitation"])]
-    [FontAwesomeCategories(["Charity", "Hands"])]
+    [FontAwesomeSearchTerms(["hand holding droplet", "blood", "carry", "covid-19", "drought", "grow", "lift", "sanitation"])]
+    [FontAwesomeCategories(["Charity", "Hands", "Medical + Health"])]
     HandHoldingDroplet = 0xF4C1,
 
     /// <summary>
@@ -3958,7 +4002,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hand-holding-heart" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hand holding heart", "carry", "charity", "gift", "lift", "package"])]
+    [FontAwesomeSearchTerms(["hand holding heart", "carry", "charity", "gift", "lift", "package", "wishlist"])]
     [FontAwesomeCategories(["Charity", "Hands"])]
     HandHoldingHeart = 0xF4BE,
 
@@ -3972,7 +4016,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hand-holding-dollar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hand holding dollar", "$", "carry", "dollar sign", "donation", "giving", "lift", "money", "price"])]
+    [FontAwesomeSearchTerms(["hand holding dollar", "$", "carry", "coupon", "dollar sign", "donate", "donation", "giving", "investment", "lift", "money", "premium", "price", "revenue", "salary"])]
     [FontAwesomeCategories(["Charity", "Hands", "Money"])]
     HandHoldingUsd = 0xF4C0,
 
@@ -3993,7 +4037,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hand" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hand", "raised hand", "backhand", "game", "halt", "palm", "raised", "raised back of hand", "roshambo", "stop"])]
+    [FontAwesomeSearchTerms(["hand", "raised hand", "backhand", "game", "halt", "palm", "raised", "raised back of hand", "request", "roshambo", "stop"])]
     [FontAwesomeCategories(["Hands", "Media Playback"])]
     HandPaper = 0xF256,
 
@@ -4035,7 +4079,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hand-point-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hand point up", "finger", "hand", "hand-o-up", "index", "index pointing up", "point", "up"])]
+    [FontAwesomeSearchTerms(["hand point up", "finger", "hand", "hand-o-up", "index", "index pointing up", "point", "request", "up", "upgrade"])]
     [FontAwesomeCategories(["Hands"])]
     HandPointUp = 0xF0A6,
 
@@ -4085,27 +4129,29 @@ public enum FontAwesomeIcon
     /// The Font Awesome "handshake" icon unicode character.
     /// </summary>
     [FontAwesomeSearchTerms(["handshake", "agreement", "greeting", "meeting", "partnership"])]
-    [FontAwesomeCategories(["Charity", "Hands", "Political", "Shopping"])]
+    [FontAwesomeCategories(["Charity", "Hands", "Humanitarian", "Political", "Shopping"])]
     Handshake = 0xF2B5,
 
     /// <summary>
-    /// The Font Awesome "handshake-simple" icon unicode character.
+    /// The Font Awesome "handshake" icon unicode character.
+    /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0xF2B5.
     /// </summary>
-    [FontAwesomeSearchTerms(["handshake simple", "agreement", "greeting", "hand", "handshake", "meeting", "partnership", "shake"])]
-    [FontAwesomeCategories(["Charity", "Hands", "Humanitarian"])]
+    [FontAwesomeSearchTerms(["handshake", "agreement", "greeting", "meeting", "partnership"])]
+    [FontAwesomeCategories(["Charity", "Hands", "Humanitarian", "Political", "Shopping"])]
     HandshakeSimple = 0xF4C6,
 
     /// <summary>
-    /// The Font Awesome "handshake-simple-slash" icon unicode character.
+    /// The Font Awesome "handshake-slash" icon unicode character.
+    /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0xE060.
     /// </summary>
-    [FontAwesomeSearchTerms(["handshake simple slash", "broken", "covid-19", "social distance"])]
+    [FontAwesomeSearchTerms(["handshake slash", "broken", "covid-19", "disabled", "social distance"])]
     [FontAwesomeCategories(["Hands"])]
     HandshakeSimpleSlash = 0xE05F,
 
     /// <summary>
     /// The Font Awesome "handshake-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["handshake slash", "broken", "covid-19", "social distance"])]
+    [FontAwesomeSearchTerms(["handshake slash", "broken", "covid-19", "disabled", "social distance"])]
     [FontAwesomeCategories(["Hands"])]
     HandshakeSlash = 0xE060,
 
@@ -4119,7 +4165,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hands-holding-child" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hands holding child", "care", "give", "help", "hold", "protect"])]
+    [FontAwesomeSearchTerms(["hands holding child", "care", "give", "help", "hold", "parent", "protect"])]
     [FontAwesomeCategories(["Charity", "Childhood", "Hands", "Humanitarian", "Security"])]
     HandsHoldingChild = 0xE4FA,
 
@@ -4154,7 +4200,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "helmet-safety" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["helmet safety", "construction", "hardhat", "helmet", "safety"])]
+    [FontAwesomeSearchTerms(["helmet safety", "construction", "hardhat", "helmet", "maintenance", "safety"])]
     [FontAwesomeCategories(["Construction", "Logistics"])]
     HardHat = 0xF807,
 
@@ -4209,10 +4255,11 @@ public enum FontAwesomeIcon
     Headphones = 0xF025,
 
     /// <summary>
-    /// The Font Awesome "headphones-simple" icon unicode character.
+    /// The Font Awesome "headphones" icon unicode character.
+    /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0xF025.
     /// </summary>
-    [FontAwesomeSearchTerms(["headphones simple", "audio", "listen", "music", "sound", "speaker"])]
-    [FontAwesomeCategories(["Music + Audio"])]
+    [FontAwesomeSearchTerms(["headphones", "audio", "earbud", "headphone", "listen", "music", "sound", "speaker"])]
+    [FontAwesomeCategories(["Devices + Hardware", "Film + Video", "Music + Audio"])]
     HeadphonesAlt = 0xF58F,
 
     /// <summary>
@@ -4225,35 +4272,35 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "head-side-cough" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["head side cough", "cough", "covid-19", "germs", "lungs", "respiratory", "sick"])]
+    [FontAwesomeSearchTerms(["head side cough", "cough", "covid-19", "germs", "lungs", "respiratory", "sick", "uer"])]
     [FontAwesomeCategories(["Medical + Health", "Users + People"])]
     HeadSideCough = 0xE061,
 
     /// <summary>
     /// The Font Awesome "head-side-cough-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["head side cough slash", "cough", "covid-19", "germs", "lungs", "respiratory", "sick"])]
+    [FontAwesomeSearchTerms(["head side cough slash", "cough", "covid-19", "disabled", "germs", "lungs", "respiratory", "sick", "uer"])]
     [FontAwesomeCategories(["Medical + Health", "Users + People"])]
     HeadSideCoughSlash = 0xE062,
 
     /// <summary>
     /// The Font Awesome "head-side-mask" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["head side mask", "breath", "coronavirus", "covid-19", "filter", "flu", "infection", "pandemic", "respirator", "virus"])]
+    [FontAwesomeSearchTerms(["head side mask", "breath", "coronavirus", "covid-19", "filter", "flu", "infection", "pandemic", "respirator", "uer", "virus"])]
     [FontAwesomeCategories(["Medical + Health", "Users + People"])]
     HeadSideMask = 0xE063,
 
     /// <summary>
     /// The Font Awesome "head-side-virus" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["head side virus", "cold", "coronavirus", "covid-19", "flu", "infection", "pandemic", "sick"])]
+    [FontAwesomeSearchTerms(["head side virus", "cold", "coronavirus", "covid-19", "flu", "infection", "pandemic", "sick", "uer"])]
     [FontAwesomeCategories(["Medical + Health", "Users + People"])]
     HeadSideVirus = 0xE064,
 
     /// <summary>
     /// The Font Awesome "heart" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["black", "black heart", "blue", "blue heart", "brown", "brown heart", "card", "evil", "favorite", "game", "green", "green heart", "heart", "heart suit", "like", "love", "orange", "orange heart", "purple", "purple heart", "red heart", "relationship", "valentine", "white", "white heart", "wicked", "yellow", "yellow heart"])]
+    [FontAwesomeSearchTerms(["ace", "card", "favorite", "game", "heart", "heart suit", "like", "love", "relationship", "valentine", "wishlist"])]
     [FontAwesomeCategories(["Charity", "Gaming", "Holidays", "Maps", "Medical + Health", "Shapes", "Shopping", "Social", "Sports + Fitness"])]
     Heart = 0xF004,
 
@@ -4281,14 +4328,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "heart-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["heart circle check", "favorite", "heart", "love", "not affected", "ok", "okay"])]
+    [FontAwesomeSearchTerms(["heart circle check", "enable", "favorite", "heart", "love", "not affected", "ok", "okay", "validate", "working"])]
     [FontAwesomeCategories(["Humanitarian", "Medical + Health"])]
     HeartCircleCheck = 0xE4FD,
 
     /// <summary>
     /// The Font Awesome "heart-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["heart circle exclamation", "favorite", "heart", "love"])]
+    [FontAwesomeSearchTerms(["heart circle exclamation", "failed", "favorite", "heart", "love"])]
     [FontAwesomeCategories(["Humanitarian", "Medical + Health"])]
     HeartCircleExclamation = 0xE4FE,
 
@@ -4309,7 +4356,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "heart-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["heart circle xmark", "favorite", "heart", "love"])]
+    [FontAwesomeSearchTerms(["heart circle xmark", "favorite", "heart", "love", "uncheck"])]
     [FontAwesomeCategories(["Humanitarian", "Medical + Health"])]
     HeartCircleXmark = 0xE501,
 
@@ -4335,16 +4382,37 @@ public enum FontAwesomeIcon
     HelmetUn = 0xE503,
 
     /// <summary>
+    /// The Font Awesome "hexagon" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["hexagon", "horizontal black hexagon", "geometry", "honeycomb", "polygon", "shape"])]
+    [FontAwesomeCategories(["Shapes"])]
+    Hexagon = 0xF312,
+
+    /// <summary>
+    /// The Font Awesome "hexagon-nodes" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["hexagon nodes", "action", "ai", "artificial intelligence", "cluster", "graph", "language", "llm", "model", "network", "neuronal"])]
+    [FontAwesomeCategories(["Charts + Diagrams", "Coding"])]
+    HexagonNodes = 0xE699,
+
+    /// <summary>
+    /// The Font Awesome "hexagon-nodes-bolt" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["hexagon nodes bolt", "llm", "action", "ai", "artificial intelligence", "cluster", "graph", "language", "llm", "model", "network", "neuronal"])]
+    [FontAwesomeCategories(["Charts + Diagrams", "Coding"])]
+    HexagonNodesBolt = 0xE69A,
+
+    /// <summary>
     /// The Font Awesome "highlighter" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["highlighter", "edit", "marker", "sharpie", "update", "write"])]
+    [FontAwesomeSearchTerms(["highlighter", "edit", "marker", "modify", "sharpie", "update", "write"])]
     [FontAwesomeCategories(["Business", "Design", "Text Formatting"])]
     Highlighter = 0xF591,
 
     /// <summary>
     /// The Font Awesome "person-hiking" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person hiking", "autumn", "fall", "hike", "mountain", "outdoors", "summer", "walk"])]
+    [FontAwesomeSearchTerms(["person hiking", "autumn", "fall", "follow", "hike", "mountain", "outdoors", "summer", "uer", "walk"])]
     [FontAwesomeCategories(["Camping", "Nature", "Sports + Fitness", "Users + People"])]
     Hiking = 0xF6EC,
 
@@ -4372,7 +4440,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "clock-rotate-left" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["clock rotate left", "rewind", "clock", "reverse", "time", "time machine", "time travel"])]
+    [FontAwesomeSearchTerms(["clock rotate left", "rewind", "clock", "pending", "reverse", "time", "time machine", "time travel", "waiting"])]
     [FontAwesomeCategories(["Arrows", "Medical + Health"])]
     History = 0xF1DA,
 
@@ -4436,7 +4504,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hospital-user" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hospital user", "covid-19", "doctor", "network", "patient", "primary care"])]
+    [FontAwesomeSearchTerms(["hospital user", "covid-19", "doctor", "network", "patient", "primary care", "uer"])]
     [FontAwesomeCategories(["Buildings", "Medical + Health", "Users + People"])]
     HospitalUser = 0xF80D,
 
@@ -4457,7 +4525,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hot-tub-person" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hot tub person", "jacuzzi", "spa"])]
+    [FontAwesomeSearchTerms(["hot tub person", "jacuzzi", "spa", "uer"])]
     [FontAwesomeCategories(["Travel + Hotel", "Users + People"])]
     HotTub = 0xF593,
 
@@ -4471,21 +4539,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "hourglass-end" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hourglass end", "hour", "hourglass done", "minute", "sand", "stopwatch", "time", "timer"])]
+    [FontAwesomeSearchTerms(["hourglass end", "hour", "hourglass done", "minute", "pending", "sand", "stopwatch", "time", "timer", "waiting"])]
     [FontAwesomeCategories(["Time"])]
     HourglassEnd = 0xF253,
 
     /// <summary>
     /// The Font Awesome "hourglass-half" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hourglass half", "hour", "minute", "sand", "stopwatch", "time"])]
+    [FontAwesomeSearchTerms(["hourglass half", "hour", "minute", "pending", "sand", "stopwatch", "time", "waiting"])]
     [FontAwesomeCategories(["Time"])]
     HourglassHalf = 0xF252,
 
     /// <summary>
     /// The Font Awesome "hourglass-start" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["hourglass start", "hour", "minute", "sand", "stopwatch", "time"])]
+    [FontAwesomeSearchTerms(["hourglass start", "hour", "minute", "sand", "stopwatch", "time", "waiting"])]
     [FontAwesomeCategories(["Time"])]
     HourglassStart = 0xF251,
 
@@ -4499,7 +4567,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "house-chimney-user" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house chimney user", "covid-19", "home", "isolation", "quarantine"])]
+    [FontAwesomeSearchTerms(["house chimney user", "covid-19", "home", "isolation", "quarantine", "uer"])]
     [FontAwesomeCategories(["Household", "Users + People"])]
     HouseChimneyUser = 0xE065,
 
@@ -4513,21 +4581,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "house-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house circle check", "abode", "home", "house", "not affected", "ok", "okay"])]
+    [FontAwesomeSearchTerms(["house circle check", "abode", "enable", "home", "house", "not affected", "ok", "okay", "validate", "working"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     HouseCircleCheck = 0xE509,
 
     /// <summary>
     /// The Font Awesome "house-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house circle exclamation", "abode", "affected", "home", "house"])]
+    [FontAwesomeSearchTerms(["house circle exclamation", "abode", "affected", "failed", "home", "house"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     HouseCircleExclamation = 0xE50A,
 
     /// <summary>
     /// The Font Awesome "house-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house circle xmark", "abode", "destroy", "home", "house"])]
+    [FontAwesomeSearchTerms(["house circle xmark", "abode", "destroy", "home", "house", "uncheck"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian"])]
     HouseCircleXmark = 0xE50B,
 
@@ -4583,7 +4651,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "house-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house lock", "closed", "home", "house", "lockdown", "quarantine"])]
+    [FontAwesomeSearchTerms(["house lock", "closed", "home", "house", "lockdown", "padlock", "privacy", "quarantine"])]
     [FontAwesomeCategories(["Buildings", "Household", "Humanitarian", "Security"])]
     HouseLock = 0xE510,
 
@@ -4597,21 +4665,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "house-medical-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house medical circle check", "clinic", "hospital", "not affected", "ok", "okay"])]
+    [FontAwesomeSearchTerms(["house medical circle check", "clinic", "enable", "hospital", "not affected", "ok", "okay", "validate", "working"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian", "Medical + Health"])]
     HouseMedicalCircleCheck = 0xE511,
 
     /// <summary>
     /// The Font Awesome "house-medical-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house medical circle exclamation", "affected", "clinic", "hospital"])]
+    [FontAwesomeSearchTerms(["house medical circle exclamation", "affected", "clinic", "failed", "hospital"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian", "Medical + Health"])]
     HouseMedicalCircleExclamation = 0xE512,
 
     /// <summary>
     /// The Font Awesome "house-medical-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house medical circle xmark", "clinic", "destroy", "hospital"])]
+    [FontAwesomeSearchTerms(["house medical circle xmark", "clinic", "destroy", "hospital", "uncheck"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian", "Medical + Health"])]
     HouseMedicalCircleXmark = 0xE513,
 
@@ -4625,7 +4693,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "house-signal" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house signal", "abode", "building", "connect", "family", "home", "residence", "smart home", "wifi"])]
+    [FontAwesomeSearchTerms(["house signal", "abode", "building", "connect", "family", "home", "residence", "smart home", "wifi", "www"])]
     [FontAwesomeCategories(["Connectivity", "Household", "Humanitarian"])]
     HouseSignal = 0xE012,
 
@@ -4639,7 +4707,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "house-user" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["house user", "house"])]
+    [FontAwesomeSearchTerms(["house user", "house", "uer"])]
     [FontAwesomeCategories(["Household", "Users + People"])]
     HouseUser = 0xE1B0,
 
@@ -4681,7 +4749,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "icons" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["icons", "bolt", "emoji", "heart", "image", "music", "photo", "symbols"])]
+    [FontAwesomeSearchTerms(["icons", "bolt", "category", "emoji", "heart", "image", "music", "photo", "symbols"])]
     [FontAwesomeCategories(["Communication", "Design", "Social", "Text Formatting"])]
     Icons = 0xF86D,
 
@@ -4695,21 +4763,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "id-badge" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["id badge", "address", "contact", "identification", "license", "profile"])]
+    [FontAwesomeSearchTerms(["id badge", "address", "contact", "identification", "license", "profile", "uer", "username"])]
     [FontAwesomeCategories(["Photos + Images", "Security", "Users + People"])]
     IdBadge = 0xF2C1,
 
     /// <summary>
     /// The Font Awesome "id-card" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["id card", "contact", "demographics", "document", "identification", "issued", "profile", "registration"])]
+    [FontAwesomeSearchTerms(["id card", "contact", "demographics", "document", "identification", "issued", "profile", "registration", "uer", "username"])]
     [FontAwesomeCategories(["Humanitarian", "Photos + Images", "Security", "Users + People"])]
     IdCard = 0xF2C2,
 
     /// <summary>
     /// The Font Awesome "id-card-clip" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["id card clip", "contact", "demographics", "document", "identification", "issued", "profile"])]
+    [FontAwesomeSearchTerms(["id card clip", "contact", "demographics", "document", "identification", "issued", "profile", "uer", "username"])]
     [FontAwesomeCategories(["Medical + Health", "Security", "Users + People"])]
     IdCardAlt = 0xF47F,
 
@@ -4723,14 +4791,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "image" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["image", "album", "landscape", "photo", "picture"])]
+    [FontAwesomeSearchTerms(["image", "album", "img", "landscape", "photo", "picture"])]
     [FontAwesomeCategories(["Maps", "Photos + Images", "Social"])]
     Image = 0xF03E,
 
     /// <summary>
     /// The Font Awesome "images" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["images", "album", "landscape", "photo", "picture"])]
+    [FontAwesomeSearchTerms(["images", "album", "img", "landscape", "photo", "picture"])]
     [FontAwesomeCategories(["Maps", "Photos + Images", "Social"])]
     Images = 0xF302,
 
@@ -4782,6 +4850,12 @@ public enum FontAwesomeIcon
     [FontAwesomeSearchTerms(["circle info", "details", "help", "information", "more", "support"])]
     [FontAwesomeCategories(["Accessibility", "Maps"])]
     InfoCircle = 0xF05A,
+
+    /// <summary>
+    /// The Font Awesome "instagramsquare" icon unicode character.
+    /// </summary>
+    [Obsolete]
+    InstagramSquare = 0xF955,
 
     /// <summary>
     /// The Font Awesome "italic" icon unicode character.
@@ -4912,7 +4986,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "landmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["landmark", "building", "classical", "historic", "memorable", "monument", "museum", "politics"])]
+    [FontAwesomeSearchTerms(["landmark", "building", "classical", "historic", "memorable", "monument", "museum", "politics", "society"])]
     [FontAwesomeCategories(["Buildings", "Business", "Humanitarian", "Maps", "Money"])]
     Landmark = 0xF66F,
 
@@ -4947,14 +5021,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "laptop" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["computer", "cpu", "dell", "demo", "device", "laptop", "mac", "macbook", "machine", "pc", "personal"])]
+    [FontAwesomeSearchTerms(["computer", "cpu", "dell", "demo", "device", "fabook", "fb", "laptop", "mac", "macbook", "machine", "pc", "personal"])]
     [FontAwesomeCategories(["Devices + Hardware", "Humanitarian"])]
     Laptop = 0xF109,
 
     /// <summary>
     /// The Font Awesome "laptop-code" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["laptop code", "computer", "cpu", "dell", "demo", "develop", "device", "mac", "macbook", "machine", "pc"])]
+    [FontAwesomeSearchTerms(["laptop code", "computer", "cpu", "dell", "demo", "develop", "device", "fabook", "fb", "mac", "macbook", "machine", "mysql", "pc", "sql"])]
     [FontAwesomeCategories(["Coding", "Education"])]
     LaptopCode = 0xF5FC,
 
@@ -5010,7 +5084,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "layer-group" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["layer group", "arrange", "develop", "layers", "map", "stack"])]
+    [FontAwesomeSearchTerms(["layer group", "arrange", "category", "develop", "layers", "map", "platform", "stack"])]
     [FontAwesomeCategories(["Design", "Maps"])]
     LayerGroup = 0xF5FD,
 
@@ -5067,7 +5141,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "lightbulb" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["lightbulb", "  comic", "  electric", "  idea", "  innovation", "  inspiration", "  light", "  light bulb", " bulb", "bulb", "comic", "electric", "energy", "idea", "inspiration", "mechanical"])]
+    [FontAwesomeSearchTerms(["lightbulb", "bulb", "bulb", "comic", "comic", "electric", "electric", "energy", "idea", "idea", "innovation", "inspiration", "inspiration", "light", "light bulb", "mechanical"])]
     [FontAwesomeCategories(["Energy", "Household", "Maps", "Marketing"])]
     Lightbulb = 0xF0EB,
 
@@ -5095,28 +5169,28 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "list" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["list", "checklist", "completed", "done", "finished", "ol", "todo", "ul"])]
+    [FontAwesomeSearchTerms(["list", "bullet", "category", "cheatsheet", "checklist", "completed", "done", "finished", "ol", "summary", "todo", "ul"])]
     [FontAwesomeCategories(["Text Formatting"])]
     List = 0xF03A,
 
     /// <summary>
     /// The Font Awesome "rectangle-list" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["rectangle list", "checklist", "completed", "done", "finished", "ol", "todo", "ul"])]
+    [FontAwesomeSearchTerms(["rectangle list", "cheatsheet", "checklist", "completed", "done", "finished", "ol", "summary", "todo", "ul"])]
     [FontAwesomeCategories(["Text Formatting"])]
     ListAlt = 0xF022,
 
     /// <summary>
     /// The Font Awesome "list-ol" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["list ol", "checklist", "completed", "done", "finished", "numbers", "ol", "todo", "ul"])]
+    [FontAwesomeSearchTerms(["list ol", "cheatsheet", "checklist", "completed", "done", "finished", "numbers", "ol", "summary", "todo", "ul"])]
     [FontAwesomeCategories(["Text Formatting"])]
     ListOl = 0xF0CB,
 
     /// <summary>
     /// The Font Awesome "list-ul" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["list ul", "checklist", "completed", "done", "finished", "ol", "todo", "ul"])]
+    [FontAwesomeSearchTerms(["list ul", "bullet", "cheatsheet", "checklist", "completed", "done", "finished", "ol", "summary", "survey", "todo", "ul"])]
     [FontAwesomeCategories(["Text Formatting"])]
     ListUl = 0xF0CA,
 
@@ -5144,21 +5218,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "location-pin-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["location pin lock", "closed", "lockdown", "map", "quarantine"])]
+    [FontAwesomeSearchTerms(["location pin lock", "closed", "lockdown", "map", "padlock", "privacy", "quarantine"])]
     [FontAwesomeCategories(["Humanitarian", "Maps"])]
     LocationPinLock = 0xE51F,
 
     /// <summary>
     /// The Font Awesome "lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["admin", "closed", "lock", "locked", "open", "password", "private", "protect", "security"])]
+    [FontAwesomeSearchTerms(["admin", "closed", "lock", "locked", "open", "padlock", "password", "privacy", "private", "protect", "security"])]
     [FontAwesomeCategories(["Security"])]
     Lock = 0xF023,
 
     /// <summary>
     /// The Font Awesome "lock-open" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["lock open", "admin", "lock", "open", "password", "private", "protect", "security", "unlock"])]
+    [FontAwesomeSearchTerms(["lock open", "admin", "lock", "open", "padlock", "password", "privacy", "private", "protect", "security", "unlock"])]
     [FontAwesomeCategories(["Security"])]
     LockOpen = 0xF3C1,
 
@@ -5193,7 +5267,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "up-long" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["up long", "long-arrow-up", "upload"])]
+    [FontAwesomeSearchTerms(["up long", "long-arrow-up", "upgrade", "upload"])]
     [FontAwesomeCategories(["Arrows"])]
     LongArrowAltUp = 0xF30C,
 
@@ -5242,28 +5316,28 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "magnifying-glass-arrow-right" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["magnifying glass arrow right", "find", "next", "search"])]
+    [FontAwesomeSearchTerms(["magnifying glass arrow right", "find", "magnifier", "next", "search"])]
     [FontAwesomeCategories(["Business", "Humanitarian", "Marketing"])]
     MagnifyingGlassArrowRight = 0xE521,
 
     /// <summary>
     /// The Font Awesome "magnifying-glass-chart" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["magnifying glass chart", " data", " graph", " intelligence", "analysis", "chart", "market"])]
+    [FontAwesomeSearchTerms(["magnifying glass chart", "analysis", "chart", "data", "graph", "intelligence", "magnifier", "market", "revenue"])]
     [FontAwesomeCategories(["Business", "Humanitarian", "Marketing"])]
     MagnifyingGlassChart = 0xE522,
 
     /// <summary>
     /// The Font Awesome "envelopes-bulk" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["envelopes bulk", "archive", "envelope", "letter", "post office", "postal", "postcard", "send", "stamp", "usps"])]
+    [FontAwesomeSearchTerms(["envelopes bulk", "archive", "envelope", "letter", "newsletter", "offer", "post office", "postal", "postcard", "send", "stamp", "usps"])]
     [FontAwesomeCategories(["Marketing"])]
     MailBulk = 0xF674,
 
     /// <summary>
     /// The Font Awesome "person" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person", "man", "person standing", "stand", "standing", "woman"])]
+    [FontAwesomeSearchTerms(["person", "default", "man", "person standing", "stand", "standing", "uer", "woman"])]
     [FontAwesomeCategories(["Humanitarian", "Maps", "Users + People"])]
     Male = 0xF183,
 
@@ -5326,7 +5400,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "marker" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["marker", "design", "edit", "sharpie", "update", "write"])]
+    [FontAwesomeSearchTerms(["marker", "design", "edit", "modify", "sharpie", "update", "write"])]
     [FontAwesomeCategories(["Business", "Design"])]
     Marker = 0xF5A1,
 
@@ -5340,7 +5414,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "mars-and-venus-burst" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["mars and venus burst", "gender", "violence"])]
+    [FontAwesomeSearchTerms(["mars and venus burst", "gender", "uer", "violence"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     MarsAndVenusBurst = 0xE523,
 
@@ -5403,7 +5477,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "medal" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["award", "medal", "ribbon", "sports medal", "star", "trophy"])]
+    [FontAwesomeSearchTerms(["award", "guarantee", "medal", "quality", "ribbon", "sports medal", "star", "trophy", "warranty"])]
     [FontAwesomeCategories(["Sports + Fitness"])]
     Medal = 0xF5A2,
 
@@ -5417,7 +5491,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "face-meh" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["face meh", "deadpan", "emoticon", "face", "meh", "neutral", "neutral face", "rating"])]
+    [FontAwesomeSearchTerms(["face meh", "deadpan", "default", "emoticon", "face", "meh", "neutral", "neutral face", "rating", "uer"])]
     [FontAwesomeCategories(["Communication", "Emoji", "Users + People"])]
     Meh = 0xF11A,
 
@@ -5473,35 +5547,35 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "microphone" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["microphone", "address", "audio", "information", "podcast", "public", "record", "sing", "sound", "voice"])]
+    [FontAwesomeSearchTerms(["microphone", "address", "audio", "information", "podcast", "public", "record", "sing", "sound", "talking", "voice"])]
     [FontAwesomeCategories(["Communication", "Film + Video", "Music + Audio", "Toggle"])]
     Microphone = 0xF130,
 
     /// <summary>
     /// The Font Awesome "microphone-lines" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["microphone lines", "audio", "mic", "microphone", "music", "podcast", "record", "sing", "sound", "studio", "studio microphone", "voice"])]
+    [FontAwesomeSearchTerms(["microphone lines", "audio", "mic", "microphone", "music", "podcast", "record", "sing", "sound", "studio", "studio microphone", "talking", "voice"])]
     [FontAwesomeCategories(["Communication", "Film + Video", "Music + Audio"])]
     MicrophoneAlt = 0xF3C9,
 
     /// <summary>
     /// The Font Awesome "microphone-lines-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["microphone lines slash", "audio", "disable", "mute", "podcast", "record", "sing", "sound", "voice"])]
+    [FontAwesomeSearchTerms(["microphone lines slash", "audio", "disable", "disabled", "disconnect", "disconnect", "mute", "podcast", "record", "sing", "sound", "voice"])]
     [FontAwesomeCategories(["Communication", "Film + Video", "Music + Audio"])]
     MicrophoneAltSlash = 0xF539,
 
     /// <summary>
     /// The Font Awesome "microphone-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["microphone slash", "audio", "disable", "mute", "podcast", "record", "sing", "sound", "voice"])]
+    [FontAwesomeSearchTerms(["microphone slash", "audio", "disable", "disabled", "mute", "podcast", "record", "sing", "sound", "voice"])]
     [FontAwesomeCategories(["Communication", "Film + Video", "Music + Audio", "Toggle"])]
     MicrophoneSlash = 0xF131,
 
     /// <summary>
     /// The Font Awesome "microscope" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["covid-19", "electron", "lens", "microscope", "optics", "science", "shrink", "testing", "tool"])]
+    [FontAwesomeSearchTerms(["covid-19", "electron", "knowledge", "lens", "microscope", "optics", "science", "shrink", "testing", "tool"])]
     [FontAwesomeCategories(["Education", "Humanitarian", "Medical + Health", "Science"])]
     Microscope = 0xF610,
 
@@ -5576,72 +5650,79 @@ public enum FontAwesomeIcon
     MobileScreen = 0xF3CF,
 
     /// <summary>
+    /// The Font Awesome "mobile-vibrate" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["mobile vibrate", "android", "call", "cell", "cell phone", "device", "haptic", "mobile", "mobile phone", "notification", "number", "phone", "screen", "telephone", "text"])]
+    [FontAwesomeCategories(["Communication", "Devices + Hardware"])]
+    MobileVibrate = 0xE816,
+
+    /// <summary>
     /// The Font Awesome "money-bill" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money bill", "buy", "cash", "checkout", "money", "payment", "price", "purchase"])]
+    [FontAwesomeSearchTerms(["money bill", "buy", "cash", "checkout", "coupon", "investment", "money", "payment", "premium", "price", "purchase", "revenue", "salary"])]
     [FontAwesomeCategories(["Maps", "Money"])]
     MoneyBill = 0xF0D6,
 
     /// <summary>
     /// The Font Awesome "money-bill-1" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money bill 1", "buy", "cash", "checkout", "money", "payment", "price", "purchase"])]
+    [FontAwesomeSearchTerms(["money bill 1", "buy", "cash", "checkout", "money", "payment", "premium", "price", "purchase", "salary"])]
     [FontAwesomeCategories(["Maps", "Money"])]
     MoneyBillAlt = 0xF3D1,
 
     /// <summary>
     /// The Font Awesome "money-bills" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money bills", "atm", "cash", "money", "moolah"])]
+    [FontAwesomeSearchTerms(["money bills", "atm", "cash", "investment", "money", "moolah", "premium", "revenue", "salary"])]
     [FontAwesomeCategories(["Humanitarian", "Money"])]
     MoneyBills = 0xE1F3,
 
     /// <summary>
     /// The Font Awesome "money-bill-transfer" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money bill transfer", "bank", "conversion", "deposit", "money", "transfer", "withdrawal"])]
+    [FontAwesomeSearchTerms(["money bill transfer", "bank", "conversion", "deposit", "investment", "money", "salary", "transfer", "withdrawal"])]
     [FontAwesomeCategories(["Humanitarian", "Money"])]
     MoneyBillTransfer = 0xE528,
 
     /// <summary>
     /// The Font Awesome "money-bill-trend-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money bill trend up", "bank", "bonds", "inflation", "market", "stocks", "trade"])]
+    [FontAwesomeSearchTerms(["money bill trend up", "bank", "bonds", "inflation", "investment", "market", "revenue", "salary", "stocks", "trade"])]
     [FontAwesomeCategories(["Humanitarian", "Money"])]
     MoneyBillTrendUp = 0xE529,
 
     /// <summary>
     /// The Font Awesome "money-bill-wave" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money bill wave", "buy", "cash", "checkout", "money", "payment", "price", "purchase"])]
+    [FontAwesomeSearchTerms(["money bill wave", "buy", "cash", "checkout", "money", "payment", "premium", "price", "purchase", "salary"])]
     [FontAwesomeCategories(["Money"])]
     MoneyBillWave = 0xF53A,
 
     /// <summary>
     /// The Font Awesome "money-bill-1-wave" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money bill 1 wave", "buy", "cash", "checkout", "money", "payment", "price", "purchase"])]
+    [FontAwesomeSearchTerms(["money bill 1 wave", "buy", "cash", "checkout", "money", "payment", "premium", "price", "purchase", "salary"])]
     [FontAwesomeCategories(["Money"])]
     MoneyBillWaveAlt = 0xF53B,
 
     /// <summary>
     /// The Font Awesome "money-bill-wheat" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money bill wheat", "agribusiness", "agriculture", "farming", "food", "livelihood", "subsidy"])]
+    [FontAwesomeSearchTerms(["money bill wheat", "agribusiness", "agriculture", "farming", "food", "investment", "livelihood", "subsidy"])]
     [FontAwesomeCategories(["Humanitarian", "Money"])]
     MoneyBillWheat = 0xE52A,
 
     /// <summary>
     /// The Font Awesome "money-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money check", "bank check", "buy", "checkout", "cheque", "money", "payment", "price", "purchase"])]
+    [FontAwesomeSearchTerms(["money check", "bank check", "buy", "checkout", "cheque", "money", "payment", "price", "purchase", "salary"])]
     [FontAwesomeCategories(["Money", "Shopping"])]
     MoneyCheck = 0xF53C,
 
     /// <summary>
     /// The Font Awesome "money-check-dollar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["money check dollar", "bank check", "buy", "checkout", "cheque", "money", "payment", "price", "purchase"])]
+    [FontAwesomeSearchTerms(["money check dollar", "bank check", "buy", "checkout", "cheque", "money", "payment", "price", "purchase", "salary"])]
     [FontAwesomeCategories(["Money", "Shopping"])]
     MoneyCheckAlt = 0xF53D,
 
@@ -5774,14 +5855,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "newspaper" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["article", "editorial", "headline", "journal", "journalism", "news", "newspaper", "paper", "press"])]
+    [FontAwesomeSearchTerms(["article", "editorial", "headline", "journal", "journalism", "news", "newsletter", "newspaper", "paper", "press"])]
     [FontAwesomeCategories(["Maps", "Writing"])]
     Newspaper = 0xF1EA,
 
     /// <summary>
+    /// The Font Awesome "non-binary" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["non binary", "female", "gender", "male", "nb", "queer"])]
+    [FontAwesomeCategories(["Genders"])]
+    NonBinary = 0xE807,
+
+    /// <summary>
     /// The Font Awesome "notdef" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["notdef", "close", "missing"])]
+    [FontAwesomeSearchTerms(["notdef", "404", "close", "missing", "not found"])]
     [FontAwesomeCategories(["Coding", "Writing"])]
     Notdef = 0xE1FE,
 
@@ -5812,6 +5900,13 @@ public enum FontAwesomeIcon
     [FontAwesomeSearchTerms(["object ungroup", "copy", "design", "merge", "select", "separate"])]
     [FontAwesomeCategories(["Design"])]
     ObjectUngroup = 0xF248,
+
+    /// <summary>
+    /// The Font Awesome "octagon" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["octagon", "octagonal", "shape", "sign", "stop", "stop sign"])]
+    [FontAwesomeCategories(["Shapes"])]
+    Octagon = 0xF306,
 
     /// <summary>
     /// The Font Awesome "oil-can" icon unicode character.
@@ -5858,14 +5953,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "paintbrush" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["acrylic", "art", "brush", "color", "fill", "paint", "paintbrush", "painting", "pigment", "watercolor"])]
+    [FontAwesomeSearchTerms(["acrylic", "art", "brush", "color", "fill", "modify", "paint", "paintbrush", "painting", "pigment", "watercolor"])]
     [FontAwesomeCategories(["Design", "Editing"])]
     PaintBrush = 0xF1FC,
 
     /// <summary>
     /// The Font Awesome "paint-roller" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["paint roller", "acrylic", "art", "brush", "color", "fill", "paint", "pigment", "watercolor"])]
+    [FontAwesomeSearchTerms(["paint roller", "acrylic", "art", "brush", "color", "fill", "maintenance", "paint", "pigment", "watercolor"])]
     [FontAwesomeCategories(["Construction", "Design"])]
     PaintRoller = 0xF5AA,
 
@@ -5886,7 +5981,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "panorama" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["panorama", "image", "landscape", "photo", "wide"])]
+    [FontAwesomeSearchTerms(["panorama", "image", "img", "landscape", "photo", "wide"])]
     [FontAwesomeCategories(["Photos + Images"])]
     Panorama = 0xE209,
 
@@ -5977,98 +6072,105 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "pen" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["ballpoint", "design", "edit", "pen", "update", "write"])]
+    [FontAwesomeSearchTerms(["ballpoint", "design", "edit", "modify", "pen", "update", "write"])]
     [FontAwesomeCategories(["Business", "Design", "Editing", "Writing"])]
     Pen = 0xF304,
 
     /// <summary>
     /// The Font Awesome "pen-clip" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["pen clip", "design", "edit", "update", "write"])]
+    [FontAwesomeSearchTerms(["pen clip", "design", "edit", "modify", "update", "write"])]
     [FontAwesomeCategories(["Business", "Design", "Editing", "Writing"])]
     PenAlt = 0xF305,
 
     /// <summary>
     /// The Font Awesome "pencil" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["lower left pencil", "design", "draw", "edit", "lead", "pencil", "update", "write"])]
+    [FontAwesomeSearchTerms(["lower left pencil", "design", "draw", "edit", "lead", "maintenance", "modify", "pencil", "update", "write"])]
     [FontAwesomeCategories(["Business", "Construction", "Design", "Editing", "Writing"])]
     PencilAlt = 0xF303,
 
     /// <summary>
     /// The Font Awesome "pen-ruler" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["pen ruler", "design", "draft", "draw", "pencil"])]
+    [FontAwesomeSearchTerms(["pen ruler", "design", "draft", "draw", "maintenance", "modify", "pencil"])]
     [FontAwesomeCategories(["Construction", "Design", "Editing"])]
     PencilRuler = 0xF5AE,
 
     /// <summary>
     /// The Font Awesome "pen-fancy" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["pen fancy", "black nib", "design", "edit", "fountain", "fountain pen", "nib", "pen", "update", "write"])]
+    [FontAwesomeSearchTerms(["pen fancy", "black nib", "design", "edit", "fountain", "fountain pen", "modify", "nib", "pen", "update", "write"])]
     [FontAwesomeCategories(["Business", "Design", "Editing"])]
     PenFancy = 0xF5AC,
 
     /// <summary>
     /// The Font Awesome "pen-nib" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["pen nib", "design", "edit", "fountain pen", "update", "write"])]
+    [FontAwesomeSearchTerms(["pen nib", "design", "edit", "fountain pen", "modify", "update", "write"])]
     [FontAwesomeCategories(["Business", "Design", "Editing"])]
     PenNib = 0xF5AD,
 
     /// <summary>
     /// The Font Awesome "square-pen" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square pen", "edit", "pencil-square", "update", "write"])]
+    [FontAwesomeSearchTerms(["square pen", "edit", "modify", "pencil-square", "update", "write"])]
     [FontAwesomeCategories(["Business", "Editing", "Writing"])]
     PenSquare = 0xF14B,
 
     /// <summary>
+    /// The Font Awesome "pentagon" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["5", "five", "pentagon", "shape"])]
+    [FontAwesomeCategories(["Shapes"])]
+    Pentagon = 0xE790,
+
+    /// <summary>
     /// The Font Awesome "people-arrows" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["people arrows", "distance", "isolation", "separate", "social distancing", "users-people"])]
+    [FontAwesomeSearchTerms(["people arrows", "conversation", "discussion", "distance", "insert", "isolation", "separate", "social distancing", "talk", "talking", "together", "uer", "users-people"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PeopleArrows = 0xE068,
 
     /// <summary>
     /// The Font Awesome "people-carry-box" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["people carry box", "users-people"])]
+    [FontAwesomeSearchTerms(["people carry box", "together", "uer", "users-people"])]
     [FontAwesomeCategories(["Moving", "Users + People"])]
     PeopleCarry = 0xF4CE,
 
     /// <summary>
     /// The Font Awesome "people-group" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["people group", "family", "group", "team"])]
+    [FontAwesomeSearchTerms(["people group", "crowd", "family", "group", "team", "together", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Marketing", "Users + People"])]
     PeopleGroup = 0xE533,
 
     /// <summary>
     /// The Font Awesome "people-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["people line", "group", "need"])]
+    [FontAwesomeSearchTerms(["people line", "crowd", "group", "need", "together", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PeopleLine = 0xE534,
 
     /// <summary>
     /// The Font Awesome "people-pulling" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["people pulling", "forced return", "yanking"])]
+    [FontAwesomeSearchTerms(["people pulling", "forced return", "together", "uer", "yanking"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PeoplePulling = 0xE535,
 
     /// <summary>
     /// The Font Awesome "people-robbery" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["people robbery", "criminal", "hands up", "looting", "robbery", "steal"])]
+    [FontAwesomeSearchTerms(["people robbery", "criminal", "hands up", "looting", "robbery", "steal", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PeopleRobbery = 0xE536,
 
     /// <summary>
     /// The Font Awesome "people-roof" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["people roof", "family", "group", "manage", "people", "safe", "shelter"])]
+    [FontAwesomeSearchTerms(["people roof", "crowd", "family", "group", "manage", "people", "safe", "shelter", "together", "uer"])]
     [FontAwesomeCategories(["Camping", "Household", "Humanitarian", "Users + People"])]
     PeopleRoof = 0xE537,
 
@@ -6098,105 +6200,105 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-arrow-down-to-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person arrow down to line", "ground", "indigenous", "native"])]
+    [FontAwesomeSearchTerms(["person arrow down to line", "ground", "indigenous", "insert", "native", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonArrowDownToLine = 0xE538,
 
     /// <summary>
     /// The Font Awesome "person-arrow-up-from-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person arrow up from line", "population", "rise"])]
+    [FontAwesomeSearchTerms(["person arrow up from line", "population", "rise", "uer", "upgrade"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonArrowUpFromLine = 0xE539,
 
     /// <summary>
     /// The Font Awesome "person-booth" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person booth", "changing room", "curtain", "vote", "voting"])]
+    [FontAwesomeSearchTerms(["person booth", "changing room", "curtain", "uer", "vote", "voting"])]
     [FontAwesomeCategories(["Political", "Shopping", "Users + People"])]
     PersonBooth = 0xF756,
 
     /// <summary>
     /// The Font Awesome "person-breastfeeding" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person breastfeeding", "baby", "child", "infant", "mother", "nutrition", "sustenance"])]
+    [FontAwesomeSearchTerms(["person breastfeeding", "baby", "child", "infant", "mother", "nutrition", "parent", "sustenance", "uer"])]
     [FontAwesomeCategories(["Childhood", "Humanitarian", "Medical + Health", "Users + People"])]
     PersonBreastfeeding = 0xE53A,
 
     /// <summary>
     /// The Font Awesome "person-burst" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person burst", "abuse", "accident", "crash", "explode", "violence"])]
+    [FontAwesomeSearchTerms(["person burst", "abuse", "accident", "crash", "explode", "uer", "violence"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PersonBurst = 0xE53B,
 
     /// <summary>
     /// The Font Awesome "person-cane" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person cane", "aging", "cane", "elderly", "old", "staff"])]
+    [FontAwesomeSearchTerms(["person cane", "aging", "cane", "elderly", "old", "staff", "uer"])]
     [FontAwesomeCategories(["Accessibility", "Humanitarian", "Medical + Health", "Users + People"])]
     PersonCane = 0xE53C,
 
     /// <summary>
     /// The Font Awesome "person-chalkboard" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person chalkboard", "blackboard", "instructor", "keynote", "lesson", "presentation", "teacher"])]
+    [FontAwesomeSearchTerms(["person chalkboard", "blackboard", "instructor", "keynote", "lesson", "presentation", "teacher", "uer"])]
     [FontAwesomeCategories(["Business", "Education", "Humanitarian", "Users + People"])]
     PersonChalkboard = 0xE53D,
 
     /// <summary>
     /// The Font Awesome "person-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person circle check", "approved", "not affected", "ok", "okay"])]
+    [FontAwesomeSearchTerms(["person circle check", "approved", "enable", "not affected", "ok", "okay", "uer", "validate", "working"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonCircleCheck = 0xE53E,
 
     /// <summary>
     /// The Font Awesome "person-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person circle exclamation", "affected", "alert", "lost", "missing"])]
+    [FontAwesomeSearchTerms(["person circle exclamation", "affected", "alert", "failed", "lost", "missing", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonCircleExclamation = 0xE53F,
 
     /// <summary>
     /// The Font Awesome "person-circle-minus" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person circle minus", "delete", "remove"])]
+    [FontAwesomeSearchTerms(["person circle minus", "delete", "remove", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonCircleMinus = 0xE540,
 
     /// <summary>
     /// The Font Awesome "person-circle-plus" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person circle plus", "add", "found"])]
+    [FontAwesomeSearchTerms(["person circle plus", "add", "follow", "found", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonCirclePlus = 0xE541,
 
     /// <summary>
     /// The Font Awesome "person-circle-question" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person circle question", "lost", "missing"])]
+    [FontAwesomeSearchTerms(["person circle question", "faq", "lost", "missing", "request", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonCircleQuestion = 0xE542,
 
     /// <summary>
     /// The Font Awesome "person-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person circle xmark", "dead", "removed"])]
+    [FontAwesomeSearchTerms(["person circle xmark", "dead", "removed", "uer", "uncheck"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonCircleXmark = 0xE543,
 
     /// <summary>
     /// The Font Awesome "person-digging" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person digging", "bury", "construction", "debris", "dig", "men at work"])]
+    [FontAwesomeSearchTerms(["person digging", "bury", "construction", "debris", "dig", "maintenance", "men at work", "uer"])]
     [FontAwesomeCategories(["Construction", "Humanitarian", "Users + People"])]
     PersonDigging = 0xF85E,
 
     /// <summary>
     /// The Font Awesome "person-dress-burst" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person dress burst", "abuse", "accident", "crash", "explode", "violence"])]
+    [FontAwesomeSearchTerms(["person dress burst", "abuse", "accident", "crash", "explode", "uer", "violence"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PersonDressBurst = 0xE544,
 
@@ -6210,112 +6312,112 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-falling" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person falling", "accident", "fall", "trip"])]
+    [FontAwesomeSearchTerms(["person falling", "accident", "fall", "trip", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonFalling = 0xE546,
 
     /// <summary>
     /// The Font Awesome "person-falling-burst" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person falling burst", "accident", "crash", "death", "fall", "homicide", "murder"])]
+    [FontAwesomeSearchTerms(["person falling burst", "accident", "crash", "death", "fall", "homicide", "murder", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PersonFallingBurst = 0xE547,
 
     /// <summary>
     /// The Font Awesome "person-half-dress" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person half dress", "gender", "man", "restroom", "transgender", "woman"])]
+    [FontAwesomeSearchTerms(["person half dress", "gender", "man", "restroom", "transgender", "uer", "woman"])]
     [FontAwesomeCategories(["Genders", "Humanitarian", "Medical + Health", "Users + People"])]
     PersonHalfDress = 0xE548,
 
     /// <summary>
     /// The Font Awesome "person-harassing" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person harassing", "abuse", "scream", "shame", "shout", "yell"])]
+    [FontAwesomeSearchTerms(["person harassing", "abuse", "scream", "shame", "shout", "uer", "yell"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PersonHarassing = 0xE549,
 
     /// <summary>
     /// The Font Awesome "person-military-pointing" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person military pointing", "army", "customs", "guard"])]
+    [FontAwesomeSearchTerms(["person military pointing", "army", "customs", "guard", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PersonMilitaryPointing = 0xE54A,
 
     /// <summary>
     /// The Font Awesome "person-military-rifle" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person military rifle", "armed forces", "army", "military", "rifle", "war"])]
+    [FontAwesomeSearchTerms(["person military rifle", "armed forces", "army", "military", "rifle", "uer", "war"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PersonMilitaryRifle = 0xE54B,
 
     /// <summary>
     /// The Font Awesome "person-military-to-person" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person military to person", "civilian", "coordination", "military"])]
+    [FontAwesomeSearchTerms(["person military to person", "civilian", "coordination", "military", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PersonMilitaryToPerson = 0xE54C,
 
     /// <summary>
     /// The Font Awesome "person-pregnant" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person pregnant", "baby", "birth", "child", "pregnant", "pregnant woman", "woman"])]
+    [FontAwesomeSearchTerms(["person pregnant", "baby", "birth", "child", "parent", "pregnant", "pregnant woman", "uer", "woman"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     PersonPregnant = 0xE31E,
 
     /// <summary>
     /// The Font Awesome "person-rays" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person rays", "affected", "focus", "shine"])]
+    [FontAwesomeSearchTerms(["person rays", "affected", "focus", "shine", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Marketing", "Users + People"])]
     PersonRays = 0xE54D,
 
     /// <summary>
     /// The Font Awesome "person-rifle" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person rifle", "army", "combatant", "gun", "military", "rifle", "war"])]
+    [FontAwesomeSearchTerms(["person rifle", "army", "combatant", "gun", "military", "rifle", "uer", "war"])]
     [FontAwesomeCategories(["Disaster + Crisis", "Humanitarian", "Security", "Users + People"])]
     PersonRifle = 0xE54E,
 
     /// <summary>
     /// The Font Awesome "person-shelter" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person shelter", "house", "inside", "roof", "safe", "safety", "shelter"])]
+    [FontAwesomeSearchTerms(["person shelter", "house", "inside", "roof", "safe", "safety", "shelter", "uer"])]
     [FontAwesomeCategories(["Camping", "Humanitarian", "Security", "Users + People"])]
     PersonShelter = 0xE54F,
 
     /// <summary>
     /// The Font Awesome "person-through-window" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person through window", "door", "exit", "forced entry", "leave", "robbery", "steal", "window"])]
+    [FontAwesomeSearchTerms(["person through window", "door", "exit", "forced entry", "leave", "robbery", "steal", "uer", "window"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     PersonThroughWindow = 0xE5A9,
 
     /// <summary>
     /// The Font Awesome "person-walking-arrow-loop-left" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person walking arrow loop left", "population return", "return"])]
+    [FontAwesomeSearchTerms(["person walking arrow loop left", "follow", "population return", "return", "uer"])]
     [FontAwesomeCategories(["Disaster + Crisis", "Humanitarian", "Users + People"])]
     PersonWalkingArrowLoopLeft = 0xE551,
 
     /// <summary>
     /// The Font Awesome "person-walking-arrow-right" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person walking arrow right", "exit", "internally displaced", "leave", "refugee"])]
+    [FontAwesomeSearchTerms(["person walking arrow right", "exit", "follow", "internally displaced", "leave", "refugee", "uer"])]
     [FontAwesomeCategories(["Disaster + Crisis", "Humanitarian", "Users + People"])]
     PersonWalkingArrowRight = 0xE552,
 
     /// <summary>
     /// The Font Awesome "person-walking-dashed-line-arrow-right" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person walking dashed line arrow right", "exit", "refugee"])]
+    [FontAwesomeSearchTerms(["person walking dashed line arrow right", "exit", "follow", "refugee", "uer"])]
     [FontAwesomeCategories(["Disaster + Crisis", "Humanitarian", "Users + People"])]
     PersonWalkingDashedLineArrowRight = 0xE553,
 
     /// <summary>
     /// The Font Awesome "person-walking-luggage" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person walking luggage", "bag", "baggage", "briefcase", "carry-on", "deployment", "rolling"])]
+    [FontAwesomeSearchTerms(["person walking luggage", "bag", "baggage", "briefcase", "carry-on", "deployment", "follow", "rolling", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Travel + Hotel", "Users + People"])]
     PersonWalkingLuggage = 0xE554,
 
@@ -6336,7 +6438,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "phone" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["left hand telephone receiver", "call", "earphone", "number", "phone", "receiver", "support", "telephone", "telephone receiver", "voice"])]
+    [FontAwesomeSearchTerms(["left hand telephone receiver", "call", "earphone", "number", "phone", "receiver", "support", "talking", "telephone", "telephone receiver", "voice"])]
     [FontAwesomeCategories(["Business", "Communication", "Maps"])]
     Phone = 0xF095,
 
@@ -6350,7 +6452,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "phone-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["phone slash", "call", "cancel", "earphone", "mute", "number", "support", "telephone", "voice"])]
+    [FontAwesomeSearchTerms(["phone slash", "call", "cancel", "disabled", "disconnect", "earphone", "mute", "number", "support", "telephone", "voice"])]
     [FontAwesomeCategories(["Business", "Communication"])]
     PhoneSlash = 0xF3DD,
 
@@ -6371,7 +6473,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "phone-volume" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["phone volume", "call", "earphone", "number", "sound", "support", "telephone", "voice", "volume-control-phone"])]
+    [FontAwesomeSearchTerms(["phone volume", "call", "earphone", "number", "ring", "ringing", "sound", "support", "talking", "telephone", "voice", "volume-control-phone"])]
     [FontAwesomeCategories(["Accessibility", "Business", "Communication", "Maps", "Media Playback"])]
     PhoneVolume = 0xF2A0,
 
@@ -6385,7 +6487,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "piggy-bank" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["piggy bank", "bank", "save", "savings"])]
+    [FontAwesomeSearchTerms(["piggy bank", "bank", "salary", "save", "savings"])]
     [FontAwesomeCategories(["Charity", "Money", "Political"])]
     PiggyBank = 0xF4D3,
 
@@ -6421,27 +6523,27 @@ public enum FontAwesomeIcon
     /// The Font Awesome "plane-arrival" icon unicode character.
     /// </summary>
     [FontAwesomeSearchTerms(["plane arrival", "aeroplane", "airplane", "airplane arrival", "airport", "arrivals", "arriving", "destination", "fly", "land", "landing", "location", "mode", "travel", "trip"])]
-    [FontAwesomeCategories(["Travel + Hotel"])]
+    [FontAwesomeCategories(["Transportation", "Travel + Hotel"])]
     PlaneArrival = 0xF5AF,
 
     /// <summary>
     /// The Font Awesome "plane-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plane circle check", "airplane", "airport", "flight", "fly", "not affected", "ok", "okay", "travel"])]
+    [FontAwesomeSearchTerms(["plane circle check", "airplane", "airport", "enable", "flight", "fly", "not affected", "ok", "okay", "travel", "validate", "working"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics", "Travel + Hotel"])]
     PlaneCircleCheck = 0xE555,
 
     /// <summary>
     /// The Font Awesome "plane-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plane circle exclamation", "affected", "airplane", "airport", "flight", "fly", "travel"])]
+    [FontAwesomeSearchTerms(["plane circle exclamation", "affected", "airplane", "airport", "failed", "flight", "fly", "travel"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics", "Travel + Hotel"])]
     PlaneCircleExclamation = 0xE556,
 
     /// <summary>
     /// The Font Awesome "plane-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plane circle xmark", "airplane", "airport", "destroy", "flight", "fly", "travel"])]
+    [FontAwesomeSearchTerms(["plane circle xmark", "airplane", "airport", "destroy", "flight", "fly", "travel", "uncheck"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics", "Travel + Hotel"])]
     PlaneCircleXmark = 0xE557,
 
@@ -6455,14 +6557,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "plane-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plane lock", "airplane", "airport", "closed", "flight", "fly", "lockdown", "quarantine", "travel"])]
+    [FontAwesomeSearchTerms(["plane lock", "airplane", "airport", "closed", "flight", "fly", "lockdown", "padlock", "privacy", "quarantine", "travel"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics", "Travel + Hotel"])]
     PlaneLock = 0xE558,
 
     /// <summary>
     /// The Font Awesome "plane-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plane slash", "airplane mode", "airport", "canceled", "covid-19", "delayed", "grounded", "travel"])]
+    [FontAwesomeSearchTerms(["plane slash", "airplane mode", "airport", "canceled", "covid-19", "delayed", "disabled", "grounded", "travel"])]
     [FontAwesomeCategories(["Transportation", "Travel + Hotel"])]
     PlaneSlash = 0xE069,
 
@@ -6518,21 +6620,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "plug-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plug circle check", "electric", "electricity", "not affected", "ok", "okay", "plug", "power"])]
+    [FontAwesomeSearchTerms(["plug circle check", "electric", "electricity", "enable", "not affected", "ok", "okay", "plug", "power", "validate", "working"])]
     [FontAwesomeCategories(["Energy", "Humanitarian"])]
     PlugCircleCheck = 0xE55C,
 
     /// <summary>
     /// The Font Awesome "plug-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plug circle exclamation", "affected", "electric", "electricity", "plug", "power"])]
+    [FontAwesomeSearchTerms(["plug circle exclamation", "affected", "electric", "electricity", "failed", "plug", "power"])]
     [FontAwesomeCategories(["Energy", "Humanitarian"])]
     PlugCircleExclamation = 0xE55D,
 
     /// <summary>
     /// The Font Awesome "plug-circle-minus" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plug circle minus", "electric", "electricity", "plug", "power"])]
+    [FontAwesomeSearchTerms(["plug circle minus", "disconnect", "electric", "electricity", "plug", "power"])]
     [FontAwesomeCategories(["Energy", "Humanitarian"])]
     PlugCircleMinus = 0xE55E,
 
@@ -6546,7 +6648,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "plug-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["plug circle xmark", "destroy", "electric", "electricity", "outage", "plug", "power"])]
+    [FontAwesomeSearchTerms(["plug circle xmark", "destroy", "disconnect", "electric", "electricity", "outage", "plug", "power", "uncheck"])]
     [FontAwesomeCategories(["Energy", "Humanitarian"])]
     PlugCircleXmark = 0xE560,
 
@@ -6554,7 +6656,7 @@ public enum FontAwesomeIcon
     /// The Font Awesome "plus" icon unicode character.
     /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0x2B.
     /// </summary>
-    [FontAwesomeSearchTerms(["+", "plus sign", "add", "create", "expand", "math", "new", "plus", "positive", "shape", "sign"])]
+    [FontAwesomeSearchTerms(["+", "plus sign", "add", "create", "expand", "follow", "math", "modify", "new", "plus", "positive", "shape", "sign"])]
     [FontAwesomeCategories(["Editing", "Maps", "Mathematics", "Medical + Health", "Punctuation + Symbols"])]
     Plus = 0xF067,
 
@@ -6589,21 +6691,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "square-poll-vertical" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square poll vertical", "chart", "graph", "results", "survey", "trend", "vote", "voting"])]
+    [FontAwesomeSearchTerms(["square poll vertical", "chart", "graph", "results", "revenue", "statistics", "survey", "trend", "vote", "voting"])]
     [FontAwesomeCategories(["Business", "Charts + Diagrams", "Marketing", "Social"])]
     Poll = 0xF681,
 
     /// <summary>
     /// The Font Awesome "square-poll-horizontal" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square poll horizontal", "chart", "graph", "results", "survey", "trend", "vote", "voting"])]
+    [FontAwesomeSearchTerms(["square poll horizontal", "chart", "graph", "results", "statistics", "survey", "trend", "vote", "voting"])]
     [FontAwesomeCategories(["Business", "Charts + Diagrams", "Marketing", "Social"])]
     PollH = 0xF682,
 
     /// <summary>
     /// The Font Awesome "poo" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["crap", "dung", "face", "monster", "pile of poo", "poo", "poop", "shit", "smile", "turd"])]
+    [FontAwesomeSearchTerms(["crap", "dung", "face", "monster", "pile of poo", "poo", "poop", "shit", "smile", "turd", "uer"])]
     [FontAwesomeCategories(["Communication", "Users + People"])]
     Poo = 0xF2FE,
 
@@ -6624,7 +6726,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "image-portrait" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["image portrait", "id", "image", "photo", "picture", "selfie"])]
+    [FontAwesomeSearchTerms(["image portrait", "id", "image", "img", "photo", "picture", "selfie", "uer", "username"])]
     [FontAwesomeCategories(["Photos + Images", "Users + People"])]
     Portrait = 0xF3E0,
 
@@ -6645,7 +6747,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-praying" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person praying", "kneel", "place of worship", "religion", "thank", "worship"])]
+    [FontAwesomeSearchTerms(["person praying", "kneel", "place of worship", "religion", "thank", "uer", "worship"])]
     [FontAwesomeCategories(["Religion", "Users + People"])]
     Pray = 0xF683,
 
@@ -6694,7 +6796,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "diagram-project" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["diagram project", "chart", "graph", "network", "pert"])]
+    [FontAwesomeSearchTerms(["diagram project", "chart", "graph", "network", "pert", "statistics"])]
     [FontAwesomeCategories(["Charts + Diagrams", "Coding"])]
     ProjectDiagram = 0xF542,
 
@@ -6722,22 +6824,22 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "qrcode" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["qrcode", "barcode", "info", "information", "scan"])]
-    [FontAwesomeCategories(["Coding"])]
+    [FontAwesomeSearchTerms(["qrcode", "barcode", "info", "information", "qr", "qr-code", "scan"])]
+    [FontAwesomeCategories(["Coding", "Shopping"])]
     Qrcode = 0xF029,
 
     /// <summary>
     /// The Font Awesome "question" icon unicode character.
     /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0x3F.
     /// </summary>
-    [FontAwesomeSearchTerms(["?", "question mark", "help", "information", "mark", "outlined", "punctuation", "question", "red question mark", "support", "unknown", "white question mark"])]
+    [FontAwesomeSearchTerms(["?", "question mark", "faq", "help", "information", "mark", "outlined", "punctuation", "question", "red question mark", "request", "support", "unknown", "white question mark"])]
     [FontAwesomeCategories(["Accessibility", "Alert", "Punctuation + Symbols"])]
     Question = 0xF128,
 
     /// <summary>
     /// The Font Awesome "circle-question" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle question", "help", "information", "support", "unknown"])]
+    [FontAwesomeSearchTerms(["circle question", "faq", "help", "information", "support", "unknown"])]
     [FontAwesomeCategories(["Accessibility", "Punctuation + Symbols"])]
     QuestionCircle = 0xF059,
 
@@ -6807,14 +6909,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "ranking-star" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["ranking star", "chart", "first place", "podium", "rank", "win"])]
+    [FontAwesomeSearchTerms(["ranking star", "chart", "first place", "podium", "quality", "rank", "revenue", "win"])]
     [FontAwesomeCategories(["Humanitarian", "Marketing", "Sports + Fitness"])]
     RankingStar = 0xE561,
 
     /// <summary>
     /// The Font Awesome "receipt" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["accounting", "bookkeeping", "check", "evidence", "invoice", "money", "pay", "proof", "receipt", "table"])]
+    [FontAwesomeSearchTerms(["accounting", "bookkeeping", "check", "coupon", "evidence", "invoice", "money", "pay", "proof", "receipt", "table"])]
     [FontAwesomeCategories(["Medical + Health", "Money", "Shopping"])]
     Receipt = 0xF543,
 
@@ -6835,15 +6937,15 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrow-rotate-right" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow rotate right", "clockwise open circle arrow", "forward", "refresh", "reload", "repeat"])]
-    [FontAwesomeCategories(["Arrows", "Media Playback"])]
+    [FontAwesomeSearchTerms(["arrow rotate right", "clockwise open circle arrow", "forward", "refresh", "reload", "renew", "repeat", "retry"])]
+    [FontAwesomeCategories(["Arrows", "Media Playback", "Spinners"])]
     Redo = 0xF01E,
 
     /// <summary>
     /// The Font Awesome "rotate-right" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["rotate right", "forward", "refresh", "reload", "repeat"])]
-    [FontAwesomeCategories(["Arrows", "Media Playback"])]
+    [FontAwesomeSearchTerms(["rotate right", "forward", "refresh", "reload", "renew", "repeat", "retry"])]
+    [FontAwesomeCategories(["Arrows", "Media Playback", "Spinners"])]
     RedoAlt = 0xF2F9,
 
     /// <summary>
@@ -6856,14 +6958,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "text-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["text slash", "cancel", "font", "format", "remove", "style", "text"])]
+    [FontAwesomeSearchTerms(["text slash", "cancel", "disabled", "font", "format", "remove", "style", "text"])]
     [FontAwesomeCategories(["Text Formatting"])]
     RemoveFormat = 0xF87D,
 
     /// <summary>
     /// The Font Awesome "repeat" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow", "clockwise", "flip", "reload", "repeat", "repeat button", "rewind", "switch"])]
+    [FontAwesomeSearchTerms(["arrow", "clockwise", "flip", "reload", "renew", "repeat", "repeat button", "retry", "rewind", "switch"])]
     [FontAwesomeCategories(["Arrows", "Media Playback"])]
     Repeat = 0xF363,
 
@@ -6891,14 +6993,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "restroom" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["restroom", "bathroom", "toilet", "water closet", "wc"])]
+    [FontAwesomeSearchTerms(["restroom", "bathroom", "toilet", "uer", "water closet", "wc"])]
     [FontAwesomeCategories(["Maps", "Users + People"])]
     Restroom = 0xF7BD,
 
     /// <summary>
     /// The Font Awesome "retweet" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["retweet", "refresh", "reload", "share", "swap"])]
+    [FontAwesomeSearchTerms(["retweet", "refresh", "reload", "renew", "retry", "share", "swap"])]
     [FontAwesomeCategories(["Arrows", "Social"])]
     Retweet = 0xF079,
 
@@ -6912,7 +7014,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "ring" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["ring", "dungeons & dragons", "gollum", "band", "binding", "d&d", "dnd", "engagement", "fantasy", "gold", "jewelry", "marriage", "precious"])]
+    [FontAwesomeSearchTerms(["ring", "dungeons & dragons", "gollum", "band", "binding", "d&d", "dnd", "engagement", "fantasy", "gold", "jewelry", "marriage", "precious", "premium"])]
     [FontAwesomeCategories(["Gaming", "Spinners"])]
     Ring = 0xF70B,
 
@@ -6940,28 +7042,28 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "road-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["road circle check", "freeway", "highway", "not affected", "ok", "okay", "pavement", "road"])]
+    [FontAwesomeSearchTerms(["road circle check", "enable", "freeway", "highway", "not affected", "ok", "okay", "pavement", "road", "validate", "working"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics"])]
     RoadCircleCheck = 0xE564,
 
     /// <summary>
     /// The Font Awesome "road-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["road circle exclamation", "affected", "freeway", "highway", "pavement", "road"])]
+    [FontAwesomeSearchTerms(["road circle exclamation", "affected", "failed", "freeway", "highway", "pavement", "road"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics"])]
     RoadCircleExclamation = 0xE565,
 
     /// <summary>
     /// The Font Awesome "road-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["road circle xmark", "destroy", "freeway", "highway", "pavement", "road"])]
+    [FontAwesomeSearchTerms(["road circle xmark", "destroy", "freeway", "highway", "pavement", "road", "uncheck"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics"])]
     RoadCircleXmark = 0xE566,
 
     /// <summary>
     /// The Font Awesome "road-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["road lock", "closed", "freeway", "highway", "lockdown", "pavement", "quarantine", "road"])]
+    [FontAwesomeSearchTerms(["road lock", "closed", "freeway", "highway", "lockdown", "padlock", "pavement", "privacy", "quarantine", "road"])]
     [FontAwesomeCategories(["Humanitarian", "Logistics"])]
     RoadLock = 0xE567,
 
@@ -7052,7 +7154,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-running" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person running", "exit", "flee", "marathon", "person running", "race", "running"])]
+    [FontAwesomeSearchTerms(["person running", "exit", "flee", "follow", "marathon", "person running", "race", "running", "uer", "workout"])]
     [FontAwesomeCategories(["Sports + Fitness", "Users + People"])]
     Running = 0xF70C,
 
@@ -7073,14 +7175,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "sack-dollar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["sack dollar", "bag", "burlap", "cash", "dollar", "money", "money bag", "moneybag", "robber", "santa", "usd"])]
+    [FontAwesomeSearchTerms(["sack dollar", "bag", "burlap", "cash", "dollar", "investment", "money", "money bag", "moneybag", "premium", "robber", "salary", "santa", "usd"])]
     [FontAwesomeCategories(["Humanitarian", "Money"])]
     SackDollar = 0xF81D,
 
     /// <summary>
     /// The Font Awesome "sack-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["sack xmark", "bag", "burlap", "rations"])]
+    [FontAwesomeSearchTerms(["sack xmark", "bag", "burlap", "coupon", "rations", "salary", "uncheck"])]
     [FontAwesomeCategories(["Humanitarian", "Money"])]
     SackXmark = 0xE56A,
 
@@ -7136,21 +7238,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "school-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["school circle check", "not affected", "ok", "okay", "schoolhouse"])]
+    [FontAwesomeSearchTerms(["school circle check", "enable", "not affected", "ok", "okay", "schoolhouse", "validate", "working"])]
     [FontAwesomeCategories(["Buildings", "Education", "Humanitarian"])]
     SchoolCircleCheck = 0xE56B,
 
     /// <summary>
     /// The Font Awesome "school-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["school circle exclamation", "affected", "schoolhouse"])]
+    [FontAwesomeSearchTerms(["school circle exclamation", "affected", "failed", "schoolhouse"])]
     [FontAwesomeCategories(["Buildings", "Education", "Humanitarian"])]
     SchoolCircleExclamation = 0xE56C,
 
     /// <summary>
     /// The Font Awesome "school-circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["school circle xmark", "destroy", "schoolhouse"])]
+    [FontAwesomeSearchTerms(["school circle xmark", "destroy", "schoolhouse", "uncheck"])]
     [FontAwesomeCategories(["Buildings", "Education", "Humanitarian"])]
     SchoolCircleXmark = 0xE56D,
 
@@ -7164,63 +7266,63 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "school-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["school lock", "closed", "lockdown", "quarantine", "schoolhouse"])]
+    [FontAwesomeSearchTerms(["school lock", "closed", "lockdown", "padlock", "privacy", "quarantine", "schoolhouse"])]
     [FontAwesomeCategories(["Buildings", "Education", "Humanitarian"])]
     SchoolLock = 0xE56F,
 
     /// <summary>
     /// The Font Awesome "screwdriver" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["admin", "fix", "mechanic", "repair", "screw", "screwdriver", "settings", "tool"])]
+    [FontAwesomeSearchTerms(["admin", "configuration", "equipment", "fix", "maintenance", "mechanic", "modify", "repair", "screw", "screwdriver", "settings", "tool"])]
     [FontAwesomeCategories(["Construction"])]
     Screwdriver = 0xF54A,
 
     /// <summary>
     /// The Font Awesome "scroll" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["dungeons & dragons", "announcement", "d&d", "dnd", "fantasy", "paper", "script", "scroll"])]
+    [FontAwesomeSearchTerms(["dungeons & dragons", "announcement", "d&d", "dnd", "fantasy", "paper", "scholar", "script", "scroll"])]
     [FontAwesomeCategories(["Gaming"])]
     Scroll = 0xF70E,
 
     /// <summary>
     /// The Font Awesome "sd-card" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["sd card", "image", "memory", "photo", "save"])]
+    [FontAwesomeSearchTerms(["sd card", "image", "img", "memory", "photo", "save"])]
     [FontAwesomeCategories(["Devices + Hardware"])]
     SdCard = 0xF7C2,
 
     /// <summary>
     /// The Font Awesome "magnifying-glass" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["magnifying glass", "bigger", "enlarge", "find", "glass", "magnify", "magnifying", "magnifying glass tilted left", "preview", "search", "tool", "zoom"])]
+    [FontAwesomeSearchTerms(["magnifying glass", "bigger", "enlarge", "equipment", "find", "glass", "inspection", "magnifier", "magnify", "magnifying", "magnifying glass tilted left", "preview", "search", "tool", "zoom"])]
     [FontAwesomeCategories(["Maps"])]
     Search = 0xF002,
 
     /// <summary>
     /// The Font Awesome "magnifying-glass-dollar" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["magnifying glass dollar", "bigger", "enlarge", "find", "magnify", "money", "preview", "zoom"])]
+    [FontAwesomeSearchTerms(["magnifying glass dollar", "bigger", "enlarge", "find", "magnifier", "magnify", "money", "preview", "zoom"])]
     [FontAwesomeCategories(["Marketing"])]
     SearchDollar = 0xF688,
 
     /// <summary>
     /// The Font Awesome "magnifying-glass-location" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["magnifying glass location", "bigger", "enlarge", "find", "magnify", "preview", "zoom"])]
-    [FontAwesomeCategories(["Marketing"])]
+    [FontAwesomeSearchTerms(["magnifying glass location", "bigger", "enlarge", "find", "magnifier", "magnify", "preview", "zoom"])]
+    [FontAwesomeCategories(["Maps", "Marketing"])]
     SearchLocation = 0xF689,
 
     /// <summary>
     /// The Font Awesome "magnifying-glass-minus" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["magnifying glass minus", "minify", "negative", "smaller", "zoom", "zoom out"])]
+    [FontAwesomeSearchTerms(["magnifying glass minus", "magnifier", "minify", "negative", "smaller", "zoom", "zoom out"])]
     [FontAwesomeCategories(["Maps"])]
     SearchMinus = 0xF010,
 
     /// <summary>
     /// The Font Awesome "magnifying-glass-plus" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["magnifying glass plus", "bigger", "enlarge", "magnify", "positive", "zoom", "zoom in"])]
+    [FontAwesomeSearchTerms(["magnifying glass plus", "bigger", "enlarge", "magnifier", "magnify", "positive", "zoom", "zoom in"])]
     [FontAwesomeCategories(["Maps"])]
     SearchPlus = 0xF00E,
 
@@ -7234,14 +7336,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "seedling" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["environment", "flora", "grow", "plant", "sapling", "seedling", "vegan", "young"])]
+    [FontAwesomeSearchTerms(["environment", "flora", "grow", "investment", "plant", "sapling", "seedling", "vegan", "young"])]
     [FontAwesomeCategories(["Charity", "Energy", "Food + Beverage", "Fruits + Vegetables", "Humanitarian", "Nature", "Science"])]
     Seedling = 0xF4D8,
 
     /// <summary>
+    /// The Font Awesome "septagon" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["septagon", "7", "heptagon", "seven", "shape"])]
+    [FontAwesomeCategories(["Shapes"])]
+    Septagon = 0xE820,
+
+    /// <summary>
     /// The Font Awesome "server" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["server", "computer", "cpu", "database", "hardware", "network"])]
+    [FontAwesomeSearchTerms(["server", "computer", "cpu", "database", "hardware", "mysql", "network", "sql"])]
     [FontAwesomeCategories(["Devices + Hardware"])]
     Server = 0xF233,
 
@@ -7304,7 +7413,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "shield-halved" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["shield halved", "achievement", "armor", "award", "block", "cleric", "defend", "defense", "holy", "paladin", "security", "shield", "weapon", "winner"])]
+    [FontAwesomeSearchTerms(["shield halved", "achievement", "armor", "award", "block", "cleric", "defend", "defense", "holy", "paladin", "privacy", "security", "shield", "weapon", "winner"])]
     [FontAwesomeCategories(["Coding", "Gaming", "Security"])]
     ShieldAlt = 0xF3ED,
 
@@ -7325,7 +7434,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "shield-heart" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["shield heart", "love", "protect", "safe", "safety", "shield"])]
+    [FontAwesomeSearchTerms(["shield heart", "love", "protect", "safe", "safety", "shield", "wishlist"])]
     [FontAwesomeCategories(["Humanitarian", "Security"])]
     ShieldHeart = 0xE574,
 
@@ -7346,7 +7455,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "truck-fast" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["truck fast", "express", "fedex", "mail", "overnight", "package", "ups"])]
+    [FontAwesomeSearchTerms(["truck fast", "express", "fedex", "mail", "overnight", "package", "quick", "ups"])]
     [FontAwesomeCategories(["Logistics", "Shopping"])]
     ShippingFast = 0xF48B,
 
@@ -7360,7 +7469,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "shop-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["shop lock", "bodega", "building", "buy", "closed", "lock", "lockdown", "market", "purchase", "quarantine", "shop", "shopping", "store"])]
+    [FontAwesomeSearchTerms(["shop lock", "bodega", "building", "buy", "closed", "lock", "lockdown", "market", "padlock", "privacy", "purchase", "quarantine", "shop", "shopping", "store"])]
     [FontAwesomeCategories(["Buildings", "Humanitarian", "Shopping"])]
     ShopLock = 0xE4A5,
 
@@ -7388,7 +7497,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "shop-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["shop slash", "building", "buy", "closed", "covid-19", "purchase", "shopping"])]
+    [FontAwesomeSearchTerms(["shop slash", "building", "buy", "closed", "disabled", "purchase", "shopping"])]
     [FontAwesomeCategories(["Shopping"])]
     ShopSlash = 0xE070,
 
@@ -7409,7 +7518,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "van-shuttle" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["van shuttle", "airport", "bus", "machine", "minibus", "public-transportation", "transportation", "travel", "vehicle"])]
+    [FontAwesomeSearchTerms(["van shuttle", "airport", "bus", "minibus", "public-transportation", "transportation", "travel", "vehicle"])]
     [FontAwesomeCategories(["Automotive", "Transportation", "Travel + Hotel"])]
     ShuttleVan = 0xF5B6,
 
@@ -7430,7 +7539,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "signature" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["signature", "john hancock", "cursive", "name", "writing"])]
+    [FontAwesomeSearchTerms(["signature", "john hancock", "cursive", "name", "username", "writing"])]
     [FontAwesomeCategories(["Business", "Editing", "Writing"])]
     Signature = 0xF5B7,
 
@@ -7463,6 +7572,20 @@ public enum FontAwesomeIcon
     SimCard = 0xF7C4,
 
     /// <summary>
+    /// The Font Awesome "single-quote-left" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["single quote left", "left single quotation mark", "mention", "note", "phrase", "text", "type"])]
+    [FontAwesomeCategories(["Communication", "Punctuation + Symbols", "Writing"])]
+    SingleQuoteLeft = 0xE81B,
+
+    /// <summary>
+    /// The Font Awesome "single-quote-right" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["single quote right", "mention", "note", "phrase", "right single quotation mark", "text", "type"])]
+    [FontAwesomeCategories(["Communication", "Punctuation + Symbols", "Writing"])]
+    SingleQuoteRight = 0xE81C,
+
+    /// <summary>
     /// The Font Awesome "sink" icon unicode character.
     /// </summary>
     [FontAwesomeSearchTerms(["sink", "bathroom", "covid-19", "faucet", "kitchen", "wash"])]
@@ -7479,28 +7602,28 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-skating" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person skating", "figure skating", "ice", "olympics", "rink", "skate", "winter"])]
+    [FontAwesomeSearchTerms(["person skating", "figure skating", "ice", "olympics", "rink", "skate", "uer", "winter"])]
     [FontAwesomeCategories(["Sports + Fitness", "Users + People"])]
     Skating = 0xF7C5,
 
     /// <summary>
     /// The Font Awesome "person-skiing" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person skiing", "downhill", "olympics", "ski", "skier", "snow", "winter"])]
+    [FontAwesomeSearchTerms(["person skiing", "downhill", "olympics", "ski", "skier", "snow", "uer", "winter"])]
     [FontAwesomeCategories(["Sports + Fitness", "Users + People"])]
     Skiing = 0xF7C9,
 
     /// <summary>
     /// The Font Awesome "person-skiing-nordic" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person skiing nordic", "cross country", "olympics", "winter"])]
+    [FontAwesomeSearchTerms(["person skiing nordic", "cross country", "olympics", "uer", "winter"])]
     [FontAwesomeCategories(["Sports + Fitness", "Users + People"])]
     SkiingNordic = 0xF7CA,
 
     /// <summary>
     /// The Font Awesome "skull" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bones", "death", "face", "fairy tale", "monster", "skeleton", "skull", "x-ray", "yorick"])]
+    [FontAwesomeSearchTerms(["bones", "death", "face", "fairy tale", "monster", "skeleton", "skull", "uer", "x-ray", "yorick"])]
     [FontAwesomeCategories(["Halloween", "Medical + Health", "Users + People"])]
     Skull = 0xF54C,
 
@@ -7528,14 +7651,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "sliders" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["adjust", "settings", "sliders", "toggle"])]
-    [FontAwesomeCategories(["Editing", "Media Playback", "Music + Audio", "Photos + Images"])]
+    [FontAwesomeSearchTerms(["adjust", "configuration", "modify", "settings", "sliders", "toggle"])]
+    [FontAwesomeCategories(["Editing", "Media Playback", "Music + Audio", "Photos + Images", "Toggle"])]
     SlidersH = 0xF1DE,
 
     /// <summary>
     /// The Font Awesome "face-smile" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["face smile", "approve", "emoticon", "face", "happy", "rating", "satisfied", "slightly smiling face", "smile"])]
+    [FontAwesomeSearchTerms(["face smile", "approve", "default", "emoticon", "face", "happy", "rating", "satisfied", "slightly smiling face", "smile", "uer"])]
     [FontAwesomeCategories(["Communication", "Emoji", "Users + People"])]
     Smile = 0xF118,
 
@@ -7570,21 +7693,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "ban-smoking" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["ban smoking", "ban", "cancel", "forbidden", "no", "no smoking", "non-smoking", "not", "prohibited", "smoking"])]
+    [FontAwesomeSearchTerms(["ban smoking", "ban", "cancel", "circle", "deny", "disabled", "forbidden", "no", "no smoking", "non-smoking", "not", "prohibited", "slash", "smoking"])]
     [FontAwesomeCategories(["Medical + Health", "Travel + Hotel"])]
     SmokingBan = 0xF54D,
 
     /// <summary>
     /// The Font Awesome "comment-sms" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["comment sms", "chat", "conversation", "message", "mobile", "notification", "phone", "sms", "texting"])]
+    [FontAwesomeSearchTerms(["comment sms", "answer", "chat", "conversation", "message", "mobile", "notification", "phone", "sms", "texting"])]
     [FontAwesomeCategories(["Communication"])]
     Sms = 0xF7CD,
 
     /// <summary>
     /// The Font Awesome "person-snowboarding" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person snowboarding", "olympics", "ski", "snow", "snowboard", "snowboarder", "winter"])]
+    [FontAwesomeSearchTerms(["person snowboarding", "olympics", "ski", "snow", "snowboard", "snowboarder", "uer", "winter"])]
     [FontAwesomeCategories(["Sports + Fitness", "Users + People"])]
     Snowboarding = 0xF7CE,
 
@@ -7682,7 +7805,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrow-up-wide-short" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrow up wide short", "arrange", "filter", "order", "sort-amount-desc"])]
+    [FontAwesomeSearchTerms(["arrow up wide short", "arrange", "filter", "order", "sort-amount-desc", "upgrade"])]
     [FontAwesomeCategories(["Arrows"])]
     SortAmountUp = 0xF161,
 
@@ -7696,7 +7819,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "sort-down" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["sort down", "arrow", "descending", "filter", "order", "sort-desc"])]
+    [FontAwesomeSearchTerms(["sort down", "arrow", "descending", "filter", "insert", "order", "sort-desc"])]
     [FontAwesomeCategories(["Arrows"])]
     SortDown = 0xF0DD,
 
@@ -7731,7 +7854,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "sort-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["sort up", "arrow", "ascending", "filter", "order", "sort-asc"])]
+    [FontAwesomeSearchTerms(["sort up", "arrow", "ascending", "filter", "order", "sort-asc", "upgrade"])]
     [FontAwesomeCategories(["Arrows"])]
     SortUp = 0xF0DE,
 
@@ -7752,7 +7875,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "spell-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["spell check", "dictionary", "edit", "editor", "grammar", "text"])]
+    [FontAwesomeSearchTerms(["spell check", "dictionary", "edit", "editor", "enable", "grammar", "text", "validate", "working"])]
     [FontAwesomeCategories(["Text Formatting"])]
     SpellCheck = 0xF891,
 
@@ -7766,9 +7889,16 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "spinner" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["spinner", "circle", "loading", "progress"])]
+    [FontAwesomeSearchTerms(["spinner", "circle", "loading", "pending", "progress"])]
     [FontAwesomeCategories(["Spinners"])]
     Spinner = 0xF110,
+
+    /// <summary>
+    /// The Font Awesome "spiral" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["spiral", "design", "dizzy", "rotate", "spin", "swirl", "twist"])]
+    [FontAwesomeCategories(["Design", "Shapes"])]
+    Spiral = 0xE80A,
 
     /// <summary>
     /// The Font Awesome "splotch" icon unicode character.
@@ -7799,6 +7929,13 @@ public enum FontAwesomeIcon
     SquareArrowUpRight = 0xF14C,
 
     /// <summary>
+    /// The Font Awesome "square-binary" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["square binary", "ai", "data", "language", "llm", "model", "programming", "token"])]
+    [FontAwesomeCategories(["Coding", "Shapes"])]
+    SquareBinary = 0xE69B,
+
+    /// <summary>
     /// The Font Awesome "square-full" icon unicode character.
     /// </summary>
     [FontAwesomeSearchTerms(["square full", "black large square", "block", "blue", "blue square", "box", "brown", "brown square", "geometric", "green", "green square", "orange", "orange square", "purple", "purple square", "red", "red square", "shape", "square", "white large square", "yellow", "yellow square"])]
@@ -7815,7 +7952,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "square-person-confined" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square person confined", "captivity", "confined"])]
+    [FontAwesomeSearchTerms(["square person confined", "captivity", "confined", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Security", "Users + People"])]
     SquarePersonConfined = 0xE577,
 
@@ -7836,7 +7973,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "square-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["square xmark", "close", "cross", "cross mark button", "incorrect", "mark", "notice", "notification", "notify", "problem", "square", "window", "wrong", "x", "×"])]
+    [FontAwesomeSearchTerms(["square xmark", "close", "cross", "cross mark button", "incorrect", "mark", "notice", "notification", "notify", "problem", "square", "uncheck", "window", "wrong", "x", "×"])]
     [FontAwesomeCategories(["Mathematics"])]
     SquareXmark = 0xF2D3,
 
@@ -7871,7 +8008,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "star" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["achievement", "award", "favorite", "important", "night", "rating", "score", "star"])]
+    [FontAwesomeSearchTerms(["achievement", "award", "favorite", "important", "night", "quality", "rating", "score", "star", "vip"])]
     [FontAwesomeCategories(["Shapes", "Shopping", "Social", "Toggle"])]
     Star = 0xF005,
 
@@ -7955,7 +8092,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "stopwatch" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["clock", "reminder", "stopwatch", "time"])]
+    [FontAwesomeSearchTerms(["clock", "reminder", "stopwatch", "time", "waiting"])]
     [FontAwesomeCategories(["Time"])]
     Stopwatch = 0xF2F2,
 
@@ -7983,7 +8120,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "store-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["store slash", "building", "buy", "closed", "covid-19", "purchase", "shopping"])]
+    [FontAwesomeSearchTerms(["store slash", "building", "buy", "closed", "disabled", "purchase", "shopping"])]
     [FontAwesomeCategories(["Shopping"])]
     StoreSlash = 0xE071,
 
@@ -7997,14 +8134,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "street-view" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["street view", "directions", "location", "map", "navigation"])]
+    [FontAwesomeSearchTerms(["street view", "directions", "location", "map", "navigation", "uer"])]
     [FontAwesomeCategories(["Maps", "Users + People"])]
     StreetView = 0xF21D,
 
     /// <summary>
     /// The Font Awesome "strikethrough" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["strikethrough", "cancel", "edit", "font", "format", "text", "type"])]
+    [FontAwesomeSearchTerms(["strikethrough", "cancel", "edit", "font", "format", "modify", "text", "type"])]
     [FontAwesomeCategories(["Text Formatting"])]
     Strikethrough = 0xF0CC,
 
@@ -8081,7 +8218,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-swimming" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person swimming", "ocean", "person swimming", "pool", "sea", "swim", "water"])]
+    [FontAwesomeSearchTerms(["person swimming", "ocean", "person swimming", "pool", "sea", "swim", "uer", "water"])]
     [FontAwesomeCategories(["Maritime", "Sports + Fitness", "Travel + Hotel", "Users + People"])]
     Swimmer = 0xF5C4,
 
@@ -8102,14 +8239,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "arrows-rotate" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["arrows rotate", "clockwise right and left semicircle arrows", "exchange", "refresh", "reload", "rotate", "swap"])]
-    [FontAwesomeCategories(["Arrows", "Editing", "Media Playback"])]
+    [FontAwesomeSearchTerms(["arrows rotate", "clockwise right and left semicircle arrows", "clockwise", "exchange", "modify", "refresh", "reload", "renew", "retry", "rotate", "swap"])]
+    [FontAwesomeCategories(["Arrows", "Editing", "Media Playback", "Spinners"])]
     Sync = 0xF021,
 
     /// <summary>
     /// The Font Awesome "rotate" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["anticlockwise", "arrow", "counterclockwise", "counterclockwise arrows button", "exchange", "refresh", "reload", "rotate", "swap", "withershins"])]
+    [FontAwesomeSearchTerms(["arrow", "clockwise", "exchange", "modify", "refresh", "reload", "renew", "retry", "rotate", "swap", "withershins"])]
     [FontAwesomeCategories(["Arrows", "Editing", "Media Playback", "Spinners"])]
     SyncAlt = 0xF2F1,
 
@@ -8123,9 +8260,30 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "table" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["table", "data", "excel", "spreadsheet"])]
+    [FontAwesomeSearchTerms(["table", "category", "data", "excel", "spreadsheet"])]
     [FontAwesomeCategories(["Business", "Text Formatting"])]
     Table = 0xF0CE,
+
+    /// <summary>
+    /// The Font Awesome "table-cells-column-lock" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["table cells column lock", "blocks", "boxes", "category", "column", "excel", "grid", "lock", "spreadsheet", "squares"])]
+    [FontAwesomeCategories(["Text Formatting"])]
+    TableCellsColumnLock = 0xE678,
+
+    /// <summary>
+    /// The Font Awesome "table-cells-row-lock" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["table cells row lock", "blocks", "boxes", "category", "column", "column", "excel", "grid", "lock", "lock", "spreadsheet", "squares"])]
+    [FontAwesomeCategories(["Text Formatting"])]
+    TableCellsRowLock = 0xE67A,
+
+    /// <summary>
+    /// The Font Awesome "table-cells-row-unlock" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["table cells row unlock", "blocks", "boxes", "category", "column", "column", "excel", "grid", "lock", "lock", "spreadsheet", "squares", "unlock"])]
+    [FontAwesomeCategories(["Text Formatting"])]
+    TableCellsRowUnlock = 0xE691,
 
     /// <summary>
     /// The Font Awesome "tablet" icon unicode character.
@@ -8166,7 +8324,7 @@ public enum FontAwesomeIcon
     /// The Font Awesome "gauge-high" icon unicode character.
     /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0xF625.
     /// </summary>
-    [FontAwesomeSearchTerms(["gauge high", "dashboard", "fast", "odometer", "speed", "speedometer"])]
+    [FontAwesomeSearchTerms(["gauge high", "dashboard", "fast", "odometer", "quick", "speed", "speedometer"])]
     [FontAwesomeCategories(["Automotive"])]
     TachometerAlt = 0xF3FD,
 
@@ -8208,7 +8366,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "list-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["list check", "checklist", "downloading", "downloads", "loading", "progress", "project management", "settings", "to do"])]
+    [FontAwesomeSearchTerms(["list check", "bullet", "cheatsheet", "checklist", "downloading", "downloads", "enable", "loading", "progress", "project management", "settings", "summary", "to do", "validate", "working"])]
     [FontAwesomeCategories(["Business", "Text Formatting"])]
     Tasks = 0xF0AE,
 
@@ -8271,42 +8429,42 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "tent" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bivouac", "campground", "refugee", "shelter", "tent"])]
+    [FontAwesomeSearchTerms(["bivouac", "campground", "campsite", "refugee", "shelter", "tent"])]
     [FontAwesomeCategories(["Buildings", "Camping", "Humanitarian"])]
     Tent = 0xE57D,
 
     /// <summary>
     /// The Font Awesome "tent-arrow-down-to-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["tent arrow down to line", "permanent", "refugee", "shelter"])]
+    [FontAwesomeSearchTerms(["tent arrow down to line", "bivouac", "campground", "campsite", "permanent", "refugee", "refugee", "shelter", "shelter", "tent"])]
     [FontAwesomeCategories(["Buildings", "Camping", "Humanitarian"])]
     TentArrowDownToLine = 0xE57E,
 
     /// <summary>
     /// The Font Awesome "tent-arrow-left-right" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["tent arrow left right", "refugee", "shelter", "transition"])]
+    [FontAwesomeSearchTerms(["tent arrow left right", "bivouac", "campground", "campsite", "refugee", "refugee", "shelter", "shelter", "tent", "transition"])]
     [FontAwesomeCategories(["Buildings", "Camping", "Humanitarian"])]
     TentArrowLeftRight = 0xE57F,
 
     /// <summary>
     /// The Font Awesome "tent-arrows-down" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["tent arrows down", "refugee", "shelter", "spontaneous"])]
+    [FontAwesomeSearchTerms(["tent arrows down", "bivouac", "campground", "campsite", "insert", "refugee", "refugee", "shelter", "shelter", "spontaneous", "tent"])]
     [FontAwesomeCategories(["Buildings", "Camping", "Humanitarian"])]
     TentArrowsDown = 0xE581,
 
     /// <summary>
     /// The Font Awesome "tent-arrow-turn-left" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["tent arrow turn left", "refugee", "shelter", "temporary"])]
+    [FontAwesomeSearchTerms(["tent arrow turn left", "bivouac", "campground", "campsite", "refugee", "refugee", "shelter", "shelter", "temporary", "tent"])]
     [FontAwesomeCategories(["Buildings", "Camping", "Humanitarian"])]
     TentArrowTurnLeft = 0xE580,
 
     /// <summary>
     /// The Font Awesome "tents" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["tents", "bivouac", "campground", "refugee", "shelter", "tent"])]
+    [FontAwesomeSearchTerms(["tents", "bivouac", "bivouac", "campground", "campground", "campsite", "refugee", "refugee", "shelter", "shelter", "tent", "tent"])]
     [FontAwesomeCategories(["Buildings", "Camping", "Humanitarian"])]
     Tents = 0xE582,
 
@@ -8320,21 +8478,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "text-height" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["text height", "edit", "font", "format", "text", "type"])]
+    [FontAwesomeSearchTerms(["text height", "edit", "font", "format", "modify", "text", "type"])]
     [FontAwesomeCategories(["Text Formatting"])]
     TextHeight = 0xF034,
 
     /// <summary>
     /// The Font Awesome "text-width" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["text width", "edit", "font", "format", "text", "type"])]
+    [FontAwesomeSearchTerms(["text width", "edit", "font", "format", "modify", "text", "type"])]
     [FontAwesomeCategories(["Text Formatting"])]
     TextWidth = 0xF035,
 
     /// <summary>
     /// The Font Awesome "table-cells" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["table cells", "blocks", "boxes", "grid", "squares"])]
+    [FontAwesomeSearchTerms(["table cells", "blocks", "boxes", "category", "excel", "grid", "spreadsheet", "squares"])]
     [FontAwesomeCategories(["Text Formatting"])]
     Th = 0xF00A,
 
@@ -8390,14 +8548,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "table-cells-large" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["table cells large", "blocks", "boxes", "grid", "squares"])]
+    [FontAwesomeSearchTerms(["table cells large", "blocks", "boxes", "category", "excel", "grid", "spreadsheet", "squares"])]
     [FontAwesomeCategories(["Text Formatting"])]
     ThLarge = 0xF009,
 
     /// <summary>
     /// The Font Awesome "table-list" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["table list", "checklist", "completed", "done", "finished", "ol", "todo", "ul"])]
+    [FontAwesomeSearchTerms(["table list", "category", "cheatsheet", "checklist", "completed", "done", "finished", "ol", "summary", "todo", "ul"])]
     [FontAwesomeCategories(["Text Formatting"])]
     ThList = 0xF00B,
 
@@ -8423,16 +8581,23 @@ public enum FontAwesomeIcon
     Thumbtack = 0xF08D,
 
     /// <summary>
+    /// The Font Awesome "thumbtack-slash" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["thumbtack slash", "black pushpin", "coordinates", "location", "marker", "pin", "pushpin", "thumb-tack", "unpin"])]
+    [FontAwesomeCategories(["Business", "Maps", "Social", "Writing"])]
+    ThumbtackSlash = 0xE68F,
+
+    /// <summary>
     /// The Font Awesome "ticket" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["admission", "admission tickets", "movie", "pass", "support", "ticket"])]
+    [FontAwesomeSearchTerms(["admission", "admission tickets", "coupon", "movie", "pass", "support", "ticket", "voucher"])]
     [FontAwesomeCategories(["Film + Video", "Maps"])]
     Ticket = 0xF145,
 
     /// <summary>
     /// The Font Awesome "ticket-simple" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["ticket simple", "movie", "pass", "support", "ticket"])]
+    [FontAwesomeSearchTerms(["ticket simple", "admission", "coupon", "movie", "pass", "support", "ticket", "voucher"])]
     [FontAwesomeCategories(["Maps", "Shapes"])]
     TicketAlt = 0xF3FF,
 
@@ -8446,29 +8611,29 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["xmark", "cancellation x", "multiplication sign", "multiplication x", "cancel", "close", "cross", "cross mark", "error", "exit", "incorrect", "mark", "multiplication", "multiply", "notice", "notification", "notify", "problem", "sign", "wrong", "x", "×"])]
+    [FontAwesomeSearchTerms(["xmark", "cancellation x", "multiplication sign", "multiplication x", "cancel", "close", "cross", "cross mark", "error", "exit", "incorrect", "mark", "multiplication", "multiply", "notice", "notification", "notify", "problem", "sign", "uncheck", "wrong", "x", "×"])]
     [FontAwesomeCategories(["Editing", "Mathematics"])]
     Times = 0xF00D,
 
     /// <summary>
     /// The Font Awesome "circle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle xmark", "close", "cross", "destroy", "exit", "incorrect", "notice", "notification", "notify", "problem", "wrong", "x"])]
+    [FontAwesomeSearchTerms(["circle xmark", "close", "cross", "destroy", "exit", "incorrect", "notice", "notification", "notify", "problem", "uncheck", "wrong", "x"])]
     [FontAwesomeCategories(["Mathematics"])]
     TimesCircle = 0xF057,
 
     /// <summary>
     /// The Font Awesome "droplet" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["cold", "color", "comic", "drop", "droplet", "raindrop", "sweat", "waterdrop"])]
-    [FontAwesomeCategories(["Design", "Humanitarian", "Maps", "Photos + Images"])]
+    [FontAwesomeSearchTerms(["blood", "cold", "color", "comic", "drop", "droplet", "raindrop", "sweat", "waterdrop"])]
+    [FontAwesomeCategories(["Design", "Humanitarian", "Maps", "Medical + Health", "Photos + Images"])]
     Tint = 0xF043,
 
     /// <summary>
     /// The Font Awesome "droplet-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["droplet slash", "color", "drop", "droplet", "raindrop", "waterdrop"])]
-    [FontAwesomeCategories(["Design"])]
+    [FontAwesomeSearchTerms(["droplet slash", "blood", "color", "disabled", "drop", "droplet", "raindrop", "waterdrop"])]
+    [FontAwesomeCategories(["Design", "Medical + Health"])]
     TintSlash = 0xF5C7,
 
     /// <summary>
@@ -8509,7 +8674,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "toilet-paper-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["toilet paper slash", "bathroom", "covid-19", "halloween", "holiday", "lavatory", "leaves", "prank", "privy", "restroom", "roll", "toilet", "trouble", "ut oh", "wipe"])]
+    [FontAwesomeSearchTerms(["toilet paper slash", "bathroom", "covid-19", "disabled", "halloween", "holiday", "lavatory", "leaves", "prank", "privy", "restroom", "roll", "toilet", "trouble", "ut oh", "wipe"])]
     [FontAwesomeCategories(["Household"])]
     ToiletPaperSlash = 0xE072,
 
@@ -8530,14 +8695,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "toolbox" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["admin", "chest", "container", "fix", "mechanic", "repair", "settings", "tool", "toolbox", "tools"])]
+    [FontAwesomeSearchTerms(["admin", "chest", "configuration", "container", "equipment", "fix", "maintenance", "mechanic", "modify", "repair", "settings", "tool", "toolbox", "tools"])]
     [FontAwesomeCategories(["Construction"])]
     Toolbox = 0xF552,
 
     /// <summary>
     /// The Font Awesome "screwdriver-wrench" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["screwdriver wrench", "admin", "fix", "repair", "screwdriver", "settings", "tools", "wrench"])]
+    [FontAwesomeSearchTerms(["screwdriver wrench", "admin", "configuration", "equipment", "fix", "maintenance", "modify", "repair", "screwdriver", "settings", "tools", "wrench"])]
     [FontAwesomeCategories(["Construction"])]
     Tools = 0xF7D9,
 
@@ -8572,7 +8737,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "tower-cell" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["tower cell", "airwaves", "antenna", "communication", "radio", "reception", "waves"])]
+    [FontAwesomeSearchTerms(["tower cell", "airwaves", "antenna", "communication", "radio", "reception", "signal", "waves"])]
     [FontAwesomeCategories(["Communication", "Connectivity", "Film + Video", "Humanitarian"])]
     TowerCell = 0xE585,
 
@@ -8600,7 +8765,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "traffic-light" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["traffic light", "direction", "light", "road", "signal", "traffic", "travel", "vertical traffic light"])]
+    [FontAwesomeSearchTerms(["traffic light", "direction", "go", "light", "road", "signal", "slow", "stop", "traffic", "travel", "vertical traffic light"])]
     [FontAwesomeCategories(["Maps"])]
     TrafficLight = 0xF637,
 
@@ -8656,21 +8821,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "trash-arrow-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["trash arrow up", "back", "control z", "delete", "garbage", "hide", "oops", "remove", "undo"])]
+    [FontAwesomeSearchTerms(["trash arrow up", "back", "control z", "delete", "garbage", "hide", "oops", "remove", "undo", "upgrade"])]
     [FontAwesomeCategories(["Editing"])]
     TrashRestore = 0xF829,
 
     /// <summary>
     /// The Font Awesome "trash-can-arrow-up" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["trash can arrow up", "back", "control z", "delete", "garbage", "hide", "oops", "remove", "undo"])]
+    [FontAwesomeSearchTerms(["trash can arrow up", "back", "control z", "delete", "garbage", "hide", "oops", "remove", "undo", "upgrade"])]
     [FontAwesomeCategories(["Editing"])]
     TrashRestoreAlt = 0xF82A,
 
     /// <summary>
     /// The Font Awesome "tree" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["bark", "evergreen tree", "fall", "flora", "forest", "nature", "plant", "seasonal", "tree"])]
+    [FontAwesomeSearchTerms(["bark", "evergreen tree", "fall", "flora", "forest", "investment", "nature", "plant", "seasonal", "tree"])]
     [FontAwesomeCategories(["Camping", "Maps", "Nature"])]
     Tree = 0xF1BB,
 
@@ -8691,14 +8856,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "trowel" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["trowel", "build", "construction", "tool"])]
+    [FontAwesomeSearchTerms(["trowel", "build", "construction", "equipment", "maintenance", "tool"])]
     [FontAwesomeCategories(["Construction", "Humanitarian"])]
     Trowel = 0xE589,
 
     /// <summary>
     /// The Font Awesome "trowel-bricks" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["trowel bricks", "build", "construction", "reconstruction", "tool"])]
+    [FontAwesomeSearchTerms(["trowel bricks", "build", "construction", "maintenance", "reconstruction", "tool"])]
     [FontAwesomeCategories(["Construction", "Humanitarian"])]
     TrowelBricks = 0xE58A,
 
@@ -8719,8 +8884,8 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "truck-droplet" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["truck droplet", "thirst", "truck", "water", "water supply"])]
-    [FontAwesomeCategories(["Humanitarian", "Transportation"])]
+    [FontAwesomeSearchTerms(["truck droplet", "blood", "thirst", "truck", "water", "water supply"])]
+    [FontAwesomeCategories(["Humanitarian", "Medical + Health", "Transportation"])]
     TruckDroplet = 0xE58C,
 
     /// <summary>
@@ -8768,7 +8933,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "truck-pickup" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["truck pickup", "cargo", "pick-up", "pickup", "pickup truck", "truck", "vehicle"])]
+    [FontAwesomeSearchTerms(["truck pickup", "cargo", "maintenance", "pick-up", "pickup", "pickup truck", "truck", "vehicle"])]
     [FontAwesomeCategories(["Automotive", "Construction", "Transportation"])]
     TruckPickup = 0xF63C,
 
@@ -8824,7 +8989,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "underline" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["underline", "edit", "emphasis", "format", "text", "writing"])]
+    [FontAwesomeSearchTerms(["underline", "edit", "emphasis", "format", "modify", "text", "writing"])]
     [FontAwesomeCategories(["Text Formatting"])]
     Underline = 0xF0CD,
 
@@ -8832,20 +8997,20 @@ public enum FontAwesomeIcon
     /// The Font Awesome "arrow-rotate-left" icon unicode character.
     /// </summary>
     [FontAwesomeSearchTerms(["arrow rotate left", "anticlockwise open circle arrow", "back", "control z", "exchange", "oops", "return", "rotate", "swap"])]
-    [FontAwesomeCategories(["Arrows", "Media Playback"])]
+    [FontAwesomeCategories(["Arrows", "Media Playback", "Spinners"])]
     Undo = 0xF0E2,
 
     /// <summary>
     /// The Font Awesome "rotate-left" icon unicode character.
     /// </summary>
     [FontAwesomeSearchTerms(["rotate left", "back", "control z", "exchange", "oops", "return", "swap"])]
-    [FontAwesomeCategories(["Arrows", "Media Playback"])]
+    [FontAwesomeCategories(["Arrows", "Media Playback", "Spinners"])]
     UndoAlt = 0xF2EA,
 
     /// <summary>
     /// The Font Awesome "universal-access" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["universal access", "users-people"])]
+    [FontAwesomeSearchTerms(["universal access", "uer", "users-people"])]
     [FontAwesomeCategories(["Accessibility"])]
     UniversalAccess = 0xF29A,
 
@@ -8859,252 +9024,254 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "link-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["link slash", "attachment", "chain", "chain-broken", "remove"])]
+    [FontAwesomeSearchTerms(["link slash", "attachment", "chain", "chain-broken", "disabled", "disconnect", "remove"])]
     [FontAwesomeCategories(["Editing"])]
     Unlink = 0xF127,
 
     /// <summary>
     /// The Font Awesome "unlock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["admin", "lock", "open", "password", "private", "protect", "unlock", "unlocked"])]
+    [FontAwesomeSearchTerms(["admin", "lock", "open", "padlock", "password", "privacy", "private", "protect", "unlock", "unlocked"])]
     [FontAwesomeCategories(["Security"])]
     Unlock = 0xF09C,
 
     /// <summary>
     /// The Font Awesome "unlock-keyhole" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["unlock keyhole", "admin", "lock", "password", "private", "protect"])]
+    [FontAwesomeSearchTerms(["unlock keyhole", "admin", "lock", "padlock", "password", "privacy", "private", "protect"])]
     [FontAwesomeCategories(["Security"])]
     UnlockAlt = 0xF13E,
 
     /// <summary>
     /// The Font Awesome "upload" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["upload", "hard drive", "import", "publish"])]
+    [FontAwesomeSearchTerms(["upload", "hard drive", "import", "publish", "upgrade"])]
     [FontAwesomeCategories(["Arrows", "Devices + Hardware"])]
     Upload = 0xF093,
 
     /// <summary>
     /// The Font Awesome "user" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user", "adult", "bust", "bust in silhouette", "gender-neutral", "person", "profile", "silhouette", "unspecified gender", "users-people"])]
+    [FontAwesomeSearchTerms(["user", "adult", "bust", "bust in silhouette", "default", "employee", "gender-neutral", "person", "profile", "silhouette", "uer", "unspecified gender", "username", "users-people"])]
     [FontAwesomeCategories(["Social", "Users + People"])]
     User = 0xF007,
 
     /// <summary>
-    /// The Font Awesome "user-large" icon unicode character.
+    /// The Font Awesome "user" icon unicode character.
+    /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0xF007.
     /// </summary>
-    [FontAwesomeSearchTerms(["user large", "users-people"])]
-    [FontAwesomeCategories(["Users + People"])]
+    [FontAwesomeSearchTerms(["user", "adult", "bust", "bust in silhouette", "default", "employee", "gender-neutral", "person", "profile", "silhouette", "uer", "unspecified gender", "username", "users-people"])]
+    [FontAwesomeCategories(["Social", "Users + People"])]
     UserAlt = 0xF406,
 
     /// <summary>
-    /// The Font Awesome "user-large-slash" icon unicode character.
+    /// The Font Awesome "user-slash" icon unicode character.
+    /// Uses a legacy unicode value for backwards compatability. The current unicode value is 0xF506.
     /// </summary>
-    [FontAwesomeSearchTerms(["user large slash", "users-people"])]
+    [FontAwesomeSearchTerms(["user slash", "ban", "delete", "deny", "disabled", "disconnect", "employee", "remove", "uer"])]
     [FontAwesomeCategories(["Users + People"])]
     UserAltSlash = 0xF4FA,
 
     /// <summary>
     /// The Font Awesome "user-astronaut" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user astronaut", "avatar", "clothing", "cosmonaut", "nasa", "space", "suit"])]
+    [FontAwesomeSearchTerms(["user astronaut", "avatar", "clothing", "cosmonaut", "nasa", "space", "suit", "uer"])]
     [FontAwesomeCategories(["Astronomy", "Science Fiction", "Users + People"])]
     UserAstronaut = 0xF4FB,
 
     /// <summary>
     /// The Font Awesome "user-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user check", "users-people"])]
+    [FontAwesomeSearchTerms(["user check", "employee", "enable", "uer", "users-people", "validate", "working"])]
     [FontAwesomeCategories(["Users + People"])]
     UserCheck = 0xF4FC,
 
     /// <summary>
     /// The Font Awesome "circle-user" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["circle user", "users-people"])]
+    [FontAwesomeSearchTerms(["circle user", "employee", "uer", "username", "users-people"])]
     [FontAwesomeCategories(["Social", "Users + People"])]
     UserCircle = 0xF2BD,
 
     /// <summary>
     /// The Font Awesome "user-clock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user clock", "users-people"])]
+    [FontAwesomeSearchTerms(["user clock", "employee", "uer", "users-people"])]
     [FontAwesomeCategories(["Users + People"])]
     UserClock = 0xF4FD,
 
     /// <summary>
     /// The Font Awesome "user-gear" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user gear", "users-people"])]
+    [FontAwesomeSearchTerms(["user gear", "employee", "together", "uer", "users-people"])]
     [FontAwesomeCategories(["Users + People"])]
     UserCog = 0xF4FE,
 
     /// <summary>
     /// The Font Awesome "user-pen" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user pen", "users-people"])]
+    [FontAwesomeSearchTerms(["user pen", "employee", "modify", "uer", "users-people"])]
     [FontAwesomeCategories(["Users + People"])]
     UserEdit = 0xF4FF,
 
     /// <summary>
     /// The Font Awesome "user-group" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user group", "bust", "busts in silhouette", "silhouette", "users-people"])]
+    [FontAwesomeSearchTerms(["user group", "bust", "busts in silhouette", "crowd", "employee", "silhouette", "together", "uer", "users-people"])]
     [FontAwesomeCategories(["Social", "Users + People"])]
     UserFriends = 0xF500,
 
     /// <summary>
     /// The Font Awesome "user-graduate" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user graduate", "users-people"])]
+    [FontAwesomeSearchTerms(["user graduate", "uer", "users-people"])]
     [FontAwesomeCategories(["Education", "Users + People"])]
     UserGraduate = 0xF501,
 
     /// <summary>
     /// The Font Awesome "user-injured" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user injured", "users-people"])]
+    [FontAwesomeSearchTerms(["user injured", "employee", "uer", "users-people"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     UserInjured = 0xF728,
 
     /// <summary>
     /// The Font Awesome "user-lock" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user lock", "users-people"])]
+    [FontAwesomeSearchTerms(["user lock", "employee", "padlock", "privacy", "uer", "users-people"])]
     [FontAwesomeCategories(["Security", "Users + People"])]
     UserLock = 0xF502,
 
     /// <summary>
     /// The Font Awesome "user-doctor" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user doctor", "covid-19", "health", "job", "medical", "nurse", "occupation", "physician", "profile", "surgeon", "worker"])]
+    [FontAwesomeSearchTerms(["user doctor", "covid-19", "health", "job", "medical", "nurse", "occupation", "physician", "profile", "surgeon", "uer", "worker"])]
     [FontAwesomeCategories(["Humanitarian", "Medical + Health", "Users + People"])]
     UserMd = 0xF0F0,
 
     /// <summary>
     /// The Font Awesome "user-minus" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user minus", "delete", "negative", "remove"])]
+    [FontAwesomeSearchTerms(["user minus", "delete", "employee", "negative", "remove", "uer"])]
     [FontAwesomeCategories(["Users + People"])]
     UserMinus = 0xF503,
 
     /// <summary>
     /// The Font Awesome "user-ninja" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user ninja", "assassin", "avatar", "dangerous", "deadly", "fighter", "hidden", "ninja", "sneaky", "stealth"])]
+    [FontAwesomeSearchTerms(["user ninja", "assassin", "avatar", "dangerous", "deadly", "fighter", "hidden", "ninja", "sneaky", "stealth", "uer"])]
     [FontAwesomeCategories(["Users + People"])]
     UserNinja = 0xF504,
 
     /// <summary>
     /// The Font Awesome "user-nurse" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user nurse", "covid-19", "doctor", "health", "md", "medical", "midwife", "physician", "practitioner", "surgeon", "worker"])]
+    [FontAwesomeSearchTerms(["user nurse", "covid-19", "doctor", "health", "md", "medical", "midwife", "physician", "practitioner", "surgeon", "uer", "worker"])]
     [FontAwesomeCategories(["Medical + Health", "Users + People"])]
     UserNurse = 0xF82F,
 
     /// <summary>
     /// The Font Awesome "user-plus" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user plus", "add", "avatar", "positive", "sign up", "signup", "team"])]
+    [FontAwesomeSearchTerms(["user plus", "add", "avatar", "employee", "follow", "positive", "sign up", "signup", "team", "user"])]
     [FontAwesomeCategories(["Social", "Users + People"])]
     UserPlus = 0xF234,
 
     /// <summary>
     /// The Font Awesome "users" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["users", "users-people"])]
+    [FontAwesomeSearchTerms(["users", "employee", "together", "uer", "users-people"])]
     [FontAwesomeCategories(["Social", "Users + People"])]
     Users = 0xF0C0,
 
     /// <summary>
     /// The Font Awesome "users-between-lines" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["users between lines", "covered", "group", "people"])]
+    [FontAwesomeSearchTerms(["users between lines", "covered", "crowd", "employee", "group", "people", "together", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     UsersBetweenLines = 0xE591,
 
     /// <summary>
     /// The Font Awesome "users-gear" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["users gear", "users-people"])]
+    [FontAwesomeSearchTerms(["users gear", "employee", "uer", "users-people"])]
     [FontAwesomeCategories(["Users + People"])]
     UsersCog = 0xF509,
 
     /// <summary>
     /// The Font Awesome "user-secret" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user secret", "detective", "sleuth", "spy", "users-people"])]
+    [FontAwesomeSearchTerms(["user secret", "detective", "sleuth", "spy", "uer", "users-people"])]
     [FontAwesomeCategories(["Coding", "Security", "Users + People"])]
     UserSecret = 0xF21B,
 
     /// <summary>
     /// The Font Awesome "user-shield" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user shield", "protect", "safety"])]
+    [FontAwesomeSearchTerms(["user shield", "employee", "protect", "safety", "security", "uer"])]
     [FontAwesomeCategories(["Security", "Users + People"])]
     UserShield = 0xF505,
 
     /// <summary>
     /// The Font Awesome "user-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user slash", "ban", "delete", "remove"])]
+    [FontAwesomeSearchTerms(["user slash", "ban", "delete", "deny", "disabled", "disconnect", "employee", "remove", "uer"])]
     [FontAwesomeCategories(["Users + People"])]
     UserSlash = 0xF506,
 
     /// <summary>
     /// The Font Awesome "users-line" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["users line", "group", "need", "people"])]
+    [FontAwesomeSearchTerms(["users line", "crowd", "employee", "group", "need", "people", "together", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     UsersLine = 0xE592,
 
     /// <summary>
     /// The Font Awesome "users-rays" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["users rays", "affected", "focused", "group", "people"])]
+    [FontAwesomeSearchTerms(["users rays", "affected", "crowd", "employee", "focused", "group", "people", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     UsersRays = 0xE593,
 
     /// <summary>
     /// The Font Awesome "users-rectangle" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["users rectangle", "focus", "group", "people", "reached"])]
+    [FontAwesomeSearchTerms(["users rectangle", "crowd", "employee", "focus", "group", "people", "reached", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     UsersRectangle = 0xE594,
 
     /// <summary>
     /// The Font Awesome "users-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["users slash", "users-people"])]
+    [FontAwesomeSearchTerms(["users slash", "disabled", "disconnect", "employee", "together", "uer", "users-people"])]
     [FontAwesomeCategories(["Users + People"])]
     UsersSlash = 0xE073,
 
     /// <summary>
     /// The Font Awesome "users-viewfinder" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["users viewfinder", "focus", "group", "people", "targeted"])]
+    [FontAwesomeSearchTerms(["users viewfinder", "crowd", "focus", "group", "people", "targeted", "uer"])]
     [FontAwesomeCategories(["Humanitarian", "Users + People"])]
     UsersViewfinder = 0xE595,
 
     /// <summary>
     /// The Font Awesome "user-tag" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user tag", "users-people"])]
+    [FontAwesomeSearchTerms(["user tag", "employee", "uer", "users-people"])]
     [FontAwesomeCategories(["Users + People"])]
     UserTag = 0xF507,
 
     /// <summary>
     /// The Font Awesome "user-tie" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user tie", "avatar", "business", "clothing", "formal", "professional", "suit"])]
+    [FontAwesomeSearchTerms(["user tie", "administrator", "avatar", "business", "clothing", "employee", "formal", "offer", "portfolio", "professional", "suit", "uer"])]
     [FontAwesomeCategories(["Clothing + Fashion", "Users + People"])]
     UserTie = 0xF508,
 
     /// <summary>
     /// The Font Awesome "user-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["user xmark", "archive", "delete", "remove", "x"])]
+    [FontAwesomeSearchTerms(["user xmark", "archive", "delete", "employee", "remove", "uer", "uncheck", "x"])]
     [FontAwesomeCategories(["Users + People"])]
     UserTimes = 0xF235,
 
@@ -9125,15 +9292,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "vault" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["vault", "bank", "important", "lock", "money", "safe"])]
+    [FontAwesomeSearchTerms(["vault", "bank", "important", "investment", "lock", "money", "premium", "privacy", "safe", "salary"])]
     [FontAwesomeCategories(["Business", "Money", "Security"])]
     Vault = 0xE2C5,
 
     /// <summary>
-    /// The Font Awesome "vector-square" icon unicode character.
+    /// The Font Awesome "vectorsquare" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["vector square", "anchors", "lines", "object", "render", "shape"])]
-    [FontAwesomeCategories(["Design"])]
+    [Obsolete]
     VectorSquare = 0xF5CB,
 
     /// <summary>
@@ -9174,21 +9340,21 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "vial" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["vial", "ampule", "chemist", "chemistry", "experiment", "lab", "sample", "science", "test", "test tube"])]
+    [FontAwesomeSearchTerms(["vial", "ampule", "chemist", "chemistry", "experiment", "knowledge", "lab", "sample", "science", "test", "test tube"])]
     [FontAwesomeCategories(["Medical + Health", "Science"])]
     Vial = 0xF492,
 
     /// <summary>
     /// The Font Awesome "vial-circle-check" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["vial circle check", "ampule", "chemist", "chemistry", "not affected", "ok", "okay", "success", "test tube", "tube", "vaccine"])]
+    [FontAwesomeSearchTerms(["vial circle check", "ampule", "chemist", "chemistry", "enable", "not affected", "ok", "okay", "success", "test tube", "tube", "vaccine", "validate", "working"])]
     [FontAwesomeCategories(["Humanitarian", "Medical + Health", "Science"])]
     VialCircleCheck = 0xE596,
 
     /// <summary>
     /// The Font Awesome "vials" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["vials", "ampule", "experiment", "lab", "sample", "science", "test", "test tube"])]
+    [FontAwesomeSearchTerms(["vials", "ampule", "experiment", "knowledge", "lab", "sample", "science", "test", "test tube"])]
     [FontAwesomeCategories(["Medical + Health", "Science"])]
     Vials = 0xF493,
 
@@ -9209,7 +9375,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "video-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["video slash", "add", "create", "film", "new", "positive", "record", "video"])]
+    [FontAwesomeSearchTerms(["video slash", "add", "create", "disabled", "disconnect", "film", "new", "positive", "record", "video"])]
     [FontAwesomeCategories(["Communication", "Film + Video"])]
     VideoSlash = 0xF4E2,
 
@@ -9237,7 +9403,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "virus-covid-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["virus covid slash", "bug", "covid-19", "flu", "health", "infection", "pandemic", "vaccine", "viral", "virus"])]
+    [FontAwesomeSearchTerms(["virus covid slash", "bug", "covid-19", "disabled", "flu", "health", "infection", "pandemic", "vaccine", "viral", "virus"])]
     [FontAwesomeCategories(["Medical + Health"])]
     VirusCovidSlash = 0xE4A9,
 
@@ -9251,7 +9417,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "virus-slash" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["virus slash", "bug", "coronavirus", "covid-19", "cure", "eliminate", "flu", "health", "infection", "pandemic", "sick", "vaccine", "viral"])]
+    [FontAwesomeSearchTerms(["virus slash", "bug", "coronavirus", "covid-19", "cure", "disabled", "eliminate", "flu", "health", "infection", "pandemic", "sick", "vaccine", "viral"])]
     [FontAwesomeCategories(["Medical + Health"])]
     VirusSlash = 0xE075,
 
@@ -9307,7 +9473,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "check-to-slot" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["check to slot", "accept", "cast", "election", "politics", "positive", "voting", "yes"])]
+    [FontAwesomeSearchTerms(["check to slot", "accept", "cast", "election", "enable", "politics", "positive", "validate", "voting", "working", "yes"])]
     [FontAwesomeCategories(["Political"])]
     VoteYea = 0xF772,
 
@@ -9328,14 +9494,14 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "person-walking" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["person walking", "crosswalk", "exercise", "hike", "move", "person walking", "walk", "walking"])]
+    [FontAwesomeSearchTerms(["person walking", "crosswalk", "exercise", "follow", "hike", "move", "person walking", "uer", "walk", "walking", "workout"])]
     [FontAwesomeCategories(["Humanitarian", "Sports + Fitness", "Users + People"])]
     Walking = 0xF554,
 
     /// <summary>
     /// The Font Awesome "wallet" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["wallet", "billfold", "cash", "currency", "money"])]
+    [FontAwesomeSearchTerms(["wallet", "billfold", "cash", "currency", "money", "salary"])]
     [FontAwesomeCategories(["Business", "Money"])]
     Wallet = 0xF555,
 
@@ -9371,8 +9537,15 @@ public enum FontAwesomeIcon
     /// The Font Awesome "wave-square" icon unicode character.
     /// </summary>
     [FontAwesomeSearchTerms(["wave square", "frequency", "pulse", "signal"])]
-    [FontAwesomeCategories(["Mathematics"])]
+    [FontAwesomeCategories(["Mathematics", "Music + Audio"])]
     WaveSquare = 0xF83E,
+
+    /// <summary>
+    /// The Font Awesome "web-awesome" icon unicode character.
+    /// </summary>
+    [FontAwesomeSearchTerms(["web awesome", "awesome", "coding", "components", "crown", "web"])]
+    [FontAwesomeCategories(["Coding", "Design"])]
+    WebAwesome = 0xE682,
 
     /// <summary>
     /// The Font Awesome "weight-scale" icon unicode character.
@@ -9398,28 +9571,28 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "wheat-awn-circle-exclamation" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["wheat awn circle exclamation", "affected", "famine", "food", "gluten", "hunger", "starve", "straw"])]
+    [FontAwesomeSearchTerms(["wheat awn circle exclamation", "affected", "failed", "famine", "food", "gluten", "hunger", "starve", "straw"])]
     [FontAwesomeCategories(["Disaster + Crisis", "Food + Beverage", "Humanitarian"])]
     WheatAwnCircleExclamation = 0xE598,
 
     /// <summary>
     /// The Font Awesome "wheelchair" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["wheelchair", "users-people"])]
+    [FontAwesomeSearchTerms(["wheelchair", "disabled", "uer", "users-people"])]
     [FontAwesomeCategories(["Accessibility", "Maps", "Medical + Health", "Transportation", "Travel + Hotel", "Users + People"])]
     Wheelchair = 0xF193,
 
     /// <summary>
     /// The Font Awesome "wheelchair-move" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["wheelchair move", "access", "handicap", "impairment", "physical", "wheelchair symbol"])]
+    [FontAwesomeSearchTerms(["wheelchair move", "access", "disabled", "handicap", "impairment", "physical", "uer", "wheelchair symbol"])]
     [FontAwesomeCategories(["Accessibility", "Humanitarian", "Maps", "Medical + Health", "Transportation", "Travel + Hotel", "Users + People"])]
     WheelchairMove = 0xE2CE,
 
     /// <summary>
     /// The Font Awesome "wifi" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["wifi", "connection", "hotspot", "internet", "network", "wireless"])]
+    [FontAwesomeSearchTerms(["wifi", "connection", "hotspot", "internet", "network", "signal", "wireless", "www"])]
     [FontAwesomeCategories(["Connectivity", "Humanitarian", "Maps", "Toggle", "Travel + Hotel"])]
     Wifi = 0xF1EB,
 
@@ -9433,7 +9606,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "rectangle-xmark" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["rectangle xmark", "browser", "cancel", "computer", "development"])]
+    [FontAwesomeSearchTerms(["rectangle xmark", "browser", "cancel", "computer", "development", "uncheck"])]
     [FontAwesomeCategories(["Coding"])]
     WindowClose = 0xF410,
 
@@ -9496,7 +9669,7 @@ public enum FontAwesomeIcon
     /// <summary>
     /// The Font Awesome "wrench" icon unicode character.
     /// </summary>
-    [FontAwesomeSearchTerms(["construction", "fix", "mechanic", "plumbing", "settings", "spanner", "tool", "update", "wrench"])]
+    [FontAwesomeSearchTerms(["configuration", "construction", "equipment", "fix", "mechanic", "modify", "plumbing", "settings", "spanner", "tool", "update", "wrench"])]
     [FontAwesomeCategories(["Construction", "Maps"])]
     Wrench = 0xF0AD,
 

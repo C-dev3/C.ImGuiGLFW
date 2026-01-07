@@ -127,7 +127,7 @@ public static class GenericExtensions
     /// <param name="obj">The object to wrap.</param>
     /// <returns>An enumerable containing only <paramref name="obj"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static IEnumerable<T> AsEnumerable<T>(this T obj) => new[] { obj };
+    public static IEnumerable<T> AsEnumerable<T>(this T obj) => [obj];
 
     /// <summary>
     /// Applies the specified function to the current object and returns the result.
@@ -142,7 +142,7 @@ public static class GenericExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static TResult Pipe<T, TResult>(this T obj, Func<T, TResult> func)
     {
-        if (func == null) throw new ArgumentNullException(nameof(func));
+        ArgumentNullException.ThrowIfNull(func);
         return func(obj);
     }
 
@@ -157,7 +157,7 @@ public static class GenericExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T Tap<T>(this T obj, Action<T> action)
     {
-        if (action == null) throw new ArgumentNullException(nameof(action));
+        ArgumentNullException.ThrowIfNull(action);
         action(obj);
         return obj;
     }
@@ -173,7 +173,7 @@ public static class GenericExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool Satisfies<T>(this T obj, Func<T, bool> predicate)
     {
-        if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+        ArgumentNullException.ThrowIfNull(predicate);
         return predicate(obj);
     }
 
@@ -189,7 +189,7 @@ public static class GenericExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T IfSatisfies<T>(this T obj, Func<T, bool> predicate, T defaultValue = default!)
     {
-        if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+        ArgumentNullException.ThrowIfNull(predicate);
         return predicate(obj) ? obj : defaultValue;
     }
 

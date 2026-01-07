@@ -81,6 +81,11 @@ public abstract class Window
     public int Id;
 
     /// <summary>
+    /// Gets or sets the identifier of the viewport associated with this instance.
+    /// </summary>
+    public uint? ViewportID { get; set; } = null;
+
+    /// <summary>
     /// Initializes a new instance of the Window class with the specified name.
     /// </summary>
     /// <param name="name">The name to display in the window title bar.</param>
@@ -122,6 +127,8 @@ public abstract class Window
 
                 try
                 {
+                    if (ViewportID.HasValue) ImGui.SetNextWindowViewport(ViewportID.Value);
+
                     PreDraw();
                 }
                 catch (Exception ex)

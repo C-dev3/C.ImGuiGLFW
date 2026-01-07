@@ -102,17 +102,14 @@ public partial class ImGuiController
     /// Removes a window from the ImGuiController. The removal is deferred until after the current frame.
     /// </summary>
     /// <param name="window">The window to remove.</param>
-    public static void RemoveWindow(Window window)
-    {
-        Instance.postDraw.Add(() =>
-        {
-            if (Instance.windows.Remove(window))
-            {
-                Instance.setupCompletedWindows.Remove(window);
-                window.OnClose();
-            }
-        });
-    }
+    public static void RemoveWindow(Window window) => Instance.postDraw.Add(() =>
+                                                           {
+                                                               if (Instance.windows.Remove(window))
+                                                               {
+                                                                   Instance.setupCompletedWindows.Remove(window);
+                                                                   window.OnClose();
+                                                               }
+                                                           });
 
     /// <summary>
     /// Removes all windows from the ImGuiController.

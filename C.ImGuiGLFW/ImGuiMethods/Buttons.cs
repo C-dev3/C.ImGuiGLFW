@@ -630,7 +630,7 @@ public static partial class ImGuiC
     /// </remarks>
     public static bool SelectableItem(FontAwesomeIcon icon, string label, string id, string group = "defaultGroup", int offset = 16)
     {
-        if (!settingsTabs.ContainsKey(group)) SeletionTabs[group] = string.Empty;
+        if (!SeletionTabs.ContainsKey(group)) SeletionTabs[group] = string.Empty;
 
         bool isSelected = SeletionTabs[group] == id;
 
@@ -691,7 +691,7 @@ public static partial class ImGuiC
     /// </remarks>
     public static bool SelectableItem(Texture? texture, string label, string id, string group = "defaultGroup", int offset = 16)
     {
-        if (!settingsTabs.ContainsKey(group)) SeletionTabs[group] = string.Empty;
+        if (!SeletionTabs.ContainsKey(group)) SeletionTabs[group] = string.Empty;
 
         bool isSelected = SeletionTabs[group] == id;
 
