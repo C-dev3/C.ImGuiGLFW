@@ -111,7 +111,7 @@ public static class GroupBox
     /// and cursor positions accordingly. The border is drawn using the properties specified in the
     /// GroupBoxOptions that were active when Begin() was called.
     /// </remarks>
-    public static unsafe void End()
+    public static void End()
     {
         var options = groupBoxOptionsStack.Pop();
         var autoAdjust = options.Width <= 0;

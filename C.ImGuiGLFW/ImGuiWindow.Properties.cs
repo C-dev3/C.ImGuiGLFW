@@ -24,7 +24,7 @@ public partial class ImGuiController
     /// <summary>
     /// Gets or sets the size of the client area of the window in screen coordinates.
     /// </summary>
-    public static unsafe Vector2 ClientSize
+    public static Vector2 ClientSize
     {
         get
         {
@@ -40,7 +40,7 @@ public partial class ImGuiController
     /// <summary>
     /// Gets or sets the position of the upper-left corner of the content area of the window in screen coordinates.
     /// </summary>
-    public static unsafe Vector2 Position
+    public static Vector2 Position
     {
         get
         {

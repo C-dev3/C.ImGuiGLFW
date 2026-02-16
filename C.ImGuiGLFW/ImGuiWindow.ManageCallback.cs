@@ -60,7 +60,7 @@ public partial class ImGuiController
         _callbackMethods["windowsize"] = () => (GLFWwindowsizefun)WindowResizeCallback;
     }
 
-    private unsafe void InitializeCallback()
+    private void InitializeCallback()
     {
         Log.Information("Starting callback initialization process");
 
@@ -144,7 +144,7 @@ public partial class ImGuiController
         }
     }
 
-    private unsafe void CleanUpCallback()
+    private void CleanUpCallback()
     {
         Log.Information("Starting callback cleanup process");
         foreach (var callbackInfo in _windowCallbacks)

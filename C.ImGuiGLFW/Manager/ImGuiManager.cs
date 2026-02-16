@@ -65,13 +65,13 @@ internal class ImGuiManager
         Log.Information("ImGui initialization completed successfully");
     }
 
-    private static unsafe void SetupFonts()
+    private static void SetupFonts()
     {
         Log.Information("Starting setup font");
         ImGuiController.FontBuilder.SetupFonts();
     }
 
-    private unsafe void ConfigureImGuiSettings()
+    private void ConfigureImGuiSettings()
     {
         if (windowSettings.NavEnableKeyboard) iOPtr.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
         if (windowSettings.NavEnableGamepad) iOPtr.ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;
@@ -297,10 +297,10 @@ internal class ImGuiManager
     {
         if (_pendingCapture.Count == 0) return;
 
-        const int maxXapturesPerFrame = 10;
+        const int maxCapturesPerFrame = 10;
         int processedCount = 0;
 
-        while (_pendingCapture.Count > 0 && processedCount < maxXapturesPerFrame)
+        while (_pendingCapture.Count > 0 && processedCount < maxCapturesPerFrame)
         {
             var capture = _pendingCapture.Dequeue();
             processedCount++;

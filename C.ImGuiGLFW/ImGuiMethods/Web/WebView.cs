@@ -512,7 +512,7 @@ public partial class WebView : IRenderWebBrowser, IDisposable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private unsafe Point2 GetMousePos()
+    private Point2 GetMousePos()
     {
         if (ImGuiC.ConfigFlags.HasFlag(ImGuiConfigFlags.ViewportsEnable))
         {

@@ -107,7 +107,7 @@ public static class Utility
         return false;
     }
 
-    internal static unsafe byte[] CaptureFramebuffer(int x, int y, int width, int height, ImGuiViewportPtr viewport)
+    internal static byte[] CaptureFramebuffer(int x, int y, int width, int height, ImGuiViewportPtr viewport)
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
