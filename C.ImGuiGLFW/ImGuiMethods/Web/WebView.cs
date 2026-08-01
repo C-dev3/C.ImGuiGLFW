@@ -699,7 +699,7 @@ public partial class WebView : IRenderWebBrowser, IDisposable
         Vector2 adjustedSize = AutoResizeToContentRegion ? effectiveSize : effectiveSize - urlBarSize;
         ImRect bb = new(position, position + adjustedSize);
         ImGuiP.ItemSize(bb);
-        if (!ImGuiP.ItemAdd(bb, id, ref bb, ImGuiItemFlags.None))
+        if (!ImGuiP.ItemAdd(bb, id, in bb, ImGuiItemFlags.None))
         {
             return;
         }

@@ -19,7 +19,7 @@ public static class CKnob
     {
         var drawList = ImGui.GetWindowDrawList();
         drawList.PathArcTo(center, radius, startAngle, endAngle);
-        drawList.PathStroke(color, ImDrawFlags.None, thickness);
+        drawList.PathStroke(color, thickness, ImDrawFlags.None);
     }
 
     private static KnobState CreateKnobState(string label, ref float value, float vMin, float vMax, float speed,

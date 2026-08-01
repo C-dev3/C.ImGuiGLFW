@@ -197,7 +197,7 @@ public static partial class ImGuiC
                 center.Y + MathF.Sin(a + time * 8f) * radius
             );
         }
-        drawList.AddPolyline(ref points[0], numSegments, color ?? ImGui.GetColorU32(ImGuiCol.ButtonHovered), ImDrawFlags.None, thickness ?? 6f);
+        drawList.AddPolyline(in points[0], numSegments, color ?? ImGui.GetColorU32(ImGuiCol.ButtonHovered), thickness ?? 6f, ImDrawFlags.None);
         return ret;
     }
 
@@ -315,7 +315,7 @@ public static partial class ImGuiC
             // Determinate
             var angle = progress * 2 * MathF.PI;
             drawList.PathArcTo(center, radius, -MathF.PI / 2, -MathF.PI / 2 + angle, 32);
-            drawList.PathStroke(progressColor, ImDrawFlags.None, 3.0f);
+            drawList.PathStroke(progressColor, 3.0f, ImDrawFlags.None);
         }
         else
         {
@@ -324,7 +324,7 @@ public static partial class ImGuiC
             var startAngle = time * 2;
             var endAngle = startAngle + MathF.PI;
             drawList.PathArcTo(center, radius, startAngle, endAngle, 32);
-            drawList.PathStroke(progressColor, ImDrawFlags.None, 3.0f);
+            drawList.PathStroke(progressColor, 3.0f, ImDrawFlags.None);
         }
 
         ImGui.Dummy(new Vector2(radius * 2, radius * 2));

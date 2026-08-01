@@ -135,7 +135,7 @@ public static class GroupBox
         var min = ImGui.GetItemRectMin();
         var max = autoAdjust ? ImGui.GetItemRectMax() : ImGui.GetItemRectMax() with { X = options.MaxX };
 
-        ImGui.GetWindowDrawList().AddRect(min, max, options.BorderColor, options.BorderRounding, options.DrawFlags, options.BorderThickness);
+        ImGui.GetWindowDrawList().AddRect(min, max, options.BorderColor, options.BorderRounding, options.BorderThickness, options.DrawFlags);
 
         ImGui.EndGroup();
     }
