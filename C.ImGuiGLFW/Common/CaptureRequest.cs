@@ -8,4 +8,5 @@ internal struct CaptureRequest
     public int Y;
     public int Width;
     public int Height;
+    public bool SetClipboard;
 }

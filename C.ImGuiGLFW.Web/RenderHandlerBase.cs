@@ -2,9 +2,11 @@
 using CefSharp.Enums;
 using CefSharp.OffScreen;
 using CefSharp.Structs;
+using Hexa.NET.ImGui;
+using Hexa.NET.Utilities;
 using System.Collections.Concurrent;
 
-namespace C.ImGuiGLFW.ImGuiMethods.Web;
+namespace C.ImGuiGLFW.Web;
 
 /// <summary>
 /// Provides a base implementation for CEF render handlers that manage off-screen browser rendering

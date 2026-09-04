@@ -89,6 +89,7 @@ public class InternalLog
     private static FilterType FilterType = FilterType.Default;
 
     private const int ButtonMod = -30;
+    private static float prevScrollY = -1f;
     private const string FilterPopupName = "filter_window";
 
     /// <summary>
@@ -96,8 +97,10 @@ public class InternalLog
     /// </summary>
     public static void PrintImGui()
     {
+        bool prevAutoScroll = Autoscroll;
         ImGui.Checkbox("##Autoscroll", ref Autoscroll);
         ImGuiC.Tooltip("Autoscroll");
+        bool userJustEnabledAutoScroll = Autoscroll && !prevAutoScroll;
         ImGui.SameLine();
         if (ImGui.Button("Clear")) Messages.Clear();
         ImGui.SameLine();
@@ -120,7 +123,34 @@ public class InternalLog
             if (Search == string.Empty || message.Level.ToString().Equals(Search, StringComparison.OrdinalIgnoreCase) || message.Message.Contains(Search, StringComparison.OrdinalIgnoreCase))
                 ImGuiC.TextWrappedCopy(color, $"> [{message.TimeStr}] {message.Message}");
         }
-        if (Autoscroll) ImGui.SetScrollHereY();
+
+        const float ScrollEpsilon = 1f;
+        float scrollY = ImGui.GetScrollY();
+        float scrollMaxY = ImGui.GetScrollMaxY();
+        bool atBottom = scrollMaxY <= 0f || scrollY >= scrollMaxY - ScrollEpsilon;
+        bool wasAtBottom = scrollMaxY <= 0f || prevScrollY >= scrollMaxY - ScrollEpsilon;
+
+        if (Autoscroll)
+        {
+            if (!atBottom && !userJustEnabledAutoScroll)
+            {
+                Autoscroll   = false;
+            }
+            else
+            {
+                ImGui.SetScrollHereY(1.0f);
+            }
+        }
+        else
+        {
+            if (atBottom && !wasAtBottom)
+            {
+                Autoscroll = true;
+            }
+        }
+
+        prevScrollY = scrollY;
+
         ImGui.EndChild();
     }
 

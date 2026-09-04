@@ -325,7 +325,11 @@ internal class ImGuiManager
                 byte[] pixels = Utility.CaptureFramebuffer(capture.X, capture.Y, capture.Width, capture.Height, targetViewport);
 
                 using var image = Image.LoadPixelData<Rgba32>(pixels, capture.Width, capture.Height);
-                image.Save(capture.filePath);
+                if (!string.IsNullOrWhiteSpace(capture.filePath))
+                    image.Save(capture.filePath);
+
+                if (capture.SetClipboard)
+                    SetClipboardImage(image);
 
                 if (contextSwitched) GL.MakeCurrent();
             }
@@ -340,5 +344,75 @@ internal class ImGuiManager
             Log.Verbose($"Remaining captures: {_pendingCapture.Count} (will process next frame)");
 #endif
 
+    }
+
+    internal static void SetClipboardImage(Image<Rgba32> image)
+    {
+        if (OperatingSystem.IsWindows())
+            SetClipboardImageWindows(image);
+        else if (OperatingSystem.IsLinux())
+            SetClipboardImageLinux(image);
+#if DEBUG
+        else
+            Log.Error("Clipboard image copy is not supported on this platform.");
+#endif
+    }
+
+    private static void SetClipboardImageWindows(Image<Rgba32> image)
+    {
+        using var ms = new MemoryStream();
+        image.SaveAsBmp(ms);
+        byte[] bmpBytes = ms.ToArray();
+
+        const int BmpFileHeaderSize = 14;
+        byte[] dibBytes = new byte[bmpBytes.Length - BmpFileHeaderSize];
+        Array.Copy(bmpBytes, BmpFileHeaderSize, dibBytes, 0, dibBytes.Length);
+
+        Win32Clipboard.SetImage(dibBytes);
+    }
+
+    private static void SetClipboardImageLinux(Image<Rgba32> image)
+    {
+        using var ms = new MemoryStream();
+        image.SaveAsPng(ms);
+        byte[] pngBytes = ms.ToArray();
+
+        bool isWayland = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("WAYLAND_DISPLAY"));
+
+        string fileName = isWayland ? "wl-copy" : "xclip";
+        string arguments = isWayland ? "--type image/png" : "-selection clipboard -t image/png";
+
+        try
+        {
+            var psi = new ProcessStartInfo
+            {
+                FileName = fileName,
+                Arguments = arguments,
+                RedirectStandardInput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            };
+
+            using var process = Process.Start(psi);
+            if (process == null)
+            {
+#if DEBUG
+                Log.Error($"Failed to start {fileName}. Is it installed?");
+#endif
+                return;
+            }
+
+            process.StandardInput.BaseStream.Write(pngBytes, 0, pngBytes.Length);
+            process.StandardInput.BaseStream.Flush();
+            process.StandardInput.Close();
+
+            process.WaitForExit(3000);
+        }
+        catch (System.ComponentModel.Win32Exception)
+        {
+#if DEBUG
+            Log.Error($"'{fileName}' not found. Install it with your package manager (e.g. apt install xclip / wl-clipboard).");
+#endif
+        }
     }
 }

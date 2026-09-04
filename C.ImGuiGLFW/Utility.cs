@@ -101,7 +101,7 @@ public static class Utility
     {
         if ((IntPtr)viewport.PlatformHandle != IntPtr.Zero)
         {
-            GLFW.MakeContextCurrent((GLFWwindowPtr)viewport.PlatformHandle);
+            GLFW.MakeContextCurrent((GLFWwindowPtr)(GLFWwindow*)viewport.PlatformHandle);
             return true;
         }
         return false;

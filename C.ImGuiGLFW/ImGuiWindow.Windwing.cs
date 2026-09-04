@@ -18,7 +18,7 @@ public partial class ImGuiController
             ImGui.SetNextWindowPos(pos);
             ImGui.SetNextWindowSize(ImGui.GetIO().DisplaySize);
 
-            if (ImGui.Begin("Loading", ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.AlwaysAutoResize))
+            if (ImGui.Begin("Loading"u8, ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.AlwaysAutoResize))
             {
                 double time = ImGui.GetTime();
                 int dotCount = (int)(time * 3) % 4;

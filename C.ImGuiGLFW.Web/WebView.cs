@@ -1,11 +1,14 @@
 ﻿using C.ImGuiGLFW.Data;
+using C.ImGuiGLFW.Web;
 using CefSharp;
 using CefSharp.Handler;
 using CefSharp.Internals;
 using CefSharp.OffScreen;
 using CefSharp.Web;
 using Hexa.NET.GLFW;
+using Hexa.NET.ImGui;
 using Hexa.NET.Mathematics;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 

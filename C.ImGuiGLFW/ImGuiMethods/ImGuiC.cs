@@ -509,7 +509,7 @@ public static partial class ImGuiC
     /// <param name="y">The Y coordinate of the top-left corner of the capture region. Default is 0.</param>
     /// <param name="width">The width of the capture region. If null, captures to the right edge of the viewport.</param>
     /// <param name="height">The height of the capture region. If null, captures to the bottom edge of the viewport.</param>
-    public static void TakeViewportScreenshot(string filePath, int x = 0, int y = 0, int? width = null, int? height = null) => ImGuiController.RequestViewportScreenshot(filePath, x, y, width, height);
+    public static void CaptureViewport(string filePath, int x = 0, int y = 0, int? width = null, int? height = null) => ImGuiController.CaptureViewport(filePath, x, y, width, height);
 
     /// <summary>
     /// Takes a screenshot of the main viewport and saves it to the specified file path.
@@ -519,5 +519,23 @@ public static partial class ImGuiC
     /// <param name="y">The Y coordinate of the top-left corner of the capture region. Default is 0.</param>
     /// <param name="width">The width of the capture region. If null, captures to the right edge of the main viewport.</param>
     /// <param name="height">The height of the capture region. If null, captures to the bottom edge of the main viewport.</param>
-    public static void TakeMainViewportScreenshot(string filePath, int x = 0, int y = 0, int? width = null, int? height = null) => ImGuiController.RequestMainViewportScreenshot(filePath, x, y, width, height);
+    public static void CaptureMainViewport(string filePath, int x = 0, int y = 0, int? width = null, int? height = null) => ImGuiController.CaptureMainViewport(filePath, x, y, width, height);
+
+    /// <summary>
+    /// Takes a screenshot of the current viewport and copies it to the clipboard.
+    /// </summary>
+    /// <param name="x">The X coordinate of the top-left corner of the capture region. Default is 0.</param>
+    /// <param name="y">The Y coordinate of the top-left corner of the capture region. Default is 0.</param>
+    /// <param name="width">The width of the capture region. If null, captures to the right edge of the viewport.</param>
+    /// <param name="height">The height of the capture region. If null, captures to the bottom edge of the viewport.</param>
+    public static void CopyViewportToClipboard(int x = 0, int y = 0, int? width = null, int? height = null) => ImGuiController.CaptureViewportToClipboard(null, x, y, width, height);
+
+    /// <summary>
+    /// Takes a screenshot of the main viewport and copies it to the clipboard.
+    /// </summary>
+    /// <param name="x">The X coordinate of the top-left corner of the capture region. Default is 0.</param>
+    /// <param name="y">The Y coordinate of the top-left corner of the capture region. Default is 0.</param>
+    /// <param name="width">The width of the capture region. If null, captures to the right edge of the main viewport.</param>
+    /// <param name="height">The height of the capture region. If null, captures to the bottom edge of the main viewport.</param>
+    public static void CopyMainViewportToClipboard(int x = 0, int y = 0, int? width = null, int? height = null) => ImGuiController.CaptureMainViewportToClipboard(null, x, y, width, height);
 }

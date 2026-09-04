@@ -1,7 +1,7 @@
 ﻿using CefSharp;
 using CefSharp.OffScreen;
 
-namespace C.ImGuiGLFW.ImGuiMethods.Web;
+namespace C.ImGuiGLFW.Web;
 
 /// <summary>
 /// Provides centralized management and configuration for the Chromium Embedded Framework (CEF)

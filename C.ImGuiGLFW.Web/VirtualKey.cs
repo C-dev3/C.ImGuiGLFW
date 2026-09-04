@@ -1,4 +1,4 @@
-﻿namespace C.ImGuiGLFW.ImGuiMethods.Web;
+﻿namespace C.ImGuiGLFW.Web;
 /// <summary>
 /// Represents virtual key codes used for keyboard input identification.
 /// </summary>

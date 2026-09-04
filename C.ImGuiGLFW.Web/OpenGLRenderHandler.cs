@@ -1,8 +1,10 @@
 ﻿using CefSharp;
 using CefSharp.Enums;
 using CefSharp.Structs;
+using Hexa.NET.ImGui;
+using Hexa.NET.OpenGL;
 
-namespace C.ImGuiGLFW.ImGuiMethods.Web;
+namespace C.ImGuiGLFW.Web;
 
 /// <summary>
 /// Provides OpenGL-based rendering capabilities for CEF off-screen browser instances within ImGui contexts.

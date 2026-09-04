@@ -60,8 +60,6 @@
   </PropertyGroup>
 	
   <ItemGroup>
-    <PackageReference Include="CefSharp.Common.NETCore" Version="137.0.100" />
-    <PackageReference Include="CefSharp.OffScreen.NETCore" Version="137.0.100" />
     <PackageReference Include="Hexa.NET.GLFW" Version="1.0.5" />
     <PackageReference Include="Hexa.NET.ImGui" Version="3.1.0-experimental" />
     <PackageReference Include="Hexa.NET.ImGui.Backends" Version="3.1.0-experimental" />

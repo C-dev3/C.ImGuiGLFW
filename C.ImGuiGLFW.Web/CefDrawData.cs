@@ -1,7 +1,8 @@
 ﻿using CefSharp;
 using CefSharp.Structs;
+using Hexa.NET.Utilities;
 
-namespace C.ImGuiGLFW.ImGuiMethods.Web;
+namespace C.ImGuiGLFW.Web;
 
 /// <summary>
 /// Represents drawing data from the Chromium Embedded Framework (CEF) paint events.

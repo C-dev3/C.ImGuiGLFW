@@ -10,6 +10,7 @@ internal class Program
     private static void Main()
     {
         ImGuiController.Initialize($"TESTWINDOW", 1280, 720, true, Module.Nodes, Module.Plot);
+        ImGuiController.ViewportEnable = false;
         ImGuiController.OnMainMenuBarRender += MainMenuBar;
         ImGuiController.OnChar += OnCharInput;
         ImGuiController.AddWindow(demoWindow);
