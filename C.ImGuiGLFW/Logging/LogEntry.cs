@@ -4,6 +4,9 @@ namespace C.ImGuiGLFW.Logging;
 
 internal record LogEntry
 {
+    private static long _nextId;
+
+    public long Id { get; }
     public DateTime Timestamp { get; set; }
 
     public LogEventLevel Level { get; set; }
@@ -20,6 +23,7 @@ internal record LogEntry
 
     public LogEntry(LogEventLevel level, string message, string category = "System")
     {
+        Id = Interlocked.Increment(ref _nextId);
         Timestamp = DateTime.Now;
         Level = level;
         Message = message;

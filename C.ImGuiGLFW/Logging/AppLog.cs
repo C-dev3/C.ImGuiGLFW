@@ -133,6 +133,11 @@ public class AppLog
     internal static TimestampFormat timestampFormat = TimestampFormat.TimeOnly;
     private static string searchFilter = string.Empty;
     private static bool AutoScroll = true;
+
+    /// <summary>
+    /// Get or Set use row bg color
+    /// </summary>
+    public static bool UseRowBgColor { get; set; } = true;
     private static SortColumn currentSortColumn = SortColumn.Time;
     private static bool currentSortAscending = true;
     private static float prevScrollY = -1f;
@@ -173,6 +178,8 @@ public class AppLog
             + style_spacing
             + ImGui.GetFrameHeight()    // AutoScroll checkbox
             + style_spacing
+            + ImGui.GetFrameHeight()    // RowBgColor icon button
+            + style_spacing
             + 20f                       // Dummy spacer
             + style_spacing
             + ImGui.GetFrameHeight()    // Copy icon button
@@ -207,6 +214,22 @@ public class AppLog
         ImGui.Checkbox("##AutoScroll", ref AutoScroll);
         ImGuiC.Tooltip("AutoScroll");
         bool userJustEnabledAutoScroll = AutoScroll && !prevAutoScroll;
+
+        ImGui.SameLine();
+
+        var useRowBgColor = UseRowBgColor;
+        if (useRowBgColor)
+            ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.36f, 0.66f, 0.91f, 1f));
+
+        if (ImGuiC.IconButton(FontAwesomeIcon.PaintBrush, "##AppLogRowBgToggle"))
+        {
+            UseRowBgColor = !UseRowBgColor;
+        }
+
+        if (useRowBgColor)
+            ImGui.PopStyleColor();
+
+        ImGuiC.Tooltip("Row Background: " + (UseRowBgColor ? "On" : "Off"));
 
         ImGui.SameLine();
         ImGui.Dummy(new Vector2(20, 0));
@@ -265,13 +288,31 @@ public class AppLog
             {
                 ImGui.TableNextRow();
 
-                if (TryGetRowBgColor(log.Level, out var bgColor))
+                ImGui.TableNextColumn();
+
+                ImGui.PushID(log.Id.ToString());
+                ImGui.Selectable("##row", false,
+                    ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowOverlap);
+
+                if (ImGui.BeginPopupContextItem("##rowContext"))
+                {
+                    if (ImGui.MenuItem("Copy Line"))
+                    {
+                        var line = $"[{log.TimestampText}] [{log.LevelText}] [{log.Category}] {log.Message}";
+                        ImGui.SetClipboardText(line);
+                    }
+                    ImGui.EndPopup();
+                }
+                ImGui.PopID();
+
+                ImGui.SameLine();
+
+                if (UseRowBgColor && TryGetRowBgColor(log.Level, out var bgColor))
                 {
                     ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg0,
                         ImGui.ColorConvertFloat4ToU32(bgColor));
                 }
 
-                ImGui.TableNextColumn();
                 ImGuiC.TextCopy(log.Color, log.TimestampText);
 
                 ImGui.TableNextColumn();
