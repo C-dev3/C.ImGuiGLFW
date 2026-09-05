@@ -281,8 +281,7 @@ public class AppLog
                 ImGuiC.TextCopy(log.Color, log.Category);
 
                 ImGui.TableNextColumn();
-                ImGui.TextColored(log.Color, log.Message);
-                if (ImGui.IsItemHovered()) ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                ImGuiC.TextCopy(log.Color, log.Message);
             }
 
             const float ScrollEpsilon = 1f;
