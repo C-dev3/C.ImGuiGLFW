@@ -22,8 +22,10 @@ public partial class ImGuiController
 
     private readonly Stopwatch _watchUpdate = new();
     private double lastUpdateTime = 0.0d;
-    private double frameTimeThreshold;
+    private double lastFrameDeltaTime = 0.0d;
+    private readonly double frameTimeThreshold;
     private double lastCallbackTime = 0.0d;
+    private double callbackFrameDeltaTime = 0.0d;
 
     private Vector4 lastBackgroundColor;
 
@@ -240,6 +242,7 @@ public partial class ImGuiController
             return false;
         }
 
+        lastFrameDeltaTime = deltaTime;
         lastUpdateTime = currentTime;
         return true;
     }
@@ -263,7 +266,7 @@ public partial class ImGuiController
 
     private void RenderFrame()
     {
-        double deltaTime = _watchUpdate.Elapsed.TotalSeconds - lastUpdateTime;
+        double deltaTime = lastFrameDeltaTime;
 
         UpdateBackgroundColor();
         GL.Clear(GLClearBufferMask.ColorBufferBit);
@@ -305,6 +308,7 @@ public partial class ImGuiController
         {
             return false;
         }
+        callbackFrameDeltaTime = deltaTime;
         lastCallbackTime = currentTime;
         return true;
     }
@@ -313,7 +317,7 @@ public partial class ImGuiController
     {
         if (!ProcessCallbackFrameTiming()) return;
 
-        double deltaTime = _watchUpdate.Elapsed.TotalSeconds - lastCallbackTime;
+        double deltaTime = callbackFrameDeltaTime;
         UpdateBackgroundColor();
         GL.Clear(GLClearBufferMask.ColorBufferBit);
 

@@ -138,6 +138,12 @@ public class AppLog
     /// Get or Set use row bg color
     /// </summary>
     public static bool UseRowBgColor { get; set; } = true;
+
+    /// <summary>
+    /// Get or Set use level row color
+    /// </summary>
+    public static bool UseLevelRowColor { get; set; } = true;
+
     private static SortColumn currentSortColumn = SortColumn.Time;
     private static bool currentSortAscending = true;
     private static float prevScrollY = -1f;
@@ -217,19 +223,15 @@ public class AppLog
 
         ImGui.SameLine();
 
-        var useRowBgColor = UseRowBgColor;
-        if (useRowBgColor)
-            ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.36f, 0.66f, 0.91f, 1f));
+        if (ImGuiC.IconButton(FontAwesomeIcon.PaintBrush, "##AppLogRowBgToggle")) ImGui.OpenPopup("row_color_settings_popup");
 
-        if (ImGuiC.IconButton(FontAwesomeIcon.PaintBrush, "##AppLogRowBgToggle"))
+        if (ImGui.BeginPopup("row_color_settings_popup", ImGuiWindowFlags.NoMove | ImGuiWindowFlags.Popup))
         {
-            UseRowBgColor = !UseRowBgColor;
+            DrawColorSettingsPopup();
+            ImGui.EndPopup();
         }
 
-        if (useRowBgColor)
-            ImGui.PopStyleColor();
-
-        ImGuiC.Tooltip("Row Background: " + (UseRowBgColor ? "On" : "Off"));
+        ImGuiC.Tooltip("Color Settings");
 
         ImGui.SameLine();
         ImGui.Dummy(new Vector2(20, 0));
@@ -265,11 +267,12 @@ public class AppLog
 
         ImGui.Spacing();
 
-        ImGuiTableFlags flags = ImGuiTableFlags.RowBg |
-            ImGuiTableFlags.Borders |
+        ImGuiTableFlags flags = ImGuiTableFlags.Borders |
             ImGuiTableFlags.ScrollY |
             ImGuiTableFlags.SizingFixedFit |
             ImGuiTableFlags.Sortable;
+
+        if (UseRowBgColor) flags |= ImGuiTableFlags.RowBg;
 
         if (ImGui.BeginTable("AppLogTable", 4, flags))
         {
@@ -307,7 +310,7 @@ public class AppLog
 
                 ImGui.SameLine();
 
-                if (UseRowBgColor && TryGetRowBgColor(log.Level, out var bgColor))
+                if (UseLevelRowColor && TryGetRowBgColor(log.Level, out var bgColor))
                 {
                     ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg0,
                         ImGui.ColorConvertFloat4ToU32(bgColor));
@@ -444,6 +447,14 @@ public class AppLog
         changed |= FlagSelectable("Error", FilterType.Error);
         changed |= FlagSelectable("Fatal", FilterType.Fatal);
         return changed;
+    }
+
+    private static void DrawColorSettingsPopup()
+    {
+        var rowBg = UseRowBgColor;
+        var levelRow = UseLevelRowColor;
+        if (ImGui.Checkbox("RowBg", ref rowBg)) UseRowBgColor = rowBg;
+        if (ImGui.Checkbox("LevelRowColor", ref levelRow)) UseLevelRowColor = levelRow;
     }
 
     private static bool FlagSelectable(string label, FilterType flag)
