@@ -3,6 +3,7 @@ using C.ImGuiGLFW.ImGuiMethods;
 using C.ImGuiGLFW.ImGuiMethods.Tab;
 using C.ImGuiGLFW.Text.FontAwesome;
 using Serilog.Events;
+using System.Collections.Concurrent;
 
 namespace C.ImGuiGLFW.Logging;
 
@@ -69,15 +70,12 @@ public class AppLog
     }
 
     private static readonly CircularBuffer<LogEntry> Logs = new(MaxLogCount);
+    private static readonly ConcurrentQueue<LogEntry> PendingLogs = [];
 
     private static bool isDirty = true;
 
 
-    internal static void Log(LogEventLevel level, string message, string category = "System")
-    {
-        Logs.PushBack(new LogEntry(level, message, category));
-        isDirty = true;
-    }
+    internal static void Log(LogEventLevel level, string message, string category = "System") => PendingLogs.Enqueue(new LogEntry(level, message, category));
 
     /// <summary>
     /// Logs a message at the <see cref="LogEventLevel.Verbose"/> level.
@@ -175,6 +173,17 @@ public class AppLog
     /// </summary>
     public static void LogViewer()
     {
+        bool received = false;
+        int processed = 0;
+
+        while (processed < MaxLogCount && PendingLogs.TryDequeue(out var entry))
+        {
+            Logs.PushBack(entry);
+            received = true;
+            processed++;
+        }
+        if (received) isDirty = true;
+
         ImGuiC.Icon(FontAwesomeIcon.Search);
 
         ImGui.SameLine();
@@ -248,6 +257,7 @@ public class AppLog
         ImGui.SameLine();
         if (ImGuiC.IconButton(FontAwesomeIcon.Trash, "##AppLogClear"))
         {
+            PendingLogs.Clear();
             Logs.Clear();
             isDirty = true;
         }

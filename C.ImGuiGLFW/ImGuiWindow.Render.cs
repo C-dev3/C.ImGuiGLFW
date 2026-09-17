@@ -271,11 +271,10 @@ public partial class ImGuiController
         UpdateBackgroundColor();
         GL.Clear(GLClearBufferMask.ColorBufferBit);
 
+        imGuiManager.UpdateImGuiIO((float)deltaTime);
         imGuiManager.NewFrame();
 
         _updateFrameCallback?.Invoke();
-
-        imGuiManager.UpdateImGuiIO((float)deltaTime);
 
         try
         {
@@ -321,10 +320,10 @@ public partial class ImGuiController
         UpdateBackgroundColor();
         GL.Clear(GLClearBufferMask.ColorBufferBit);
 
-        imGuiManager.NewFrame();
-        _updateFrameCallback?.Invoke();
-
         imGuiManager.UpdateImGuiIO((float)deltaTime);
+        imGuiManager.NewFrame();
+
+        _updateFrameCallback?.Invoke();
 
         try
         {

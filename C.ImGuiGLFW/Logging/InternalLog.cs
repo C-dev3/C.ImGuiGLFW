@@ -2,7 +2,9 @@
 using C.ImGuiGLFW.Data;
 using C.ImGuiGLFW.ImGuiMethods;
 using C.ImGuiGLFW.ImGuiMethods.Tab;
+using Serilog;
 using Serilog.Events;
+using System.Collections.Concurrent;
 
 namespace C.ImGuiGLFW.Logging;
 
@@ -16,51 +18,60 @@ namespace C.ImGuiGLFW.Logging;
 /// </remarks>
 public class InternalLog
 {
+    private static int MaxLogCount = 1000;
+
     /// <summary>
     /// The circular buffer holding the logged messages, with a capacity of 1000 messages.
     /// </summary>
-    public static readonly CircularBuffer<LogMessage> Messages = new(1000);
+    public static readonly CircularBuffer<LogMessage> Messages = new(MaxLogCount);
+    private static ConcurrentQueue<LogMessage> PendingLogs = [];
+
+    private static void Log(string message, LogEventLevel level) => PendingLogs.Enqueue(new LogMessage(message, level));
 
     /// <summary>
     /// Logs a message with verbose level.
     /// </summary>
     /// <param name="message">The message to log.</param>
-    public static void Verbose(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Verbose));
+    public static void Verbose(string message) => Log(message, LogEventLevel.Verbose);
 
     /// <summary>
     /// Logs a message with debug level.
     /// </summary>
     /// <param name="message">The message to log.</param>
-    public static void Debug(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Debug));
+    public static void Debug(string message) => Log(message, LogEventLevel.Debug);
 
     /// <summary>
     /// Logs a message with information level.
     /// </summary>
     /// <param name="message">The message to log.</param>
-    public static void Information(string message) => Messages.PushBack(new LogMessage(message));
+    public static void Information(string message) => Log(message, LogEventLevel.Information);
 
     /// <summary>
     /// Logs a message with warning level.
     /// </summary>
     /// <param name="message">The message to log.</param>
-    public static void Warning(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Warning));
+    public static void Warning(string message) => Log(message, LogEventLevel.Warning);
 
     /// <summary>
     /// Logs a message with error level.
     /// </summary>
     /// <param name="message">The message to log.</param>
-    public static void Error(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Error));
+    public static void Error(string message) => Log(message, LogEventLevel.Error);
 
     /// <summary>
     /// Logs a message with fatal level.
     /// </summary>
     /// <param name="message">The message to log.</param>
-    public static void Fatal(string message) => Messages.PushBack(new LogMessage(message, LogEventLevel.Fatal));
+    public static void Fatal(string message) => Log(message, LogEventLevel.Fatal);
 
     /// <summary>
     /// Clears all stored log messages.
     /// </summary>
-    public static void Clear() => Messages.Clear();
+    public static void Clear()
+    {
+        PendingLogs.Clear();
+        Messages.Clear();
+    }
 
     /// <summary>
     /// Provides an ImGui tab descriptor for rendering the internal log window.
@@ -97,12 +108,24 @@ public class InternalLog
     /// </summary>
     public static void PrintImGui()
     {
+        int processed = 0;
+
+        while (processed < MaxLogCount && PendingLogs.TryDequeue(out var entry))
+        {
+            Messages.PushBack(entry);
+            processed++;
+        }
+
         bool prevAutoScroll = Autoscroll;
         ImGui.Checkbox("##Autoscroll", ref Autoscroll);
         ImGuiC.Tooltip("Autoscroll");
         bool userJustEnabledAutoScroll = Autoscroll && !prevAutoScroll;
         ImGui.SameLine();
-        if (ImGui.Button("Clear")) Messages.Clear();
+        if (ImGui.Button("Clear"))
+        {
+            PendingLogs.Clear();
+            Messages.Clear();
+        }
         ImGui.SameLine();
         ImGuiC.SetNextItemFullWidth(ButtonMod);
         ImGui.InputTextWithHint("##Filter", "Filter...", ref Search, 100);
@@ -134,7 +157,7 @@ public class InternalLog
         {
             if (!atBottom && !userJustEnabledAutoScroll)
             {
-                Autoscroll   = false;
+                Autoscroll = false;
             }
             else
             {
