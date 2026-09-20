@@ -4,6 +4,7 @@ using Hexa.NET.ImGuizmo;
 using Hexa.NET.ImNodes;
 using Hexa.NET.ImPlot;
 using Hexa.NET.ImPlot3D;
+using ImAnimNET;
 using Serilog;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
@@ -31,6 +32,8 @@ internal class ImGuiManager
     private readonly WindowSettings windowSettings;
 
     internal ImGuiIOPtr iOPtr = null;
+
+    private static float gcTimer = 0;
 
     internal static readonly Queue<CaptureRequest> _pendingCapture = [];
 
@@ -184,6 +187,9 @@ internal class ImGuiManager
         ImGuiImplGLFW.NewFrame();
         ImGui.NewFrame();
         if (GuizmoInstalled) ImGuizmo.BeginFrame();
+
+        ImAnim.UpdateBeginFrame();
+        ImAnim.ClipUpdate(iOPtr.DeltaTime);
     }
 
     public void UpdateImGuiIO(float deltaTime)
@@ -209,6 +215,13 @@ internal class ImGuiManager
         GL.SwapBuffers();
 
         ProcessPendingCapture();
+
+        if ((gcTimer += iOPtr.DeltaTime) > 1.0f)
+        {
+            ImAnim.Gc();
+            ImAnim.ClipGc();
+            gcTimer = 0;
+        }
     }
 
     private void CleanupModules()
