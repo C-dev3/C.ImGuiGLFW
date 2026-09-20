@@ -72,7 +72,11 @@ public partial class ImGuiController
     public static double UpdateFrequency
     {
         get => Instance.WindowSettings.FrameRate;
-        set => Instance.WindowSettings.FrameRate = value < 1.0 ? 0.0 : Math.Clamp(value, 0.0, MaxFrequency);
+        set
+        {
+            Instance.WindowSettings.FrameRate = value < 1.0 ? 0.0 : Math.Clamp(value, 0.0, MaxFrequency);
+            Instance.frameTimeThreshold = Instance.WindowSettings.FrameRate == 0 ? 0.0 : 1.0d / Instance.WindowSettings.FrameRate;
+        }
     }
 
     /// <summary>

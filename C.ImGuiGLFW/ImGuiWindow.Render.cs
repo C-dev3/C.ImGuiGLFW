@@ -23,7 +23,7 @@ public partial class ImGuiController
     private readonly Stopwatch _watchUpdate = new();
     private double lastUpdateTime = 0.0d;
     private double lastFrameDeltaTime = 0.0d;
-    private readonly double frameTimeThreshold;
+    private double frameTimeThreshold;
     private double lastCallbackTime = 0.0d;
     private double callbackFrameDeltaTime = 0.0d;
 
